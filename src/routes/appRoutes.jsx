@@ -3,6 +3,8 @@ import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
 import Turmas from '../pages/coordenador/turmas'
 import Calendario from '../pages/coordenador/calendario'
+import DashboardDocente from '../pages/Docente/dasboard'
+import CalendarioDocente from '../pages/Docente/Calendariodocente'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -25,8 +27,15 @@ function ProtectedRoute({ children, perfil }) {
   }
 
   // Impede o acesso quando o perfil não tem permissão para a página.
+  // Manda cada perfil de volta para a sua própria página inicial.
   if (usuario.perfil !== perfil) {
-    return (<Navigate to={usuario.perfil === 'coordenador' ? '/coordenador' : '/login'} replace />)
+    if (usuario.perfil === 'coordenador') {
+      return <Navigate to="/coordenador" replace />
+    }
+    if (usuario.perfil === 'docente') {
+      return <Navigate to="/docente" replace />
+    }
+    return <Navigate to="/login" replace />
   }
 
   // Exibe a página solicitada se o usuário tiver permissão.
@@ -44,7 +53,12 @@ function AppRoutes() {
   }
 
   // Define a página inicial de acordo com o perfil do usuário.
-  const rotaInicial = usuario?.perfil === 'coordenador' ? '/coordenador' : '/login'
+  let rotaInicial = '/login'
+  if (usuario?.perfil === 'coordenador') {
+    rotaInicial = '/coordenador'
+  } else if (usuario?.perfil === 'docente') {
+    rotaInicial = '/docente'
+  }
 
   return (
     <Routes>
@@ -55,6 +69,9 @@ function AppRoutes() {
       <Route path="/coordenador" element={<ProtectedRoute perfil="coordenador"><Dashboard /></ProtectedRoute>} />
       <Route path="/coordenador/turmas" element={<ProtectedRoute perfil="coordenador"><Turmas /></ProtectedRoute>} />
       <Route path="/coordenador/calendario" element={<ProtectedRoute perfil="coordenador"><Calendario /></ProtectedRoute>} />
+      {/* Restringe o acesso ao dashboard e ao calendário aos docentes. */}
+      <Route path="/docente" element={<ProtectedRoute perfil="docente"><DashboardDocente /></ProtectedRoute>} />
+      <Route path="/docente/calendario" element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>} />
       {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
       <Route path="*" element={<Navigate to={rotaInicial} replace />} />
     </Routes>
