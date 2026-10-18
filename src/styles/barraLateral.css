@@ -1,196 +1,242 @@
-.barra-lateral {
+
+/* ===== EduGest: barra lateral isolada ===== */
+
+.eg-sidebar {
   width: 250px;
   min-width: 250px;
   min-height: 100vh;
-  padding: 28px 16px 18px;
+  padding: 26px 16px 18px;
   display: flex;
   flex-direction: column;
-  background: var(--edu-surface, #ffffff);
-  color: var(--edu-text, #202b3c);
-  border-right: 1px solid var(--edu-border, #e7ebf2);
+  flex-shrink: 0;
+
+  background: #111c2e;
+  color: #f1f5f9;
+  border-right: 1px solid #263449;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
   box-sizing: border-box;
 }
 
-.barra-lateral-logo {
+.eg-sidebar *,
+.eg-sidebar *::before,
+.eg-sidebar *::after {
+  box-sizing: border-box;
+}
+
+.eg-sidebar__brand {
   display: flex;
   align-items: center;
   gap: 11px;
   padding: 0 8px;
-  margin-bottom: 42px;
+  margin-bottom: 38px;
 }
 
-.barra-lateral-simbolo {
+.eg-sidebar__logo {
   width: 42px;
   height: 42px;
-  flex-shrink: 0;
+  flex: 0 0 42px;
   display: grid;
   place-items: center;
-  border-radius: 13px;
-  background: var(--edu-primary, #5146d8);
+  border-radius: 12px;
+  background: #2563eb;
   color: #ffffff;
   font-size: 23px;
   font-weight: 800;
 }
 
-.barra-lateral-logo h2 {
-  margin: 0;
-  font-size: 21px;
-  color: var(--edu-text, #202b3c);
+.eg-sidebar__brand-text {
+  min-width: 0;
 }
 
-.barra-lateral-logo span {
+.eg-sidebar__brand h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.eg-sidebar__brand-text > span {
   display: block;
   margin-top: 4px;
-  color: var(--edu-muted, #7b8798);
+  color: #94a3b8;
   font-size: 12px;
+  font-weight: 400;
 }
 
-.barra-lateral-titulo {
-  padding: 0 12px;
-  margin-bottom: 12px;
-  color: var(--edu-muted, #7b8798);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.1px;
-}
-
-.barra-lateral-navegacao {
-  display: grid;
+.eg-sidebar__nav {
+  display: flex;
+  flex-direction: column;
   gap: 7px;
 }
 
-.barra-lateral-link {
+.eg-sidebar .eg-sidebar__link,
+.eg-sidebar .eg-sidebar__link:visited {
+  width: 100%;
+  min-height: 46px;
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
-  padding: 13px 12px;
+  padding: 11px 12px;
+
+  border: 0;
   border-radius: 9px;
-  color: #647084;
   background: transparent;
+
+  color: #c1cada;
   text-decoration: none;
+  font-family: "Segoe UI", Arial, sans-serif;
   font-size: 14px;
-  box-sizing: border-box;
-  transition: background 0.2s, color 0.2s;
+  font-weight: 400;
+  line-height: 1.35;
+
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.barra-lateral-link:hover {
-  background: var(--edu-bg, #f5f7fb);
+.eg-sidebar .eg-sidebar__link:hover {
+  background: #1e2b40;
+  color: #ffffff;
 }
 
-.barra-lateral-link.ativo {
-  background: var(--edu-primary-light, #eeecff);
-  color: var(--edu-primary, #5146d8);
+.eg-sidebar .eg-sidebar__link--active,
+.eg-sidebar .eg-sidebar__link--active:visited,
+.eg-sidebar .eg-sidebar__link--active:hover {
+  background: #2563eb;
+  color: #ffffff;
   font-weight: 700;
 }
 
-.barra-lateral-icone {
+.eg-sidebar .eg-sidebar__icon {
   width: 22px;
-  flex-shrink: 0;
-  text-align: center;
-  font-size: 19px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: block;
+  object-fit: contain;
+
+  /* Mantém os ícones de imagem claros no fundo escuro. */
+  filter: brightness(0) invert(1);
+  opacity: 0.78;
 }
 
-.barra-lateral-rodape {
+.eg-sidebar .eg-sidebar__link--active .eg-sidebar__icon {
+  opacity: 1;
+}
+
+.eg-sidebar .eg-sidebar__emoji {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: grid;
+  place-items: center;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.eg-sidebar .eg-sidebar__label {
+  min-width: 0;
+  display: block;
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: inherit;
+  line-height: 1.35;
+}
+
+.eg-sidebar__footer {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: auto;
   padding: 20px 4px 0;
-  border-top: 1px solid var(--edu-border, #e7ebf2);
+  border-top: 1px solid #263449;
 }
 
-.barra-lateral-avatar {
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
+.eg-sidebar__avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: block;
+  object-fit: contain;
   border-radius: 50%;
-  background: var(--edu-primary-light, #eeecff);
-  color: var(--edu-primary, #5146d8);
-  font-weight: 800;
+  filter: brightness(0) invert(1);
 }
 
-.barra-lateral-usuario {
+.eg-sidebar__user {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.barra-lateral-usuario strong {
-  display: block;
+.eg-sidebar__user strong {
   overflow: hidden;
-  color: var(--edu-text, #202b3c);
+  color: #f1f5f9;
   font-size: 13px;
+  font-weight: 600;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.barra-lateral-usuario span {
-  display: block;
-  margin-top: 4px;
-  color: var(--edu-muted, #7b8798);
+.eg-sidebar__user span {
+  color: #94a3b8;
   font-size: 12px;
+  font-weight: 400;
 }
 
-.barra-lateral-sair {
+.eg-sidebar .eg-sidebar__logout {
+  flex: 0 0 auto;
   padding: 5px;
   border: 0;
   background: transparent;
-  color: var(--edu-muted, #7b8798);
+  color: #94a3b8;
+  font-family: inherit;
   font-size: 23px;
+  line-height: 1;
   cursor: pointer;
 }
 
-.barra-lateral-sair:hover {
-  color: var(--edu-primary, #5146d8);
+.eg-sidebar .eg-sidebar__logout:hover {
+  color: #ffffff;
 }
 
+/* Responsividade */
+
 @media (max-width: 700px) {
-  .barra-lateral {
+  .eg-sidebar {
     width: 100%;
     min-width: 0;
     min-height: auto;
     padding: 15px;
     border-right: 0;
-    border-bottom: 1px solid var(--edu-border, #e7ebf2);
+    border-bottom: 1px solid #263449;
   }
 
-  .barra-lateral-logo {
+  .eg-sidebar__brand {
     margin-bottom: 20px;
   }
 
-  .barra-lateral-titulo,
-  .barra-lateral-rodape {
-    display: none;
-  }
-
-  .barra-lateral-navegacao {
-    display: flex;
+  .eg-sidebar__nav {
+    flex-direction: row;
     gap: 6px;
     overflow-x: auto;
+    padding-bottom: 4px;
   }
 
-  .barra-lateral-link {
+  .eg-sidebar .eg-sidebar__link {
     width: auto;
-    flex-shrink: 0;
-    padding: 10px;
+    flex: 0 0 auto;
     white-space: nowrap;
   }
-}
 
-
-.barra-lateral-icone {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.barra-lateral-avatar-imagem {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  flex-shrink: 0;
-  border-radius: 50%;
+  .eg-sidebar__footer {
+    display: none;
+  }
 }

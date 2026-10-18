@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/Coordenador.css'
+import '../../styles/coordenador.css'
 
 const eventosIniciais = [
   {
