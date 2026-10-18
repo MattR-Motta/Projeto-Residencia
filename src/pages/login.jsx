@@ -56,7 +56,7 @@ function Login() {
         if (usuario.perfil === 'coordenador') {
             navigate('/coordenador')
         } else {
-            setMensagem('Login realizado! A área do docente ainda está em desenvolvimento.')
+            navigate('/docente')
         }
     }
 
