@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* === RESET CONDICIONAL (Só ativa quando a tela de login está aberta) === */
+html:has(.seduc-login),
+body:has(.seduc-login),
+#root:has(.seduc-login) {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  width: 100%;
+  min-height: 100vh;
+  display: block;
+  overflow-x: hidden;
+}
+
 /* ===VAR COLORS===*/
 .seduc-login {
     /* LAYOUT COLORS */
@@ -86,7 +99,8 @@
 
 .seduc-login__hero {
   max-width: 460px;
-  margin: auto 0;
+  margin: auto;
+  text-align: center;
 }
 
 .seduc-login__hero-title {
@@ -103,6 +117,7 @@
   line-height: 1.6;
   color: var(--text-secondary-gray);
   max-width: 400px;
+  margin: 0 auto;
 }
 
 .seduc-login__footer-text {
@@ -127,6 +142,7 @@
 
 .seduc-login__form-header {
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .seduc-login__form-title {
@@ -158,12 +174,15 @@
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-heading-white);
+  text-align: left;
+  width: 100%;
 }
 
 .seduc-login__input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .seduc-login__input-icon {
