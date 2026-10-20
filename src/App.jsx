@@ -1,13 +1,15 @@
-// Importa o componente utilizando o caminho correto baseado na estrutura da imagem
-import { LoginSeduc } from './pages/loginseduc/loginseduc';
+import { BrowserRouter } from 'react-router-dom'
+import AppRoutes from './routes/appRoutes'
+import './App.css'
 
 function App() {
   return (
-    <main>
-      {/* Renderiza a sua tela de login */}
-      <LoginSeduc />
-    </main>
-  );
+    <BrowserRouter>
+      <div className="app">
+        <AppRoutes />
+      </div>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
