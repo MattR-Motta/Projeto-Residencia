@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import BarraLateralDocente from '../../components/BarraLateralDocente'
-import '../../styles/dashboardDocente.css'
-import '../../styles/calendarioDocente.css'
+import '../../styles/dashboarddocente.css'
+import "../../styles/Calendariodocente.css";
 
 const nomesMeses = [
   'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',

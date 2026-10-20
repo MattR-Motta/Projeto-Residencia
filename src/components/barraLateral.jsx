@@ -1,5 +1,12 @@
+
 import { NavLink, useNavigate } from 'react-router-dom'
+import {
+  BookOpen,
+  CalendarClock,
+} from 'lucide-react'
+
 import '../styles/barraLateral.css'
+
 import iconeDashboard from '../assets/dashboard.png'
 import iconeTurmas from '../assets/turmas.png'
 import iconeCalendario from '../assets/calendario.png'
@@ -19,7 +26,7 @@ function BarraLateral() {
       nomeUsuario = usuario.nome
     }
   } catch {
-    // Mantém o nome padrão se os dados salvos forem inválidos.
+    // Usa o nome padrão se os dados salvos forem inválidos.
   }
 
   function sair() {
@@ -27,47 +34,107 @@ function BarraLateral() {
     navigate('/login')
   }
 
-  return (
-    <aside className="barra-lateral">
-      <div className="barra-lateral-logo">
-        <div className="barra-lateral-simbolo">E</div>
+  const links = [
+    {
+      to: '/coordenador',
+      label: 'Dashboard',
+      icon: iconeDashboard,
+      end: true,
+    },
+    {
+      to: '/coordenador/turmas',
+      label: 'Turmas',
+      icon: iconeTurmas,
+    },
+    {
+      to: '/coordenador/calendario',
+      label: 'Calendário',
+      icon: iconeCalendario,
+    },
+    {
+      to: '/coordenador/disciplinas-ementas',
+      label: 'Disciplinas e Ementas',
+      Icon: BookOpen,
+    },
+    {
+      to: '/coordenador/aulas-reposicoes',
+      label: 'Aulas e Reposições',
+      Icon: CalendarClock,
+    },
+  ]
 
-        <div>
+  return (
+    <aside className="eg-sidebar">
+      <div className="eg-sidebar__brand">
+        <div className="eg-sidebar__logo">E</div>
+
+        <div className="eg-sidebar__brand-text">
           <h2>EduGest</h2>
           <span>Gestão acadêmica</span>
         </div>
       </div>
 
-      <span className="barra-lateral-titulo">
-        MENU PRINCIPAL
-      </span>
+      <nav
+        className="eg-sidebar__nav"
+        aria-label="Navegação principal"
+      >
+        {links.map((link) => {
+          const Icone = link.Icon
 
-      <nav className="barra-lateral-navegacao">
-        <NavLink to="/coordenador" end className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
-          <img src={iconeDashboard} alt="" className="barra-lateral-icone"/>
-          <span>Dashboard</span>
-        </NavLink>
+          return (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.end}
+              className={({ isActive }) =>
+                `eg-sidebar__link${
+                  isActive ? ' eg-sidebar__link--active' : ''
+                }`
+              }
+            >
+              {link.icon ? (
+                <img
+                  src={link.icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="eg-sidebar__icon"
+                />
+              ) : (
+                <Icone
+                  size={20}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                  className="eg-sidebar__icon"
+                />
+              )}
 
-        <NavLink to="/coordenador/turmas" className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
-          <img src={iconeTurmas} alt="" className="barra-lateral-icone"/>
-          <span>Turmas</span>
-        </NavLink>
-
-        <NavLink to="/coordenador/calendario" className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
-          <img src={iconeCalendario} alt="" className="barra-lateral-icone"/>
-          <span>Calendário</span>
-        </NavLink>
+              <span className="eg-sidebar__label">
+                {link.label}
+              </span>
+            </NavLink>
+          )
+        })}
       </nav>
 
-      <div className="barra-lateral-rodape">
-        <img src={iconeCoordenador} alt="" className="barra-lateral-avatar-imagem"/>
+      <div className="eg-sidebar__footer">
+        <img
+          src={iconeCoordenador}
+          alt=""
+          className="eg-sidebar__avatar"
+        />
 
-        <div className="barra-lateral-usuario">
+        <div className="eg-sidebar__user">
           <strong>{nomeUsuario}</strong>
           <span>Coordenador</span>
         </div>
 
-        <button type="button" className="barra-lateral-sair" onClick={sair} title="Sair da conta" aria-label="Sair da conta">
+        <button
+          type="button"
+          className="eg-sidebar__logout"
+          onClick={sair}
+          title="Sair da conta"
+          aria-label="Sair da conta"
+        >
           ↪
         </button>
       </div>

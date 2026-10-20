@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import BarraLateralDocente from '../../components/BarraLateralDocente'
-import '../../styles/dashboardDocente.css'
+import '../../styles/dashboarddocente.css'
 
 // Dados de exemplo (depois você pode trocar por dados reais)
 const resumo = [
