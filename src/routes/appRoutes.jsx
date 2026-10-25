@@ -8,6 +8,15 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
+import IndiceErros from '../pages/erros/index'
+import Erro400 from '../pages/erros/erro400'
+import Erro401 from '../pages/erros/erro401'
+import Erro403 from '../pages/erros/erro403'
+import Erro404 from '../pages/erros/erro404'
+import Erro408 from '../pages/erros/erro408'
+import Erro500 from '../pages/erros/erro500'
+import Erro503 from '../pages/erros/erro503'
+import SemConexao from '../pages/erros/semConexao'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -99,8 +108,19 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
       />
 
-      {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
-      <Route path="*" element={<Navigate to={rotaInicial} replace />} />
+      {/* Telas de erro. A página /erros lista todas para facilitar a apresentação. */}
+      <Route path="/erros" element={<IndiceErros />} />
+      <Route path="/erro/400" element={<Erro400 />} />
+      <Route path="/erro/401" element={<Erro401 />} />
+      <Route path="/erro/403" element={<Erro403 />} />
+      <Route path="/erro/404" element={<Erro404 />} />
+      <Route path="/erro/408" element={<Erro408 />} />
+      <Route path="/erro/500" element={<Erro500 />} />
+      <Route path="/erro/503" element={<Erro503 />} />
+      <Route path="/erro/sem-conexao" element={<SemConexao />} />
+
+      {/* Endereços que não correspondem a nenhuma rota mostram a tela 404. */}
+      <Route path="*" element={<Erro404 />} />
     </Routes>
   )
 }
