@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import BarraLateralDocente from '../../components/BarraLateralDocente'
+import BarraLateral from '../../components/barraLateral'
 import '../../styles/dashboarddocente.css'
 
 // Dados de exemplo (depois você pode trocar por dados reais)
@@ -34,7 +34,7 @@ function DashboardDocente() {
 
   return (
     <div className="docente-pagina">
-      <BarraLateralDocente />
+      <BarraLateral />
 
       <main className="docente-conteudo">
         {/* Topo: busca e usuário */}
