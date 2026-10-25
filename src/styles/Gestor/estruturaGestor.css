@@ -1,0 +1,124 @@
+.estrutura-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 18px;
+}
+
+.estrutura-resumo article {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 16px 18px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 10px;
+  background: var(--gestor-cor-fundo-cartao);
+}
+
+.estrutura-resumo span {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+}
+
+.estrutura-resumo strong {
+  font-size: 24px;
+}
+
+.estrutura-busca {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 220px;
+  gap: 8px;
+  color: var(--gestor-cor-texto-secundario);
+}
+
+.estrutura-busca .gestor-campo {
+  width: 100%;
+}
+
+.estrutura-lista {
+  display: flex;
+  flex-direction: column;
+}
+
+.estrutura-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 2px;
+  border-bottom: 1px solid var(--gestor-cor-borda);
+}
+
+.estrutura-item:last-child {
+  border-bottom: 0;
+}
+
+.estrutura-item-simbolo {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  color: var(--gestor-cor-primaria);
+  background: var(--gestor-cor-primaria-clara);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.estrutura-item-conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+.estrutura-item-titulo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.estrutura-item-titulo h3 {
+  margin: 0;
+  font-size: 13px;
+}
+
+.estrutura-item-conteudo p {
+  margin: 6px 0;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+}
+
+.estrutura-item-conteudo small {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 10px;
+}
+
+.estrutura-erro {
+  margin: 12px 0 0 !important;
+  color: var(--gestor-cor-perigo) !important;
+}
+
+@media (max-width: 760px) {
+  .estrutura-resumo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .estrutura-busca {
+    min-width: 100%;
+  }
+
+  .estrutura-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .estrutura-item-conteudo {
+    min-width: calc(100% - 60px);
+  }
+
+  .estrutura-item > .gestor-acoes {
+    margin-left: 56px;
+  }
+}

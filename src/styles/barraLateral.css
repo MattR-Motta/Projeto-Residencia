@@ -1,18 +1,49 @@
 
-/* ===== EduGest: barra lateral isolada ===== */
+/* ===== EduGest: variáveis de cores ===== */
+
+:root {
+  --sidebar-fundo: #111c2e;
+  --sidebar-borda: #263449;
+  --sidebar-texto: #c1cada;
+  --sidebar-texto-destaque: #f1f5f9;
+  --sidebar-texto-secundario: #94a3b8;
+  --sidebar-hover: #1e2b40;
+  --sidebar-ativo: #2563eb;
+  --sidebar-ativo-texto: #ffffff;
+  --sidebar-logo-fundo: #2563eb;
+  --sidebar-logo-texto: #ffffff;
+  --sidebar-desativado-opacidade: 0.45;
+}
+
+/* Tema claro */
+.tema-claro {
+  --sidebar-fundo: #ffffff;
+  --sidebar-borda: #e5e7eb;
+  --sidebar-texto: #374151;
+  --sidebar-texto-destaque: #111827;
+  --sidebar-texto-secundario: #6b7280;
+  --sidebar-hover: #f1f5f9;
+  --sidebar-ativo: #dbeafe;
+  --sidebar-ativo-texto: #1d4ed8;
+  --sidebar-logo-fundo: #2563eb;
+  --sidebar-logo-texto: #ffffff;
+}
+
+/* ===== Estrutura principal ===== */
 
 .eg-sidebar {
   width: 250px;
   min-width: 250px;
   min-height: 100vh;
   padding: 26px 16px 18px;
+
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 
-  background: #111c2e;
-  color: #f1f5f9;
-  border-right: 1px solid #263449;
+  background: var(--sidebar-fundo);
+  color: var(--sidebar-texto-destaque);
+  border-right: 1px solid var(--sidebar-borda);
 
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 14px;
@@ -27,6 +58,8 @@
   box-sizing: border-box;
 }
 
+/* ===== Marca ===== */
+
 .eg-sidebar__brand {
   display: flex;
   align-items: center;
@@ -39,11 +72,14 @@
   width: 42px;
   height: 42px;
   flex: 0 0 42px;
+
   display: grid;
   place-items: center;
+
   border-radius: 12px;
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--sidebar-logo-fundo);
+  color: var(--sidebar-logo-texto);
+
   font-size: 23px;
   font-weight: 800;
 }
@@ -54,7 +90,7 @@
 
 .eg-sidebar__brand h2 {
   margin: 0;
-  color: #ffffff;
+  color: var(--sidebar-texto-destaque);
   font-family: inherit;
   font-size: 21px;
   font-weight: 600;
@@ -64,10 +100,25 @@
 .eg-sidebar__brand-text > span {
   display: block;
   margin-top: 4px;
-  color: #94a3b8;
+  color: var(--sidebar-texto-secundario);
   font-size: 12px;
   font-weight: 400;
 }
+
+/* ===== Título do menu ===== */
+
+.eg-sidebar__section-title {
+  display: block;
+  padding: 0 12px;
+  margin: -12px 0 12px;
+
+  color: var(--sidebar-texto-secundario);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+}
+
+/* ===== Navegação ===== */
 
 .eg-sidebar__nav {
   display: flex;
@@ -79,6 +130,7 @@
 .eg-sidebar .eg-sidebar__link:visited {
   width: 100%;
   min-height: 46px;
+
   display: flex;
   align-items: center;
   gap: 12px;
@@ -88,7 +140,7 @@
   border-radius: 9px;
   background: transparent;
 
-  color: #c1cada;
+  color: var(--sidebar-texto);
   text-decoration: none;
   font-family: "Segoe UI", Arial, sans-serif;
   font-size: 14px;
@@ -99,49 +151,72 @@
 }
 
 .eg-sidebar .eg-sidebar__link:hover {
-  background: #1e2b40;
-  color: #ffffff;
+  background: var(--sidebar-hover);
+  color: var(--sidebar-texto-destaque);
 }
 
 .eg-sidebar .eg-sidebar__link--active,
 .eg-sidebar .eg-sidebar__link--active:visited,
 .eg-sidebar .eg-sidebar__link--active:hover {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--sidebar-ativo);
+  color: var(--sidebar-ativo-texto);
   font-weight: 700;
 }
+
+/* ===== Ícones ===== */
 
 .eg-sidebar .eg-sidebar__icon {
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
+
   display: block;
   object-fit: contain;
 
-  /* Mantém os ícones de imagem claros no fundo escuro. */
   filter: brightness(0) invert(1);
   opacity: 0.78;
 }
 
+/* Ícones no tema claro */
+.tema-claro .eg-sidebar .eg-sidebar__icon {
+  filter: none;
+  opacity: 0.85;
+}
+
+.tema-claro .eg-sidebar .eg-sidebar__link--active .eg-sidebar__icon {
+  filter: none;
+  opacity: 1;
+}
+
+/* Ícones ativos no tema escuro */
 .eg-sidebar .eg-sidebar__link--active .eg-sidebar__icon {
   opacity: 1;
 }
 
-.eg-sidebar .eg-sidebar__emoji {
-  width: 22px;
-  height: 22px;
-  flex: 0 0 22px;
-  display: grid;
-  place-items: center;
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1;
+/* Ícones Lucide */
+.eg-sidebar svg.eg-sidebar__icon {
+  object-fit: initial;
 }
+
+/* ===== Itens ainda indisponíveis ===== */
+
+.eg-sidebar .eg-sidebar__link--disabled {
+  opacity: var(--sidebar-desativado-opacidade);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+.eg-sidebar .eg-sidebar__link--disabled:hover {
+  background: transparent;
+  color: var(--sidebar-texto);
+}
+
+/* ===== Texto dos links ===== */
 
 .eg-sidebar .eg-sidebar__label {
   min-width: 0;
   display: block;
+
   color: inherit;
   font-family: inherit;
   font-size: 14px;
@@ -149,28 +224,38 @@
   line-height: 1.35;
 }
 
+/* ===== Rodapé e usuário ===== */
+
 .eg-sidebar__footer {
   display: flex;
   align-items: center;
   gap: 10px;
+
   margin-top: auto;
   padding: 20px 4px 0;
-  border-top: 1px solid #263449;
+  border-top: 1px solid var(--sidebar-borda);
 }
 
 .eg-sidebar__avatar {
   width: 40px;
   height: 40px;
   flex: 0 0 40px;
+
   display: block;
   object-fit: contain;
   border-radius: 50%;
+
   filter: brightness(0) invert(1);
+}
+
+.tema-claro .eg-sidebar__avatar {
+  filter: none;
 }
 
 .eg-sidebar__user {
   flex: 1;
   min-width: 0;
+
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -178,7 +263,7 @@
 
 .eg-sidebar__user strong {
   overflow: hidden;
-  color: #f1f5f9;
+  color: var(--sidebar-texto-destaque);
   font-size: 13px;
   font-weight: 600;
   text-overflow: ellipsis;
@@ -186,17 +271,21 @@
 }
 
 .eg-sidebar__user span {
-  color: #94a3b8;
+  color: var(--sidebar-texto-secundario);
   font-size: 12px;
   font-weight: 400;
 }
 
+/* ===== Botão de sair ===== */
+
 .eg-sidebar .eg-sidebar__logout {
   flex: 0 0 auto;
   padding: 5px;
+
   border: 0;
   background: transparent;
-  color: #94a3b8;
+  color: var(--sidebar-texto-secundario);
+
   font-family: inherit;
   font-size: 23px;
   line-height: 1;
@@ -204,10 +293,10 @@
 }
 
 .eg-sidebar .eg-sidebar__logout:hover {
-  color: #ffffff;
+  color: var(--sidebar-texto-destaque);
 }
 
-/* Responsividade */
+/* ===== Responsividade ===== */
 
 @media (max-width: 700px) {
   .eg-sidebar {
@@ -215,8 +304,9 @@
     min-width: 0;
     min-height: auto;
     padding: 15px;
+
     border-right: 0;
-    border-bottom: 1px solid #263449;
+    border-bottom: 1px solid var(--sidebar-borda);
   }
 
   .eg-sidebar__brand {
