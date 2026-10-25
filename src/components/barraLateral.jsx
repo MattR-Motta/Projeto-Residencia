@@ -3,6 +3,9 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {
   BookOpen,
   CalendarClock,
+  Bell,
+  Settings,
+  ClipboardList,
 } from 'lucide-react'
 
 import '../styles/barraLateral.css'
@@ -11,6 +14,7 @@ import iconeDashboard from '../assets/dashboard.png'
 import iconeTurmas from '../assets/turmas.png'
 import iconeCalendario from '../assets/calendario.png'
 import iconeCoordenador from '../assets/coordenador.png'
+
 
 function BarraLateral() {
   const navigate = useNavigate()
@@ -60,6 +64,22 @@ function BarraLateral() {
       to: '/coordenador/aulas-reposicoes',
       label: 'Aulas e Reposições',
       Icon: CalendarClock,
+    },
+    {
+      to: '/coordenador/solicitacoes',
+      label: 'Solicitações',
+      Icon: ClipboardList,
+    },
+    {
+      to: '/coordenador/notificacoes',
+      label: 'Notificações',
+      Icon: Bell,
+    },
+
+    {
+      to: '/coordenador/configuracoes',
+      label: 'Configurações',
+      Icon: Settings,
     },
   ]
 
@@ -141,5 +161,7 @@ function BarraLateral() {
     </aside>
   )
 }
+
+
 
 export default BarraLateral
