@@ -6,55 +6,53 @@ import {
   Bell,
   Settings,
   ClipboardList,
+  LayoutDashboard,
+  School,
+  FileText,
+  Network,
 } from 'lucide-react'
-
 import '../styles/barraLateral.css'
 
 import iconeDashboard from '../assets/dashboard.png'
 import iconeTurmas from '../assets/turmas.png'
 import iconeCalendario from '../assets/calendario.png'
 import iconeCoordenador from '../assets/coordenador.png'
+import iconeAulas from '../assets/aulas.png'
+import iconeDocente from '../assets/docente.png'
 
 
 function BarraLateral() {
   const navigate = useNavigate()
 
-  let nomeUsuario = 'Coordenador'
+  let usuario = null
 
   try {
-    const usuario = JSON.parse(
+    usuario = JSON.parse(
       localStorage.getItem('usuarioEduGest') || 'null'
     )
-
-    if (usuario?.nome) {
-      nomeUsuario = usuario.nome
-    }
   } catch {
-    // Usa o nome padrão se os dados salvos forem inválidos.
+    // Mantém o perfil padrão caso os dados sejam inválidos.
   }
 
-  function sair() {
-    localStorage.removeItem('usuarioEduGest')
-    navigate('/login')
-  }
+  const perfil = usuario?.perfil?.toLowerCase() || 'coordenador'
+  const ehGestor = perfil === 'gestor'
+  const ehDocente = perfil === 'docente'
 
-  const links = [
-    {
-      to: '/coordenador',
-      label: 'Dashboard',
-      icon: iconeDashboard,
-      end: true,
-    },
-    {
-      to: '/coordenador/turmas',
-      label: 'Turmas',
-      icon: iconeTurmas,
-    },
-    {
-      to: '/coordenador/calendario',
-      label: 'Calendário',
-      icon: iconeCalendario,
-    },
+  const nomeUsuario =
+    usuario?.nome ||
+    (ehGestor ? 'Gestor' : ehDocente ? 'Docente' : 'Coordenador')
+
+  const linksGestor = [
+    { to: '/gestor', label: 'Dashboard', Icon: LayoutDashboard, end: true },
+    { to: '/gestor/escolas', label: 'Escolas', Icon: School },
+    { to: '/gestor/portarias', label: 'Portarias', Icon: FileText },
+    { to: '/gestor/estrutura', label: 'Estrutura', Icon: Network },
+  ]
+
+  const linksCoordenador = [
+    { to: '/coordenador', label: 'Dashboard', icon: iconeDashboard, end: true },
+    { to: '/coordenador/turmas', label: 'Turmas', icon: iconeTurmas },
+    { to: '/coordenador/calendario', label: 'Calendário', icon: iconeCalendario },
     {
       to: '/coordenador/disciplinas-ementas',
       label: 'Disciplinas e Ementas',
@@ -83,6 +81,48 @@ function BarraLateral() {
     },
   ]
 
+  const linksDocente = [
+    { to: '/docente', label: 'Início', icon: iconeDashboard, end: true },
+    {
+      to: '/docente/calendario',
+      label: 'Meu calendário',
+      icon: iconeCalendario,
+    },
+    {
+      label: 'Minhas turmas',
+      icon: iconeTurmas,
+      disabled: true,
+    },
+    {
+      label: 'Aulas e frequência',
+      icon: iconeAulas,
+      disabled: true,
+    },
+  ]
+
+  const links = ehGestor
+    ? linksGestor
+    : ehDocente
+      ? linksDocente
+      : linksCoordenador
+
+  const iconePerfil = ehGestor
+    ? iconeDashboard
+    : ehDocente
+      ? iconeDocente
+      : iconeCoordenador
+
+  const nomePerfil = ehGestor
+    ? 'Gestor da rede'
+    : ehDocente
+      ? 'Docente'
+      : 'Coordenador'
+
+  function sair() {
+    localStorage.removeItem('usuarioEduGest')
+    navigate('/login')
+  }
+
   return (
     <aside className="eg-sidebar">
       <div className="eg-sidebar__brand">
@@ -94,6 +134,12 @@ function BarraLateral() {
         </div>
       </div>
 
+      {ehDocente && (
+        <span className="eg-sidebar__section-title">
+          MENU PRINCIPAL
+        </span>
+      )}
+
       <nav
         className="eg-sidebar__nav"
         aria-label="Navegação principal"
@@ -101,15 +147,34 @@ function BarraLateral() {
         {links.map((link) => {
           const Icone = link.Icon
 
+          if (link.disabled) {
+            return (
+              <span
+                key={link.label}
+                className="eg-sidebar__link eg-sidebar__link--disabled"
+                title="Em breve"
+                aria-disabled="true"
+              >
+                <img
+                  src={link.icon}
+                  alt=""
+                  aria-hidden="true"
+                  className="eg-sidebar__icon"
+                />
+                <span className="eg-sidebar__label">
+                  {link.label}
+                </span>
+              </span>
+            )
+          }
+
           return (
             <NavLink
               key={link.to}
               to={link.to}
               end={link.end}
               className={({ isActive }) =>
-                `eg-sidebar__link${
-                  isActive ? ' eg-sidebar__link--active' : ''
-                }`
+                `eg-sidebar__link${isActive ? ' eg-sidebar__link--active' : ''}`
               }
             >
               {link.icon ? (
@@ -119,14 +184,14 @@ function BarraLateral() {
                   aria-hidden="true"
                   className="eg-sidebar__icon"
                 />
-              ) : (
+              ) : Icone ? (
                 <Icone
                   size={20}
                   strokeWidth={1.8}
                   aria-hidden="true"
                   className="eg-sidebar__icon"
                 />
-              )}
+              ) : null}
 
               <span className="eg-sidebar__label">
                 {link.label}
@@ -138,14 +203,15 @@ function BarraLateral() {
 
       <div className="eg-sidebar__footer">
         <img
-          src={iconeCoordenador}
+          src={iconePerfil}
           alt=""
+          aria-hidden="true"
           className="eg-sidebar__avatar"
         />
 
         <div className="eg-sidebar__user">
           <strong>{nomeUsuario}</strong>
-          <span>Coordenador</span>
+          <span>{nomePerfil}</span>
         </div>
 
         <button
@@ -161,7 +227,5 @@ function BarraLateral() {
     </aside>
   )
 }
-
-
 
 export default BarraLateral

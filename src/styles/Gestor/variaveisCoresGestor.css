@@ -1,0 +1,36 @@
+:root {
+  /* Superfícies e fundos */
+  --gestor-cor-fundo-pagina: #f1f5f9;
+  --gestor-cor-fundo-cartao: #ffffff;
+  --gestor-cor-fundo-sidebar: #101b31;
+  --gestor-cor-fundo-sidebar-hover: #1d2b45;
+  --gestor-cor-fundo-input: #ffffff;
+  --gestor-cor-fundo-destaque: #eef4ff;
+
+  /* Textos */
+  --gestor-cor-texto-principal: #202b3c;
+  --gestor-cor-texto-secundario: #718096;
+  --gestor-cor-texto-sidebar: #c4cede;
+  --gestor-cor-texto-claro: #ffffff;
+
+  /* Ações e identidade visual */
+  --gestor-cor-primaria: #315bd6;
+  --gestor-cor-primaria-hover: #2448b5;
+  --gestor-cor-primaria-clara: #e8efff;
+  --gestor-cor-borda: #e2e8f0;
+  --gestor-cor-sucesso: #16865c;
+  --gestor-cor-sucesso-fundo: #e5f7ee;
+  --gestor-cor-alerta: #b77912;
+  --gestor-cor-alerta-fundo: #fff4d8;
+  --gestor-cor-perigo: #c24141;
+  --gestor-cor-perigo-fundo: #ffebeb;
+  --gestor-cor-info: #2563b9;
+  --gestor-cor-info-fundo: #e8f2ff;
+  --gestor-cor-roxo: #7553c7;
+  --gestor-cor-roxo-fundo: #f0eaff;
+
+  /* Medidas comuns */
+  --gestor-largura-sidebar: 238px;
+  --gestor-raio-cartao: 12px;
+  --gestor-sombra-cartao: 0 2px 10px rgb(15 23 42 / 3%);
+}

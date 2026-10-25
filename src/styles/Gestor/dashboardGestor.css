@@ -1,0 +1,359 @@
+.gestor-saudacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(110deg, #172a4b, #315bd6);
+}
+
+.gestor-saudacao > div:first-child > span {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  font-weight: 750;
+  opacity: .8;
+}
+
+.gestor-saudacao h2 {
+  margin: 9px 0 5px;
+  font-size: 24px;
+}
+
+.gestor-saudacao p {
+  margin: 0;
+  font-size: 13px;
+  opacity: .9;
+}
+
+.gestor-saudacao-simbolo {
+  display: grid;
+  place-items: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 20px;
+  color: #fff;
+  background: rgb(255 255 255 / 12%);
+}
+
+.gestor-indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.gestor-indicador {
+  padding: 17px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: var(--gestor-raio-cartao);
+  background: var(--gestor-cor-fundo-cartao);
+  box-shadow: var(--gestor-sombra-cartao);
+}
+
+.gestor-indicador-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+}
+
+.gestor-indicador-icone {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 8px;
+}
+
+.gestor-indicador-icone--verde {
+  color: var(--gestor-cor-sucesso);
+  background: var(--gestor-cor-sucesso-fundo);
+}
+
+.gestor-indicador-icone--laranja {
+  color: var(--gestor-cor-alerta);
+  background: var(--gestor-cor-alerta-fundo);
+}
+
+.gestor-indicador-icone--azul {
+  color: var(--gestor-cor-info);
+  background: var(--gestor-cor-info-fundo);
+}
+
+.gestor-indicador-icone--roxo {
+  color: var(--gestor-cor-roxo);
+  background: var(--gestor-cor-roxo-fundo);
+}
+
+.gestor-indicador > strong {
+  display: block;
+  margin: 13px 0 5px;
+  font-size: 27px;
+}
+
+.gestor-indicador > small {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 10px;
+}
+
+.gestor-dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(250px, .85fr);
+  gap: 17px;
+  margin-bottom: 17px;
+}
+
+.gestor-acoes-rapidas button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 11px 12px;
+  margin-top: 9px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 7px;
+  color: var(--gestor-cor-texto-principal);
+  background: #f8fafc;
+  text-align: left;
+  font-size: 11px;
+}
+
+.gestor-acoes-rapidas button:hover {
+  color: var(--gestor-cor-primaria);
+  border-color: var(--gestor-cor-primaria);
+  background: var(--gestor-cor-primaria-clara);
+}
+
+.gestor-barra-item {
+  margin-bottom: 17px;
+}
+
+.gestor-barra-item:last-child {
+  margin-bottom: 0;
+}
+
+.gestor-barra-legenda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+  font-size: 11px;
+}
+
+.gestor-barra-legenda strong {
+  font-weight: 600;
+}
+
+.gestor-barra-legenda span {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 10px;
+}
+
+.gestor-barra-trilho {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #edf1f7;
+}
+
+.gestor-barra-preenchimento {
+  display: block;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.gestor-barra-preenchimento--1 {
+  background: #315bd6;
+}
+
+.gestor-barra-preenchimento--2 {
+  background: #0eaa78;
+}
+
+.gestor-barra-preenchimento--3 {
+  background: #e8a328;
+}
+
+.gestor-barra-preenchimento--4 {
+  background: #f28b35;
+}
+
+.gestor-barra-preenchimento--5 {
+  background: #8994a7;
+}
+
+.gestor-painel-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.gestor-panorama {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 0 4px;
+}
+
+.gestor-grafico-donut {
+  display: grid;
+  place-items: center;
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(#315bd6 0 38.7%, #0eaa78 38.7% 67.7%, #e8a328 67.7% 85.4%, #f28b35 85.4% 96.7%, #8994a7 96.7% 100%);
+  position: relative;
+}
+
+.gestor-grafico-donut::before {
+  content: "";
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: var(--gestor-cor-fundo-cartao);
+}
+
+.gestor-grafico-donut > div {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.gestor-grafico-donut strong {
+  font-size: 23px;
+}
+
+.gestor-grafico-donut span {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 9px;
+}
+
+.gestor-legenda-donut {
+  flex: 1;
+  min-width: 170px;
+}
+
+.gestor-legenda-donut > div {
+  display: grid;
+  grid-template-columns: 9px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0;
+  font-size: 10px;
+}
+
+.gestor-legenda-donut strong {
+  font-size: 10px;
+}
+
+.gestor-ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.gestor-ponto--1 {
+  background: #315bd6;
+}
+
+.gestor-ponto--2 {
+  background: #0eaa78;
+}
+
+.gestor-ponto--3 {
+  background: #e8a328;
+}
+
+.gestor-ponto--4 {
+  background: #f28b35;
+}
+
+.gestor-ponto--5 {
+  background: #8994a7;
+}
+
+.gestor-municipios > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gestor-cor-borda);
+  font-size: 11px;
+}
+
+.gestor-municipios > div:last-child {
+  border-bottom: 0;
+}
+
+.gestor-municipios strong {
+  padding: 5px 7px;
+  border-radius: 5px;
+  color: var(--gestor-cor-primaria);
+  background: var(--gestor-cor-primaria-clara);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.gestor-aviso-mock {
+  margin: 0;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 10px;
+}
+
+@media (max-width: 1100px) {
+  .gestor-indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gestor-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .gestor-saudacao {
+    padding: 20px;
+  }
+
+  .gestor-saudacao-simbolo {
+    display: none;
+  }
+
+  .gestor-indicadores {
+    gap: 10px;
+  }
+
+  .gestor-indicador {
+    padding: 13px;
+  }
+
+  .gestor-indicador-topo {
+    align-items: flex-start;
+  }
+
+  .gestor-panorama {
+    flex-direction: column;
+  }
+
+  .gestor-legenda-donut {
+    width: 100%;
+  }
+
+  .gestor-painel-cabecalho {
+    flex-direction: column;
+  }
+}

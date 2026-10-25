@@ -13,6 +13,11 @@ import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
 import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
 
+import DashboardGestor from '../pages/gestor/DashboardGestor'
+import EscolasGestor from '../pages/gestor/EscolasGestor'
+import PortariasGestor from '../pages/gestor/PortariasGestor'
+import EstruturaGestor from '../pages/gestor/EstruturaGestor'
+
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
   const usuarioSalvo = localStorage.getItem('usuarioEduGest')
@@ -41,6 +46,9 @@ function ProtectedRoute({ children, perfil }) {
     if (usuario.perfil === 'docente') {
       return <Navigate to="/docente" replace />
     }
+    if (usuario.perfil === 'gestor') {
+      return <Navigate to="/gestor" replace />
+    }
     return <Navigate to="/login" replace />
   }
 
@@ -63,6 +71,8 @@ function AppRoutes() {
     rotaInicial = '/coordenador'
   } else if (usuario?.perfil === 'docente') {
     rotaInicial = '/docente'
+  } else if (usuario?.perfil === 'gestor') {
+    rotaInicial = '/gestor'
   }
 
   return (
@@ -136,6 +146,12 @@ function AppRoutes() {
         path="/docente/calendario"
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
       />
+
+      {/* Rotas do gestor da rede. */}
+      <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
+      <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
 
       {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
       <Route path="*" element={<Navigate to={rotaInicial} replace />} />
