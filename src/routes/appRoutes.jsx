@@ -8,6 +8,11 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
+import Notificacoes from '../pages/coordenador/notificacoes'
+import Configuracoes from '../pages/coordenador/configuracoes'
+import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
+import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+
 import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
 import PortariasGestor from '../pages/gestor/PortariasGestor'
@@ -96,6 +101,40 @@ function AppRoutes() {
       <Route
         path="/coordenador/aulas-reposicoes"
         element={<ProtectedRoute perfil="coordenador"><AulasReposicoes /></ProtectedRoute>}
+      />
+
+      <Route
+        path="/coordenador/notificacoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Notificacoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/configuracoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Configuracoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+  path="/coordenador/solicitacoes"
+  element={
+    <ProtectedRoute perfil="coordenador">
+      <Solicitacoes />
+    </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/coordenador/solicitacoes/:id"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <DetalhesSolicitacao />
+          </ProtectedRoute>
+        }
       />
 
       {/* Rotas do docente. */}

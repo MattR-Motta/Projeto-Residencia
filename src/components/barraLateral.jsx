@@ -3,6 +3,9 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import {
   BookOpen,
   CalendarClock,
+  Bell,
+  Settings,
+  ClipboardList,
   LayoutDashboard,
   School,
   FileText,
@@ -16,6 +19,7 @@ import iconeCalendario from '../assets/calendario.png'
 import iconeCoordenador from '../assets/coordenador.png'
 import iconeAulas from '../assets/aulas.png'
 import iconeDocente from '../assets/docente.png'
+
 
 function BarraLateral() {
   const navigate = useNavigate()
@@ -58,6 +62,22 @@ function BarraLateral() {
       to: '/coordenador/aulas-reposicoes',
       label: 'Aulas e Reposições',
       Icon: CalendarClock,
+    },
+    {
+      to: '/coordenador/solicitacoes',
+      label: 'Solicitações',
+      Icon: ClipboardList,
+    },
+    {
+      to: '/coordenador/notificacoes',
+      label: 'Notificações',
+      Icon: Bell,
+    },
+
+    {
+      to: '/coordenador/configuracoes',
+      label: 'Configurações',
+      Icon: Settings,
     },
   ]
 

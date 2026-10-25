@@ -2,9 +2,9 @@ import { useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Plus, Search, Pencil, Trash2, Eye, ArrowLeft, ArrowRight, Check, Upload } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/gestor/baseGestor.css'
-import '../../styles/gestor/escolasGestor.css'
-import '../../styles/gestor/novaEscolaGestor.css'
+import '../../styles/Gestor/baseGestor.css'
+import '../../styles/Gestor/escolasGestor.css'
+import '../../styles/Gestor/novaEscolaGestor.css'
 
 const escolasMock = [
   { id: 1, codigo: 'ESC001', nome: 'Escola Estadual Professor José Alves', municipio: 'Aracaju', tipo: 'Ensino Médio', alunos: 842, status: 'Ativa', regime: 'Tempo integral' },

@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Plus, Pencil, Trash2, Power, Search } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/gestor/baseGestor.css'
-import '../../styles/gestor/estruturaGestor.css'
+import "../../styles/Gestor/baseGestor.css";
+import "../../styles/Gestor/estruturaGestor.css";
 
 const estruturaGestorMock = [
   { id: 1, nome: 'Ensino Médio', descricao: 'Formação geral básica', categoria: 'Modalidade de ensino', status: 'Ativa' },

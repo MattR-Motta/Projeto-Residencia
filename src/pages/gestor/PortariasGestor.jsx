@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import { FilePlus2, Search, Pencil, Trash2, Eye, Download } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/gestor/baseGestor.css'
-import '../../styles/gestor/portariasGestor.css'
+import '../../styles/Gestor/baseGestor.css'
+import '../../styles/Gestor/portariasGestor.css'
 
 const portariasMock = [
   { id: 1, numero: '1.248/2026', titulo: 'Designação de equipe gestora', tipo: 'Designação', data: '10/10/2026', status: 'Publicada' },

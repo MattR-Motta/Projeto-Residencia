@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { Download, Plus, FileText, GitPullRequest, School, ChartNoAxesColumn } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/gestor/baseGestor.css'
-import '../../styles/gestor/dashboardGestor.css'
+import "../../styles/Gestor/baseGestor.css";
+import "../../styles/Gestor/dashboardGestor.css";
 
 const escolasMock = [
   { id: 1, codigo: 'ESC001', nome: 'Escola Estadual Professor José Alves', municipio: 'Aracaju', tipo: 'Ensino Médio', alunos: 842, status: 'Ativa' },
