@@ -1,0 +1,152 @@
+.escola-etapas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.escola-etapa {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 9px;
+  background: var(--gestor-cor-fundo-cartao);
+  color: var(--gestor-cor-texto-secundario);
+}
+
+.escola-etapa > span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #edf1f7;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.escola-etapa strong,
+.escola-etapa small {
+  display: block;
+}
+
+.escola-etapa strong {
+  font-size: 11px;
+}
+
+.escola-etapa small {
+  margin-top: 3px;
+  font-size: 10px;
+}
+
+.escola-etapa--atual {
+  border-color: var(--gestor-cor-primaria);
+  color: var(--gestor-cor-primaria);
+  background: var(--gestor-cor-primaria-clara);
+}
+
+.escola-etapa--atual > span,
+.escola-etapa--concluida > span {
+  color: #fff;
+  background: var(--gestor-cor-primaria);
+}
+
+.escola-etapa--concluida {
+  color: var(--gestor-cor-sucesso);
+}
+
+.escola-formulario {
+  max-width: 900px;
+}
+
+.escola-formulario > .gestor-painel-subtitulo {
+  margin-bottom: 24px;
+}
+
+.escola-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px;
+  border: 1px dashed #b8c5d8;
+  border-radius: 8px;
+  color: var(--gestor-cor-texto-secundario);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.escola-upload input {
+  display: none;
+}
+
+.escola-info-curricular {
+  padding: 14px;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.escola-info-curricular strong,
+.escola-info-curricular span {
+  display: block;
+}
+
+.escola-info-curricular strong {
+  font-size: 12px;
+}
+
+.escola-info-curricular span {
+  margin-top: 6px;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.escola-revisao {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 22px;
+}
+
+.escola-revisao > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--gestor-cor-borda);
+}
+
+.escola-revisao span {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+}
+
+.escola-revisao strong {
+  font-size: 12px;
+}
+
+.escola-mensagem {
+  margin-top: 18px;
+}
+
+.escola-form-acoes {
+  padding-top: 16px;
+  border-top: 1px solid var(--gestor-cor-borda);
+}
+
+@media (max-width: 650px) {
+  .escola-etapas {
+    grid-template-columns: 1fr;
+  }
+
+  .escola-etapa {
+    padding: 10px 12px;
+  }
+
+  .escola-revisao {
+    grid-template-columns: 1fr;
+  }
+}

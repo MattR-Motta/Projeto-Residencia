@@ -8,15 +8,15 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
-import IndiceErros from '../pages/erros/index'
-import Erro400 from '../pages/erros/erro400'
-import Erro401 from '../pages/erros/erro401'
-import Erro403 from '../pages/erros/erro403'
-import Erro404 from '../pages/erros/erro404'
-import Erro408 from '../pages/erros/erro408'
-import Erro500 from '../pages/erros/erro500'
-import Erro503 from '../pages/erros/erro503'
-import SemConexao from '../pages/erros/semConexao'
+import Notificacoes from '../pages/coordenador/notificacoes'
+import Configuracoes from '../pages/coordenador/configuracoes'
+import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
+import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+
+import DashboardGestor from '../pages/gestor/DashboardGestor'
+import EscolasGestor from '../pages/gestor/EscolasGestor'
+import PortariasGestor from '../pages/gestor/PortariasGestor'
+import EstruturaGestor from '../pages/gestor/EstruturaGestor'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -46,6 +46,9 @@ function ProtectedRoute({ children, perfil }) {
     if (usuario.perfil === 'docente') {
       return <Navigate to="/docente" replace />
     }
+    if (usuario.perfil === 'gestor') {
+      return <Navigate to="/gestor" replace />
+    }
     return <Navigate to="/login" replace />
   }
 
@@ -68,6 +71,8 @@ function AppRoutes() {
     rotaInicial = '/coordenador'
   } else if (usuario?.perfil === 'docente') {
     rotaInicial = '/docente'
+  } else if (usuario?.perfil === 'gestor') {
+    rotaInicial = '/gestor'
   }
 
   return (
@@ -98,6 +103,40 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="coordenador"><AulasReposicoes /></ProtectedRoute>}
       />
 
+      <Route
+        path="/coordenador/notificacoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Notificacoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/configuracoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Configuracoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+  path="/coordenador/solicitacoes"
+  element={
+    <ProtectedRoute perfil="coordenador">
+      <Solicitacoes />
+    </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/coordenador/solicitacoes/:id"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <DetalhesSolicitacao />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Rotas do docente. */}
       <Route
         path="/docente"
@@ -108,19 +147,14 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
       />
 
-      {/* Telas de erro. A página /erros lista todas para facilitar a apresentação. */}
-      <Route path="/erros" element={<IndiceErros />} />
-      <Route path="/erro/400" element={<Erro400 />} />
-      <Route path="/erro/401" element={<Erro401 />} />
-      <Route path="/erro/403" element={<Erro403 />} />
-      <Route path="/erro/404" element={<Erro404 />} />
-      <Route path="/erro/408" element={<Erro408 />} />
-      <Route path="/erro/500" element={<Erro500 />} />
-      <Route path="/erro/503" element={<Erro503 />} />
-      <Route path="/erro/sem-conexao" element={<SemConexao />} />
+      {/* Rotas do gestor da rede. */}
+      <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
+      <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
 
-      {/* Endereços que não correspondem a nenhuma rota mostram a tela 404. */}
-      <Route path="*" element={<Erro404 />} />
+      {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
+      <Route path="*" element={<Navigate to={rotaInicial} replace />} />
     </Routes>
   )
 }
