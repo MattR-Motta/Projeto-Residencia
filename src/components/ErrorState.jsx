@@ -1,4 +1,5 @@
-﻿import '../styles/errorState.css'
+﻿import { useEffect, useId, useRef } from 'react'
+import '../styles/errorState.css'
 
 // Componente reutilizável para telas de erro nos temas light/dark
 // Tipos suportados: 'carregar' | 'timeout' | 'indisponibilidade'
@@ -11,6 +12,15 @@ function ErrorState({
   tema = 'light',
 }) {
   const temaAtual = tema === 'dark' ? 'dark' : 'light'
+  const containerRef = useRef(null)
+  const tituloId = useId()
+  const descricaoId = useId()
+
+  // Move o foco para o estado de erro assim que ele aparece, para que
+  // leitores de tela e o teclado fiquem no ponto certo da página.
+  useEffect(() => {
+    containerRef.current?.focus()
+  }, [tipo])
 
   // Ícone: Erro ao carregar - janela de navegador com gráfico de barras
   const iconeCarregar = (
@@ -60,7 +70,14 @@ function ErrorState({
   }
 
   return (
-    <div className={`error-state error-state--${temaAtual} error-state--${tipo}`} role="alert" aria-live="polite">
+    <div
+      ref={containerRef}
+      className={`error-state error-state--${temaAtual} error-state--${tipo}`}
+      role="alert"
+      tabIndex={-1}
+      aria-labelledby={tituloId}
+      aria-describedby={descricaoId}
+    >
       <div className="error-state__container">
         <div className="error-state__icon-wrapper">
           <div className="error-state__icon">
@@ -79,8 +96,8 @@ function ErrorState({
           </div>
         </div>
 
-        <h2 className="error-state__title">{titulo}</h2>
-        <p className="error-state__description">{descricao}</p>
+        <h2 className="error-state__title" id={tituloId}>{titulo}</h2>
+        <p className="error-state__description" id={descricaoId}>{descricao}</p>
 
         <button className="error-state__button" onClick={handleClick} type="button">
           <svg className="error-state__button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

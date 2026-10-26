@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import { CalendarDays, Bell } from 'lucide-react'
 
@@ -17,8 +18,23 @@ const reposicoesBase = [
 ]
 const classeStatus = s => s === 'Realizada' || s === 'Confirmada' || s === 'Aprovada' ? 'green' : s === 'Reposição necessária' || s === 'Rejeitada' ? 'red' : 'yellow'
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as aulas e reposições',
+    descricao: 'Ocorreu um erro ao buscar as informações das aulas e reposições. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de aulas e reposições está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function AulasReposicoes() {
-  const [params, setParams] = useSearchParams()
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [aulas, setAulas] = useState(aulasBase)
   const [reposicoes, setReposicoes] = useState(reposicoesBase)
   const [pesquisa, setPesquisa] = useState('')
@@ -30,7 +46,6 @@ function AulasReposicoes() {
   const [detalhe, setDetalhe] = useState(null)
   const [modalNova, setModalNova] = useState(false)
   const [novaReposicao, setNovaReposicao] = useState({ disciplina: '', professor: '', turma: '', original: '', motivo: '', nova: '' })
-  const erro = params.get('erro') === '1'
 
   const filtradas = useMemo(() => aulas.filter(a => {
     const txt = `${a.disciplina} ${a.professor} ${a.turma}`.toLowerCase()
@@ -53,7 +68,16 @@ function AulasReposicoes() {
     <BarraLateral />
     <main className="dashboard-main tp-main">
       <header className="tp-topbar"><div className="tp-global-search">⌕ <span>Buscar no EduGest...</span></div><div className="tp-user"><Bell className="tp-bell" size={20} strokeWidth={1.8} /><span className="tp-avatar"/><div><strong>Marina Costa</strong><small>Coordenadora</small></div><span>⌄</span></div></header>
-      {erro ? <section className="tp-error"><div className="tp-error-art" aria-hidden="true"><div className="tp-error-window"><i/><i/><i/><b>▥</b></div><strong>×</strong><span>!</span></div><h1>Não foi possível carregar o painel</h1><p>Ocorreu um erro ao buscar as informações das aulas e reposições.<br/>Verifique sua conexão com a internet e tente novamente.</p><button className="tp-retry" onClick={() => setParams({})}>⟳ <span>Tente novamente</span></button></section> :
+      {erroPagina ? (
+        <section className="tp-content">
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        </section>
+      ) : (
       <div className="tp-content tp-aulas-content">
         <div className="tp-page-title"><div><h1>Aulas e Reposições</h1><p>Acompanhe aulas programadas, realizadas e necessidades de reposição.</p></div></div>
         <section className="tp-stats">
@@ -145,7 +169,8 @@ function AulasReposicoes() {
           {reposicoes.map(r => <tr key={r.id}><td><strong>{r.disciplina}</strong><small>{r.professor}</small></td><td>{r.turma}</td><td>{r.original || 'A definir'}</td><td>{r.motivo}</td><td>{r.nova || 'A definir'}</td><td><span className={`tp-pill ${classeStatus(r.status)}`}>{r.status}</span></td><td><div className="tp-repo-actions"><button onClick={() => setDetalhe({ tipo:'Reposição', ...r })}>Ver detalhes</button><button className="approve" onClick={() => atualizarReposicao(r.id,'Aprovada')}>Aprovar</button><button className="reject" onClick={() => atualizarReposicao(r.id,'Rejeitada')}>Rejeitar</button><button onClick={() => {setNovaReposicao({ disciplina:r.disciplina, professor:r.professor, turma:r.turma, original:r.original, motivo:r.motivo, nova:'' });setModalNova(true)}}>Reagendar</button></div></td></tr>)}
           {!reposicoes.length && <tr><td colSpan="7" className="tp-empty">Nenhuma reposição cadastrada.</td></tr>}
         </tbody></table></div></section>
-      </div>}
+      </div>
+      )}
     </main>
     {(detalhe || modalNova) && <div className="tp-modal-backdrop" onMouseDown={e => {if(e.target === e.currentTarget){setDetalhe(null);setModalNova(false)}}}><section className="tp-modal" role="dialog" aria-modal="true"><header><div><h2>{detalhe ? `Detalhes — ${detalhe.tipo}` : 'Nova solicitação de reposição'}</h2><p>Gerenciamento de aulas e reposições.</p></div><button onClick={() => {setDetalhe(null);setModalNova(false)}} aria-label="Fechar">×</button></header>
       {detalhe ? <div className="tp-detail-list">{Object.entries(detalhe).filter(([k]) => k !== 'id').map(([k,v]) => <p key={k}><strong>{({horario:'Horário',disciplina:'Disciplina',turma:'Turma',professor:'Professor',sala:'Sala',status:'Status',data:'Data',original:'Aula original',motivo:'Motivo',nova:'Nova data/horário',tipo:'Tipo'})[k] || k}:</strong> {v}</p>)}<div className="tp-modal-actions"><button className="tp-primary" onClick={() => setDetalhe(null)}>Fechar</button></div></div> :

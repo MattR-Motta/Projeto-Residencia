@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import { Bell } from 'lucide-react'
 
@@ -11,8 +12,23 @@ const dadosIniciais = [
   { id: 4, nome: 'Ciências', codigo: 'CIE-105', professor: 'Juliana Alves', turmas: '4C', carga: 60, curso: 'Ensino Fundamental', periodo: '3º período', status: 'Revisão necessária', ementa: 'Seres vivos, ecossistemas, corpo humano, matéria, energia e sustentabilidade.' },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as disciplinas e ementas',
+    descricao: 'Ocorreu um erro ao buscar as informações das disciplinas e ementas. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de disciplinas e ementas está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function DisciplinasEmentas() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [disciplinas, setDisciplinas] = useState(dadosIniciais)
   const [pesquisa, setPesquisa] = useState('')
   const [curso, setCurso] = useState('Todos os cursos')
@@ -20,7 +36,6 @@ function DisciplinasEmentas() {
   const [modal, setModal] = useState(null)
   const [selecionada, setSelecionada] = useState(null)
   const [form, setForm] = useState({ nome: '', codigo: '', professor: '', turmas: '', carga: 60, curso: 'Ensino Médio', periodo: '1º período', ementa: '' })
-  const erro = searchParams.get('erro') === '1'
 
   const filtradas = useMemo(() => disciplinas.filter(d => {
     const texto = `${d.nome} ${d.codigo} ${d.professor} ${d.turmas}`.toLowerCase()
@@ -59,12 +74,17 @@ function DisciplinasEmentas() {
         <div className="tp-global-search">⌕ <span>Buscar no EduGest...</span></div>
         <div className="tp-user"><Bell className="tp-bell" size={20} strokeWidth={1.8} /><span className="tp-avatar" /><div><strong>Marina Costa</strong><small>Coordenadora</small></div><span>⌄</span></div>
       </header>
-      {erro ? <section className="tp-error">
-        <div className="tp-error-art" aria-hidden="true"><div className="tp-error-window"><i/><i/><i/><b>▥</b></div><strong>×</strong><span>!</span></div>
-        <h1>Não foi possível carregar o painel</h1>
-        <p>Ocorreu um erro ao buscar as informações das disciplinas e ementas.<br/>Verifique sua conexão com a internet e tente novamente.</p>
-        <button className="tp-retry" onClick={() => setSearchParams({})}>⟳ <span>Tente novamente</span></button>
-      </section> : <div className="tp-content">
+      {erroPagina ? (
+        <section className="tp-content">
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        </section>
+      ) : (
+      <div className="tp-content">
         <div className="tp-page-title"><div><h1>Disciplinas e Ementas</h1><p>Gerencie as disciplinas e seus conteúdos programáticos.</p></div><button className="tp-primary" onClick={() => abrir('nova')}>＋ Nova disciplina</button></div>
         <div className="tp-filters">
           <label className="tp-search">⌕ <input value={pesquisa} onChange={e => setPesquisa(e.target.value)} placeholder="Buscar disciplina, professor ou código..."/></label>
@@ -126,7 +146,8 @@ function DisciplinasEmentas() {
               </td></tr>)}
           {!filtradas.length && <tr><td colSpan="5" className="tp-empty">Nenhuma disciplina encontrada com esses filtros.</td></tr>}
         </tbody></table></div>
-      </div>}
+      </div>
+      )}
     </main>
     {modal && <div className="tp-modal-backdrop" onMouseDown={e => { if (e.target === e.currentTarget) setModal(null) }}><section className="tp-modal" role="dialog" aria-modal="true">
       <header><div><h2>{modal === 'nova' ? 'Nova disciplina' : modal === 'visualizar' ? `Ementa — ${selecionada?.nome}` : modal === 'ementa' ? `Editar ementa — ${selecionada?.nome}` : modal === 'associar' ? 'Associar professor/turma' : 'Editar disciplina'}</h2><p>Informações acadêmicas da disciplina.</p></div><button onClick={() => setModal(null)} aria-label="Fechar">×</button></header>

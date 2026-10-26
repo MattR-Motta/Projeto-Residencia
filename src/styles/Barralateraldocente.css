@@ -45,6 +45,15 @@
   color: #6b7280;
 }
 
+.docente-menu-titulo {
+  margin-bottom: 8px;
+  padding: 0 12px;
+  color: #9ca3af;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
 /* Lista de itens */
 .docente-menu-lista {
   display: flex;
@@ -107,6 +116,7 @@
   height: 32px;
   border-radius: 50%;
   background: #e2e8f0;
+  object-fit: contain;
 }
 
 .docente-menu-rodape .docente-menu-nome {

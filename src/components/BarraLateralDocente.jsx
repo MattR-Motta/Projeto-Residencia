@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import '../styles/barraLateral.css'
+import '../styles/Barralateraldocente.css'
 import iconeDashboard from '../assets/dashboard.png'
 import iconeCalendario from '../assets/calendario.png'
 import iconeTurmas from '../assets/turmas.png'
@@ -28,56 +28,53 @@ function BarraLateralDocente() {
     navigate('/login')
   }
 
-  // Estilo dos itens que ainda não têm página
-  const estiloEmBreve = { opacity: 0.45, cursor: 'not-allowed' }
-
   return (
-    <aside className="barra-lateral">
-      <div className="barra-lateral-logo">
-        <div className="barra-lateral-simbolo">E</div>
+    <aside className="docente-menu">
+      <div className="docente-menu-marca">
+        <div className="docente-menu-logo">E</div>
 
-        <div>
-          <h2>EduGest</h2>
+        <div className="docente-menu-nome">
+          <strong>EduGest</strong>
           <span>Gestão acadêmica</span>
         </div>
       </div>
 
-      <span className="barra-lateral-titulo">
+      <span className="docente-menu-titulo">
         MENU PRINCIPAL
       </span>
 
-      <nav className="barra-lateral-navegacao">
-        <NavLink to="/docente" end className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
-          <img src={iconeDashboard} alt="" className="barra-lateral-icone"/>
+      <nav className="docente-menu-lista">
+        <NavLink to="/docente" end className={({ isActive }) => `docente-menu-item ${isActive ? 'ativo' : ''}`}>
+          <img src={iconeDashboard} alt=""/>
           <span>Início</span>
         </NavLink>
 
-        <NavLink to="/docente/calendario" className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
-          <img src={iconeCalendario} alt="" className="barra-lateral-icone"/>
+        <NavLink to="/docente/calendario" className={({ isActive }) => `docente-menu-item ${isActive ? 'ativo' : ''}`}>
+          <img src={iconeCalendario} alt=""/>
           <span>Meu calendário</span>
         </NavLink>
 
         {/* Páginas ainda não criadas: quando existirem, troque o span por um NavLink */}
-        <span className="barra-lateral-link" style={estiloEmBreve} title="Em breve">
-          <img src={iconeTurmas} alt="" className="barra-lateral-icone"/>
+        <span className="docente-menu-item desativado" title="Em breve">
+          <img src={iconeTurmas} alt=""/>
           <span>Minhas turmas</span>
         </span>
 
-        <span className="barra-lateral-link" style={estiloEmBreve} title="Em breve">
-          <img src={iconeAulas} alt="" className="barra-lateral-icone"/>
+        <span className="docente-menu-item desativado" title="Em breve">
+          <img src={iconeAulas} alt=""/>
           <span>Aulas e frequência</span>
         </span>
       </nav>
 
-      <div className="barra-lateral-rodape">
-        <img src={iconeDocente} alt="" className="barra-lateral-avatar-imagem"/>
+      <div className="docente-menu-rodape">
+        <img src={iconeDocente} alt="" className="docente-menu-avatar"/>
 
-        <div className="barra-lateral-usuario">
+        <div className="docente-menu-nome">
           <strong>{nomeUsuario}</strong>
           <span>Docente</span>
         </div>
 
-        <button type="button" className="barra-lateral-sair" onClick={sair} title="Sair da conta" aria-label="Sair da conta">
+        <button type="button" className="docente-menu-sair" onClick={sair} title="Sair da conta" aria-label="Sair da conta">
           ↪
         </button>
       </div>
