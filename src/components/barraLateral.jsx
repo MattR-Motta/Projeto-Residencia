@@ -1,4 +1,3 @@
-
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   BookOpen,
@@ -10,6 +9,7 @@ import {
   School,
   FileText,
   Network,
+  Layers,
 } from 'lucide-react'
 import '../styles/barraLateral.css'
 
@@ -19,7 +19,6 @@ import iconeCalendario from '../assets/calendario.png'
 import iconeCoordenador from '../assets/coordenador.png'
 import iconeAulas from '../assets/aulas.png'
 import iconeDocente from '../assets/docente.png'
-
 
 function BarraLateral() {
   const navigate = useNavigate()
@@ -47,6 +46,7 @@ function BarraLateral() {
     { to: '/gestor/escolas', label: 'Escolas', Icon: School },
     { to: '/gestor/portarias', label: 'Portarias', Icon: FileText },
     { to: '/gestor/estrutura', label: 'Estrutura', Icon: Network },
+    { to: '/gestor/grades-curriculares', label: 'Grades e Matrizes', Icon: Layers },
   ]
 
   const linksCoordenador = [
@@ -73,7 +73,6 @@ function BarraLateral() {
       label: 'Notificações',
       Icon: Bell,
     },
-
     {
       to: '/coordenador/configuracoes',
       label: 'Configurações',
