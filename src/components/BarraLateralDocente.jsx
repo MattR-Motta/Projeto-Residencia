@@ -58,10 +58,10 @@ function BarraLateralDocente() {
         </NavLink>
 
         {/* Páginas ainda não criadas: quando existirem, troque o span por um NavLink */}
-        <span className="barra-lateral-link" style={estiloEmBreve} title="Em breve">
+        <NavLink to="/docente/turmas" className={({ isActive }) => `barra-lateral-link ${isActive ? 'ativo' : ''}`}>
           <img src={iconeTurmas} alt="" className="barra-lateral-icone"/>
           <span>Minhas turmas</span>
-        </span>
+        </NavLink>
 
         <span className="barra-lateral-link" style={estiloEmBreve} title="Em breve">
           <img src={iconeAulas} alt="" className="barra-lateral-icone"/>

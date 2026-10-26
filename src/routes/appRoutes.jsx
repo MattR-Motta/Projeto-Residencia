@@ -8,6 +8,7 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
+import MinhasTurmas from '../pages/Docente/minhasTurmas'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -97,6 +98,10 @@ function AppRoutes() {
       <Route
         path="/docente/calendario"
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/turmas"
+        element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
       />
 
       {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}

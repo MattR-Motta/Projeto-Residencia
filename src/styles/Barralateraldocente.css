@@ -1,129 +1,233 @@
-.docente-menu {
+
+/* ========================================
+   EDU GEST — BARRA LATERAL DOCENTE
+   ======================================== */
+
+.barra-lateral {
   display: flex;
   flex-direction: column;
-  width: 230px;
+  flex: 0 0 250px;
+  width: 250px;
+  min-width: 250px;
   min-height: 100vh;
-  padding: 20px 14px;
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
+  padding: 26px 16px 18px;
+  background: #111c2e;
+  color: #f1f5f9;
+  border-right: 1px solid #263449;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: normal;
   box-sizing: border-box;
 }
 
-/* Logo e nome */
-.docente-menu-marca {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 28px;
-  padding: 0 6px;
+.barra-lateral *,
+.barra-lateral *::before,
+.barra-lateral *::after {
+  box-sizing: border-box;
 }
 
-.docente-menu-logo {
+/* Logo */
+
+.barra-lateral-logo {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  gap: 11px;
+  padding: 0 8px;
+  margin-bottom: 32px;
+}
+
+.barra-lateral-simbolo {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.barra-lateral-logo h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.barra-lateral-logo span {
+  display: block;
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Título do menu */
+
+.barra-lateral-titulo {
+  display: block;
+  margin: 0 8px 12px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+/* Navegação */
+
+.barra-lateral-navegacao {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 7px;
+  width: 100%;
+  min-width: 0;
+}
+
+.barra-lateral .barra-lateral-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  padding: 11px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #c1cada;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.barra-lateral .barra-lateral-link:hover {
+  background: #1e2b40;
+  color: #ffffff;
+}
+
+.barra-lateral .barra-lateral-link.ativo {
   background: #2563eb;
   color: #ffffff;
   font-weight: 700;
 }
 
-.docente-menu-nome {
+/* Ícones: tamanho fixo para impedir que ocupem a tela */
+
+.barra-lateral .barra-lateral-icone {
+  display: block;
+  flex: 0 0 22px;
+  width: 22px;
+  min-width: 22px;
+  max-width: 22px;
+  height: 22px;
+  min-height: 22px;
+  max-height: 22px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.barra-lateral .barra-lateral-link.ativo .barra-lateral-icone {
+  opacity: 1;
+}
+
+.barra-lateral .barra-lateral-link > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: normal;
+}
+
+/* Rodapé e usuário */
+
+.barra-lateral-rodape {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 20px 4px 0;
+  border-top: 1px solid #263449;
 }
 
-.docente-menu-nome strong {
-  font-size: 14px;
+.barra-lateral .barra-lateral-avatar-imagem {
+  display: block;
+  flex: 0 0 40px;
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: brightness(0) invert(1);
 }
 
-.docente-menu-nome span {
-  font-size: 11px;
-  color: #6b7280;
-}
-
-/* Lista de itens */
-.docente-menu-lista {
+.barra-lateral-usuario {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 4px;
-  flex: 1;
+  min-width: 0;
 }
 
-.docente-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  background: none;
-  color: #374151;
+.barra-lateral-usuario strong {
+  overflow: hidden;
+  color: #f1f5f9;
   font-size: 13px;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.docente-menu-item img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-.docente-menu-item:hover:not(.desativado) {
-  background: #f1f5f9;
-}
-
-/* Página atual */
-.docente-menu-item.ativo {
-  background: #dbeafe;
-  color: #1d4ed8;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Itens sem página ainda */
-.docente-menu-item.desativado {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
-/* Rodapé com usuário */
-.docente-menu-rodape {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 6px 0;
-  border-top: 1px solid #e5e7eb;
-}
-
-.docente-menu-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #e2e8f0;
-}
-
-.docente-menu-rodape .docente-menu-nome {
-  flex: 1;
-}
-
-.docente-menu-sair {
-  border: none;
-  background: none;
-  color: #2563eb;
+.barra-lateral-usuario span {
+  color: #94a3b8;
   font-size: 12px;
+}
+
+.barra-lateral .barra-lateral-sair {
+  flex: 0 0 auto;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 23px;
+  line-height: 1;
   cursor: pointer;
 }
 
-/* Tela pequena: menu mais estreito */
-@media (max-width: 900px) {
-  .docente-menu {
-    width: 170px;
+.barra-lateral .barra-lateral-sair:hover {
+  color: #ffffff;
+}
+
+/* Telas pequenas */
+
+@media (max-width: 700px) {
+  .barra-lateral {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 15px;
+    border-right: 0;
+    border-bottom: 1px solid #263449;
+  }
+
+  .barra-lateral-logo {
+    margin-bottom: 20px;
+  }
+
+  .barra-lateral-navegacao {
+    flex-direction: column;
+  }
+
+  .barra-lateral-rodape {
+    display: none;
   }
 }
