@@ -1,4 +1,4 @@
-
+﻿
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
@@ -12,17 +12,18 @@ import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
 import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+import CoordenadorIA from '../pages/coordenador/ia'
 
 import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
 import PortariasGestor from '../pages/gestor/PortariasGestor'
 import EstruturaGestor from '../pages/gestor/EstruturaGestor'
 
-// Verifica se o usuário tem permissão para acessar uma página.
+// Verifica se o usuÃ¡rio tem permissÃ£o para acessar uma pÃ¡gina.
 function ProtectedRoute({ children, perfil }) {
   const usuarioSalvo = localStorage.getItem('usuarioEduGest')
 
-  // Se não houver usuário salvo, redireciona para o login.
+  // Se nÃ£o houver usuÃ¡rio salvo, redireciona para o login.
   if (!usuarioSalvo) {
     return <Navigate to="/login" replace />
   }
@@ -33,12 +34,12 @@ function ProtectedRoute({ children, perfil }) {
     // Transforma os dados salvos em um objeto JavaScript.
     usuario = JSON.parse(usuarioSalvo)
   } catch {
-    // Remove os dados inválidos e redireciona para o login.
+    // Remove os dados invÃ¡lidos e redireciona para o login.
     localStorage.removeItem('usuarioEduGest')
     return <Navigate to="/login" replace />
   }
 
-  // Impede o acesso quando o perfil não tem permissão para a página.
+  // Impede o acesso quando o perfil nÃ£o tem permissÃ£o para a pÃ¡gina.
   if (usuario.perfil !== perfil) {
     if (usuario.perfil === 'coordenador') {
       return <Navigate to="/coordenador" replace />
@@ -65,7 +66,7 @@ function AppRoutes() {
     localStorage.removeItem('usuarioEduGest')
   }
 
-  // Define a página inicial de acordo com o perfil do usuário.
+  // Define a pÃ¡gina inicial de acordo com o perfil do usuÃ¡rio.
   let rotaInicial = '/login'
   if (usuario?.perfil === 'coordenador') {
     rotaInicial = '/coordenador'
@@ -77,7 +78,7 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* Redireciona a rota inicial para a página adequada ao usuário. */}
+      {/* Redireciona a rota inicial para a pÃ¡gina adequada ao usuÃ¡rio. */}
       <Route path="/" element={<Navigate to={rotaInicial} replace />} />
       <Route path="/login" element={<Login />} />
 
@@ -136,6 +137,7 @@ function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route path='/coordenador/ia' element={<ProtectedRoute perfil='coordenador'><CoordenadorIA /></ProtectedRoute>} />
 
       {/* Rotas do docente. */}
       <Route
@@ -153,10 +155,11 @@ function AppRoutes() {
       <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
       <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
 
-      {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
+      {/* Redireciona endereÃ§os que nÃ£o correspondem a nenhuma rota cadastrada. */}
       <Route path="*" element={<Navigate to={rotaInicial} replace />} />
     </Routes>
   )
 }
 
 export default AppRoutes
+
