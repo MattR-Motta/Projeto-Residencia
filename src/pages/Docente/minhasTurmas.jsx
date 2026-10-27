@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './minhasTurmas.css'
-import BarraLateralDocente from '../../components/BarraLateralDocente'
+import BarraLateral from '../../components/barraLateral'
 
 
 const turmas = [
@@ -81,7 +81,7 @@ function MinhasTurmas() {
 
     return (
         <div className="edu-layout">
-            <BarraLateralDocente />
+            <BarraLateral />
 
             <div className="edu-main">
                 {/* Barra superior */}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import BarraLateralDocente from '../../components/BarraLateralDocente'
+import BarraLateral from '../../components/barraLateral'
 import '../../styles/dashboarddocente.css'
 import "../../styles/Calendariodocente.css";
 
@@ -104,7 +104,7 @@ function CalendarioDocente() {
 
   return (
     <div className="docente-pagina">
-      <BarraLateralDocente />
+      <BarraLateral />
 
       <main className="docente-conteudo">
         {/* Topo: busca e usuário */}

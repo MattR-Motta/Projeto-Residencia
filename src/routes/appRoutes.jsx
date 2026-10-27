@@ -9,6 +9,15 @@ import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
 import MinhasTurmas from '../pages/Docente/minhasTurmas'
+import Notificacoes from '../pages/coordenador/notificacoes'
+import Configuracoes from '../pages/coordenador/configuracoes'
+import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
+import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+
+import DashboardGestor from '../pages/gestor/DashboardGestor'
+import EscolasGestor from '../pages/gestor/EscolasGestor'
+import PortariasGestor from '../pages/gestor/PortariasGestor'
+import EstruturaGestor from '../pages/gestor/EstruturaGestor'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -38,6 +47,9 @@ function ProtectedRoute({ children, perfil }) {
     if (usuario.perfil === 'docente') {
       return <Navigate to="/docente" replace />
     }
+    if (usuario.perfil === 'gestor') {
+      return <Navigate to="/gestor" replace />
+    }
     return <Navigate to="/login" replace />
   }
 
@@ -60,6 +72,8 @@ function AppRoutes() {
     rotaInicial = '/coordenador'
   } else if (usuario?.perfil === 'docente') {
     rotaInicial = '/docente'
+  } else if (usuario?.perfil === 'gestor') {
+    rotaInicial = '/gestor'
   }
 
   return (
@@ -90,6 +104,40 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="coordenador"><AulasReposicoes /></ProtectedRoute>}
       />
 
+      <Route
+        path="/coordenador/notificacoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Notificacoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/configuracoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Configuracoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+  path="/coordenador/solicitacoes"
+  element={
+    <ProtectedRoute perfil="coordenador">
+      <Solicitacoes />
+    </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/coordenador/solicitacoes/:id"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <DetalhesSolicitacao />
+          </ProtectedRoute>
+        }
+      />
+
       {/* Rotas do docente. */}
       <Route
         path="/docente"
@@ -103,6 +151,12 @@ function AppRoutes() {
         path="/docente/turmas"
         element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
       />
+
+      {/* Rotas do gestor da rede. */}
+      <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
+      <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
+      <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
 
       {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
       <Route path="*" element={<Navigate to={rotaInicial} replace />} />
