@@ -7,6 +7,7 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
+import MinhasTurmas from '../pages/Docente/minhasTurmas'
 import MinhasDisciplinas from '../pages/Docente/MinhasDisciplinas'
 import AulasReposicoesDocente from '../pages/Docente/AulasReposicoesDocente'
 import Notificacoes from '../pages/coordenador/notificacoes'
@@ -150,6 +151,10 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
       />
       <Route
+        path="/docente/turmas"
+        element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
+      />
+
         path="/docente/disciplinas"
         element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>}
       />

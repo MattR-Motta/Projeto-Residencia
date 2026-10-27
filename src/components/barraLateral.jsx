@@ -90,9 +90,9 @@ function BarraLateral() {
       icon: iconeCalendario,
     },
     {
+      to: '/docente/turmas',
       label: 'Minhas turmas',
       icon: iconeTurmas,
-      disabled: true,
     },
     {
       to: '/docente/disciplinas',
