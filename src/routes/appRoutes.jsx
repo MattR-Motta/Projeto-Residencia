@@ -8,6 +8,8 @@ import DisciplinasEmentas from '../pages/coordenador/disciplinasEmentas'
 import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
+import MinhasDisciplinas from '../pages/Docente/MinhasDisciplinas'
+import AulasReposicoesDocente from '../pages/Docente/AulasReposicoesDocente'
 import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
@@ -146,7 +148,14 @@ function AppRoutes() {
         path="/docente/calendario"
         element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
       />
-
+      <Route
+        path="/docente/disciplinas"
+        element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/aulas"
+        element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>}
+      />
       {/* Rotas do gestor da rede. */}
       <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
