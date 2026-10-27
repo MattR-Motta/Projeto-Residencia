@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
@@ -9,6 +8,8 @@ import AulasReposicoes from '../pages/coordenador/aulasReposicoes'
 import DashboardDocente from '../pages/Docente/dasboard'
 import CalendarioDocente from '../pages/Docente/Calendariodocente'
 import MinhasTurmas from '../pages/Docente/minhasTurmas'
+import MinhasDisciplinas from '../pages/Docente/MinhasDisciplinas'
+import AulasReposicoesDocente from '../pages/Docente/AulasReposicoesDocente'
 import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
@@ -18,6 +19,8 @@ import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
 import PortariasGestor from '../pages/gestor/PortariasGestor'
 import EstruturaGestor from '../pages/gestor/EstruturaGestor'
+import GradesGestor from '../pages/gestor/GradesGestor'
+import NovaGradeGestor from '../pages/gestor/NovaGradeGestor'
 
 // Verifica se o usuário tem permissão para acessar uma página.
 function ProtectedRoute({ children, perfil }) {
@@ -152,11 +155,20 @@ function AppRoutes() {
         element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
       />
 
+        path="/docente/disciplinas"
+        element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/aulas"
+        element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>}
+      />
       {/* Rotas do gestor da rede. */}
       <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
       <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
       <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
+      <Route path="/gestor/grades" element={<ProtectedRoute perfil="gestor"><GradesGestor /></ProtectedRoute>} />
+      <Route path="/gestor/grades/nova" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
 
       {/* Redireciona endereços que não correspondem a nenhuma rota cadastrada. */}
       <Route path="*" element={<Navigate to={rotaInicial} replace />} />
