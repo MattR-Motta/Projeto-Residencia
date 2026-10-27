@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
+
 import '../../styles/dashboarddocente.css'
 import "../../styles/Calendariodocente.css";
 
@@ -13,6 +16,21 @@ const mesesCurtos = [
 ]
 const diasSemana = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB']
 const nomesModos = { mes: 'Mês', semana: 'Semana', dia: 'Dia' }
+
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar o calendário',
+    descricao: 'Ocorreu um erro ao buscar as informações do calendário. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço do calendário está indisponível. Tente novamente em alguns instantes.',
+  },
+}
 
 // Aulas de exemplo (data no formato ANO-MES-DIA)
 const aulas = [
@@ -43,6 +61,7 @@ function CalendarioDocente() {
   const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 4, 26))
   // Tipo de visualização: 'mes', 'semana' ou 'dia'
   const [modo, setModo] = useState('mes')
+  const { tipo: erroPagina, limparErro } = useErroPagina()
 
   const ano = dataSelecionada.getFullYear()
   const mes = dataSelecionada.getMonth()
@@ -121,6 +140,15 @@ function CalendarioDocente() {
           </div>
         </header>
 
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+          <>
         <h1 className="cal-titulo-pagina">Meu calendário</h1>
 
         <section className="docente-card cal-calendario">
@@ -267,6 +295,8 @@ function CalendarioDocente() {
             })}
           </div>
         </section>
+          </>
+        )}
       </main>
     </div>
   )
