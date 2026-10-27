@@ -94,6 +94,16 @@ function BarraLateral() {
       disabled: true,
     },
     {
+      to: '/docente/disciplinas',
+      label: 'Minhas disciplinas',
+      Icon: BookOpen,
+    },
+    {
+      to: '/docente/aulas',
+      label: 'Aulas e frequência',
+      icon: iconeAulas,
+    },
+    {
       label: 'Aulas e frequência',
       icon: iconeAulas,
       disabled: true,
