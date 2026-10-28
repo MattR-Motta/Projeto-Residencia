@@ -1,0 +1,196 @@
+﻿/* ErrorState - Temas light/dark */
+
+/* Tema Light */
+.error-state--light {
+  --es-bg: #f8fafc;
+  --es-text: #1e293b;
+  --es-text-secondary: #475569;
+  --es-icon-bg: #e8f1ff;
+  --es-icon-color: #2563eb;
+  --es-badge-bg: #dc2626;
+  --es-button-bg: #0f172a;
+  --es-button-bg-hover: #1e293b;
+  --es-button-text: #ffffff;
+}
+
+/* Tema Dark */
+.error-state--dark {
+  --es-bg: #0f172a;
+  --es-text: #f1f5f9;
+  --es-text-secondary: #cbd5e1;
+  --es-icon-bg: #1e3a8a33;
+  --es-icon-color: #60a5fa;
+  --es-badge-bg: #dc2626;
+  --es-button-bg: #2563eb;
+  --es-button-bg-hover: #1d4ed8;
+  --es-button-text: #ffffff;
+}
+
+/* Container */
+.error-state {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: var(--es-bg);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.error-state__container {
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Ícone */
+.error-state__icon-wrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.error-state__icon {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--es-icon-bg);
+  color: var(--es-icon-color);
+  border-radius: 50%;
+  padding: 22px;
+}
+
+.error-state__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Selos vermelhos */
+.error-state__badge {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: var(--es-badge-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 4px var(--es-bg);
+}
+
+.error-state__badge--x {
+  bottom: 0;
+  right: -6px;
+  padding: 7px;
+}
+
+.error-state__badge--exclamacao {
+  top: 0;
+  right: -6px;
+  padding: 6px;
+}
+
+.error-state__badge svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Texto */
+.error-state__title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--es-text);
+  line-height: 1.2;
+}
+
+.error-state__description {
+  margin: 0;
+  font-size: 16px;
+  color: var(--es-text-secondary);
+  line-height: 1.6;
+  max-width: 460px;
+}
+
+/* Botão */
+.error-state__button {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: var(--es-button-bg);
+  color: var(--es-button-text);
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+
+.error-state__button:hover {
+  background: var(--es-button-bg-hover);
+}
+
+.error-state__button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.error-state__button:active {
+  transform: translateY(1px);
+}
+
+.error-state__button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .error-state {
+    min-height: 320px;
+    padding: 30px 16px;
+  }
+
+  .error-state__icon {
+    width: 84px;
+    height: 84px;
+    padding: 18px;
+  }
+
+  .error-state__badge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .error-state__badge--x {
+    padding: 6px;
+  }
+
+  .error-state__badge--exclamacao {
+    padding: 5px;
+  }
+
+  .error-state__title {
+    font-size: 24px;
+  }
+
+  .error-state__description {
+    font-size: 15px;
+  }
+
+  .error-state__button {
+    width: 100%;
+    justify-content: center;
+  }
+}

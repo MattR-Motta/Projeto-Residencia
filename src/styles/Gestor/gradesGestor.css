@@ -1,0 +1,478 @@
+.grades-pagina {
+  display: flex;
+  min-height: 100vh;
+  background: #eef2f8;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #1e293b;
+}
+
+.grades-conteudo {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Topo */
+.grades-topo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 14px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.grades-topo-direita {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.grades-sino {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #e0e9f8;
+  color: #334155;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.grades-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 16px;
+  border-left: 1px solid #e2e8f0;
+}
+
+.grades-usuario-texto {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.grades-usuario-texto strong {
+  font-size: 13px;
+}
+
+.grades-usuario-texto span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.grades-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #334155;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+/* Área principal */
+.grades-principal {
+  padding: 28px 24px;
+}
+
+.grades-titulo-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.grades-titulo-area h1 {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.grades-titulo-area p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.grades-botao-nova {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #1d4ed8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.grades-botao-nova:hover {
+  background: #1e40af;
+}
+
+/* Filtros */
+.grades-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.grades-campo-busca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 220px;
+  max-width: 340px;
+  padding: 0 12px;
+  height: 38px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #64748b;
+}
+
+.grades-campo-busca input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 13px;
+  background: transparent;
+}
+
+.grades-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 12px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #334155;
+}
+
+.grades-select select {
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+/* Cartão da tabela */
+.grades-cartao {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.grades-tabela-scroll {
+  overflow-x: auto;
+}
+
+.grades-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.grades-tabela th {
+  text-align: left;
+  padding: 24px 16px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  background: #f8fafc;
+  white-space: nowrap;
+}
+
+.grades-tabela td {
+  padding: 16px;
+  border-top: 1px solid #eef2f7;
+  white-space: nowrap;
+}
+
+.grades-tabela tbody tr:hover {
+  background: #f8fafc;
+}
+
+.grades-nome {
+  font-weight: 600;
+}
+
+.grades-suave {
+  color: #64748b;
+}
+
+.grades-vazio {
+  text-align: center;
+  color: #64748b;
+  padding: 32px 16px;
+}
+
+/* Status */
+.grades-status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.grades-status.ativa {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.grades-status.analise {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Ações */
+.grades-acoes {
+  display: flex;
+  gap: 4px;
+}
+
+.grades-acoes button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.grades-acoes button:hover {
+  background: #eef2f7;
+  color: #1d4ed8;
+}
+
+/* Rodapé */
+.grades-rodape {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid #eef2f7;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.grades-paginas {
+  display: flex;
+  gap: 6px;
+}
+
+.grades-paginas button {
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.grades-paginas button.ativa {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  color: #fff;
+}
+
+/* Tela de nova grade */
+.nova-voltar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #1d4ed8;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nova-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 24px;
+  max-width: 760px;
+}
+
+.nova-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.nova-campo-largo {
+  grid-column: 1 / -1;
+}
+
+.nova-campo input,
+.nova-campo select {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.nova-campo input:focus,
+.nova-campo select:focus {
+  outline: 2px solid #bfdbfe;
+  border-color: #1d4ed8;
+}
+
+.nova-botoes {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.nova-cancelar {
+  padding: 10px 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .nova-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Janelinhas (modal) */
+.grades-modal-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.5);
+}
+
+.grades-modal {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.25);
+}
+
+.grades-modal-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.grades-modal-topo h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.grades-modal-topo button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.grades-modal-topo button:hover {
+  background: #eef2f7;
+}
+
+.grades-modal-texto {
+  margin: 0 0 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.grades-detalhes {
+  margin: 0 0 8px;
+  display: grid;
+  gap: 12px;
+}
+
+.grades-detalhes dt {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.grades-detalhes dd {
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.grades-botao-excluir {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.grades-botao-excluir:hover {
+  background: #b91c1c;
+}
+
+.grades-modal .nova-botoes {
+  margin-top: 16px;
+}

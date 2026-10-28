@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/coordenador.css'
 import iconeVisualizar from '../../assets/visualizar.png'
 import iconeEditar from '../../assets/editar.png'
@@ -49,7 +51,23 @@ const turmasIniciais = [
   },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as turmas',
+    descricao: 'Ocorreu um erro ao buscar as informações das turmas. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de turmas está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function Turmas() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [turmas, setTurmas] = useState(turmasIniciais)
   const [pesquisa, setPesquisa] = useState('')
   const [filtroPeriodo, setFiltroPeriodo] = useState('Todos')
@@ -193,6 +211,17 @@ function Turmas() {
           </div>
         </header>
 
+        {erroPagina ? (
+          <div className="dashboard-conteudo">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <>
         <div className="dashboard-conteudo">
           <section className="turmas-intro">
             <div>
@@ -328,6 +357,8 @@ function Turmas() {
             <span>Dados demonstrativos para prototipação</span>
           </footer>
         </div>
+          </>
+        )}
       </main>
 
       {modalAberto && (
