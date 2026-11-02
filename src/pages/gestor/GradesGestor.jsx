@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Plus, Search, Pencil, Trash2, Eye, Bell, ChevronDown, X } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
-import '../../styles/gestor/baseGestor.css'
-import '../../styles/gestor/gradesGestor.css'
+import '../../styles/Gestor/baseGestor.css'
+import '../../styles/Gestor/gradesGestor.css'
 
 // ---- Dados das grades (guardados no navegador) ----
 const CHAVE = 'gradesEduGest'

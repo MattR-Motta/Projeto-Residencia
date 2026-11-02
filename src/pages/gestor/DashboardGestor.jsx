@@ -13,13 +13,13 @@ const escolasMock = [
 ]
 
 const portariasMock = [
-  { id: 1, numero: '1.248/2026', titulo: 'Designação de equipe gestora', tipo: 'Designação', data: '10/10/2026', status: 'Publicada' },
+  { id: 1, numero: '1.248/2026', titulo: 'Designação de equipe estora', tipo: 'Designação', data: '10/10/2026', status: 'Publicada' },
   { id: 2, numero: '1.249/2026', titulo: 'Alteração do calendário letivo', tipo: 'Alteração', data: '12/10/2026', status: 'Em análise' },
   { id: 3, numero: '1.250/2026', titulo: 'Autorização de funcionamento', tipo: 'Autorização', data: '15/10/2026', status: 'Publicada' },
   { id: 4, numero: '1.251/2026', titulo: 'Atualização de matriz curricular', tipo: 'Atualização', data: '18/10/2026', status: 'Rascunho' },
 ]
 
-const dashboardGestorMock = {
+const dashboardestorMock = {
   indicadores: [
     { titulo: 'Escolas ativas', valor: 124, detalhe: '+2 novas este mês', cor: 'verde' },
     { titulo: 'Solicitações pendentes', valor: 18, detalhe: 'Aguardando triagem', cor: 'laranja' },
@@ -43,9 +43,9 @@ const dashboardGestorMock = {
   ],
 }
 
-function DashboardGestor() {
+function Dashboardestor() {
   const navigate = useNavigate()
-  let nome = 'Gestor'
+  let nome = 'estor'
 
   try {
     nome = JSON.parse(localStorage.getItem('usuarioEduGest') || 'null')?.nome || nome
@@ -53,7 +53,7 @@ function DashboardGestor() {
     /* nome padrão */
   }
 
-  const dados = dashboardGestorMock
+  const dados = dashboardestorMock
   const totalAlunos = escolasMock.reduce((total, escola) => total + escola.alunos, 0)
 
   function gerarRelatorio() {
@@ -62,22 +62,22 @@ function DashboardGestor() {
     const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }))
     const link = document.createElement('a')
     link.href = url
-    link.download = 'relatorio-dashboard-gestor.csv'
+    link.download = 'relatorio-dashboard-estor.csv'
     link.click()
     URL.revokeObjectURL(url)
   }
 
   return (
-    <div className="gestor-layout">
+    <div className="estor-layout">
       <BarraLateral />
-      <main className="gestor-main">
-        <header className="gestor-header">
+      <main className="estor-main">
+        <header className="estor-header">
           <div>
-            <span className="gestor-breadcrumb">EduGest / Início</span>
+            <span className="estor-breadcrumb">EduGest / Início</span>
             <h1>Dashboard</h1>
           </div>
-          <div className="gestor-header-usuario">
-            <div className="gestor-avatar">{nome.charAt(0).toUpperCase()}</div>
+          <div className="estor-header-usuario">
+            <div className="estor-avatar">{nome.charAt(0).toUpperCase()}</div>
             <div>
               <strong>{nome}</strong>
               <span>Gestão da rede estadual</span>
@@ -85,22 +85,22 @@ function DashboardGestor() {
           </div>
         </header>
 
-        <div className="gestor-conteudo">
-          <section className="gestor-saudacao">
+        <div className="estor-conteudo">
+          <section className="estor-saudacao">
             <div>
               <span>PAINEL DE CONTROLE</span>
               <h2>Olá, {nome}!</h2>
               <p>Aqui está o resumo da rede estadual de ensino hoje.</p>
             </div>
-            <div className="gestor-saudacao-simbolo"><School size={44} strokeWidth={1.4} /></div>
+            <div className="estor-saudacao-simbolo"><School size={44} strokeWidth={1.4} /></div>
           </section>
 
-          <section className="gestor-indicadores">
+          <section className="estor-indicadores">
             {dados.indicadores.map((item) => (
-              <article className="gestor-indicador" key={item.titulo}>
-                <div className="gestor-indicador-topo">
+              <article className="estor-indicador" key={item.titulo}>
+                <div className="estor-indicador-topo">
                   <span>{item.titulo}</span>
-                  <span className={`gestor-indicador-icone gestor-indicador-icone--${item.cor}`}>
+                  <span className={`estor-indicador-icone estor-indicador-icone--${item.cor}`}>
                     {item.cor === 'verde' ? <School size={17} /> : item.cor === 'laranja' ? <GitPullRequest size={17} /> : item.cor === 'azul' ? <ChartNoAxesColumn size={17} /> : <FileText size={17} />}
                   </span>
                 </div>
@@ -110,55 +110,55 @@ function DashboardGestor() {
             ))}
           </section>
 
-          <section className="gestor-dashboard-grid">
-            <article className="gestor-painel">
-              <h3 className="gestor-painel-titulo">Tipos de ensino das escolas</h3>
-              <p className="gestor-painel-subtitulo">Distribuição das unidades por modalidade</p>
-              <div className="gestor-barras">
+          <section className="estor-dashboard-grid">
+            <article className="estor-painel">
+              <h3 className="estor-painel-titulo">Tipos de ensino das escolas</h3>
+              <p className="estor-painel-subtitulo">Distribuição das unidades por modalidade</p>
+              <div className="estor-barras">
                 {dados.tiposEnsino.map((item, i) => (
-                  <div className="gestor-barra-item" key={item.nome}>
-                    <div className="gestor-barra-legenda">
+                  <div className="estor-barra-item" key={item.nome}>
+                    <div className="estor-barra-legenda">
                       <strong>{item.nome}</strong>
                       <span>{item.quantidade} escolas ({item.percentual.toLocaleString('pt-BR')}%)</span>
                     </div>
-                    <div className="gestor-barra-trilho">
-                      <span style={{ width: `${item.percentual / 38.7 * 100}%` }} className={`gestor-barra-preenchimento gestor-barra-preenchimento--${i + 1}`} />
+                    <div className="estor-barra-trilho">
+                      <span style={{ width: `${item.percentual / 38.7 * 100}%` }} className={`estor-barra-preenchimento estor-barra-preenchimento--${i + 1}`} />
                     </div>
                   </div>
                 ))}
               </div>
             </article>
 
-            <article className="gestor-painel gestor-acoes-rapidas">
-              <h3 className="gestor-painel-titulo">Ações rápidas</h3>
-              <p className="gestor-painel-subtitulo">Acesse as tarefas mais comuns</p>
-              <button onClick={() => navigate('/gestor/escolas', { state: { abrirCadastro: true } })}><Plus size={16} /> Criar nova escola</button>
-              <button onClick={() => navigate('/gestor/portarias')}><FileText size={16} /> Gerenciar portarias</button>
-              <button onClick={() => navigate('/gestor/escolas')}><School size={16} /> Ver escolas cadastradas</button>
+            <article className="estor-painel estor-acoes-rapidas">
+              <h3 className="estor-painel-titulo">Ações rápidas</h3>
+              <p className="estor-painel-subtitulo">Acesse as tarefas mais comuns</p>
+              <button onClick={() => navigate('/estor/escolas', { state: { abrirCadastro: true } })}><Plus size={16} /> Criar nova escola</button>
+              <button onClick={() => navigate('/estor/portarias')}><FileText size={16} /> Gerenciar portarias</button>
+              <button onClick={() => navigate('/estor/escolas')}><School size={16} /> Ver escolas cadastradas</button>
               <button onClick={gerarRelatorio}><Download size={16} /> Emitir relatório CSV</button>
             </article>
           </section>
 
-          <section className="gestor-dashboard-grid gestor-dashboard-grid--inferior">
-            <article className="gestor-painel">
-              <div className="gestor-painel-cabecalho">
+          <section className="estor-dashboard-grid estor-dashboard-grid--inferior">
+            <article className="estor-painel">
+              <div className="estor-painel-cabecalho">
                 <div>
-                  <h3 className="gestor-painel-titulo">Panorama da rede</h3>
-                  <p className="gestor-painel-subtitulo">Indicadores gerais e distribuição por município</p>
+                  <h3 className="estor-painel-titulo">Panorama da rede</h3>
+                  <p className="estor-painel-subtitulo">Indicadores gerais e distribuição por município</p>
                 </div>
-                <button className="gestor-botao gestor-botao-secundario" onClick={gerarRelatorio}><Download size={15} /> Exportar dados</button>
+                <button className="estor-botao estor-botao-secundario" onClick={gerarRelatorio}><Download size={15} /> Exportar dados</button>
               </div>
-              <div className="gestor-panorama">
-                <div className="gestor-grafico-donut">
+              <div className="estor-panorama">
+                <div className="estor-grafico-donut">
                   <div>
                     <strong>{escolasMock.length}</strong>
                     <span>escolas no mock</span>
                   </div>
                 </div>
-                <div className="gestor-legenda-donut">
+                <div className="estor-legenda-donut">
                   {dados.tiposEnsino.map((item, i) => (
                     <div key={item.nome}>
-                      <span className={`gestor-ponto gestor-ponto--${i + 1}`} />
+                      <span className={`estor-ponto estor-ponto--${i + 1}`} />
                       <span>{item.nome}</span>
                       <strong>{item.quantidade}</strong>
                     </div>
@@ -167,10 +167,10 @@ function DashboardGestor() {
               </div>
             </article>
 
-            <article className="gestor-painel">
-              <h3 className="gestor-painel-titulo">Municípios</h3>
-              <p className="gestor-painel-subtitulo">Unidades por localidade</p>
-              <div className="gestor-municipios">
+            <article className="estor-painel">
+              <h3 className="estor-painel-titulo">Municípios</h3>
+              <p className="estor-painel-subtitulo">Unidades por localidade</p>
+              <div className="estor-municipios">
                 {dados.municipios.map((item) => (
                   <div key={item.nome}>
                     <span>{item.nome}</span>
@@ -181,11 +181,11 @@ function DashboardGestor() {
             </article>
           </section>
 
-          <p className="gestor-aviso-mock">Os números deste painel são dados demonstrativos e não representam dados oficiais da rede.</p>
+          <p className="estor-aviso-mock">Os números deste painel são dados demonstrativos e não representam dados oficiais da rede.</p>
         </div>
       </main>
     </div>
   )
 }
 
-export default DashboardGestor
+export default Dashboardestor
