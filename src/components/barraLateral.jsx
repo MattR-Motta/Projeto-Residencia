@@ -1,4 +1,3 @@
-
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
   BookOpen,
@@ -19,7 +18,6 @@ import iconeCalendario from '../assets/calendario.png'
 import iconeCoordenador from '../assets/coordenador.png'
 import iconeAulas from '../assets/aulas.png'
 import iconeDocente from '../assets/docente.png'
-
 
 function BarraLateral() {
   const navigate = useNavigate()
@@ -47,6 +45,7 @@ function BarraLateral() {
     { to: '/gestor/escolas', label: 'Escolas', Icon: School },
     { to: '/gestor/portarias', label: 'Portarias', Icon: FileText },
     { to: '/gestor/estrutura', label: 'Estrutura', Icon: Network },
+    { to: '/gestor/solicitacoes', label: 'Solicitações', Icon: ClipboardList },
   ]
 
   const linksCoordenador = [
@@ -73,7 +72,6 @@ function BarraLateral() {
       label: 'Notificações',
       Icon: Bell,
     },
-
     {
       to: '/coordenador/configuracoes',
       label: 'Configurações',
