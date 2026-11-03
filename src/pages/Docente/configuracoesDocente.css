@@ -1,0 +1,379 @@
+/* ---------- Layout (barra lateral + conteúdo) ---------- */
+.eg-layout {
+  --azul: #2f5bff;
+  --azul-claro: #eaf0ff;
+  --texto: #111827;
+  --texto-suave: #6b7280;
+  --borda: #e5e7eb;
+  --fundo: #f5f7fb;
+  --branco: #ffffff;
+  --erro: #dc2626;
+
+  display: flex;
+  min-height: 100vh;
+  color: var(--texto);
+}
+
+.eg-layout *,
+.eg-layout *::before,
+.eg-layout *::after {
+  box-sizing: border-box;
+}
+
+.eg-layout button,
+.eg-layout input {
+  font: inherit;
+}
+
+/* A barra lateral não encolhe nem estica dentro do flex */
+.eg-layout > .eg-sidebar {
+  flex-shrink: 0;
+}
+
+.eg-layout > .cfg-app {
+  margin-left: 260px;
+}
+
+
+.eg-layout > .cfg-app {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: var(--fundo);
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 32px;
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda);
+}
+
+.busca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 350px;
+  padding: 0 14px;
+  height: 36px;
+  background: var(--fundo);
+  border-radius: 8px;
+  color: var(--texto-suave);
+}
+
+.busca input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 14px;
+}
+
+.busca:focus-within {
+  outline: 2px solid var(--azul);
+}
+
+.topbar-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icone-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  background: transparent;
+  color: var(--texto-suave);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icone-btn:hover {
+  background: var(--fundo);
+}
+
+.usuario-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.usuario-info strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.usuario-info span {
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+.chevron {
+  color: var(--texto-suave);
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--azul);
+  color: var(--branco);
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Conteúdo ---------- */
+.conteudo {
+  padding: 32px 36px;
+  max-width: 860px;
+}
+
+.conteudo h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.subtitulo {
+  margin: 6px 0 24px;
+  font-size: 14px;
+  color: var(--texto-suave);
+}
+
+/* ---------- Painel ---------- */
+.painel {
+  background: var(--branco);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.painel-cabecalho {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--borda);
+}
+
+.painel-cabecalho h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.painel-cabecalho p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--texto-suave);
+}
+
+.painel-corpo {
+  padding: 24px;
+}
+
+.foto-bloco {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 36px 0 40px;
+}
+
+.foto-titulo {
+  margin: 0;
+  font-size: 13px;
+}
+
+.foto-dica {
+  margin: 4px 0 8px;
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+.erro {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: var(--erro);
+}
+
+.painel hr {
+  margin: 0 0 20px;
+  border: 0;
+  border-top: 1px solid var(--borda);
+}
+
+/* ---------- Campos ---------- */
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.campo label {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.campo input {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-size: 14px;
+}
+
+.campo input:focus {
+  outline: 2px solid var(--azul);
+  outline-offset: -1px;
+  background: var(--branco);
+}
+
+.campo small {
+  margin-top: 6px;
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+/* ---------- Botões ---------- */
+.btn-secundario {
+  padding: 6px 14px;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--branco);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn-secundario:hover {
+  background: var(--fundo);
+}
+
+.btn-primario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--azul);
+  color: var(--branco);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: #2449d6;
+}
+
+.btn-primario:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.painel-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: var(--fundo);
+  border-top: 1px solid var(--borda);
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+.conteudo {
+  max-width: 1100px; /* antes era 860px; o menu precisa de espaço */
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: 218px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.menu {
+  padding: 16px 10px;
+  background: var(--branco);
+  border-radius: 12px;
+}
+
+.menu-titulo {
+  margin: 4px 0 12px;
+  padding: 0 2px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cfg-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--texto);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cfg-menu-item:hover {
+  background: var(--fundo);
+}
+
+.cfg-menu-item.ativo {
+  background: var(--azul-claro);
+  color: var(--azul);
+  font-weight: 600;
+}
+
+.versao {
+  margin: 20px 2px 4px;
+  padding-top: 14px;
+  border-top: 1px solid var(--borda);
+  font-size: 11px;
+  color: var(--texto-suave);
+}
+
+@media (max-width: 800px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 800px) {
+  .usuario-info {
+    display: none;
+  }
+
+  .conteudo {
+    padding: 24px 16px;
+  }
+}
