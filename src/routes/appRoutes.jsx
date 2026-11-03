@@ -1,4 +1,4 @@
-﻿import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
 import Turmas from '../pages/coordenador/turmas'
@@ -20,6 +20,7 @@ import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
 import PortariasGestor from '../pages/gestor/PortariasGestor'
 import EstruturaGestor from '../pages/gestor/EstruturaGestor'
+import SolicitacoesGestor from '../pages/gestor/SolicitacoesGestor'
 import GradesGestor from '../pages/gestor/GradesGestor'
 import NovaGradeGestor from '../pages/gestor/NovaGradeGestor'
 import DisciplinasGestor from '../pages/gestor/DisciplinasGestor'
@@ -103,6 +104,7 @@ function AppRoutes() {
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
       <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
       <Route path="/gestor/estrutura" element={<ProtectedRoute perfil="gestor"><EstruturaGestor /></ProtectedRoute>} />
+      <Route path="/gestor/solicitacoes" element={<ProtectedRoute perfil="gestor"><SolicitacoesGestor /></ProtectedRoute>} />
       <Route path="/gestor/grades" element={<ProtectedRoute perfil="gestor"><GradesGestor /></ProtectedRoute>} />
       <Route path="/gestor/grades/nova" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
       <Route path="/gestor/disciplinas" element={<ProtectedRoute perfil="gestor"><DisciplinasGestor /></ProtectedRoute>} />

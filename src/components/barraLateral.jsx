@@ -28,6 +28,7 @@ function BarraLateral() {
     { to: '/gestor/escolas', label: 'Escolas', Icon: School },
     { to: '/gestor/portarias', label: 'Portarias', Icon: FileText },
     { to: '/gestor/estrutura', label: 'Estrutura', Icon: Network },
+    { to: '/gestor/solicitacoes', label: 'Solicitações', Icon: ClipboardList },
     { to: '/gestor/grades', label: 'Grades', Icon: GraduationCap },
     { to: '/gestor/disciplinas', label: 'Disciplinas', Icon: BookOpen },
     { to: '/gestor/optativas', label: 'Optativas', Icon: BookOpen },
@@ -41,8 +42,7 @@ function BarraLateral() {
     { to: '/coordenador/aulas-reposicoes', label: 'Aulas e Reposições', Icon: CalendarClock },
     { to: '/coordenador/solicitacoes', label: 'Solicitações', Icon: ClipboardList },
     { to: '/coordenador/notificacoes', label: 'Notificações', Icon: Bell },
-    { to: '/coordenador/configuracoes', label: 'Configurações', Icon: Settings },
-  ]
+    { to: '/coordenador/configuracoes', label: 'Configurações', Icon: Settings }]
 
   const linksDocente = [
     { to: '/docente', label: 'Início', icon: iconeDashboard, end: true },
