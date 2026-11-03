@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+﻿import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
 import Turmas from '../pages/coordenador/turmas'
@@ -21,7 +21,7 @@ import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
 import PortariasGestor from '../pages/gestor/PortariasGestor'
 import EstruturaGestor from '../pages/gestor/EstruturaGestor'
-import SolicitacoesGestor from '../pages/gestor/SolicitacoesGestor'
+import SolicitacoesGestor from '../pages/gestor/solicitacoesGestor'
 import GradesGestor from '../pages/gestor/GradesGestor'
 import NovaGradeGestor from '../pages/gestor/NovaGradeGestor'
 import DisciplinasGestor from '../pages/gestor/DisciplinasGestor'
@@ -172,15 +172,62 @@ function AppRoutes() {
       <Route path="/coordenador/solicitacoes" element={<ProtectedRoute perfil="coordenador"><Solicitacoes /></ProtectedRoute>} />
       <Route path="/coordenador/solicitacoes/:id" element={<ProtectedRoute perfil="coordenador"><DetalhesSolicitacao /></ProtectedRoute>} />
 
-      {/* Rotas do Docente */}
-      <Route path="/docente" element={<ProtectedRoute perfil="docente"><DashboardDocente /></ProtectedRoute>} />
-      <Route path="/docente/calendario" element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>} />
-      <Route path="/docente/turmas" element={<ProtectedRoute perfil="docente"><MinhasTurmas /></ProtectedRoute>} />
-      <Route path="/docente/disciplinas" element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>} />
-      <Route path="/docente/aulas" element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>} />
-      <Route path="/docente/notificacoes" element={<ProtectedRoute perfil="docente"><NotificacoesDocente /></ProtectedRoute>} />
-      
-      {/* Rotas do Gestor */}
+      {/* Rotas do docente */}
+      <Route
+        path="/docente"
+        element={
+          <ProtectedRoute perfil="docente">
+            <DashboardDocente />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/docente/calendario"
+        element={
+          <ProtectedRoute perfil="docente">
+            <CalendarioDocente />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/docente/turmas"
+        element={
+          <ProtectedRoute perfil="docente">
+            <MinhasTurmas />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/docente/disciplinas"
+        element={
+          <ProtectedRoute perfil="docente">
+            <MinhasDisciplinas />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/docente/aulas"
+        element={
+          <ProtectedRoute perfil="docente">
+            <AulasReposicoesDocente />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/docente/notificacoes"
+        element={
+          <ProtectedRoute perfil="docente">
+            <NotificacoesDocente />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Rotas do gestor da rede */}
       <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
       <Route path="/gestor/portarias" element={<ProtectedRoute perfil="gestor"><PortariasGestor /></ProtectedRoute>} />
@@ -190,6 +237,15 @@ function AppRoutes() {
       <Route path="/gestor/grades/nova" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
       <Route path="/gestor/disciplinas" element={<ProtectedRoute perfil="gestor"><DisciplinasGestor /></ProtectedRoute>} />
       <Route path="/gestor/optativas" element={<ProtectedRoute perfil="gestor"><OptativasGestor /></ProtectedRoute>} />
+
+      <Route
+        path="/gestor/grades/:id/editar"
+        element={
+          <ProtectedRoute perfil="gestor">
+            <NovaGradeGestor />
+          </ProtectedRoute>
+        }
+      />
 
       {/* Telas de erro */}
       <Route path="/erros" element={<IndiceErros />} />

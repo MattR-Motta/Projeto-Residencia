@@ -1561,3 +1561,272 @@
     background: var(--edu-primary-light, #eeecff);
   }
 }
+
+/* ===== Compatibilidade com o dashboard atual ===== */
+
+/* Botão da área de boas-vindas */
+.boas-vindas-botao {
+  flex-shrink: 0;
+  padding: 12px 18px;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 9px;
+  background: #ffffff;
+  color: var(--edu-primary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.boas-vindas-botao:hover {
+  background: #f0eeff;
+  transform: translateY(-1px);
+}
+
+/* Quatro cards de indicadores */
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px;
+  margin-bottom: 24px;
+}
+
+.indicador-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.indicador-titulo {
+  display: block;
+  color: var(--edu-muted);
+  font-size: 12px;
+}
+
+.indicador-valor {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 30px;
+}
+
+/* Painéis de eventos e avisos */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 20px;
+  margin-bottom: 27px;
+}
+
+.painel {
+  min-width: 0;
+  padding: 21px;
+  border: 1px solid var(--edu-border);
+  border-radius: 13px;
+  background: var(--edu-surface);
+}
+
+.painel-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.painel-cabecalho h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.painel-cabecalho p {
+  margin: 7px 0 0;
+  color: var(--edu-muted);
+  font-size: 12px;
+}
+
+.painel-link {
+  flex-shrink: 0;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: var(--edu-primary);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.painel-link:hover {
+  text-decoration: underline;
+}
+
+/* Listas de eventos e avisos */
+.eventos-lista,
+.avisos-lista {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.evento-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 14px 0;
+  border-top: 1px solid var(--edu-border);
+}
+
+.evento-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 52px;
+  border-radius: 9px;
+  background: var(--edu-primary-light);
+  color: var(--edu-primary);
+}
+
+.evento-data strong {
+  font-size: 19px;
+}
+
+.evento-data span {
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.evento-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.evento-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.evento-topo h4 {
+  margin: 0;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.evento-tipo {
+  color: var(--edu-primary);
+  font-size: 10px;
+}
+
+.evento-horario {
+  display: block;
+  margin-top: 6px;
+  color: var(--edu-muted);
+  font-size: 11px;
+}
+
+/* Avisos e etiquetas */
+.aviso-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 11px;
+  padding: 13px 0;
+  border-top: 1px solid var(--edu-border);
+}
+
+.aviso-conteudo {
+  min-width: 0;
+}
+
+.aviso-conteudo h4 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.aviso-conteudo p {
+  margin: 6px 0 0;
+  color: var(--edu-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.aviso-tag {
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.aviso-tag--alerta {
+  background: #fff0d9;
+  color: #955c08;
+}
+
+.aviso-tag--acao {
+  background: #e8eaff;
+  color: #4640a5;
+}
+
+.aviso-tag--info {
+  background: #dff5e8;
+  color: #187443;
+}
+
+/* Responsividade do dashboard */
+@media (max-width: 1100px) {
+  .indicadores {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .boas-vindas {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .boas-vindas-botao {
+    width: 100%;
+  }
+
+  .indicadores {
+    gap: 10px;
+  }
+
+  .indicador-card {
+    padding: 14px;
+  }
+
+  .indicador-titulo {
+    font-size: 11px;
+  }
+
+  .indicador-valor {
+    font-size: 26px;
+  }
+
+  .painel {
+    padding: 16px;
+  }
+
+  .painel-cabecalho {
+    flex-wrap: wrap;
+  }
+
+  .aviso-item {
+    flex-wrap: wrap;
+  }
+}
