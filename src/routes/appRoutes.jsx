@@ -10,6 +10,7 @@ import CalendarioDocente from '../pages/Docente/Calendariodocente'
 import MinhasTurmas from '../pages/Docente/minhasTurmas'
 import MinhasDisciplinas from '../pages/Docente/MinhasDisciplinas'
 import AulasReposicoesDocente from '../pages/Docente/AulasReposicoesDocente'
+import NotificacoesDocente from '../pages/Docente/NotificacoesDocente'
 import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
@@ -95,7 +96,8 @@ function AppRoutes() {
       <Route path="/docente/turmas" element={<ProtectedRoute perfil="docente"><MinhasTurmas /></ProtectedRoute>} />
       <Route path="/docente/disciplinas" element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>} />
       <Route path="/docente/aulas" element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>} />
-
+      <Route path="/docente/notificacoes" element={<ProtectedRoute perfil="docente"><NotificacoesDocente /></ProtectedRoute>} />
+      
       {/* Rotas do Gestor */}
       <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />
