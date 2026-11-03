@@ -1,5 +1,4 @@
 ﻿import { Routes, Route, Navigate } from 'react-router-dom'
-import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from '../pages/login'
 import Dashboard from '../pages/coordenador/dashboard'
 import Turmas from '../pages/coordenador/turmas'
@@ -15,6 +14,7 @@ import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
 import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+import Configuracoesdocente from '../pages/Docente/configuracoesDocente'
 
 import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
@@ -164,7 +164,7 @@ function AppRoutes() {
         path="/docente/turmas"
         element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
       />
-
+      <Route
         path="/docente/disciplinas"
         element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>}
       />
@@ -172,6 +172,9 @@ function AppRoutes() {
         path="/docente/aulas"
         element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>}
       />
+      <Route 
+      path="/docente/configuracoes" 
+      element={<ProtectedRoute perfil="docente"><Configuracoesdocente /></ProtectedRoute>} />
       {/* Rotas do gestor da rede. */}
       <Route path="/gestor" element={<ProtectedRoute perfil="gestor"><DashboardGestor /></ProtectedRoute>} />
       <Route path="/gestor/escolas" element={<ProtectedRoute perfil="gestor"><EscolasGestor /></ProtectedRoute>} />

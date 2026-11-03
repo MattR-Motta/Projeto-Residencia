@@ -105,10 +105,10 @@ function BarraLateral() {
       icon: iconeAulas,
     },
     {
-      label: 'Aulas e frequência',
-      icon: iconeAulas,
-      disabled: true,
-    },
+    to: '/docente/configuracoes',
+    label: 'Configurações',
+    Icon: Settings,
+  },
   ]
 
   const links = ehGestor
