@@ -50,8 +50,7 @@ function BarraLateral() {
     { to: '/docente/turmas', label: 'Minhas turmas', icon: iconeTurmas },
     { to: '/docente/disciplinas', label: 'Minhas disciplinas', Icon: BookOpen },
     { to: '/docente/aulas', label: 'Aulas e frequência', icon: iconeAulas },
-    { label: 'Aulas e frequência', icon: iconeAulas, disabled: true },
-  ]
+    { to: '/docente/notificacoes',label: 'Notificações', Icon: Bell}]
 
   const links = ehGestor ? linksGestor : ehDocente ? linksDocente : linksCoordenador
   const iconePerfil = ehGestor ? iconeDashboard : ehDocente ? iconeDocente : iconeCoordenador
