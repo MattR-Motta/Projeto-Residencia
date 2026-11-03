@@ -46,6 +46,31 @@ function BarraLateral() {
 
   const linksDocente = [
     { to: '/docente', label: 'Início', icon: iconeDashboard, end: true },
+    {
+      to: '/docente/calendario',
+      label: 'Meu calendário',
+      icon: iconeCalendario,
+    },
+    {
+      to: '/docente/turmas',
+      label: 'Minhas turmas',
+      icon: iconeTurmas,
+    },
+    {
+      to: '/docente/disciplinas',
+      label: 'Minhas disciplinas',
+      Icon: BookOpen,
+    },
+    {
+      to: '/docente/aulas',
+      label: 'Aulas e frequência',
+      icon: iconeAulas,
+    },
+    {
+    to: '/docente/configuracoes',
+    label: 'Configurações',
+    Icon: Settings,
+  },
     { to: '/docente/calendario', label: 'Meu calendário', icon: iconeCalendario },
     { to: '/docente/turmas', label: 'Minhas turmas', icon: iconeTurmas },
     { to: '/docente/disciplinas', label: 'Minhas disciplinas', Icon: BookOpen },

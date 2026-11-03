@@ -15,6 +15,7 @@ import Notificacoes from '../pages/coordenador/notificacoes'
 import Configuracoes from '../pages/coordenador/configuracoes'
 import Solicitacoes from '../pages/coordenador/solicitacoesTriagem'
 import DetalhesSolicitacao from '../pages/coordenador/solicitacoesDetalhes'
+import Configuracoesdocente from '../pages/Docente/configuracoesDocente'
 
 import DashboardGestor from '../pages/gestor/DashboardGestor'
 import EscolasGestor from '../pages/gestor/EscolasGestor'
@@ -80,6 +81,86 @@ function AppRoutes() {
       <Route path="/" element={<Navigate to={rotaInicial} replace />} />
       <Route path="/login" element={<Login />} />
 
+      {/* Rotas do coordenador. */}
+      <Route
+        path="/coordenador"
+        element={<ProtectedRoute perfil="coordenador"><Dashboard /></ProtectedRoute>}
+      />
+      <Route
+        path="/coordenador/turmas"
+        element={<ProtectedRoute perfil="coordenador"><Turmas /></ProtectedRoute>}
+      />
+      <Route
+        path="/coordenador/calendario"
+        element={<ProtectedRoute perfil="coordenador"><Calendario /></ProtectedRoute>}
+      />
+      <Route
+        path="/coordenador/disciplinas-ementas"
+        element={<ProtectedRoute perfil="coordenador"><DisciplinasEmentas /></ProtectedRoute>}
+      />
+      <Route
+        path="/coordenador/aulas-reposicoes"
+        element={<ProtectedRoute perfil="coordenador"><AulasReposicoes /></ProtectedRoute>}
+      />
+
+      <Route
+        path="/coordenador/notificacoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Notificacoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/configuracoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Configuracoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/solicitacoes"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <Solicitacoes />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/coordenador/solicitacoes/:id"
+        element={
+          <ProtectedRoute perfil="coordenador">
+            <DetalhesSolicitacao />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Rotas do docente. */}
+      <Route
+        path="/docente"
+        element={<ProtectedRoute perfil="docente"><DashboardDocente /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/calendario"
+        element={<ProtectedRoute perfil="docente"><CalendarioDocente /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/turmas"
+        element={<ProtectedRoute perfil="docente"> <MinhasTurmas /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/disciplinas"
+        element={<ProtectedRoute perfil="docente"><MinhasDisciplinas /></ProtectedRoute>}
+      />
+      <Route
+        path="/docente/aulas"
+        element={<ProtectedRoute perfil="docente"><AulasReposicoesDocente /></ProtectedRoute>}
+      />
+      <Route 
+      path="/docente/configuracoes" 
+      element={<ProtectedRoute perfil="docente"><Configuracoesdocente /></ProtectedRoute>} />
+      {/* Rotas do gestor da rede. */}
       {/* Rotas do Coordenador */}
       <Route path="/coordenador" element={<ProtectedRoute perfil="coordenador"><Dashboard /></ProtectedRoute>} />
       <Route path="/coordenador/turmas" element={<ProtectedRoute perfil="coordenador"><Turmas /></ProtectedRoute>} />
