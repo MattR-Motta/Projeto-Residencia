@@ -32,8 +32,8 @@
 /* ===== Estrutura principal ===== */
 
 .eg-sidebar {
-  width: 250px;
-  min-width: 250px;
+  width: 230px;
+  min-width: 230px;
   min-height: 100vh;
   padding: 26px 16px 18px;
 
@@ -314,16 +314,18 @@
   }
 
   .eg-sidebar__nav {
-    flex-direction: row;
-    gap: 6px;
-    overflow-x: auto;
-    padding-bottom: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    overflow: visible;
+    padding-bottom: 0;
   }
 
   .eg-sidebar .eg-sidebar__link {
-    width: auto;
+    width: 100%;
+    min-width: 0;
     flex: 0 0 auto;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .eg-sidebar__footer {

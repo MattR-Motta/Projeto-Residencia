@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/coordenador.css'
 
 const eventosIniciais = [
@@ -58,8 +60,24 @@ function obterDataLocal(data) {
   return new Date(ano, mes - 1, dia)
 }
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar o calendário',
+    descricao: 'Ocorreu um erro ao buscar as informações do calendário. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço do calendário está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function Calendario() {
   const hoje = new Date()
+  const { tipo: erroPagina, limparErro } = useErroPagina()
 
   const [mesAtual, setMesAtual] = useState(hoje.getMonth())
   const [anoAtual, setAnoAtual] = useState(hoje.getFullYear())
@@ -179,6 +197,15 @@ function Calendario() {
           </button>
         </header>
 
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+          <>
         <section className="calendario-painel">
           <div className="calendario-controles">
             <div>
@@ -292,6 +319,8 @@ function Calendario() {
             </div>
           )}
         </section>
+          </>
+        )}
       </main>
 
       {modalAberto && (

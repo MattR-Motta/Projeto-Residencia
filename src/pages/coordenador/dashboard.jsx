@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/coordenador.css'
 import iconeTurmas from '../../assets/turmas.png'
-import iconeCalendario from '../../assets/calendario.png'
 import iconeDocente from '../../assets/docente.png'
 import iconeAulas from '../../assets/aulas.png'
 import iconeOcorrencia from '../../assets/ocorrencia.png'
-import iconeDashboard from '../../assets/dashboard.png'
 
 const indicadores = [
   {
@@ -78,26 +78,29 @@ const avisos = [
   {
     titulo: 'Organização das turmas',
     descricao:
-      'Consulte as turmas e seus respectivos períodos.',
-    tipo: 'Informação',
+      'Revise a distribuição de docentes por turma para este semestre.',
+    tipo: 'Ação',
   },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar o painel',
+    descricao: 'Ocorreu um erro ao buscar as informações do dashboard. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço do dashboard está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function Dashboard() {
   const navigate = useNavigate()
-  let nomeUsuario = 'Coordenador'
-
-  try {
-    const usuario = JSON.parse(
-      localStorage.getItem('usuarioEduGest') || 'null'
-    )
-
-    if (usuario?.nome) {
-      nomeUsuario = usuario.nome
-    }
-  } catch {
-    // Mantém o nome padrão se os dados salvos forem inválidos.
-  }
+  const { tipo: erroPagina, limparErro } = useErroPagina()
 
   return (
     <div className="coordenador-layout">
@@ -106,218 +109,122 @@ function Dashboard() {
       <main className="dashboard-main">
         <header className="dashboard-header">
           <div>
-            <span className="breadcrumb">
-              EduGest / Dashboard
-            </span>
-            <h1>Dashboard</h1>
+            <span className="breadcrumb">Coordenador / Dashboard</span>
+            <h1>Painel do Coordenador</h1>
           </div>
-
           <div className="header-usuario">
-            <div className="perfil-avatar">
-              {nomeUsuario.charAt(0).toUpperCase()}
-            </div>
-
+            <div className="perfil-avatar">MC</div>
             <div>
-              <strong>{nomeUsuario}</strong>
-              <span>Coordenação acadêmica</span>
+              <strong>Marina Costa</strong>
+              <span>Coordenadora</span>
             </div>
           </div>
         </header>
 
-        <div className="dashboard-conteudo">
-          <section className="boas-vindas">
-            <div>
-              <span className="boas-vindas-etiqueta">
-                PAINEL DE CONTROLE
-              </span>
-
-              <h2>Olá, {nomeUsuario}!</h2>
-
-              <p>
-                Acompanhe as principais informações acadêmicas
-                da instituição.
-              </p>
-            </div>
-
-            <div className="boas-vindas-icone">
-              <img
-                src={iconeDashboard}
-                alt=""
-                className="dashboard-boas-vindas-icone"
-              />
-            </div>
-          </section>
-
-          <section className="indicadores-grid">
-            {indicadores.map((item) => (
-              <article
-                className="indicador-card"
-                key={item.titulo}
+        {erroPagina ? (
+          <div className="dashboard-conteudo">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <div className="dashboard-conteudo">
+            <section className="boas-vindas">
+              <div>
+                <span className="boas-vindas-etiqueta">BEM-VINDA DE VOLTA</span>
+                <h2>Olá, Marina Costa</h2>
+                <p>
+                  Acompanhe o desempenho da instituição e as principais ações
+                  pendentes em um só lugar.
+                </p>
+              </div>
+              <button
+                type="button"
+                className="boas-vindas-botao"
+                onClick={() => navigate('/coordenador/turmas')}
               >
-                <div className="indicador-topo">
-                  <span>{item.titulo}</span>
-                  <div className="indicador-icone">
-                    <img src={item.icone} alt={item.titulo} className="dashboard-indicador-icone" />
-                  </div>
-                </div>
+                Gerenciar turmas
+              </button>
+            </section>
 
-                <strong className="indicador-valor">
-                  {item.valor}
-                </strong>
-
-                <span className="indicador-detalhe">
-                  {item.detalhe}
-                </span>
-              </article>
-            ))}
-          </section>
-
-          <section className="dashboard-secoes">
-            <article className="painel-card agenda-card">
-              <div className="painel-cabecalho">
-                <div>
-                  <h3>Próximos compromissos</h3>
-                  <p>
-                    Confira os eventos da agenda acadêmica.
-                  </p>
-                </div>
-
-                <button
-                  type="button"
-                  className="botao-texto"
-                  onClick={() =>
-                    navigate('/coordenador/calendario')
-                  }
-                >
-                  Ver calendário →
-                </button>
-              </div>
-
-              <div className="eventos-lista">
-                {eventos.map((evento) => (
-                  <div
-                    className="evento-item"
-                    key={evento.id}
-                  >
-                    <div className="evento-data">
-                      <strong>{evento.dia}</strong>
-                      <span>{evento.mes}</span>
-                    </div>
-
-                    <div className="evento-info">
-                      <strong>{evento.titulo}</strong>
-                      <span>
-                        {evento.horario} · {evento.tipo}
-                      </span>
-                    </div>
-
-                    <span className="evento-seta">›</span>
-                  </div>
-                ))}
-              </div>
-            </article>
-
-            <article className="painel-card avisos-card">
-              <div className="painel-cabecalho">
-                <div>
-                  <h3>Avisos e pendências</h3>
-                  <p>
-                    Informações para acompanhar.
-                  </p>
-                </div>
-
-                <span className="aviso-contador">
-                  {avisos.length}
-                </span>
-              </div>
-
-              <div className="avisos-lista">
-                {avisos.map((aviso) => (
-                  <div
-                    className="aviso-item"
-                    key={aviso.titulo}
-                  >
-                    <div className="aviso-ponto">!</div>
-
+            <section className="indicadores">
+              {indicadores.map((item) => (
+                <article key={item.titulo} className="indicador-card">
+                  <div className="indicador-cabecalho">
                     <div>
-                      <strong>{aviso.titulo}</strong>
-                      <p>{aviso.descricao}</p>
-                      <span className="aviso-tipo">
+                      <span className="indicador-titulo">{item.titulo}</span>
+                      <strong className="indicador-valor">{item.valor}</strong>
+                    </div>
+                    <div className="indicador-icone">
+                      <img src={item.icone} alt="" aria-hidden="true" />
+                    </div>
+                  </div>
+                  <span className="indicador-detalhe">{item.detalhe}</span>
+                </article>
+              ))}
+            </section>
+
+            <div className="dashboard-grid">
+              <section className="painel">
+                <header className="painel-cabecalho">
+                  <div>
+                    <h3>Próximos eventos</h3>
+                    <p>Compromissos agendados para os próximos dias</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="painel-link"
+                    onClick={() => navigate('/coordenador/calendario')}
+                  >
+                    Ver calendário
+                  </button>
+                </header>
+                <ul className="eventos-lista">
+                  {eventos.map((evento) => (
+                    <li key={evento.id} className="evento-item">
+                      <div className="evento-data">
+                        <strong>{evento.dia}</strong>
+                        <span>{evento.mes}</span>
+                      </div>
+                      <div className="evento-info">
+                        <div className="evento-topo">
+                          <h4>{evento.titulo}</h4>
+                          <span className="evento-tipo">{evento.tipo}</span>
+                        </div>
+                        <span className="evento-horario">Horário: {evento.horario}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="painel">
+                <header className="painel-cabecalho">
+                  <div>
+                    <h3>Avisos e pendências</h3>
+                    <p>Atualizações importantes para a coordenação</p>
+                  </div>
+                </header>
+                <ul className="avisos-lista">
+                  {avisos.map((aviso) => (
+                    <li key={aviso.titulo} className="aviso-item">
+                      <div className="aviso-conteudo">
+                        <h4>{aviso.titulo}</h4>
+                        <p>{aviso.descricao}</p>
+                      </div>
+                      <span className={`aviso-tag aviso-tag--${aviso.tipo === 'Atenção' ? 'alerta' : aviso.tipo === 'Ação' ? 'acao' : 'info'}`}>
                         {aviso.tipo}
                       </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </article>
-          </section>
-
-          <section className="atalhos-section">
-            <h3>Acesso rápido</h3>
-
-            <div className="atalhos-grid">
-              <button
-                type="button"
-                className="atalho-card"
-                onClick={() =>
-                  navigate('/coordenador/turmas')
-                }
-              >
-                <span className="atalho-icone">
-                  <img
-                    src={iconeTurmas}
-                    alt=""
-                    className="dashboard-atalho-icone"
-                  />
-                </span>
-
-                <span>
-                  <strong>Gerenciar turmas</strong>
-                  <small>
-                    Consultar turmas cadastradas
-                  </small>
-                </span>
-
-                <span className="atalho-seta">→</span>
-              </button>
-
-              <button
-                type="button"
-                className="atalho-card"
-                onClick={() =>
-                  navigate('/coordenador/calendario')
-                }
-              >
-                <span className="atalho-icone">
-                  <img
-                    src={iconeCalendario}
-                    alt=""
-                    className="dashboard-atalho-icone"
-                  />
-                </span>
-
-                <span>
-                  <strong>Consultar calendário</strong>
-                  <small>
-                    Ver aulas e compromissos
-                  </small>
-                </span>
-
-                <span className="atalho-seta">→</span>
-              </button>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             </div>
-          </section>
-
-          <footer className="dashboard-footer">
-            <span>
-              EduGest · Plataforma de gestão acadêmica
-            </span>
-
-            <span>
-              Dados demonstrativos para prototipação
-            </span>
-          </footer>
-        </div>
+          </div>
+        )}
       </main>
     </div>
   )
