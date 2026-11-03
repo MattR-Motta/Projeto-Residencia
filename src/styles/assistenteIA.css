@@ -1,0 +1,242 @@
+/* Painel do Assistente de IA (Figma: nó 317:669) */
+
+.assistente-ia {
+  position: fixed;
+  right: 104px;
+  bottom: 32px;
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  max-height: min(700px, calc(100vh - 64px));
+  overflow: hidden;
+  border: 1px solid #e7ebf0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 12px 32px rgb(22 32 51 / 10%);
+  color: #172033;
+}
+
+.assistente-ia button:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
+}
+
+/* Cabeçalho */
+
+.assistente-ia-cabecalho {
+  flex-shrink: 0;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid #e7ebf0;
+}
+
+.assistente-ia-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.assistente-ia-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #eaf2ff;
+}
+
+.assistente-ia-controles {
+  display: flex;
+  gap: 8px;
+}
+
+.assistente-ia-controle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #e7ebf0;
+  border-radius: 8px;
+  background: #f6f8fb;
+  color: #667085;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.assistente-ia-controle:hover {
+  background: #eef2f7;
+  color: #172033;
+}
+
+.assistente-ia-titulo {
+  margin: 0 0 4px;
+  color: #172033;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.assistente-ia-descricao {
+  margin: 0;
+  color: #667085;
+  font-size: 12px;
+}
+
+/* Corpo */
+
+.assistente-ia-corpo {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  padding: 16px 18px;
+}
+
+.assistente-ia-mensagens {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.assistente-ia-balao {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid #e7ebf0;
+  border-radius: 12px;
+  background: #f6f8fb;
+}
+
+.assistente-ia-balao p {
+  margin: 0;
+  color: #172033;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.assistente-ia-balao--assistente {
+  border-color: #eaf2ff;
+  background: #eaf2ff;
+}
+
+.assistente-ia-rotulo {
+  color: #667085;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.assistente-ia-balao--assistente .assistente-ia-rotulo {
+  color: #2563eb;
+}
+
+/* Sugestões */
+
+.assistente-ia-sugestoes {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.assistente-ia-sugestoes-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assistente-ia-sugestao {
+  padding: 8px 12px;
+  border: 1px solid #e7ebf0;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #172033;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.assistente-ia-sugestao:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+/* Campo de pergunta */
+
+.assistente-ia-entrada {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 6px 0 14px;
+  border: 1px solid #e7ebf0;
+  border-radius: 8px;
+  background: #f6f8fb;
+}
+
+.assistente-ia-entrada:focus-within {
+  border-color: #2563eb;
+}
+
+.assistente-ia-entrada svg {
+  flex-shrink: 0;
+}
+
+.assistente-ia-entrada input {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #172033;
+  font-size: 14px;
+}
+
+.assistente-ia-entrada input::placeholder {
+  color: #98a2b3;
+}
+
+.assistente-ia-enviar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+}
+
+.assistente-ia-enviar:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.assistente-ia-enviar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Telas pequenas (celular) */
+
+@media (max-width: 520px) {
+  .assistente-ia {
+    right: 16px;
+    bottom: 104px;
+    left: 16px;
+    width: auto;
+    max-height: calc(100vh - 136px);
+  }
+}

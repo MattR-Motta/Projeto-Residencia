@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import BarraLateral from '../../components/barraLateral'
 import ErrorState from '../../components/ErrorState'
+import AssistenteIA from '../../components/AssistenteIA'
 import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/coordenador.css'
 import iconeTurmas from '../../assets/turmas.png'
@@ -226,6 +227,8 @@ function Dashboard() {
           </div>
         )}
       </main>
+
+      <AssistenteIA nomeUsuario="Marina" />
     </div>
   )
 }

@@ -1,0 +1,35 @@
+/* Botão flutuante do Assistente de IA */
+
+.botao-ia {
+  position: fixed;
+  right: 32px;
+  bottom: 32px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 8px 10px rgb(22 32 51 / 10%);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.botao-ia:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+.botao-ia:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.botao-ia svg {
+  display: block;
+  flex-shrink: 0;
+}
