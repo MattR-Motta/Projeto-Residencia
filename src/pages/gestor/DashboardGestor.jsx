@@ -13,13 +13,13 @@ const escolasMock = [
 ]
 
 const portariasMock = [
-  { id: 1, numero: '1.248/2026', titulo: 'Designação de equipe gestora', tipo: 'Designação', data: '10/10/2026', status: 'Publicada' },
+  { id: 1, numero: '1.248/2026', titulo: 'Designação de equipegestora', tipo: 'Designação', data: '10/10/2026', status: 'Publicada' },
   { id: 2, numero: '1.249/2026', titulo: 'Alteração do calendário letivo', tipo: 'Alteração', data: '12/10/2026', status: 'Em análise' },
   { id: 3, numero: '1.250/2026', titulo: 'Autorização de funcionamento', tipo: 'Autorização', data: '15/10/2026', status: 'Publicada' },
   { id: 4, numero: '1.251/2026', titulo: 'Atualização de matriz curricular', tipo: 'Atualização', data: '18/10/2026', status: 'Rascunho' },
 ]
 
-const dashboardGestorMock = {
+const dashboardestorMock = {
   indicadores: [
     { titulo: 'Escolas ativas', valor: 124, detalhe: '+2 novas este mês', cor: 'verde' },
     { titulo: 'Solicitações pendentes', valor: 18, detalhe: 'Aguardando triagem', cor: 'laranja' },
@@ -43,9 +43,9 @@ const dashboardGestorMock = {
   ],
 }
 
-function DashboardGestor() {
+function Dashboardestor() {
   const navigate = useNavigate()
-  let nome = 'Gestor'
+  let nome = 'gestor'
 
   try {
     nome = JSON.parse(localStorage.getItem('usuarioEduGest') || 'null')?.nome || nome
@@ -53,7 +53,7 @@ function DashboardGestor() {
     /* nome padrão */
   }
 
-  const dados = dashboardGestorMock
+  const dados = dashboardestorMock
   const totalAlunos = escolasMock.reduce((total, escola) => total + escola.alunos, 0)
 
   function gerarRelatorio() {
@@ -188,4 +188,4 @@ function DashboardGestor() {
   )
 }
 
-export default DashboardGestor
+export default Dashboardestor
