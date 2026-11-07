@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { BookOpen, CalendarClock, Bell, Settings, ClipboardList, LayoutDashboard, School, FileText, Network, GraduationCap } from 'lucide-react'
+import { BookOpen, CalendarClock, Bell, Settings, ClipboardList, LayoutDashboard, School, FileText, Network, GraduationCap, Users, SlidersHorizontal } from 'lucide-react'
 import '../styles/barraLateral.css'
 import iconeDashboard from '../assets/dashboard.png'
 import iconeTurmas from '../assets/turmas.png'
@@ -32,6 +32,8 @@ function BarraLateral() {
     { to: '/gestor/grades', label: 'Grades', Icon: GraduationCap },
     { to: '/gestor/disciplinas', label: 'Disciplinas', Icon: BookOpen },
     { to: '/gestor/optativas', label: 'Optativas', Icon: BookOpen },
+    { to: '/gestor/professores', label: 'Professores', Icon: Users },
+    { to: '/gestor/personalizacao', label: 'Personalização', Icon: SlidersHorizontal },
   ]
 
   const linksCoordenador = [
