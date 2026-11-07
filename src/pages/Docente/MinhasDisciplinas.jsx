@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Eye, FileText, Info, Search } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import '../../styles/dashboarddocente.css'
 import '../../styles/minhasDisciplinas.css'
 

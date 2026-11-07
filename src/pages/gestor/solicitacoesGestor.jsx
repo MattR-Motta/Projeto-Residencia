@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { solicitacoesIniciaisSeduc } from "../../data/solicitacoes";
-import BarraLateral from "../../components/barraLateral";
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import "../../styles/Gestor/solicitacoesGestor.css";
 
 export default function SolicitacoesGestor() {

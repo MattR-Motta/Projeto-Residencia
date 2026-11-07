@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './minhasTurmas.css'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 
 
 const turmas = [

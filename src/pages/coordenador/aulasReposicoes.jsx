@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
 import '../../styles/telasCoordenador.css'
 import { CalendarDays, Bell } from 'lucide-react'
 

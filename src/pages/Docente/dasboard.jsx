@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/dashboarddocente.css'

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Users, Building2, House, GitPullRequest, Search, Plus, ChevronDown, Pencil, Unlink, X } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import '../../styles/Gestor/ProfessoresGestor.css'
 
 const CHAVE_STORAGE = 'edugestProfessoresGestor'

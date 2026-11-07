@@ -1,0 +1,185 @@
+
+.resp-calendario-layout {
+  display: flex; min-height: 100vh; background: #f4f6fa;
+  color: #202b3c; font-family: "Segoe UI", Arial, sans-serif;
+}
+.resp-calendario-layout * { box-sizing: border-box; }
+.resp-calendario-main { flex: 1; min-width: 0; }
+
+.resp-calendario-topbar {
+  min-height: 65px; padding: 12px 30px; display: flex;
+  align-items: center; justify-content: space-between;
+  background: #fff; border-bottom: 1px solid #e6eaf1;
+  color: #7c899b; font-size: 10px;
+}
+.resp-calendario-perfil { display: flex; align-items: center; gap: 10px; }
+.resp-calendario-avatar {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border-radius: 50%; background: #e9efff; color: #2863e9;
+  font-size: 10px; font-weight: 700;
+}
+.resp-calendario-perfil div:last-child { display: flex; flex-direction: column; gap: 3px; }
+.resp-calendario-perfil strong { color: #202b3c; font-size: 11px; }
+.resp-calendario-perfil span { font-size: 9px; }
+
+.resp-calendario-conteudo { max-width: 1600px; padding: 27px 30px; margin: auto; }
+.resp-calendario-titulo { margin-bottom: 22px; }
+.resp-calendario-subtitulo { color: #2863e9; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.resp-calendario-titulo h1 { margin: 7px 0 5px; font-size: 25px; }
+.resp-calendario-titulo p { margin: 0; color: #7c899b; font-size: 11px; }
+
+.resp-calendario-filtros {
+  display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 17px;
+}
+.resp-calendario-filtros label {
+  display: flex; flex-direction: column; gap: 7px;
+  color: #657286; font-size: 10px; font-weight: 600;
+}
+.resp-calendario-filtros select {
+  min-width: 210px; padding: 10px 12px; border: 1px solid #e1e6ef;
+  border-radius: 6px; background: #fff; color: #344156; font-size: 11px;
+}
+
+.resp-calendario-grid {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr);
+  gap: 15px; align-items: stretch;
+}
+.resp-calendario-painel {
+  min-width: 0; padding: 19px; border: 1px solid #e6eaf1;
+  border-radius: 8px; background: #fff;
+}
+.resp-calendario-navegacao {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; margin-bottom: 20px;
+}
+.resp-calendario-navegacao h2 { margin: 0; font-size: 17px; }
+.resp-calendario-navegacao p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
+.resp-calendario-setas { display: flex; gap: 7px; }
+.resp-calendario-setas button {
+  width: 32px; height: 32px; display: grid; place-items: center;
+  border: 1px solid #e4e9f1; border-radius: 6px;
+  background: #fff; color: #59677c; cursor: pointer;
+}
+.resp-calendario-setas button:hover { background: #edf3ff; color: #2863e9; }
+
+.resp-calendario-semana,
+.resp-calendario-dias {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.resp-calendario-semana { margin-bottom: 8px; }
+.resp-calendario-semana span {
+  padding: 8px 2px; color: #8995a6; font-size: 9px;
+  font-weight: 650; text-align: center;
+}
+.resp-calendario-dia {
+  min-width: 0; min-height: 69px; padding: 9px 5px;
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  border: 1px solid #edf0f5; border-right: 0; border-bottom: 0;
+  background: #fff; color: #566378; font: inherit; font-size: 10px;
+  cursor: pointer; transition: background .15s;
+}
+.resp-calendario-dia:nth-child(7n) { border-right: 1px solid #edf0f5; }
+.resp-calendario-dia:nth-last-child(-n+7) { border-bottom: 1px solid #edf0f5; }
+.resp-calendario-dia:hover { background: #f3f6fc; }
+.resp-calendario-dia.selecionado { background: #edf3ff; color: #2863e9; font-weight: 700; }
+.resp-calendario-dia.vazio { background: #fafbfd; cursor: default; }
+.resp-calendario-dia.vazio:hover { background: #fafbfd; }
+.resp-calendario-marcadores { display: flex; justify-content: center; gap: 3px; }
+.resp-calendario-marcadores i,
+.resp-calendario-legenda i {
+  width: 6px; height: 6px; display: inline-block; border-radius: 50%;
+}
+.resp-calendario-marcadores i.avaliacao,
+.resp-calendario-legenda i.avaliacao { background: #2863e9; }
+.resp-calendario-marcadores i.atividade,
+.resp-calendario-legenda i.atividade { background: #26966b; }
+.resp-calendario-marcadores i.reuniao,
+.resp-calendario-legenda i.reuniao { background: #9564d8; }
+.resp-calendario-marcadores i.feriado,
+.resp-calendario-legenda i.feriado { background: #e0a044; }
+
+.resp-calendario-legenda {
+  display: flex; flex-wrap: wrap; gap: 13px; margin-top: 17px;
+}
+.resp-calendario-legenda span { display: flex; align-items: center; gap: 6px; color: #718097; font-size: 9px; }
+
+.resp-calendario-agenda-titulo {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin-bottom: 17px;
+}
+.resp-calendario-agenda-titulo h2 { margin: 0; font-size: 13px; }
+.resp-calendario-agenda-titulo p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
+.resp-calendario-agenda-titulo > svg { color: #2863e9; }
+
+.resp-calendario-eventos { display: flex; flex-direction: column; }
+.resp-calendario-evento {
+  display: flex; align-items: flex-start; gap: 11px;
+  padding: 13px 0; border-bottom: 1px solid #edf0f5;
+}
+.resp-calendario-evento-icone,
+.resp-calendario-proximo-icone {
+  width: 34px; height: 34px; display: grid; place-items: center;
+  flex-shrink: 0; border-radius: 7px;
+}
+.resp-calendario-evento-icone.avaliacao,
+.resp-calendario-proximo-icone.avaliacao { background: #edf3ff; color: #2863e9; }
+.resp-calendario-evento-icone.atividade,
+.resp-calendario-proximo-icone.atividade { background: #e9f8f1; color: #26966b; }
+.resp-calendario-evento-icone.reuniao,
+.resp-calendario-proximo-icone.reuniao { background: #f1edff; color: #7955ce; }
+.resp-calendario-evento-icone.feriado,
+.resp-calendario-proximo-icone.feriado { background: #fff3e5; color: #d58b32; }
+
+.resp-calendario-evento-info { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.resp-calendario-tipo {
+  padding: 4px 7px; border-radius: 4px; font-size: 8px;
+}
+.resp-calendario-tipo.avaliacao { background: #edf3ff; color: #2863e9; }
+.resp-calendario-tipo.atividade { background: #e9f8f1; color: #26966b; }
+.resp-calendario-tipo.reuniao { background: #f1edff; color: #7955ce; }
+.resp-calendario-tipo.feriado { background: #fff3e5; color: #d58b32; }
+.resp-calendario-evento-info > strong { font-size: 10px; }
+.resp-calendario-evento-info > p { margin: 0; color: #8995a6; font-size: 9px; line-height: 1.5; }
+.resp-calendario-evento-info > small {
+  display: flex; align-items: center; gap: 5px;
+  color: #718097; font-size: 9px;
+}
+
+.resp-calendario-vazio {
+  min-height: 250px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  color: #9aa5b5; text-align: center;
+}
+.resp-calendario-vazio strong { color: #566378; font-size: 11px; }
+.resp-calendario-vazio p { max-width: 230px; margin: 0; font-size: 9px; line-height: 1.5; }
+
+.resp-calendario-proximos { margin-top: 16px; }
+.resp-calendario-lista-proximos { display: flex; flex-direction: column; }
+.resp-calendario-lista-proximos article {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid #edf0f5;
+}
+.resp-calendario-lista-proximos article > div:nth-child(2) { flex: 1; min-width: 0; }
+.resp-calendario-lista-proximos strong { font-size: 10px; }
+.resp-calendario-lista-proximos p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
+.resp-calendario-lista-proximos article > span { color: #2863e9; font-size: 9px; font-weight: 650; white-space: nowrap; }
+
+.resp-calendario-rodape { padding: 20px 0 5px; color: #9aa5b5; font-size: 9px; }
+
+@media (max-width: 1050px) {
+  .resp-calendario-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .resp-calendario-layout { flex-direction: column; }
+  .resp-calendario-topbar { padding: 12px 15px; }
+  .resp-calendario-conteudo { padding: 20px 14px; }
+}
+@media (max-width: 440px) {
+  .resp-calendario-filtros label,
+  .resp-calendario-filtros select { width: 100%; }
+  .resp-calendario-dia { min-height: 49px; padding: 7px 2px; gap: 6px; }
+  .resp-calendario-marcadores { gap: 2px; }
+  .resp-calendario-marcadores i { width: 4px; height: 4px; }
+  .resp-calendario-legenda { gap: 9px; }
+  .resp-calendario-legenda span { font-size: 8px; }
+}
