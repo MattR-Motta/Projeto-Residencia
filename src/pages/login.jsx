@@ -48,6 +48,7 @@ function Login() {
 
     if (usuario.perfil === 'coordenador') navigate('/coordenador')
     else if (usuario.perfil === 'gestor') navigate('/gestor')
+    else if (usuario.perfil === 'responsavel') navigate('/responsavel')
     else navigate('/docente')
   }
 

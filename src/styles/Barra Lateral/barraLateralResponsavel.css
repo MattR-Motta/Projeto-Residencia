@@ -1,0 +1,232 @@
+.responsavel-sidebar {
+  --resp-sidebar-fundo: #101d2e;
+  --resp-sidebar-borda: #26364a;
+  --resp-sidebar-texto: #c0cad8;
+  --resp-sidebar-secundario: #8291a6;
+  --resp-sidebar-ativo: #2863e9;
+  --resp-sidebar-hover: #1d2d43;
+
+  width: 230px;
+  min-width: 230px;
+  min-height: 100vh;
+  padding: 22px 13px 17px;
+
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+
+  background: var(--resp-sidebar-fundo);
+  color: #ffffff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.responsavel-sidebar *,
+.responsavel-sidebar *::before,
+.responsavel-sidebar *::after {
+  box-sizing: border-box;
+}
+
+/* Marca */
+
+.responsavel-sidebar__marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px;
+  margin-bottom: 29px;
+}
+
+.responsavel-sidebar__logo {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 7px;
+  background: #2863e9;
+  color: #ffffff;
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.responsavel-sidebar__marca h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.responsavel-sidebar__marca span {
+  display: block;
+  margin-top: 3px;
+  color: var(--resp-sidebar-secundario);
+  font-size: 10px;
+}
+
+/* Identificação do portal */
+
+.responsavel-sidebar__identificacao {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 9px;
+  margin-bottom: 17px;
+}
+
+.responsavel-sidebar__identificacao strong {
+  color: #aebbd0;
+  font-size: 9px;
+  letter-spacing: 0.8px;
+}
+
+.responsavel-sidebar__identificacao span {
+  color: var(--resp-sidebar-secundario);
+  font-size: 10px;
+}
+
+/* Navegação */
+
+.responsavel-sidebar__navegacao {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.responsavel-sidebar__link {
+  width: 100%;
+  min-height: 40px;
+  padding: 9px 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+
+  color: var(--resp-sidebar-texto);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.35;
+
+  transition: background 0.2s, color 0.2s;
+}
+
+.responsavel-sidebar__link svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.responsavel-sidebar__link:hover {
+  background: var(--resp-sidebar-hover);
+  color: #ffffff;
+}
+
+.responsavel-sidebar__link.ativo {
+  background: var(--resp-sidebar-ativo);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.responsavel-sidebar__link--futuro {
+  cursor: default;
+}
+
+.responsavel-sidebar__link--futuro:hover {
+  background: transparent;
+  color: var(--resp-sidebar-texto);
+}
+
+/* Rodapé */
+
+.responsavel-sidebar__rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.responsavel-sidebar__ajuda,
+.responsavel-sidebar__sair {
+  width: 100%;
+  padding: 9px 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--resp-sidebar-texto);
+
+  font-family: inherit;
+  font-size: 10px;
+  text-align: left;
+
+  transition: background 0.2s;
+}
+
+.responsavel-sidebar__ajuda:hover,
+.responsavel-sidebar__sair:hover {
+  background: var(--resp-sidebar-hover);
+  color: #ffffff;
+}
+
+.responsavel-sidebar__instituicao {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 13px 8px 0;
+  border-top: 1px solid var(--resp-sidebar-borda);
+}
+
+.responsavel-sidebar__instituicao span {
+  color: var(--resp-sidebar-secundario);
+  font-size: 8px;
+  letter-spacing: 0.7px;
+}
+
+.responsavel-sidebar__instituicao strong {
+  color: #ffffff;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* Responsividade */
+
+@media (max-width: 760px) {
+  .responsavel-sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 13px;
+  }
+
+  .responsavel-sidebar__marca {
+    margin-bottom: 15px;
+  }
+
+  .responsavel-sidebar__navegacao {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .responsavel-sidebar__rodape {
+    margin-top: 12px;
+  }
+
+  .responsavel-sidebar__instituicao {
+    display: none;
+  }
+}
