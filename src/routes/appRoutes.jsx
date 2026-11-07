@@ -33,12 +33,14 @@ import GradesGestor from '../pages/gestor/GradesGestor'
 import NovaGradeGestor from '../pages/gestor/NovaGradeGestor'
 import DisciplinasGestor from '../pages/gestor/DisciplinasGestor'
 import OptativasGestor from '../pages/gestor/OptativasGestor'
+import ProfessoresGestor from '../pages/gestor/ProfessoresGestor'
+import PersonalizacaoGestor from '../pages/gestor/PersonalizacaoGestor'
 
 // Responsável
-import DashboardResponsavel from '../pages/responsavel/DashboardResponsavel'
-import DesempenhoResponsavel from '../pages/responsavel/DesempenhoResponsavel'
-import FrequenciaResponsavel from '../pages/responsavel/FrequenciaResponsavel'
-import CalendarioResponsavel from '../pages/responsavel/CalendarioResponsavel'
+import DashboardResponsavel from '../pages/Responsavel/DashboardResponsavel'
+import DesempenhoResponsavel from '../pages/Responsavel/DesempenhoResponsavel'
+import FrequenciaResponsavel from '../pages/Responsavel/frequenciaResponsavel'
+import CalendarioResponsavel from '../pages/Responsavel/CalendarioResponsavel'
 
 // Erros
 import IndiceErros from '../pages/erros/index'
@@ -127,9 +129,11 @@ function AppRoutes() {
       <Route path="/gestor/solicitacoes" element={<ProtectedRoute perfil="gestor"><SolicitacoesGestor /></ProtectedRoute>} />
       <Route path="/gestor/grades" element={<ProtectedRoute perfil="gestor"><GradesGestor /></ProtectedRoute>} />
       <Route path="/gestor/grades/nova" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
+      <Route path="/gestor/grades/:id/editar" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
       <Route path="/gestor/disciplinas" element={<ProtectedRoute perfil="gestor"><DisciplinasGestor /></ProtectedRoute>} />
       <Route path="/gestor/optativas" element={<ProtectedRoute perfil="gestor"><OptativasGestor /></ProtectedRoute>} />
-      <Route path="/gestor/grades/:id/editar" element={<ProtectedRoute perfil="gestor"><NovaGradeGestor /></ProtectedRoute>} />
+      <Route path="/gestor/professores" element={<ProtectedRoute perfil="gestor"><ProfessoresGestor /></ProtectedRoute>} />
+      <Route path="/gestor/personalizacao" element={<ProtectedRoute perfil="gestor"><PersonalizacaoGestor /></ProtectedRoute>} />
 
       {/* Rotas do responsável */}
       <Route path="/responsavel" element={<ProtectedRoute perfil="responsavel"><DashboardResponsavel /></ProtectedRoute>} />
