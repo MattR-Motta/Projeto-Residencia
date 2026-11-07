@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Check } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import '../../styles/Gestor/baseGestor.css'
 import '../../styles/Gestor/gradesGestor.css'
 

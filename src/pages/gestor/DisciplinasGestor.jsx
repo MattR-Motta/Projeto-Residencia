@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Plus, Search, Pencil, Trash2, X, ChevronLeft, ChevronRight } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import '../../styles/Gestor/baseGestor.css'
 import '../../styles/Gestor/disciplinasGestor.css'
 
