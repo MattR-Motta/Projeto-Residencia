@@ -37,10 +37,14 @@ import ProfessoresGestor from '../pages/gestor/ProfessoresGestor'
 import PersonalizacaoGestor from '../pages/gestor/PersonalizacaoGestor'
 
 // Responsável
-import DashboardResponsavel from '../pages/Responsavel/DashboardResponsavel'
-import DesempenhoResponsavel from '../pages/Responsavel/DesempenhoResponsavel'
-import FrequenciaResponsavel from '../pages/Responsavel/frequenciaResponsavel'
-import CalendarioResponsavel from '../pages/Responsavel/CalendarioResponsavel'
+import DashboardResponsavel from '../pages/responsavel/DashboardResponsavel'
+import DesempenhoResponsavel from '../pages/responsavel/DesempenhoResponsavel'
+import FrequenciaResponsavel from '../pages/responsavel/FrequenciaResponsavel'
+import CalendarioResponsavel from '../pages/responsavel/CalendarioResponsavel'
+import AtividadesResponsavel from '../pages/responsavel/AtividadesResponsavel'
+import ComunicadosResponsavel from '../pages/responsavel/ComunicadosResponsavel'
+import ConfiguracoesResponsavel from '../pages/responsavel/ConfiguracoesResponsavel'
+
 
 // Erros
 import IndiceErros from '../pages/erros/index'
@@ -140,6 +144,9 @@ function AppRoutes() {
       <Route path="/responsavel/desempenho" element={<ProtectedRoute perfil="responsavel"><DesempenhoResponsavel /></ProtectedRoute>} />
       <Route path="/responsavel/frequencia" element={<ProtectedRoute perfil="responsavel"><FrequenciaResponsavel /></ProtectedRoute>} />
       <Route path="/responsavel/calendario" element={<ProtectedRoute perfil="responsavel"><CalendarioResponsavel /></ProtectedRoute>} />
+      <Route path="/responsavel/atividades" element={ <ProtectedRoute perfil="responsavel"><AtividadesResponsavel /></ProtectedRoute>} />
+      <Route path="/responsavel/comunicados" element={<ProtectedRoute perfil="responsavel"><ComunicadosResponsavel /></ProtectedRoute>} />
+      <Route path="/responsavel/configuracoes" element={<ProtectedRoute perfil="responsavel"><ConfiguracoesResponsavel /></ProtectedRoute>} />
 
       {/* Telas de erro */}
       <Route path="/erros" element={<IndiceErros />} />
