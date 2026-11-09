@@ -32,9 +32,21 @@ function BarraLateral() {
   ]
 
   const linksFuturos = [
-    { label: 'Atividades e avaliações', Icon: BookOpen },
-    { label: 'Comunicados e mensagens', Icon: MessagesSquare },
-    { label: 'Perfil e configurações', Icon: UserRound },
+    {
+      to: '/responsavel/atividades',
+      label: 'Atividades e avaliações',
+      Icon: BookOpen,
+    },
+    {
+      to: '/responsavel/comunicados',
+      label: 'Comunicados e mensagens',
+      Icon: MessagesSquare,
+    },
+    {
+      to: '/responsavel/configuracoes',
+      label: 'Perfil e configurações',
+      Icon: UserRound,
+    }
   ]
 
   function sair() {
@@ -72,16 +84,17 @@ function BarraLateral() {
           </NavLink>
         ))}
 
-        {linksFuturos.map(({ label, Icon }) => (
-          <div
-            key={label}
-            className="responsavel-sidebar__link responsavel-sidebar__link--futuro"
-            aria-disabled="true"
-            title="Funcionalidade ainda em desenvolvimento"
+        {linksFuturos.map(({ to, label, Icon }) => (
+          <NavLink
+            key={to}
+            to={to}
+            className={({ isActive }) =>
+              `responsavel-sidebar__link${isActive ? ' ativo' : ''}`
+            }
           >
             <Icon size={19} strokeWidth={1.8} />
             <span>{label}</span>
-          </div>
+          </NavLink>
         ))}
       </nav>
 
@@ -108,4 +121,5 @@ function BarraLateral() {
     </aside>
   )
 }
+
 export default BarraLateral
