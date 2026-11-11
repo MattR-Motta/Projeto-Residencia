@@ -11,7 +11,7 @@ import {
   Save,
   Camera,
 } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
 import '../../styles/telasCoordenador.css'
 import '../../styles/configuracoes.css'
 

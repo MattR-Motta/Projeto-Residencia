@@ -11,7 +11,7 @@ import {
   Save,
 } from "lucide-react";
 import "./configuracoesDocente.css";
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 
 
 const MENU = [

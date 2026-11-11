@@ -17,4 +17,10 @@ export const usuariosMock = [
     nome: 'Gestor(a)',
     perfil: 'gestor',
   },
+  {
+    email: 'responsavel@edugest.com',
+    senha: '123456',
+    nome: 'Responsavel',
+    perfil: 'responsavel',
+  },
 ]

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Download, Plus, FileText, GitPullRequest, School, ChartNoAxesColumn } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import "../../styles/Gestor/baseGestor.css";
 import "../../styles/Gestor/dashboardGestor.css";
 

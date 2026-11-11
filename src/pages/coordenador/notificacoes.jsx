@@ -12,7 +12,7 @@ import {
   Filter,
   Clock,
 } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
 import '../../styles/telasCoordenador.css'
 import '../../styles/notificacoes.css'
 
