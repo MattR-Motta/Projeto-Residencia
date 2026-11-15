@@ -1,0 +1,63 @@
+
+/* Central de Solicitações */
+
+.solicitacoes-filters {
+  grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(150px, 190px));
+}
+
+.solicitacoes-table th,
+.solicitacoes-table td {
+  padding: 15px 14px;
+}
+
+.solicitacoes-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.solicitacoes-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  background: transparent;
+  color: #2563eb;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.solicitacoes-actions button:hover {
+  text-decoration: underline;
+}
+
+.solicitacoes-actions button.approve {
+  color: #078654;
+}
+
+.solicitacoes-actions button.reject {
+  color: #e22d37;
+}
+
+@media (max-width: 1100px) {
+  .solicitacoes-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .solicitacoes-filters .tp-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 700px) {
+  .solicitacoes-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .solicitacoes-filters .tp-search {
+    grid-column: auto;
+  }
+}

@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   UserRound,
   Shield,
@@ -10,10 +10,12 @@ import {
   CircleHelp,
   Save,
   Camera,
-} from 'lucide-react'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import '../../styles/telasCoordenador.css'
-import '../../styles/configuracoes.css'
+} from 'lucide-react';
+
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/configuracoes.css";
 
 const preferencias = [
   { id: 'perfil', label: 'Perfil', Icon: UserRound },
@@ -22,91 +24,104 @@ const preferencias = [
   { id: 'aparencia', label: 'Aparência', Icon: Sun },
   { id: 'usuarios', label: 'Gestão de Usuários', Icon: Users },
   { id: 'institucional', label: 'Dados Institucionais', Icon: Building },
-]
+];
 
 const perfilInicial = {
   nome: 'Marina Costa',
   email: 'marina.costa@seduc.se.gov.br',
   cargo: 'Coordenadora pedagógica',
   unidade: 'C.E. Professor João Costa',
-}
+};
 
 function Configuracoes() {
-  const [secaoAtiva, setSecaoAtiva] = useState('perfil')
-  const [perfil, setPerfil] = useState(() => {
-  try {
-    const dadosSalvos = localStorage.getItem('edugest:coordenador:perfil')
+  const [secaoAtiva, setSecaoAtiva] = useState('perfil');
 
-    return dadosSalvos
-      ? { ...perfilInicial, ...JSON.parse(dadosSalvos) }
-      : perfilInicial
-  } catch {
-    return perfilInicial
-  }
- })
-  const [mensagem, setMensagem] = useState('')
-  const [tema, setTema] = useState('claro')
+  const [perfil, setPerfil] = useState(() => {
+    try {
+      const dadosSalvos = localStorage.getItem('edugest:coordenador:perfil');
+
+      return dadosSalvos
+        ? { ...perfilInicial, ...JSON.parse(dadosSalvos) }
+        : perfilInicial;
+    } catch {
+      return perfilInicial;
+    }
+  });
+
+  const [mensagem, setMensagem] = useState('');
+  const [tema, setTema] = useState('claro');
+
   const [notificacoes, setNotificacoes] = useState({
     email: true,
     sistema: true,
     reposicoes: true,
-  })
+  });
+
+  const iniciais = (perfil.nome || 'Coordenadora')
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map(parte => parte[0])
+    .join('')
+    .toUpperCase();
 
   function alterarPerfil(event) {
-    const { name, value } = event.target
+    const { name, value } = event.target;
 
-    setPerfil((anterior) => ({
+    setPerfil(anterior => ({
       ...anterior,
       [name]: value,
-    }))
+    }));
 
-    setMensagem('')
+    setMensagem('');
   }
 
   function salvarAlteracoes(event) {
-  event.preventDefault()
+    event.preventDefault();
 
-  if (secaoAtiva !== 'perfil' && secaoAtiva !== 'institucional') {
-    setMensagem('O salvamento desta seção ainda não foi implementado.')
-    return
-  }
-
-  if (secaoAtiva === 'perfil') {
-    if (!perfil.nome.trim() || !perfil.email.trim()) {
-      setMensagem('Preencha o nome e o e-mail institucional.')
-      return
+    if (secaoAtiva !== 'perfil' && secaoAtiva !== 'institucional') {
+      setMensagem('O salvamento desta seção ainda não foi implementado.');
+      return;
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(perfil.email.trim())) {
-      setMensagem('Informe um endereço de e-mail válido.')
-      return
-    }
-  }
+    if (secaoAtiva === 'perfil') {
+      if (!perfil.nome.trim() || !perfil.email.trim()) {
+        setMensagem('Preencha o nome e o e-mail institucional.');
+        return;
+      }
 
-  try {
-    const perfilAtualizado = {
-      ...perfil,
-      nome: perfil.nome.trim(),
-      email: perfil.email.trim(),
-      cargo: perfil.cargo.trim(),
-      unidade: perfil.unidade.trim(),
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(perfil.email.trim())) {
+        setMensagem('Informe um endereço de e-mail válido.');
+        return;
+      }
     }
 
-    localStorage.setItem(
-      'edugest:coordenador:perfil',
-      JSON.stringify(perfilAtualizado)
-    )
+    try {
+      const perfilAtualizado = {
+        ...perfil,
+        nome: perfil.nome.trim(),
+        email: perfil.email.trim(),
+        cargo: perfil.cargo.trim(),
+        unidade: perfil.unidade.trim(),
+      };
 
-    setPerfil(perfilAtualizado)
-    setMensagem('Alterações salvas com sucesso!')
-  } catch {
-    setMensagem('Não foi possível salvar. Verifique o armazenamento do navegador.')
+      localStorage.setItem(
+        'edugest:coordenador:perfil',
+        JSON.stringify(perfilAtualizado),
+      );
+
+      setPerfil(perfilAtualizado);
+      setMensagem('Alterações salvas com sucesso!');
+    } catch {
+      setMensagem(
+        'Não foi possível salvar. Verifique o armazenamento do navegador.',
+      );
+    }
   }
-}
 
   const secao = preferencias.find(
-    (item) => item.id === secaoAtiva
-  )
+    item => item.id === secaoAtiva,
+  );
 
   return (
     <div className="coordenador-layout telas-prototipo">
@@ -114,32 +129,41 @@ function Configuracoes() {
 
       <main className="dashboard-main tp-main configuracoes-main">
         <header className="tp-topbar configuracoes-topbar">
-          <div className="config-ajuda">
-            <CircleHelp size={19} />
+          <div className="config-topbar-title">
+            <h1>Configurações</h1>
+            <p>
+              Gerencie suas preferências e informações da conta.
+            </p>
           </div>
 
-          <div className="tp-user">
-            <span className="tp-avatar configuracoes-avatar">
-              MC
-            </span>
-            <div>
-              <strong>{perfil.nome || 'Coordenadora'}</strong>
-              <small>Coordenadora</small>
+          <div className="config-topbar-acoes">
+            <CircleHelp
+              className="config-ajuda"
+              size={19}
+            />
+
+            <div className="tp-user">
+              <Bell
+                className="tp-bell"
+                size={20}
+                strokeWidth={1.8}
+              />
+
+              <span className="tp-avatar configuracoes-avatar">
+                {iniciais}
+              </span>
+
+              <div>
+                <strong>{perfil.nome || 'Coordenadora'}</strong>
+                <small>Coordenadora</small>
+              </div>
+
+              <span>⌄</span>
             </div>
-            <span>⌄</span>
           </div>
         </header>
 
         <div className="config-content">
-          <div className="tp-page-title config-page-title">
-            <div>
-              <h1>Configurações</h1>
-              <p>
-                Gerencie suas preferências e informações da conta.
-              </p>
-            </div>
-          </div>
-
           <div className="config-layout">
             <aside className="config-menu">
               <span className="config-menu-titulo">
@@ -155,8 +179,8 @@ function Configuracoes() {
                       secaoAtiva === id ? 'ativo' : ''
                     }`}
                     onClick={() => {
-                      setSecaoAtiva(id)
-                      setMensagem('')
+                      setSecaoAtiva(id);
+                      setMensagem('');
                     }}
                   >
                     <Icon size={17} strokeWidth={1.8} />
@@ -187,7 +211,7 @@ function Configuracoes() {
                 <div className="config-form-conteudo">
                   <div className="config-foto">
                     <div className="config-foto-avatar">
-                      MC
+                      {iniciais}
                     </div>
 
                     <div className="config-foto-info">
@@ -195,22 +219,29 @@ function Configuracoes() {
                       <small>
                         JPG ou PNG. Tamanho máximo de 2 MB.
                       </small>
+
                       <label className="config-botao-foto">
                         <Camera size={15} />
                         Alterar foto
+
                         <input
                           type="file"
                           accept="image/jpeg,image/png"
-                          onChange={(event) => {
-                            const arquivo = event.target.files?.[0]
+                          onChange={event => {
+                            const arquivo = event.target.files?.[0];
 
-                            if (arquivo && arquivo.size > 2 * 1024 * 1024) {
-                              setMensagem('A imagem deve ter no máximo 2 MB.')
-                              event.target.value = ''
+                            if (
+                              arquivo &&
+                              arquivo.size > 2 * 1024 * 1024
+                            ) {
+                              setMensagem(
+                                'A imagem deve ter no máximo 2 MB.',
+                              );
+                              event.target.value = '';
                             } else if (arquivo) {
                               setMensagem(
-                                'Foto selecionada. O envio será disponibilizado com a integração de arquivos.'
-                              )
+                                'Foto selecionada. O envio será disponibilizado com a integração de arquivos.',
+                              );
                             }
                           }}
                         />
@@ -271,6 +302,7 @@ function Configuracoes() {
                     As opções de alteração de senha e autenticação
                     dependem da integração com o sistema de acesso.
                   </p>
+
                   <div className="config-aviso">
                     A alteração de senha ainda não está disponível.
                   </div>
@@ -288,15 +320,17 @@ function Configuracoes() {
                   ].map(([id, label]) => (
                     <label className="config-toggle" key={id}>
                       <span>{label}</span>
+
                       <input
                         type="checkbox"
                         checked={notificacoes[id]}
-                        onChange={(event) => {
-                          setNotificacoes((anterior) => ({
+                        onChange={event => {
+                          setNotificacoes(anterior => ({
                             ...anterior,
                             [id]: event.target.checked,
-                          }))
-                          setMensagem('')
+                          }));
+
+                          setMensagem('');
                         }}
                       />
                     </label>
@@ -310,7 +344,7 @@ function Configuracoes() {
                   <p>Escolha sua preferência visual.</p>
 
                   <div className="config-temas">
-                    {['claro', 'escuro'].map((opcao) => (
+                    {['claro', 'escuro'].map(opcao => (
                       <button
                         type="button"
                         key={opcao}
@@ -318,12 +352,12 @@ function Configuracoes() {
                           tema === opcao ? 'selecionado' : ''
                         }`}
                         onClick={() => {
-                          setTema(opcao)
+                          setTema(opcao);
                           setMensagem(
                             opcao === 'claro'
                               ? 'Tema claro selecionado.'
-                              : 'Tema escuro selecionado. A aplicação do tema ainda precisa ser integrada.'
-                          )
+                              : 'Tema escuro selecionado. A aplicação do tema ainda precisa ser integrada.',
+                          );
                         }}
                       >
                         {opcao === 'claro' ? 'Tema claro' : 'Tema escuro'}
@@ -341,6 +375,7 @@ function Configuracoes() {
                     disponibilizado quando houver integração com
                     os dados de usuários.
                   </p>
+
                   <div className="config-aviso">
                     Nenhuma conta pode ser alterada nesta seção ainda.
                   </div>
@@ -353,16 +388,18 @@ function Configuracoes() {
                   <p>
                     Informações da unidade escolar vinculada à conta.
                   </p>
+
                   <label className="config-campo-unico">
                     Nome da unidade escolar
                     <input
                       value={perfil.unidade}
-                      onChange={(event) => {
-                        setPerfil((anterior) => ({
+                      onChange={event => {
+                        setPerfil(anterior => ({
                           ...anterior,
                           unidade: event.target.value,
-                        }))
-                        setMensagem('')
+                        }));
+
+                        setMensagem('');
                       }}
                     />
                   </label>
@@ -372,7 +409,10 @@ function Configuracoes() {
               <footer className="config-painel-rodape">
                 <div>
                   {mensagem ? (
-                    <span className="config-mensagem" role="status">
+                    <span
+                      className="config-mensagem"
+                      role="status"
+                    >
                       {mensagem}
                     </span>
                   ) : (
@@ -395,7 +435,7 @@ function Configuracoes() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Configuracoes
+export default Configuracoes;
