@@ -1,0 +1,143 @@
+.edugest-ia {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    font-family: inherit
+}
+
+.edugest-ia-botao {
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--edu-primary, #5146d8);
+    color: #fff;
+    box-shadow: 0 4px 16px #0003;
+    cursor: pointer
+}
+
+.edugest-ia-painel {
+    position: absolute;
+    right: 0;
+    bottom: 72px;
+    width: min(360px, calc(100vw - 32px));
+    height: 460px;
+    max-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    background: var(--edu-card, #fff);
+    color: var(--edu-text, #242424);
+    border: 1px solid var(--edu-border, #ddd);
+    border-radius: 14px;
+    box-shadow: 0 8px 32px #0002;
+    overflow: hidden
+}
+
+.edugest-ia-cabecalho {
+    height: 54px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    background: var(--edu-primary, #5146d8);
+    color: #fff;
+    font-weight: 600
+}
+
+.edugest-ia-cabecalho span {
+    display: flex;
+    align-items: center;
+    gap: 9px
+}
+
+.edugest-ia-cabecalho button,
+.edugest-ia-formulario button {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer
+}
+
+.edugest-ia-mensagens {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.edugest-ia-mensagem {
+    max-width: 88%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font-size: 14px;
+    line-height: 1.45
+}
+
+.edugest-ia-mensagem.bot {
+    align-self: flex-start;
+    background: var(--edu-surface, #f1f1f5)
+}
+
+.edugest-ia-mensagem.usuario {
+    align-self: flex-end;
+    background: var(--edu-primary, #5146d8);
+    color: #fff
+}
+
+.edugest-ia-carregando {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--edu-muted, #777);
+    font-size: 13px
+}
+
+.edugest-ia-formulario {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-top: 1px solid var(--edu-border, #ddd)
+}
+
+.edugest-ia-formulario input {
+    min-width: 0;
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--edu-border, #ccc);
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    outline-color: var(--edu-primary, #5146d8)
+}
+
+.edugest-ia-formulario button {
+    width: 40px;
+    border-radius: 8px;
+    background: var(--edu-primary, #5146d8);
+    color: #fff
+}
+
+.edugest-ia-formulario button:disabled {
+    opacity: .45;
+    cursor: not-allowed
+}
+
+@media(max-width:480px) {
+    .edugest-ia {
+        right: 16px;
+        bottom: 16px
+    }
+
+    .edugest-ia-painel {
+        right: -8px;
+        width: calc(100vw - 32px)
+    }
+}
