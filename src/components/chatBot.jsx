@@ -13,8 +13,8 @@ import {
   ClipboardList,
 } from 'lucide-react'
 
-import { carregarSolicitacoes } from '../data/solicitacoes'
-import '../styles/chatbotCoordenador.css'
+import { carregarSolicitacoes } from '../data/solicitacoes';
+import "../styles/Coordenador/chatbotCoordenador.css";
 
 const sugestoes = [
   'Resumo das solicitações',

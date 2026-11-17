@@ -1,0 +1,274 @@
+/* ===== INDICADORES ===== */
+
+.tp-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.tp-stats article {
+  min-height: 130px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid #dfe6f1;
+  border-radius: 13px;
+  padding: 18px;
+  box-shadow: 0 4px 14px rgb(25 40 70 / 3%);
+}
+
+.tp-stats article span {
+  color: #71809a;
+  font-size: 14px;
+}
+
+.tp-stats article strong {
+  font-size: 28px;
+}
+
+.tp-stats article i {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #eaf1ff;
+  color: #2864ed;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.tp-stats article .stat-green {
+  background: #e6f6ef;
+}
+
+.tp-stats article .stat-yellow {
+  background: #fff3d7;
+}
+
+.tp-stats article .stat-purple {
+  background: #f0eaff;
+}
+
+/* Ícones dos indicadores */
+
+.tp-stat-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: inherit;
+  border-radius: 5px;
+}
+
+.tp-stat-icon.stat-green {
+  color: #16a34a;
+}
+
+.tp-stat-icon.stat-yellow {
+  color: #ca8a04;
+}
+
+.tp-stat-icon.stat-purple {
+  color: #9333ea;
+}
+
+/* ===== FILTROS DE AULAS ===== */
+
+.tp-aula-filters {
+  grid-template-columns: minmax(220px, 1fr) repeat(4, minmax(100px, 125px));
+}
+
+/* ===== TABELA DE AULAS ===== */
+
+.tp-section-table {
+  margin-top: 20px;
+  overflow: visible;
+}
+
+.tp-section-table > header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 17px;
+  border-bottom: 1px solid #e1e7f0;
+}
+
+.tp-section-table > header h2 {
+  margin: 0;
+  font-size: 16px;
+  flex: 1;
+}
+
+.tp-section-table > header > span {
+  color: #71809a;
+  font-size: 12px;
+}
+
+.tp-table-scroll {
+  overflow-x: auto;
+  border-radius: 0 0 13px 13px;
+}
+
+.tp-aula-table th,
+.tp-aula-table td {
+  padding: 15px 16px;
+  white-space: nowrap;
+}
+
+.tp-aula-table th {
+  font-size: 10px;
+}
+
+/* ===== MENU DE AÇÕES ===== */
+
+.tp-menu-cell {
+  position: relative;
+}
+
+.tp-dots {
+  border: 0;
+  background: transparent;
+  color: #9aa8bd;
+  font-size: 18px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.tp-action-menu {
+  position: absolute;
+  right: 12px;
+  top: 40px;
+  z-index: 5;
+  min-width: 160px;
+  padding: 6px;
+  background: white;
+  border: 1px solid #dfe6f1;
+  border-radius: 9px;
+  box-shadow: 0 8px 25px rgb(20 35 60 / 15%);
+}
+
+.tp-action-menu button {
+  display: block;
+  width: 100%;
+  padding: 9px;
+  border: 0;
+  background: white;
+  text-align: left;
+  color: #344158;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.tp-action-menu button:hover {
+  background: #f4f7fc;
+}
+
+/* ===== SEÇÃO DE REPOSIÇÕES ===== */
+
+.tp-repo-section {
+  margin-top: 20px;
+}
+
+.tp-repo-table th,
+.tp-repo-table td {
+  padding: 13px 16px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.tp-repo-actions {
+  display: grid;
+  gap: 5px;
+}
+
+.tp-repo-actions .approve {
+  color: #079455;
+}
+
+.tp-repo-actions .reject {
+  color: #e22d37;
+}
+
+.tp-link-button {
+  font-size: 12px;
+}
+
+/* ===== DETALHES ===== */
+
+.tp-detail-list p {
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #edf0f5;
+  color: #4b5870;
+}
+
+.tp-detail-list strong {
+  color: #1c2940;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 1100px) {
+  .tp-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tp-aula-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .tp-aula-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .tp-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .tp-stats article {
+    padding: 13px;
+    min-height: 110px;
+  }
+}
+
+/* ===== TÍTULO E SUBTÍTULO NA BARRA SUPERIOR ===== */
+
+.tp-topbar-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.tp-topbar-title h1 {
+  margin: 0;
+  color: #19243a;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -.4px;
+}
+
+.tp-topbar-title p {
+  margin: 4px 0 0;
+  color: #71809a;
+  font-size: 12px;
+}
+
+/* ===== RESPONSIVIDADE DO CABEÇALHO ===== */
+
+@media (max-width: 700px) {
+  .tp-topbar-title h1 {
+    font-size: 16px;
+  }
+
+  .tp-topbar-title p {
+    font-size: 10px;
+    max-width: 180px;
+  }
+}

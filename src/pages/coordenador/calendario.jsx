@@ -2,7 +2,8 @@ import { useState } from 'react'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
-import '../../styles/coordenador.css'
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/calendario.css";
 
 const eventosIniciais = [
   {
