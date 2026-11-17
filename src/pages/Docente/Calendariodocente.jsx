@@ -3,8 +3,8 @@ import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
 
-import '../../styles/dashboarddocente.css'
-import "../../styles/Calendariodocente.css";
+import '../../styles/Docente/dashboarddocente.css'
+import "../../styles/Docente/Calendariodocente.css";
 
 const nomesMeses = [
   'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',

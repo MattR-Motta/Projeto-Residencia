@@ -9,8 +9,8 @@ import {
   MoreVertical,
 } from 'lucide-react'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
-import '../../styles/dashboarddocente.css'
-import '../../styles/notificacoesDocente.css'
+import '../../styles/Docente/dashboarddocente.css'
+import '../../styles/Docente/notificacoesDocente.css'
 
 // Dados de exemplo (depois é só trocar por dados reais)
 const notificacoesIniciais = [

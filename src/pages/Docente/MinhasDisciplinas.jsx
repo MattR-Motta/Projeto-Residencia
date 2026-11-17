@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Eye, FileText, Info, Search } from 'lucide-react'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
-import '../../styles/dashboarddocente.css'
-import '../../styles/minhasDisciplinas.css'
+import '../../styles/Docente/dashboarddocente.css'
+import '../../styles/Docente/minhasDisciplinas.css'
 
 // Dados de exemplo (depois é só trocar por dados reais)
 const disciplinas = [

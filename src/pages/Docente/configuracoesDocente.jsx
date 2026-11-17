@@ -10,7 +10,7 @@ import {
   BookOpen,
   Save,
 } from "lucide-react";
-import "./configuracoesDocente.css";
+import "../../styles/Docente/configuracoesDocente.css";
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 
 

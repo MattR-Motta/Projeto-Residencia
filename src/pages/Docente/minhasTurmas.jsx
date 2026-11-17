@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './minhasTurmas.css'
+import '../../styles/Docente/minhasTurmas.css'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 
 
