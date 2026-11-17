@@ -2,6 +2,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/appRoutes'
 import ChatBot from './components/chatBot'
+import ChatBotDocente from './components/chatBotDocente'
 import './App.css'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <div className="app">
         <AppRoutes />
         <ChatBot />
+        <ChatBotDocente />
       </div>
     </BrowserRouter>
   )
