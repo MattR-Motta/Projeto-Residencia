@@ -13,11 +13,15 @@ function carregarVariaveisAmbiente() {
     const correspondencia = linha.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/)
     if (!correspondencia || correspondencia[1].startsWith('#')) return
     const valor = correspondencia[2].replace(/^['"]|['"]$/g, '')
-    if (!process.env[correspondencia[1]]) process.env[correspondencia[1]] = valor
+    process.env[correspondencia[1]] = valor.trim()
   })
 }
 
 carregarVariaveisAmbiente()
+
+// Modelos tentados em ordem. Se um estiver sobrecarregado (503) ou sem resposta, tenta o próximo.
+const MODELOS = ['gemini-3.8-flash', 'gemini-3.7-flash', 'gemini-3.5-flash-lite']
+const ESPERA_MAXIMA_MS = 15000
 
 function responder(res, status, dados) {
   res.writeHead(status, {
@@ -27,6 +31,43 @@ function responder(res, status, dados) {
     'Access-Control-Allow-Headers': 'Content-Type',
   })
   res.end(JSON.stringify(dados))
+}
+
+async function consultarGemini(contents) {
+  let ultimoErro = { status: 502, mensagem: 'Não foi possível consultar o Gemini.' }
+
+  for (const modelo of MODELOS) {
+    try {
+      const resposta = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelo}:generateContent`, {
+        method: 'POST',
+        signal: AbortSignal.timeout(ESPERA_MAXIMA_MS),
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
+        body: JSON.stringify({ contents, generationConfig: { temperature: 0.3, maxOutputTokens: 2048 } }),
+      })
+      const resultado = await resposta.json()
+
+      if (resposta.ok) {
+        const texto = resultado?.candidates?.[0]?.content?.parts?.map((parte) => parte.text || '').join('').trim()
+        if (texto) return { texto, modelo }
+        ultimoErro = { status: 502, mensagem: 'O Gemini não retornou uma resposta válida.' }
+        console.warn(`${modelo}: resposta vazia, tentando o próximo modelo...`)
+        continue
+      }
+
+      ultimoErro = { status: resposta.status, mensagem: resultado?.error?.message || 'Não foi possível consultar o Gemini.' }
+      console.warn(`${modelo}: erro ${resposta.status}.`)
+      // Problema de chave ou de pedido: trocar de modelo não resolve.
+      if ([400, 401, 403].includes(resposta.status)) break
+    } catch (erro) {
+      ultimoErro = { status: 504, mensagem: 'O Gemini demorou demais para responder.' }
+      console.warn(`${modelo}: sem resposta (${erro.name}), tentando o próximo modelo...`)
+    }
+  }
+
+  if ([429, 503, 504].includes(ultimoErro.status)) {
+    ultimoErro = { status: 503, mensagem: 'O assistente está com muita demanda agora. Tente novamente em instantes.' }
+  }
+  return { erro: ultimoErro }
 }
 
 const servidor = http.createServer(async (req, res) => {
@@ -68,19 +109,11 @@ const servidor = http.createServer(async (req, res) => {
         { role: 'user', parts: [{ text: `${promptSistema}\n\nContexto disponível:\n${contexto}\n\nMensagem: ${mensagem}` }] },
       ]
 
-      const respostaGemini = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
-        body: JSON.stringify({ contents, generationConfig: { temperature: 0.3, maxOutputTokens: 800 } }),
-      })
-      const resultado = await respostaGemini.json()
-      if (!respostaGemini.ok) {
-        const mensagemErro = resultado?.error?.message || 'Não foi possível consultar o Gemini.'
-        return responder(res, respostaGemini.status, { erro: mensagemErro })
-      }
-      const textoResposta = resultado?.candidates?.[0]?.content?.parts?.map((parte) => parte.text || '').join('').trim()
-      if (!textoResposta) return responder(res, 502, { erro: 'O Gemini não retornou uma resposta válida.' })
-      return responder(res, 200, { resposta: textoResposta })
+      const resultado = await consultarGemini(contents)
+      if (resultado.erro) return responder(res, resultado.erro.status, { erro: resultado.erro.mensagem })
+
+      console.log(`Resposta gerada com ${resultado.modelo}.`)
+      return responder(res, 200, { resposta: resultado.texto })
     } catch (erro) {
       console.error('Erro no chatbot:', erro)
       return responder(res, 500, { erro: 'Ocorreu um erro ao processar a mensagem.' })
