@@ -1,0 +1,409 @@
+
+.configuracoes-main {
+  min-width: 0;
+  background: #f4f6fb;
+}
+
+.configuracoes-topbar {
+  justify-content: flex-end;
+  gap: 22px;
+  background: #fff;
+  border-bottom: 1px solid #e2e7f0;
+}
+
+.config-ajuda {
+  display: flex;
+  align-items: center;
+  color: #71809a;
+}
+
+.configuracoes-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #315cff;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.config-content {
+  padding: 28px 30px 30px;
+}
+
+.config-page-title {
+  margin-bottom: 22px;
+}
+
+.config-page-title h1 {
+  margin: 0 0 6px;
+  color: #172238;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.config-page-title p {
+  margin: 0;
+  color: #71809a;
+  font-size: 14px;
+}
+
+.config-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 24px;
+  min-height: calc(100vh - 190px);
+}
+
+.config-menu,
+.config-painel {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgb(27 42 71 / 5%);
+}
+
+.config-menu {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  padding: 14px 12px;
+}
+
+.config-menu-titulo {
+  padding: 0 0 14px;
+  color: #71809a;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.config-menu nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.config-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #172238;
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.config-menu-item svg {
+  flex-shrink: 0;
+  color: #71809a;
+}
+
+.config-menu-item:hover {
+  background: #f5f7ff;
+}
+
+.config-menu-item.ativo {
+  background: #edf1ff;
+  color: #315cff;
+  font-weight: 600;
+}
+
+.config-menu-item.ativo svg {
+  color: #315cff;
+}
+
+.config-versao {
+  margin: 24px 12px 0;
+  padding-top: 14px;
+  border-top: 1px solid #e1e7f0;
+  color: #71809a;
+  font-size: 11px;
+}
+
+.config-painel {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-painel-cabecalho {
+  padding: 22px 28px 20px;
+  border-bottom: 1px solid #e1e7f0;
+}
+
+.config-painel-cabecalho h2 {
+  margin: 0 0 6px;
+  color: #172238;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.config-painel-cabecalho p {
+  margin: 0;
+  color: #71809a;
+  font-size: 13px;
+}
+
+.config-form-conteudo {
+  padding: 24px 28px;
+  flex: 1;
+}
+
+.config-foto {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e1e7f0;
+}
+
+.config-foto-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 78px;
+  height: 78px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #315cff;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.config-foto-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.config-foto-info > span {
+  color: #172238;
+  font-size: 14px;
+}
+
+.config-foto-info small,
+.config-campos small {
+  color: #71809a;
+  font-size: 11px;
+}
+
+.config-botao-foto {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid #dce3ef;
+  border-radius: 7px;
+  color: #26344d;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.config-botao-foto input {
+  display: none;
+}
+
+.config-campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+  padding-top: 22px;
+}
+
+.config-campos label,
+.config-campo-unico {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #26344d;
+  font-size: 12px;
+}
+
+.config-campos input,
+.config-campo-unico input {
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  box-sizing: border-box;
+  padding: 0 13px;
+  border: 1px solid #dce3ef;
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: #172238;
+  font: inherit;
+  font-size: 13px;
+}
+
+.config-campos input:focus,
+.config-campo-unico input:focus {
+  border-color: #315cff;
+  box-shadow: 0 0 0 3px rgb(49 92 255 / 9%);
+}
+
+.config-opcoes {
+  flex: 1;
+  padding: 26px 28px;
+}
+
+.config-opcoes h3 {
+  margin: 0 0 12px;
+  color: #172238;
+  font-size: 15px;
+}
+
+.config-opcoes p {
+  color: #71809a;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.config-aviso {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f4f6fb;
+  color: #596982;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.config-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 17px 0;
+  border-bottom: 1px solid #e7ebf2;
+  color: #26344d;
+  font-size: 13px;
+}
+
+.config-toggle input {
+  width: 17px;
+  height: 17px;
+  accent-color: #315cff;
+  cursor: pointer;
+}
+
+.config-temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.config-tema {
+  padding: 12px 18px;
+  border: 1px solid #dce3ef;
+  border-radius: 8px;
+  background: #fff;
+  color: #26344d;
+  cursor: pointer;
+}
+
+.config-tema.selecionado {
+  border-color: #315cff;
+  background: #edf1ff;
+  color: #315cff;
+}
+
+.config-campo-unico {
+  max-width: 520px;
+  margin-top: 24px;
+}
+
+.config-painel-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: auto;
+  padding: 15px 28px;
+  border-top: 1px solid #e1e7f0;
+  background: #fafbfe;
+}
+
+.config-atualizacao,
+.config-mensagem {
+  color: #71809a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.config-salvar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #315cff;
+  color: #fff;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.config-salvar:hover {
+  background: #244be0;
+}
+
+@media (max-width: 1000px) {
+  .config-layout {
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .config-content {
+    padding: 24px 18px;
+  }
+
+  .config-painel-cabecalho,
+  .config-form-conteudo,
+  .config-opcoes {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .config-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .config-menu nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .config-versao {
+    margin-top: 16px;
+  }
+
+  .config-campos {
+    grid-template-columns: 1fr;
+  }
+
+  .config-painel-rodape {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px 20px;
+  }
+
+  .config-salvar {
+    width: 100%;
+  }
+}

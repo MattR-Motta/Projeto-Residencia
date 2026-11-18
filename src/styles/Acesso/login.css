@@ -1,0 +1,433 @@
+:root {
+  /* Fundos da tela de login */
+  --login-cor-fundo-institucional: #0b142b;
+  --login-cor-fundo-formulario: #ffffff;
+  --login-cor-fundo-campo: #ffffff;
+  --login-cor-fundo-campo-hover: #f8fafc;
+  --login-cor-fundo-icone-institucional: #2453d4;
+
+  /* Textos da tela de login */
+  --login-cor-texto-institucional: #ffffff;
+  --login-cor-texto-institucional-secundario: #9aa7bf;
+  --login-cor-texto-principal: #182235;
+  --login-cor-texto-secundario: #7b8798;
+  --login-cor-texto-label: #303b4b;
+  --login-cor-texto-link: #214b96;
+  --login-cor-texto-placeholder: #8b95a3;
+
+  /* Botões, bordas e estados */
+  --login-cor-primaria: #2450d3;
+  --login-cor-primaria-hover: #193fae;
+  --login-cor-borda-campo: #e2e6eb;
+  --login-cor-borda-foco: #4770e6;
+  --login-cor-icone-campo: #84909e;
+  --login-cor-erro: #b42318;
+  --login-cor-fundo-erro: #fef3f2;
+  --login-cor-borda-erro: #fecdca;
+  --login-cor-info: #24558c;
+  --login-cor-fundo-info: #eff6ff;
+  --login-cor-borda-info: #bfdbfe;
+}
+
+.login-page,
+.login-page * {
+  box-sizing: border-box;
+}
+
+.login-page {
+  display: grid;
+  grid-template-columns: minmax(360px, 43%) minmax(0, 57%);
+  min-height: 100vh;
+  width: 100%;
+  background: var(--login-cor-fundo-formulario);
+  color: var(--login-cor-texto-principal);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.login-apresentacao {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: clamp(30px, 5.1vw, 78px) clamp(28px, 3.2vw, 56px) 42px;
+  color: var(--login-cor-texto-institucional);
+  background: var(--login-cor-fundo-institucional);
+}
+
+.login-governo-marca {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-governo-simbolo {
+  display: grid;
+  flex: 0 0 52px;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: #ffffff;
+  background: var(--login-cor-fundo-icone-institucional);
+  border-radius: 13px;
+  box-shadow: 0 5px 15px rgb(0 0 0 / 12%);
+}
+
+.login-governo-simbolo svg {
+  width: 34px;
+  height: 34px;
+}
+
+.login-governo-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.login-governo-texto strong {
+  color: var(--login-cor-texto-institucional);
+  font-size: 15px;
+  font-weight: 750;
+  letter-spacing: .15px;
+}
+
+.login-governo-texto span {
+  color: var(--login-cor-texto-institucional-secundario);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.login-apresentacao-mensagem {
+  width: 100%;
+  max-width: 590px;
+  margin: auto 0;
+  padding: 70px 0 82px;
+}
+
+.login-apresentacao-mensagem h1 {
+  max-width: 590px;
+  margin: 0 0 26px;
+  color: var(--login-cor-texto-institucional);
+  font-size: clamp(34px, 3.25vw, 52px);
+  font-weight: 750;
+  letter-spacing: -1.5px;
+  line-height: 1.22;
+}
+
+.login-apresentacao-mensagem p {
+  max-width: 570px;
+  margin: 0;
+  color: var(--login-cor-texto-institucional-secundario);
+  font-size: clamp(15px, 1.25vw, 18px);
+  line-height: 1.8;
+}
+
+.login-apresentacao-rodape {
+  margin-top: auto;
+  color: #74819a;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.login-acesso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 56px clamp(28px, 6vw, 100px);
+  background: var(--login-cor-fundo-formulario);
+}
+
+.login-formulario-container {
+  width: 100%;
+  max-width: 490px;
+  margin: auto;
+}
+
+.login-heading {
+  margin-bottom: 34px;
+}
+
+.login-heading h2 {
+  margin: 0 0 8px;
+  color: var(--login-cor-texto-principal);
+  font-size: clamp(27px, 2.35vw, 35px);
+  font-weight: 750;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.login-heading p {
+  margin: 0;
+  color: var(--login-cor-texto-secundario);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.login-field {
+  margin-bottom: 22px;
+}
+
+.login-field > label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--login-cor-texto-label);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.login-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-height: 52px;
+  padding: 0 14px;
+  background: var(--login-cor-fundo-campo);
+  border: 1px solid var(--login-cor-borda-campo);
+  border-radius: 9px;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.login-input-wrapper:focus-within {
+  border-color: var(--login-cor-borda-foco);
+  box-shadow: 0 0 0 3px rgb(71 112 230 / 11%);
+}
+
+.input-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: var(--login-cor-icone-campo);
+}
+
+.input-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.login-input-wrapper input {
+  width: 100%;
+  min-width: 0;
+  padding: 15px 0;
+  color: var(--login-cor-texto-principal);
+  background: transparent;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-input-wrapper input::placeholder {
+  color: var(--login-cor-texto-placeholder);
+  opacity: 1;
+}
+
+.toggle-password {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  color: var(--login-cor-icone-campo);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+}
+
+.toggle-password:hover {
+  background: var(--login-cor-fundo-campo-hover);
+}
+
+.login-icone-senha {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 7px 0 30px;
+}
+
+.remember-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--login-cor-texto-secundario);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.remember-option input {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: var(--login-cor-primaria);
+  cursor: pointer;
+}
+
+.forgot-password {
+  padding: 4px 0;
+  color: var(--login-cor-texto-link);
+  background: transparent;
+  border: 0;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.login-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 14px 18px;
+  color: #ffffff;
+  background: var(--login-cor-primaria);
+  border: 1px solid var(--login-cor-primaria);
+  border-radius: 9px;
+  font-size: 15px;
+  font-weight: 650;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.login-submit:hover {
+  background: var(--login-cor-primaria-hover);
+  border-color: var(--login-cor-primaria-hover);
+}
+
+.login-submit:active {
+  transform: translateY(1px);
+}
+
+.login-feedback {
+  margin: -10px 0 18px;
+  padding: 11px 12px;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.login-feedback.error {
+  color: var(--login-cor-erro);
+  background: var(--login-cor-fundo-erro);
+  border: 1px solid var(--login-cor-borda-erro);
+}
+
+.login-feedback.info {
+  color: var(--login-cor-info);
+  background: var(--login-cor-fundo-info);
+  border: 1px solid var(--login-cor-borda-info);
+}
+
+.login-page button:focus-visible,
+.login-page input:focus-visible {
+  outline: 3px solid rgb(71 112 230 / 35%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .login-page {
+    grid-template-columns: minmax(300px, 40%) minmax(0, 60%);
+  }
+
+  .login-apresentacao {
+    padding: 34px 28px;
+  }
+
+  .login-governo-marca {
+    align-items: flex-start;
+    gap: 11px;
+  }
+
+  .login-governo-simbolo {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+  }
+
+  .login-governo-texto strong {
+    font-size: 12px;
+  }
+
+  .login-governo-texto span {
+    font-size: 10px;
+  }
+
+  .login-apresentacao-mensagem h1 {
+    font-size: clamp(30px, 4vw, 40px);
+    letter-spacing: -1px;
+  }
+
+  .login-acesso {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 650px) {
+  .login-page {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-apresentacao {
+    min-height: auto;
+    padding: 25px 24px 28px;
+  }
+
+  .login-apresentacao-mensagem {
+    margin: 34px 0 0;
+    padding: 0;
+  }
+
+  .login-apresentacao-mensagem h1 {
+    max-width: 500px;
+    margin-bottom: 12px;
+    font-size: clamp(27px, 7vw, 36px);
+    line-height: 1.18;
+  }
+
+  .login-apresentacao-mensagem p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .login-apresentacao-rodape {
+    display: none;
+  }
+
+  .login-acesso {
+    flex: 1;
+    align-items: flex-start;
+    padding: 34px 24px 40px;
+  }
+
+  .login-heading {
+    margin-bottom: 27px;
+  }
+
+  .login-heading h2 {
+    font-size: 28px;
+  }
+
+  .login-heading p {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .login-input-wrapper,
+  .login-submit {
+    transition: none;
+  }
+}

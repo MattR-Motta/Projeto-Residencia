@@ -1,0 +1,556 @@
+/* ===== CALENDÁRIO ACADÊMICO ===== */
+
+.calendario-main {
+  min-width: 0;
+}
+
+.calendario-botao-principal {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  background: var(--edu-primary, #5146d8);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.calendario-botao-principal:hover {
+  opacity: 0.88;
+}
+
+.calendario-painel,
+.calendario-lista {
+  background: var(--edu-surface, #fff);
+  border: 1px solid var(--edu-border, #e7ebf2);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.calendario-controles,
+.calendario-lista-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.calendario-controles h2,
+.calendario-lista h2 {
+  margin: 0 0 6px;
+  color: var(--edu-text, #202b3c);
+  font-size: 20px;
+}
+
+.calendario-controles p,
+.calendario-lista-cabecalho p {
+  margin: 0;
+  color: var(--edu-muted, #7b8798);
+  font-size: 13px;
+}
+
+.calendario-navegacao {
+  display: flex;
+  gap: 8px;
+}
+
+.calendario-navegacao button {
+  min-width: 38px;
+  height: 38px;
+  border: 1px solid var(--edu-border, #e7ebf2);
+  border-radius: 9px;
+  padding: 0 12px;
+  background: var(--edu-surface, #fff);
+  color: var(--edu-text, #202b3c);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.calendario-navegacao button:hover {
+  background: var(--edu-primary-light, #eeecff);
+}
+
+.calendario-grade {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top: 1px solid var(--edu-border, #e7ebf2);
+  border-left: 1px solid var(--edu-border, #e7ebf2);
+}
+
+.calendario-dia-semana {
+  padding: 12px 4px;
+  text-align: center;
+  color: var(--edu-muted, #7b8798);
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--edu-bg, #f5f7fb);
+  border-right: 1px solid var(--edu-border, #e7ebf2);
+  border-bottom: 1px solid var(--edu-border, #e7ebf2);
+}
+
+.calendario-celula {
+  min-width: 0;
+  min-height: 115px;
+  padding: 8px;
+  border-right: 1px solid var(--edu-border, #e7ebf2);
+  border-bottom: 1px solid var(--edu-border, #e7ebf2);
+  background: var(--edu-surface, #fff);
+}
+
+.calendario-celula.vazia {
+  background: var(--edu-bg, #f5f7fb);
+  opacity: 0.6;
+}
+
+.calendario-celula.dia-hoje {
+  background: var(--edu-primary-light, #eeecff);
+}
+
+.calendario-numero-dia {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--edu-text, #202b3c);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.calendario-celula.dia-hoje .calendario-numero-dia>span {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--edu-primary, #5146d8);
+  color: white;
+}
+
+.calendario-adicionar-dia {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--edu-muted, #7b8798);
+  font-size: 19px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.calendario-celula:hover .calendario-adicionar-dia,
+.calendario-adicionar-dia:focus-visible {
+  opacity: 1;
+}
+
+.calendario-adicionar-dia:hover {
+  background: var(--edu-primary-light, #eeecff);
+  color: var(--edu-primary, #5146d8);
+}
+
+.calendario-eventos-dia {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendario-evento {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: none;
+  border-left: 3px solid;
+  border-radius: 4px;
+  padding: 5px 6px;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.4;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.tipo-acadêmico {
+  background: #e8eaff;
+  color: #4640a5;
+  border-color: #635bdb;
+}
+
+.tipo-reunião {
+  background: #dff5e8;
+  color: #187443;
+  border-color: #2b9a60;
+}
+
+.tipo-prazo {
+  background: #fff0d9;
+  color: #955c08;
+  border-color: #e7a331;
+}
+
+.tipo-feriado {
+  background: #ffe4e5;
+  color: #a52c35;
+  border-color: #d94c57;
+}
+
+.calendario-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.calendario-legenda>span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--edu-muted, #7b8798);
+  font-size: 12px;
+}
+
+.legenda-cor {
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.legenda-cor.tipo-acadêmico {
+  background: #635bdb;
+}
+
+.legenda-cor.tipo-reunião {
+  background: #2b9a60;
+}
+
+.legenda-cor.tipo-prazo {
+  background: #e7a331;
+}
+
+.legenda-cor.tipo-feriado {
+  background: #d94c57;
+}
+
+.calendario-lista-itens {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendario-lista-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--edu-border, #e7ebf2);
+}
+
+.calendario-lista-item:last-child {
+  border-bottom: none;
+}
+
+.calendario-data-evento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 58px;
+  border-radius: 10px;
+  background: var(--edu-primary-light, #eeecff);
+  color: var(--edu-primary, #5146d8);
+}
+
+.calendario-data-evento strong {
+  font-size: 20px;
+}
+
+.calendario-data-evento span {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.calendario-info-evento {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.calendario-info-evento strong {
+  color: var(--edu-text, #202b3c);
+  font-size: 14px;
+}
+
+.calendario-info-evento>span {
+  color: var(--edu-muted, #7b8798);
+  font-size: 12px;
+}
+
+.calendario-etiqueta {
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.calendario-acoes-evento {
+  display: flex;
+  gap: 8px;
+}
+
+.calendario-acoes-evento button {
+  border: none;
+  background: transparent;
+  color: var(--edu-primary, #5146d8);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calendario-acoes-evento button:last-child {
+  color: #c43d47;
+}
+
+.calendario-vazio {
+  padding: 32px 12px;
+  text-align: center;
+  color: var(--edu-muted, #7b8798);
+  font-size: 14px;
+}
+
+/* Modal de eventos */
+
+.calendario-modal-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow-y: auto;
+  background: rgb(15 23 42 / 55%);
+}
+
+.calendario-modal {
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  border-radius: 18px;
+  padding: 26px;
+  background: var(--edu-surface, #fff);
+  box-shadow: 0 20px 60px rgb(0 0 0 / 20%);
+}
+
+.calendario-modal-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.calendario-modal-cabecalho h2 {
+  margin: 0 0 6px;
+  color: var(--edu-text, #202b3c);
+  font-size: 21px;
+}
+
+.calendario-modal-cabecalho p {
+  margin: 0;
+  color: var(--edu-muted, #7b8798);
+  font-size: 13px;
+}
+
+.calendario-modal-cabecalho>button {
+  align-self: flex-start;
+  border: none;
+  background: transparent;
+  color: var(--edu-muted, #7b8798);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.calendario-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.calendario-modal form label {
+  margin-top: 8px;
+  color: var(--edu-text, #202b3c);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.calendario-modal form input,
+.calendario-modal form select,
+.calendario-modal form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--edu-border, #e7ebf2);
+  border-radius: 9px;
+  padding: 11px 12px;
+  background: var(--edu-surface, #fff);
+  color: var(--edu-text, #202b3c);
+  font: inherit;
+  font-size: 13px;
+}
+
+.calendario-modal form input:focus,
+.calendario-modal form select:focus,
+.calendario-modal form textarea:focus {
+  outline: 2px solid var(--edu-primary-light, #eeecff);
+  border-color: var(--edu-primary, #5146d8);
+}
+
+.calendario-modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.calendario-botao-secundario {
+  border: 1px solid var(--edu-border, #e7ebf2);
+  border-radius: 9px;
+  padding: 11px 16px;
+  background: var(--edu-surface, #fff);
+  color: var(--edu-text, #202b3c);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.calendario-mensagem-erro {
+  margin: 6px 0 0;
+  color: #c43d47;
+  font-size: 13px;
+}
+
+/* Responsividade */
+
+@media (max-width: 900px) {
+  .calendario-celula {
+    min-height: 95px;
+    padding: 5px;
+  }
+
+  .calendario-evento {
+    font-size: 10px;
+    padding: 4px;
+  }
+
+  .calendario-lista-item {
+    flex-wrap: wrap;
+  }
+
+  .calendario-info-evento {
+    flex-basis: calc(100% - 75px);
+  }
+
+  .calendario-etiqueta {
+    margin-left: 68px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .calendario-painel,
+  .calendario-lista {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .calendario-controles {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .calendario-celula {
+    min-height: 72px;
+    padding: 3px;
+  }
+
+  .calendario-dia-semana {
+    font-size: 10px;
+    padding: 9px 1px;
+  }
+
+  .calendario-numero-dia {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+
+  .calendario-numero-dia>span {
+    margin: auto;
+  }
+
+  .calendario-adicionar-dia {
+    display: none;
+  }
+
+  .calendario-evento {
+    max-height: 30px;
+    font-size: 9px;
+    line-height: 1.2;
+  }
+
+  .calendario-legenda {
+    gap: 10px;
+  }
+
+  .calendario-lista-item {
+    gap: 10px;
+  }
+
+  .calendario-etiqueta {
+    margin-left: 62px;
+  }
+
+
+  .calendario-modal {
+    padding: 20px;
+  }
+
+
+  /* Ações de editar e excluir eventos */
+  .calendario-acoes-evento {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .calendario-acoes-evento button {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .calendario-acoes-evento button img,
+  .calendario-acao-icone {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .calendario-acoes-evento button:hover {
+    background: var(--edu-primary-light, #eeecff);
+  }
+}
+

@@ -1,0 +1,344 @@
+/* Tela "Aulas e Reposições" do docente.
+   Usa também as classes base de dashboarddocente.css (docente-pagina, docente-card...). */
+
+/* Topo só com o usuário, alinhado à direita */
+.docente-topo.aul-topo {
+  justify-content: flex-end;
+}
+
+.aul-titulo h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.aul-titulo p {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Cards de resumo */
+.aul-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.aul-resumo-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.aul-resumo-valor {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.aul-resumo-valor.azul { color: #2563eb; }
+.aul-resumo-valor.verde { color: #15803d; }
+.aul-resumo-valor.marrom { color: #a16207; }
+
+/* Blocos */
+.aul-bloco {
+  padding: 18px 20px;
+}
+
+.aul-bloco-titulo {
+  font-size: 15px;
+  color: #1f2937;
+}
+
+.aul-bloco-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+/* Lista de aulas */
+.aul-lista {
+  margin-top: 12px;
+}
+
+.aul-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-top: 1px solid #eef0f3;
+}
+
+.aul-item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.aul-item-info h3,
+.aul-reposicao h3,
+.aul-proxima h3 {
+  margin: 0;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.aul-horario {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.aul-sala {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* Etiquetas de status */
+.aul-tag {
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+.aul-tag.realizada,
+.aul-tag.confirmada { background: #dcfce7; color: #15803d; }
+.aul-tag.proxima { background: #dbeafe; color: #1d4ed8; }
+.aul-tag.pendente { background: #fef3c7; color: #b45309; }
+
+/* Botões */
+.aul-botao {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aul-botao:hover {
+  background: #bfdbfe;
+}
+
+.aul-botao-principal {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aul-botao-principal:hover {
+  background: #1d4ed8;
+}
+
+/* Reposições */
+.aul-reposicoes {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  margin-top: 16px;
+  align-items: start;
+}
+
+.aul-reposicao,
+.aul-proxima {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid #eef0f3;
+}
+
+.aul-campo span {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.aul-campo p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #1f2937;
+}
+
+.aul-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+}
+
+.aul-aviso svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Telas menores */
+@media (max-width: 1000px) {
+  .aul-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aul-reposicoes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Texto quando a lista está vazia */
+.aul-vazio {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Janela (modal) */
+.aul-modal-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.aul-modal {
+  width: 100%;
+  max-width: 460px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.aul-modal-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.aul-modal-topo h2 {
+  margin: 0;
+  font-size: 17px;
+  color: #1f2937;
+}
+
+.aul-modal-fechar {
+  display: flex;
+  padding: 4px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.aul-modal-fechar:hover {
+  background: #f3f4f6;
+}
+
+.aul-modal-subtitulo {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.aul-modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+/* Detalhes da aula */
+.aul-detalhes {
+  margin: 16px 0 0;
+}
+
+.aul-detalhes div {
+  padding: 10px 0;
+  border-top: 1px solid #eef0f3;
+}
+
+.aul-detalhes dt {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.aul-detalhes dd {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #1f2937;
+}
+
+/* Formulário de reposição */
+.aul-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aul-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.aul-form input,
+.aul-form select,
+.aul-form textarea {
+  padding: 9px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.aul-form textarea {
+  resize: vertical;
+}
+
+.aul-form input:focus,
+.aul-form select:focus,
+.aul-form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.aul-form-linha {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: 12px;
+}
+
+.aul-erro {
+  margin: 0;
+  font-size: 12px;
+  color: #dc2626;
+}

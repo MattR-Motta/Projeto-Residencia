@@ -1,0 +1,224 @@
+/* Tela "Minhas disciplinas" do docente.
+   Usa também as classes base de dashboarddocente.css (docente-pagina, docente-card...). */
+
+.disc-titulo h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.disc-titulo p {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Topo só com o usuário, alinhado à direita */
+.docente-topo.disc-topo {
+  justify-content: flex-end;
+}
+
+/* Filtros */
+.disc-filtros {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.disc-campo-busca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 190px;
+  padding: 0 12px;
+  height: 34px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6b7280;
+}
+
+.disc-campo-busca input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: #1f2937;
+}
+
+.disc-select {
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 12px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+/* Corpo: lista + ementa */
+.disc-corpo {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 16px;
+  align-items: start;
+}
+
+.disc-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.disc-vazio {
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Card de cada disciplina */
+.disc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.disc-item--ativo {
+  border-color: #93c5fd;
+}
+
+.disc-turma-selo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.disc-turma-selo.azul { background: #dbeafe; color: #2563eb; }
+.disc-turma-selo.roxo { background: #ede9fe; color: #7c3aed; }
+.disc-turma-selo.verde { background: #dcfce7; color: #16a34a; }
+.disc-turma-selo.laranja { background: #ffedd5; color: #ea580c; }
+
+.disc-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.disc-item-info h2 {
+  font-size: 14px;
+}
+
+.disc-tag-verde {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 10px;
+}
+
+.disc-codigo,
+.disc-detalhes {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.disc-botao-ementa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 72px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.disc-botao-ementa:hover {
+  background: #bfdbfe;
+}
+
+/* Painel da ementa */
+.disc-ementa {
+  padding: 22px 20px;
+}
+
+.disc-ementa-titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  color: #1f2937;
+}
+
+.disc-ementa-titulo svg {
+  color: #2563eb;
+}
+
+.disc-ementa-sub {
+  margin: 6px 0 16px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.disc-aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+}
+
+.disc-aviso svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.disc-ementa-bloco {
+  padding: 14px 0;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.disc-ementa-bloco:last-child {
+  border-bottom: none;
+}
+
+.disc-ementa-bloco h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.disc-ementa-bloco p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #6b7280;
+}
+
+/* Tela pequena */
+@media (max-width: 1000px) {
+  .disc-corpo {
+    grid-template-columns: 1fr;
+  }
+}

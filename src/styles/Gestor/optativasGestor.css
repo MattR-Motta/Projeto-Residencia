@@ -1,0 +1,241 @@
+
+.optativas-resumo {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.optativas-resumo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  background: var(--gestor-cor-fundo-cartao);
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: var(--gestor-raio-cartao);
+  box-shadow: var(--gestor-sombra-cartao);
+}
+
+.optativas-resumo span {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 13px;
+}
+
+.optativas-resumo strong {
+  color: var(--gestor-cor-texto-principal);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.optativas-busca {
+  flex: 1.5;
+  min-width: 220px;
+}
+
+.optativas-input-busca {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 12px;
+  background: var(--gestor-cor-fundo-input);
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 8px;
+  color: var(--gestor-cor-texto-secundario);
+}
+
+.optativas-input-busca:focus-within {
+  border-color: var(--gestor-cor-primaria);
+}
+
+.optativas-input-busca input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--gestor-cor-texto-principal);
+  font: inherit;
+}
+
+.optativas-input-busca input::placeholder {
+  color: var(--gestor-cor-texto-secundario);
+}
+
+.optativas-nome {
+  min-width: 190px;
+  color: var(--gestor-cor-texto-principal);
+  font-weight: 600;
+}
+
+.optativas-escolas {
+  min-width: 150px;
+  max-width: 240px;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.optativas-status-ativa {
+  color: var(--gestor-cor-sucesso);
+  background: var(--gestor-cor-sucesso-fundo);
+  cursor: pointer;
+}
+
+.optativas-status-inativa {
+  color: var(--gestor-cor-perigo);
+  background: var(--gestor-cor-perigo-fundo);
+  cursor: pointer;
+}
+
+.optativas-acao-excluir {
+  color: var(--gestor-cor-perigo);
+}
+
+.optativas-paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--gestor-cor-borda);
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 13px;
+}
+
+.optativas-paginacao > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.optativas-paginacao button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 7px;
+  background: var(--gestor-cor-fundo-cartao);
+  color: var(--gestor-cor-texto-principal);
+  cursor: pointer;
+}
+
+.optativas-paginacao button:hover:not(:disabled) {
+  border-color: var(--gestor-cor-primaria);
+  color: var(--gestor-cor-primaria);
+}
+
+.optativas-paginacao button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.optativas-modal {
+  width: min(620px, calc(100% - 32px));
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.optativas-modal-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.optativas-modal-cabecalho h2 {
+  margin: 0 0 6px;
+  color: var(--gestor-cor-texto-principal);
+  font-size: 20px;
+}
+
+.optativas-modal-cabecalho p {
+  margin: 0;
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 13px;
+}
+
+.optativas-fechar-modal {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--gestor-cor-texto-secundario);
+  cursor: pointer;
+}
+
+.optativas-fechar-modal:hover {
+  background: var(--gestor-cor-fundo-destaque);
+  color: var(--gestor-cor-texto-principal);
+}
+
+.optativas-campo-completo {
+  grid-column: 1 / -1;
+}
+
+.optativas-campo-completo small {
+  color: var(--gestor-cor-texto-secundario);
+  font-size: 11px;
+}
+
+.optativas-erro {
+  margin: 14px 0 0;
+  color: var(--gestor-cor-perigo);
+  font-size: 13px;
+}
+
+.optativas-botao-cancelar {
+  padding: 10px 16px;
+  border: 1px solid var(--gestor-cor-borda);
+  border-radius: 8px;
+  background: var(--gestor-cor-fundo-cartao);
+  color: var(--gestor-cor-texto-principal);
+  font: inherit;
+  cursor: pointer;
+}
+
+.optativas-botao-cancelar:hover {
+  background: var(--gestor-cor-fundo-destaque);
+}
+
+@media (max-width: 900px) {
+  .optativas-busca {
+    flex-basis: 100%;
+  }
+
+  .optativas-escolas {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 600px) {
+  .optativas-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .optativas-paginacao {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .optativas-paginacao > div {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .optativas-modal {
+    padding: 20px;
+  }
+
+  .optativas-campo-completo {
+    grid-column: auto;
+  }
+}

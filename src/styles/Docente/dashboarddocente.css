@@ -1,0 +1,414 @@
+.docente-pagina {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #1f2937;
+}
+
+.docente-conteudo {
+  flex: 1;
+  padding: 16px 28px 28px;
+}
+
+/* Topo */
+.docente-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.docente-busca {
+  width: 320px;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #f1f5f9;
+  font-size: 13px;
+}
+
+.docente-usuario {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.docente-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e2e8f0;
+}
+
+/* Saudação */
+.docente-saudacao {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.docente-saudacao h1 {
+  margin: 0 0 4px;
+  font-size: 26px;
+}
+
+.docente-saudacao p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.docente-data {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Cards */
+.docente-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.docente-card h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.docente-card-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.docente-card-titulo {
+  margin: 0 0 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Resumo */
+.docente-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.docente-numero {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.docente-numero.azul { color: #2563eb; }
+.docente-numero.laranja { color: #f59e0b; }
+.docente-numero.verde { color: #16a34a; }
+
+/* Parte de baixo */
+.docente-baixo {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.docente-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.docente-link {
+  border: none;
+  background: none;
+  color: #2563eb;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* Lista de aulas */
+.docente-aula {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px 0;
+  border-top: 1px solid #eef0f3;
+}
+
+.docente-horario {
+  width: 90px;
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.docente-aula-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.docente-aula-info span {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.docente-botao {
+  border: none;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.docente-botao.azul-claro {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.docente-botao.verde-claro {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* Pendências e notificações */
+.docente-item {
+  margin: 0;
+  padding: 7px 0;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+/* Ajuda */
+.docente-ajuda {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: #eff6ff;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.docente-ajuda-botao {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.docente-sino {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.resumo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.resumo-card-titulo {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.resumo-card-valor {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.resumo-card--azul .resumo-card-valor {
+  color: #2563eb;
+}
+
+.resumo-card--laranja .resumo-card-valor {
+  color: #f59e0b;
+}
+
+.resumo-card--verde .resumo-card-valor {
+  color: #16a34a;
+}
+
+.docente-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.docente-grade > * {
+  min-width: 0;
+}
+
+.docente-painel {
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.docente-painel-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.docente-painel-cabecalho h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.docente-tabela-wrapper {
+  overflow-x: auto;
+}
+
+.docente-tabela {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.docente-tabela th {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.docente-tabela td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #eef0f3;
+  color: #374151;
+}
+
+.docente-tabela tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.docente-botao-tabela {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.docente-botao-tabela:hover {
+  background: #bfdbfe;
+}
+
+.docente-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docente-lista-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 0;
+  border-top: 1px solid #eef0f3;
+  color: #4b5563;
+  font-size: 12px;
+}
+
+.docente-lista-item:first-child {
+  border-top: none;
+}
+
+.docente-lista-marcador,
+.docente-notificacao-ponto {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: 4px;
+  border-radius: 50%;
+}
+
+.docente-lista-marcador {
+  background: #f59e0b;
+}
+
+.docente-notificacao-ponto {
+  background: #2563eb;
+}
+
+/* Celular / tela pequena */
+@media (max-width: 900px) {
+  .docente-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .docente-baixo,
+  .docente-grade {
+    grid-template-columns: 1fr;
+  }
+
+  .docente-busca {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .docente-conteudo {
+    padding: 16px 18px 24px;
+  }
+
+  .docente-topo {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .docente-busca {
+    width: 100%;
+  }
+
+  .docente-usuario {
+    margin-left: auto;
+  }
+
+  .docente-saudacao {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .docente-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .docente-painel {
+    padding: 14px;
+  }
+}

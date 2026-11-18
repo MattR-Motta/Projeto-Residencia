@@ -1,0 +1,50 @@
+/* Ícones das ações de Disciplinas e Ementas */
+.tp-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #2563eb;
+}
+
+.tp-actions button svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tp-actions button:hover {
+  color: #1d4ed8;
+}
+
+/* Ícone de notificações no cabeçalho */
+.tp-bell {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+/* Ícones de calendário dos indicadores */
+.tp-stat-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: inherit;
+  border-radius: 5px ;
+}
+
+.tp-stat-icon.stat-green {
+  color: #16a34a;
+}
+
+.tp-stat-icon.stat-yellow {
+  color: #ca8a04;
+}
+
+.tp-stat-icon.stat-purple {
+  color: #9333ea;
+}
+
