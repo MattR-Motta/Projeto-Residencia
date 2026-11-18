@@ -1,7 +1,6 @@
-
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/appRoutes'
-import ChatBot from './components/chatBot'
+import EduGestIA from './components/EduGestIA'
 import './App.css'
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <AppRoutes />
-        <ChatBot />
+        <EduGestIA />
       </div>
     </BrowserRouter>
   )

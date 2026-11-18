@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+
+import { useMemo, useState } from 'react';
 import {
   Bell,
   CheckCheck,
@@ -11,10 +12,13 @@ import {
   Trash2,
   Filter,
   Clock,
-} from 'lucide-react'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import '../../styles/telasCoordenador.css'
-import '../../styles/notificacoes.css'
+} from 'lucide-react';
+
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/disciplinasEmentas.css";
+import "../../styles/Coordenador/notificacoes.css";
 
 const notificacoesIniciais = [
   {
@@ -72,26 +76,26 @@ const notificacoesIniciais = [
     lida: true,
     Icone: Info,
   },
-]
+];
 
 function Notificacoes() {
-  const [notificacoes, setNotificacoes] = useState(notificacoesIniciais)
-  const [pesquisa, setPesquisa] = useState('')
-  const [categoria, setCategoria] = useState('Todas')
-  const [leitura, setLeitura] = useState('Todas')
+  const [notificacoes, setNotificacoes] = useState(notificacoesIniciais);
+  const [pesquisa, setPesquisa] = useState('');
+  const [categoria, setCategoria] = useState('Todas');
+  const [leitura, setLeitura] = useState('Todas');
 
   // Carrega o perfil salvo nas Configurações
   const [perfil] = useState(() => {
     try {
-      const dados = localStorage.getItem('edugest:coordenador:perfil')
+      const dados = localStorage.getItem('edugest:coordenador:perfil');
 
       return dados
         ? { nome: 'Marina Costa', ...JSON.parse(dados) }
-        : { nome: 'Marina Costa' }
+        : { nome: 'Marina Costa' };
     } catch {
-      return { nome: 'Marina Costa' }
+      return { nome: 'Marina Costa' };
     }
-  })
+  });
 
   const iniciais = (perfil.nome || 'Coordenadora')
     .trim()
@@ -99,17 +103,17 @@ function Notificacoes() {
     .slice(0, 2)
     .map(parte => parte[0])
     .join('')
-    .toUpperCase()
+    .toUpperCase();
 
-  const naoLidas = notificacoes.filter(n => !n.lida).length
+  const naoLidas = notificacoes.filter(n => !n.lida).length;
 
   const prioritarias = notificacoes.filter(
     n => n.prioridade === 'Alta' && !n.lida,
-  ).length
+  ).length;
 
   const filtradas = useMemo(() => {
     return notificacoes.filter(n => {
-      const texto = `${n.titulo} ${n.mensagem} ${n.categoria}`.toLowerCase()
+      const texto = `${n.titulo} ${n.mensagem} ${n.categoria}`.toLowerCase();
 
       return (
         texto.includes(pesquisa.toLowerCase()) &&
@@ -117,26 +121,26 @@ function Notificacoes() {
         (leitura === 'Todas' ||
           (leitura === 'Não lidas' && !n.lida) ||
           (leitura === 'Lidas' && n.lida))
-      )
-    })
-  }, [notificacoes, pesquisa, categoria, leitura])
+      );
+    });
+  }, [notificacoes, pesquisa, categoria, leitura]);
 
   function marcarComoLida(id) {
     setNotificacoes(anteriores =>
       anteriores.map(n => (n.id === id ? { ...n, lida: true } : n)),
-    )
+    );
   }
 
   function marcarTodasComoLidas() {
     setNotificacoes(anteriores =>
       anteriores.map(n => ({ ...n, lida: true })),
-    )
+    );
   }
 
   function excluirNotificacao(id) {
     setNotificacoes(anteriores =>
       anteriores.filter(n => n.id !== id),
-    )
+    );
   }
 
   return (
@@ -145,8 +149,19 @@ function Notificacoes() {
 
       <main className="dashboard-main tp-main">
         <header className="tp-topbar">
+          <div className="tp-topbar-title">
+            <h1>Notificações</h1>
+            <p>
+              Acompanhe avisos e atualizações importantes do EduGest.
+            </p>
+          </div>
+
           <div className="tp-user">
-            <Bell className="tp-bell" size={20} />
+            <Bell
+              className="tp-bell"
+              size={20}
+              strokeWidth={1.8}
+            />
 
             <span className="tp-avatar configuracoes-avatar">
               {iniciais}
@@ -162,25 +177,6 @@ function Notificacoes() {
         </header>
 
         <div className="tp-content notif-content">
-          <div className="tp-page-title">
-            <div>
-              <h1>Notificações</h1>
-              <p>
-                Acompanhe avisos e atualizações importantes do EduGest.
-              </p>
-            </div>
-
-            <button
-              type="button"
-              className="tp-primary"
-              onClick={marcarTodasComoLidas}
-              disabled={naoLidas === 0}
-            >
-              <CheckCheck size={17} />
-              Marcar todas como lidas
-            </button>
-          </div>
-
           <section className="notif-stats">
             <article>
               <span>Total de notificações</span>
@@ -200,6 +196,18 @@ function Notificacoes() {
               <AlertTriangle size={21} />
             </article>
           </section>
+
+          <div className="notif-page-actions">
+            <button
+              type="button"
+              className="tp-primary"
+              onClick={marcarTodasComoLidas}
+              disabled={naoLidas === 0}
+            >
+              <CheckCheck size={17} />
+              Marcar todas como lidas
+            </button>
+          </div>
 
           <section className="notif-panel">
             <header className="notif-panel-header">
@@ -245,7 +253,7 @@ function Notificacoes() {
 
             <div className="notif-list">
               {filtradas.map(n => {
-                const Icone = n.Icone
+                const Icone = n.Icone;
 
                 return (
                   <article
@@ -261,6 +269,7 @@ function Notificacoes() {
                     <div className="notif-item-body">
                       <div className="notif-item-heading">
                         <h3>{n.titulo}</h3>
+
                         {!n.lida && (
                           <span className="notif-unread-dot" />
                         )}
@@ -306,7 +315,7 @@ function Notificacoes() {
                       </button>
                     </div>
                   </article>
-                )
+                );
               })}
 
               {filtradas.length === 0 && (
@@ -328,7 +337,7 @@ function Notificacoes() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Notificacoes
+export default Notificacoes;

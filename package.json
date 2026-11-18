@@ -1,4 +1,3 @@
-
 {
   "name": "boletim-react",
   "private": true,
@@ -8,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server.mjs",
+    "dev:ia": "node dev.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.67.0",

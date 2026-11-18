@@ -1,12 +1,14 @@
-import { useNavigate } from 'react-router-dom'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import ErrorState from '../../components/ErrorState'
-import useErroPagina from '../../hooks/useErroPagina'
-import '../../styles/coordenador.css'
-import iconeTurmas from '../../assets/turmas.png'
-import iconeDocente from '../../assets/docente.png'
-import iconeAulas from '../../assets/aulas.png'
-import iconeOcorrencia from '../../assets/ocorrencia.png'
+import { useNavigate } from 'react-router-dom';
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/dashboard.css";
+import iconeTurmas from '../../assets/turmas.png';
+import iconeDocente from '../../assets/docente.png';
+import iconeAulas from '../../assets/aulas.png';
+import iconeOcorrencia from '../../assets/ocorrencia.png';
+import { Bell } from 'lucide-react';
 
 const indicadores = [
   {
@@ -113,11 +115,18 @@ function Dashboard() {
             <h1>Painel do Coordenador</h1>
           </div>
           <div className="header-usuario">
-            <div className="perfil-avatar">MC</div>
-            <div>
+            <Bell className="perfil-sino" size={20} strokeWidth={1.8} />
+
+            <span className="perfil-avatar">
+              MC
+            </span>
+
+            <div className="perfil-identificacao">
               <strong>Marina Costa</strong>
-              <span>Coordenadora</span>
+              <small>Coordenadora</small>
             </div>
+
+            <span className="perfil-seta">⌄</span>
           </div>
         </header>
 

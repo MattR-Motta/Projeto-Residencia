@@ -1,5 +1,5 @@
-
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import {
   ChevronLeft, ChevronRight, CalendarDays, Clock,
   MapPin, BookOpen, Users, ClipboardCheck
@@ -40,10 +40,16 @@ const icones = {
 }
 
 function CalendarioResponsavel() {
-  const [mes, setMes] = useState(9)
-  const [ano, setAno] = useState(2026)
+  const [searchParams] = useSearchParams()
+  const dataSolicitada = searchParams.get('data')
+  const partesData = dataSolicitada?.split('-').map(Number)
+  const dataInicial = partesData?.length === 3
+    ? dataSolicitada
+    : '2026-10-07'
+  const [mes, setMes] = useState(Number(dataInicial.slice(5, 7)) - 1)
+  const [ano, setAno] = useState(Number(dataInicial.slice(0, 4)))
   const [filtro, setFiltro] = useState('todos')
-  const [dataSelecionada, setDataSelecionada] = useState('2026-10-07')
+  const [dataSelecionada, setDataSelecionada] = useState(dataInicial)
   const [aluno, setAluno] = useState('todos')
 
   const primeiroDia = new Date(ano, mes, 1).getDay()
