@@ -68,7 +68,7 @@ function DashboardGestor() {
   }
 
   return (
-    <div className="gestor-layout">
+    <div className="gestor-layout tema-suportado">
       <BarraLateral />
       <main className="gestor-main">
         <header className="gestor-header">

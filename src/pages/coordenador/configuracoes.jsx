@@ -14,6 +14,7 @@ import {
 import BarraLateral from '../../components/barraLateral'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
+import useTema from '../../hooks/useTema'
 import '../../styles/telasCoordenador.css'
 import '../../styles/configuracoes.css'
 
@@ -63,7 +64,7 @@ function Configuracoes() {
   }
  })
   const [mensagem, setMensagem] = useState('')
-  const [tema, setTema] = useState('claro')
+  const { tema, definirTema } = useTema()
   const [notificacoes, setNotificacoes] = useState({
     email: true,
     sistema: true,
@@ -127,7 +128,7 @@ function Configuracoes() {
   )
 
   return (
-    <div className="coordenador-layout telas-prototipo">
+    <div className="coordenador-layout telas-prototipo tema-suportado">
       <BarraLateral />
 
       <main className="dashboard-main tp-main configuracoes-main">
@@ -346,11 +347,11 @@ function Configuracoes() {
                           tema === opcao ? 'selecionado' : ''
                         }`}
                         onClick={() => {
-                          setTema(opcao)
+                          definirTema(opcao)
                           setMensagem(
                             opcao === 'claro'
-                              ? 'Tema claro selecionado.'
-                              : 'Tema escuro selecionado. A aplicação do tema ainda precisa ser integrada.'
+                              ? 'Tema claro aplicado.'
+                              : 'Tema escuro aplicado.'
                           )
                         }}
                       >

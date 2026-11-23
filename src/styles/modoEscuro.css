@@ -1,0 +1,525 @@
+html[data-tema="escuro"] .tema-suportado {
+  --cor-fundo: #0f172a;
+  --cor-painel: #1e293b;
+  --cor-painel-secundario: #172033;
+  --cor-texto: #e2e8f0;
+  --cor-texto-secundario: #94a3b8;
+  --cor-borda: #334155;
+  --cor-primaria: #60a5fa;
+  --cor-primaria-fundo: #1e3a8a66;
+  --cor-sucesso: #4ade80;
+  --cor-sucesso-fundo: #14532d80;
+  --cor-alerta: #fbbf24;
+  --cor-alerta-fundo: #78350f80;
+  --cor-perigo: #f87171;
+  --cor-perigo-fundo: #7f1d1d80;
+  color-scheme: dark;
+}
+
+html[data-tema="escuro"] .tema-suportado ::placeholder {
+  color: #64748b;
+}
+
+html[data-tema="escuro"] .tema-suportado .error-state--light {
+  --es-bg: #0f172a;
+  --es-text: #f1f5f9;
+  --es-text-secondary: #cbd5e1;
+  --es-icon-bg: #1e3a8a33;
+  --es-icon-color: #60a5fa;
+  --es-button-bg: #2563eb;
+  --es-button-bg-hover: #1d4ed8;
+}
+
+html[data-tema="escuro"] .login-page.tema-suportado {
+  --login-cor-fundo-formulario: #0f172a;
+  --login-cor-fundo-campo: #1e293b;
+  --login-cor-fundo-campo-hover: #273449;
+  --login-cor-texto-principal: #e2e8f0;
+  --login-cor-texto-secundario: #94a3b8;
+  --login-cor-texto-label: #cbd5e1;
+  --login-cor-texto-link: #93c5fd;
+  --login-cor-texto-placeholder: #64748b;
+  --login-cor-primaria: #2563eb;
+  --login-cor-primaria-hover: #1d4ed8;
+  --login-cor-borda-campo: #334155;
+  --login-cor-borda-foco: #60a5fa;
+  --login-cor-icone-campo: #94a3b8;
+  --login-cor-erro: #fca5a5;
+  --login-cor-fundo-erro: #7f1d1d66;
+  --login-cor-borda-erro: #7f1d1d;
+  --login-cor-info: #bfdbfe;
+  --login-cor-fundo-info: #1e3a8a66;
+  --login-cor-borda-info: #1e40af;
+}
+
+html[data-tema="escuro"] .login-page.tema-suportado .login-apresentacao-rodape {
+  color: #64748b;
+}
+
+html[data-tema="escuro"] .coordenador-layout.tema-suportado:not(.telas-prototipo) {
+  --edu-bg: #0f172a;
+  --edu-surface: #1e293b;
+  --edu-text: #e2e8f0;
+  --edu-muted: #94a3b8;
+  --edu-border: #334155;
+  --edu-primary: #60a5fa;
+  --edu-primary-light: #1e3a8a66;
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .aviso-ponto {
+  background: var(--cor-alerta-fundo);
+  color: var(--cor-alerta);
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .status-ativa {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .status-inativa {
+  background: #334155;
+  color: #94a3b8;
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .turmas-mensagem-erro,
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .calendario-mensagem-erro {
+  color: var(--cor-perigo);
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .tipo-acadêmico {
+  background: #1e3a8a66;
+  color: #93c5fd;
+  border-color: #3b82f6;
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .tipo-reunião {
+  background: #14532d80;
+  color: #86efac;
+  border-color: #22c55e;
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .tipo-prazo {
+  background: #78350f80;
+  color: #fcd34d;
+  border-color: #f59e0b;
+}
+
+html[data-tema="escuro"] .tema-suportado:not(.telas-prototipo) .tipo-feriado {
+  background: #7f1d1d80;
+  color: #fca5a5;
+  border-color: #ef4444;
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado {
+  background: var(--cor-fundo);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-main {
+  background: var(--cor-fundo);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-topbar {
+  background: var(--cor-painel);
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-global-search {
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-user {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-user small,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-bell {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-avatar {
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-page-title h1 {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-page-title p,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-section-table > header > span {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-secondary {
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-search,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-filters select,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal input,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal select,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal textarea,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-observacao textarea {
+  background: var(--cor-painel-secundario);
+  border-color: var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-search input {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-table-wrap,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-section-table,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-card,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-action-menu,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-action-menu button {
+  background: var(--cor-painel);
+  border-color: var(--cor-borda);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-table th {
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto-secundario);
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-table td {
+  color: var(--cor-texto);
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-table td strong {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-table td small,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article span,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-info > span,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-ementa-text,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-detail-list p,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-empty {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-pill.green {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-pill.yellow {
+  background: var(--cor-alerta-fundo);
+  color: var(--cor-alerta);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-pill.red {
+  background: var(--cor-perigo-fundo);
+  color: var(--cor-perigo);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-actions button,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-repo-actions button,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-link-button,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-back,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacoes-actions button {
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-actions button:hover {
+  color: #93c5fd;
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal header h2,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-card > header h2,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-detail-list strong,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-info > strong,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal label,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-observacao {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal header p,
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .solicitacao-decision-message {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-modal header > button {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article i {
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article .stat-green {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article .stat-yellow {
+  background: var(--cor-alerta-fundo);
+  color: var(--cor-alerta);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-stats article .stat-purple {
+  background: #4c1d9580;
+  color: #c4b5fd;
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-section-table > header {
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-action-menu button:hover {
+  background: var(--cor-painel-secundario);
+}
+
+html[data-tema="escuro"] .telas-prototipo.tema-suportado .tp-detail-list p {
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .tema-suportado .configuracoes-main {
+  background: var(--cor-fundo);
+}
+
+html[data-tema="escuro"] .tema-suportado .configuracoes-topbar {
+  background: var(--cor-painel);
+  border-bottom-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-ajuda {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .tema-suportado .configuracoes-avatar,
+html[data-tema="escuro"] .tema-suportado .config-foto-avatar {
+  background: #1d4ed8;
+}
+
+html[data-tema="escuro"] .tema-suportado .config-page-title h1,
+html[data-tema="escuro"] .tema-suportado .config-painel-cabecalho h2,
+html[data-tema="escuro"] .tema-suportado .config-opcoes h3,
+html[data-tema="escuro"] .tema-suportado .config-foto-info > span,
+html[data-tema="escuro"] .tema-suportado .config-campos label,
+html[data-tema="escuro"] .tema-suportado .config-campo-unico,
+html[data-tema="escuro"] .tema-suportado .config-toggle {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-page-title p,
+html[data-tema="escuro"] .tema-suportado .config-painel-cabecalho p,
+html[data-tema="escuro"] .tema-suportado .config-opcoes p,
+html[data-tema="escuro"] .tema-suportado .config-menu-titulo,
+html[data-tema="escuro"] .tema-suportado .config-versao,
+html[data-tema="escuro"] .tema-suportado .config-foto-info small,
+html[data-tema="escuro"] .tema-suportado .config-campos small,
+html[data-tema="escuro"] .tema-suportado .config-atualizacao,
+html[data-tema="escuro"] .tema-suportado .config-mensagem {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-menu,
+html[data-tema="escuro"] .tema-suportado .config-painel {
+  background: var(--cor-painel);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-menu-item {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-menu-item:hover {
+  background: var(--cor-painel-secundario);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-menu-item.ativo {
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-menu-item.ativo svg {
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-versao,
+html[data-tema="escuro"] .tema-suportado .config-painel-cabecalho,
+html[data-tema="escuro"] .tema-suportado .config-foto,
+html[data-tema="escuro"] .tema-suportado .config-toggle,
+html[data-tema="escuro"] .tema-suportado .config-painel-rodape {
+  border-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-botao-foto,
+html[data-tema="escuro"] .tema-suportado .config-tema {
+  border-color: var(--cor-borda);
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-campos input,
+html[data-tema="escuro"] .tema-suportado .config-campo-unico input {
+  border-color: var(--cor-borda);
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-aviso {
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-tema.selecionado {
+  border-color: var(--cor-primaria);
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .tema-suportado .config-painel-rodape {
+  background: var(--cor-painel-secundario);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-busca {
+  border-color: var(--cor-borda);
+  background: var(--cor-painel-secundario);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-avatar {
+  background: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-saudacao p,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-data,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-card-titulo,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-aula-info span,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-item,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-ajuda,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .resumo-card-titulo,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-tabela th,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-nomes-dias span,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-nome-semana,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-turma,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-vazio {
+  color: var(--cor-texto-secundario);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-card,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .resumo-card,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-painel,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-proximo {
+  background: var(--cor-painel);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 30%);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-card h2,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-tabela td {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-link,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-horario,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-horario,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-proximo-data {
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-aula,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-tabela th,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-tabela td,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-lista-item {
+  border-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-botao.azul-claro,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-botao-tabela,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-modo.ativo,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-mini-aula {
+  background: var(--cor-primaria-fundo);
+  color: var(--cor-primaria);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-botao.verde-claro,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-status {
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .docente-ajuda {
+  background: var(--cor-primaria-fundo);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-modos,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-celula,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-coluna-semana,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-aula-dia {
+  border-color: var(--cor-borda);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-modo,
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-celula {
+  background: var(--cor-painel);
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-celula.vazia {
+  background: transparent;
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-celula:hover:not(.vazia) {
+  background: var(--cor-painel-secundario);
+}
+
+html[data-tema="escuro"] .docente-pagina.tema-suportado .cal-seta {
+  color: var(--cor-texto);
+}
+
+html[data-tema="escuro"] .gestor-layout.tema-suportado {
+  --gestor-cor-fundo-pagina: #0f172a;
+  --gestor-cor-fundo-cartao: #1e293b;
+  --gestor-cor-fundo-sidebar: #0b1424;
+  --gestor-cor-fundo-sidebar-hover: #1d2b45;
+  --gestor-cor-fundo-input: #172033;
+  --gestor-cor-fundo-destaque: #1e3a8a66;
+  --gestor-cor-texto-principal: #e2e8f0;
+  --gestor-cor-texto-secundario: #94a3b8;
+  --gestor-cor-texto-sidebar: #c4cede;
+  --gestor-cor-primaria: #60a5fa;
+  --gestor-cor-primaria-hover: #3b82f6;
+  --gestor-cor-primaria-clara: #1e3a8a66;
+  --gestor-cor-borda: #334155;
+  --gestor-cor-sucesso: #4ade80;
+  --gestor-cor-sucesso-fundo: #14532d80;
+  --gestor-cor-alerta: #fbbf24;
+  --gestor-cor-alerta-fundo: #78350f80;
+  --gestor-cor-perigo: #f87171;
+  --gestor-cor-perigo-fundo: #7f1d1d80;
+  --gestor-cor-info: #93c5fd;
+  --gestor-cor-info-fundo: #1e3a8a66;
+  --gestor-cor-roxo: #c4b5fd;
+  --gestor-cor-roxo-fundo: #4c1d9580;
+}
+
+html[data-tema="escuro"] .gestor-layout.tema-suportado .gestor-tabela th,
+html[data-tema="escuro"] .gestor-layout.tema-suportado .gestor-acoes-rapidas button {
+  background: #172033;
+}
+
+html[data-tema="escuro"] .gestor-layout.tema-suportado .gestor-status--inativa,
+html[data-tema="escuro"] .gestor-layout.tema-suportado .gestor-status--rascunho {
+  background: #334155;
+  color: #94a3b8;
+}
+
+html[data-tema="escuro"] .gestor-layout.tema-suportado .gestor-barra-trilho {
+  background: #334155;
+}

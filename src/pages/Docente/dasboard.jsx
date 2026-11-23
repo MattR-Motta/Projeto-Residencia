@@ -51,7 +51,7 @@ function DashboardDocente() {
   const { tipo: erroPagina, limparErro } = useErroPagina()
 
   return (
-    <div className="docente-pagina">
+    <div className="docente-pagina tema-suportado">
       <BarraLateral />
 
       <main className="docente-conteudo">

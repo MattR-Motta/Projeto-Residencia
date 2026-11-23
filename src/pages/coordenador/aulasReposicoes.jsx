@@ -111,7 +111,7 @@ function AulasReposicoes() {
   }
 
   return (
-    <div className="coordenador-layout telas-prototipo">
+    <div className="coordenador-layout telas-prototipo tema-suportado">
       <BarraLateral />
 
       <main className="dashboard-main tp-main">

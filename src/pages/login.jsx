@@ -57,7 +57,7 @@ function Login() {
   }
 
   return (
-    <main className="login-page">
+    <main className="login-page tema-suportado">
       <section className="login-apresentacao" aria-label="Secretaria de Estado da Educação de Sergipe">
         <header className="login-governo-marca">
           <span className="login-governo-simbolo" aria-hidden="true">
