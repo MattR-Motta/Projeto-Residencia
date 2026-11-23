@@ -10,15 +10,33 @@ import {
   ClipboardList,
 } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import {
   carregarSolicitacoes,
   salvarSolicitacoes,
 } from '../../data/solicitacoes'
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar a solicitação',
+    descricao: 'Ocorreu um erro ao buscar os detalhes da solicitação. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de solicitações está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function DetalhesSolicitacao() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { tipo: erroPagina, limparErro } = useErroPagina()
 
   const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes)
 
@@ -121,7 +139,17 @@ function DetalhesSolicitacao() {
           </div>
         </header>
 
-        <div className="tp-content">
+        {erroPagina ? (
+          <div className="tp-content">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <div className="tp-content">
           <button
             type="button"
             className="solicitacao-back"
@@ -264,7 +292,8 @@ function DetalhesSolicitacao() {
               </article>
             </div>
           </section>
-        </div>
+          </div>
+        )}
       </main>
     </div>
   )

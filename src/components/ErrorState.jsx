@@ -83,12 +83,14 @@ function ErrorState({
           <div className="error-state__icon">
             {icone}
           </div>
-          <div className="error-state__badge error-state__badge--x" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
-              <line x1="6" y1="6" x2="18" y2="18" />
-              <line x1="18" y1="6" x2="6" y2="18" />
-            </svg>
-          </div>
+          {tipo === 'carregar' && (
+            <div className="error-state__badge error-state__badge--x" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </svg>
+            </div>
+          )}
           <div className="error-state__badge error-state__badge--exclamacao" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="white">
               <path d="M12 5a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-3 0v-6A1.5 1.5 0 0 1 12 5Zm0 11a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5Z" />

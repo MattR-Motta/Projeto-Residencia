@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import { Bell } from 'lucide-react'
 
@@ -12,8 +13,23 @@ const dadosIniciais = [
   { id: 4, nome: 'Ciências', codigo: 'CIE-105', professor: 'Juliana Alves', turmas: '4C', carga: 60, curso: 'Ensino Fundamental', periodo: '3º período', status: 'Revisão necessária', ementa: 'Seres vivos, ecossistemas, corpo humano, matéria, energia e sustentabilidade.' },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as disciplinas',
+    descricao: 'Ocorreu um erro ao buscar as informações das disciplinas e ementas. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de disciplinas e ementas está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function DisciplinasEmentas() {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [disciplinas, setDisciplinas] = useState(dadosIniciais)
   const [pesquisa, setPesquisa] = useState('')
   const [curso, setCurso] = useState('Todos os cursos')
@@ -42,8 +58,6 @@ function DisciplinasEmentas() {
     periodo: '1º período',
     ementa: ''
   })
-
-  const erro = searchParams.get('erro') === '1'
 
   const filtradas = useMemo(() => disciplinas.filter(d => {
     const texto = `${d.nome} ${d.codigo} ${d.professor} ${d.turmas}`.toLowerCase()
@@ -131,30 +145,15 @@ function DisciplinasEmentas() {
           </div>
         </header>
 
-        {erro ? (
-          <section className="tp-error">
-            <div className="tp-error-art" aria-hidden="true">
-              <div className="tp-error-window">
-                <i />
-                <i />
-                <i />
-                <b>▥</b>
-              </div>
-              <strong>×</strong>
-              <span>!</span>
-            </div>
-
-            <h1>Não foi possível carregar o painel</h1>
-            <p>
-              Ocorreu um erro ao buscar as informações das disciplinas e ementas.
-              <br />
-              Verifique sua conexão com a internet e tente novamente.
-            </p>
-
-            <button className="tp-retry" onClick={() => setSearchParams({})}>
-              ⟳ <span>Tente novamente</span>
-            </button>
-          </section>
+        {erroPagina ? (
+          <div className="tp-content">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
         ) : (
           <div className="tp-content">
             <div className="tp-page-title">

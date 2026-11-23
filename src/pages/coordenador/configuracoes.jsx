@@ -12,6 +12,8 @@ import {
   Camera,
 } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import '../../styles/configuracoes.css'
 
@@ -31,7 +33,23 @@ const perfilInicial = {
   unidade: 'C.E. Professor João Costa',
 }
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as configurações',
+    descricao: 'Ocorreu um erro ao buscar suas preferências. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de configurações está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function Configuracoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [secaoAtiva, setSecaoAtiva] = useState('perfil')
   const [perfil, setPerfil] = useState(() => {
   try {
@@ -130,7 +148,17 @@ function Configuracoes() {
           </div>
         </header>
 
-        <div className="config-content">
+        {erroPagina ? (
+          <div className="tp-content">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <div className="config-content">
           <div className="tp-page-title config-page-title">
             <div>
               <h1>Configurações</h1>
@@ -392,7 +420,8 @@ function Configuracoes() {
               </footer>
             </form>
           </div>
-        </div>
+          </div>
+        )}
       </main>
     </div>
   )

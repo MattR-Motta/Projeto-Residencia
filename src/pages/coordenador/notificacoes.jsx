@@ -13,6 +13,8 @@ import {
   Clock,
 } from 'lucide-react'
 import BarraLateral from '../../components/barraLateral'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import '../../styles/telasCoordenador.css'
 import '../../styles/notificacoes.css'
 
@@ -74,7 +76,23 @@ const notificacoesIniciais = [
   },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as notificações',
+    descricao: 'Ocorreu um erro ao buscar as notificações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de notificações está indisponível. Tente novamente em alguns instantes.',
+  },
+}
+
 function Notificacoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [notificacoes, setNotificacoes] = useState(notificacoesIniciais)
   const [pesquisa, setPesquisa] = useState('')
   const [categoria, setCategoria] = useState('Todas')
@@ -161,7 +179,17 @@ function Notificacoes() {
           </div>
         </header>
 
-        <div className="tp-content notif-content">
+        {erroPagina ? (
+          <div className="tp-content">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <div className="tp-content notif-content">
           <div className="tp-page-title">
             <div>
               <h1>Notificações</h1>
@@ -325,7 +353,8 @@ function Notificacoes() {
               notificações
             </footer>
           </section>
-        </div>
+          </div>
+        )}
       </main>
     </div>
   )
