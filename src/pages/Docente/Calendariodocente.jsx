@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import BarraLateral from '../../components/barraLateral'
+import { useSearchParams } from 'react-router-dom'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
 
@@ -57,10 +58,16 @@ function aulasDoDia(chave) {
 }
 
 function CalendarioDocente() {
-  // Dia selecionado (começa em 26/05/2025 igual ao protótipo)
-  const [dataSelecionada, setDataSelecionada] = useState(new Date(2025, 4, 26))
-  // Tipo de visualização: 'mes', 'semana' ou 'dia'
-  const [modo, setModo] = useState('mes')
+  const [searchParams] = useSearchParams()
+  const dataSolicitada = searchParams.get('data')
+  const partesData = dataSolicitada?.split('-').map(Number)
+  const dataInicial = partesData?.length === 3
+    ? new Date(partesData[0], partesData[1] - 1, partesData[2])
+    : new Date(2025, 4, 26)
+
+  // A IA pode abrir diretamente o dia solicitado pela conversa.
+  const [dataSelecionada, setDataSelecionada] = useState(dataInicial)
+  const [modo, setModo] = useState(dataSolicitada ? 'dia' : 'mes')
   const { tipo: erroPagina, limparErro } = useErroPagina()
 
   const ano = dataSelecionada.getFullYear()

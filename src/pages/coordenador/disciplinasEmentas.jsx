@@ -1,17 +1,17 @@
-import { useMemo, useState } from 'react'
-import BarraLateral from '../../components/barraLateral'
-import ErrorState from '../../components/ErrorState'
-import useErroPagina from '../../hooks/useErroPagina'
-import '../../styles/telasCoordenador.css'
-import { Bell } from 'lucide-react'
-
+import { useMemo, useState } from 'react';
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/disciplinasEmentas.css";
+import { Bell } from 'lucide-react';
 
 const dadosIniciais = [
   { id: 1, nome: 'Matemática', codigo: 'MAT-101', professor: 'Carlos Mendes', turmas: '1A e 2B', carga: 80, curso: 'Ensino Médio', periodo: '1º período', status: 'Atualizada', ementa: 'Conjuntos numéricos, funções, geometria plana e espacial, estatística e resolução de problemas.' },
   { id: 2, nome: 'Língua Portuguesa', codigo: 'POR-102', professor: 'Ana Souza', turmas: '2B e 3A', carga: 80, curso: 'Ensino Médio', periodo: '2º período', status: 'Atualização pendente', ementa: 'Leitura e interpretação de textos, gêneros textuais, gramática, produção textual e literatura brasileira.' },
   { id: 3, nome: 'Física', codigo: 'FIS-201', professor: 'Rafael Lima', turmas: '3A', carga: 60, curso: 'Ensino Médio', periodo: '1º período', status: 'Atualizada', ementa: 'Mecânica, termologia, ondas, óptica, eletricidade e aplicações dos conceitos físicos.' },
   { id: 4, nome: 'Ciências', codigo: 'CIE-105', professor: 'Juliana Alves', turmas: '4C', carga: 60, curso: 'Ensino Fundamental', periodo: '3º período', status: 'Revisão necessária', ementa: 'Seres vivos, ecossistemas, corpo humano, matéria, energia e sustentabilidade.' },
-]
+];
 
 const textosErro = {
   carregar: {
@@ -30,23 +30,23 @@ const textosErro = {
 
 function DisciplinasEmentas() {
   const { tipo: erroPagina, limparErro } = useErroPagina()
-  const [disciplinas, setDisciplinas] = useState(dadosIniciais)
-  const [pesquisa, setPesquisa] = useState('')
-  const [curso, setCurso] = useState('Todos os cursos')
-  const [periodo, setPeriodo] = useState('Todos os períodos')
-  const [modal, setModal] = useState(null)
-  const [selecionada, setSelecionada] = useState(null)
+  const [disciplinas, setDisciplinas] = useState(dadosIniciais);
+  const [pesquisa, setPesquisa] = useState('');
+  const [curso, setCurso] = useState('Todos os cursos');
+  const [periodo, setPeriodo] = useState('Todos os períodos');
+  const [modal, setModal] = useState(null);
+  const [selecionada, setSelecionada] = useState(null);
 
   const [perfil] = useState(() => {
     try {
-      const dados = localStorage.getItem('edugest:coordenador:perfil')
+      const dados = localStorage.getItem('edugest:coordenador:perfil');
       return dados
         ? { nome: 'Marina Costa', ...JSON.parse(dados) }
-        : { nome: 'Marina Costa' }
+        : { nome: 'Marina Costa' };
     } catch {
-      return { nome: 'Marina Costa' }
+      return { nome: 'Marina Costa' };
     }
-  })
+  });
 
   const [form, setForm] = useState({
     nome: '',
@@ -57,18 +57,18 @@ function DisciplinasEmentas() {
     curso: 'Ensino Médio',
     periodo: '1º período',
     ementa: ''
-  })
+  });
 
   const filtradas = useMemo(() => disciplinas.filter(d => {
-    const texto = `${d.nome} ${d.codigo} ${d.professor} ${d.turmas}`.toLowerCase()
+    const texto = `${d.nome} ${d.codigo} ${d.professor} ${d.turmas}`.toLowerCase();
 
     return texto.includes(pesquisa.toLowerCase()) &&
       (curso === 'Todos os cursos' || d.curso === curso) &&
-      (periodo === 'Todos os períodos' || d.periodo === periodo)
-  }), [disciplinas, pesquisa, curso, periodo])
+      (periodo === 'Todos os períodos' || d.periodo === periodo);
+  }), [disciplinas, pesquisa, curso, periodo]);
 
   function abrir(tipo, disciplina = null) {
-    setSelecionada(disciplina)
+    setSelecionada(disciplina);
     setForm(disciplina ? { ...disciplina } : {
       nome: '',
       codigo: '',
@@ -78,47 +78,47 @@ function DisciplinasEmentas() {
       curso: 'Ensino Médio',
       periodo: '1º período',
       ementa: ''
-    })
-    setModal(tipo)
+    });
+    setModal(tipo);
   }
 
   function salvar(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     const item = {
       ...form,
       carga: Number(form.carga),
       status: selecionada?.status || 'Atualizada'
-    }
+    };
 
     if (selecionada) {
       setDisciplinas(old =>
         old.map(d => d.id === selecionada.id ? { ...d, ...item } : d)
-      )
+      );
     } else {
-      setDisciplinas(old => [...old, { ...item, id: Date.now() }])
+      setDisciplinas(old => [...old, { ...item, id: Date.now() }]);
     }
 
-    setModal(null)
+    setModal(null);
   }
 
   function atualizarEmenta(d) {
-    setSelecionada(d)
-    setForm({ ...d })
-    setModal('ementa')
+    setSelecionada(d);
+    setForm({ ...d });
+    setModal('ementa');
   }
 
   function salvarEmenta(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     setDisciplinas(old =>
       old.map(d => d.id === selecionada.id
         ? { ...d, ementa: form.ementa, status: 'Atualizada' }
         : d
       )
-    )
+    );
 
-    setModal(null)
+    setModal(null);
   }
 
   return (
@@ -126,7 +126,14 @@ function DisciplinasEmentas() {
       <BarraLateral />
 
       <main className="dashboard-main tp-main">
+
+        {/* BARRA SUPERIOR */}
         <header className="tp-topbar">
+          <div className="tp-topbar-title">
+            <h1>Disciplinas e Ementas</h1>
+            <p>Gerencie as disciplinas e seus conteúdos programáticos.</p>
+          </div>
+
           <div className="tp-user">
             <Bell className="tp-bell" size={20} strokeWidth={1.8} />
 
@@ -156,16 +163,8 @@ function DisciplinasEmentas() {
           </div>
         ) : (
           <div className="tp-content">
-            <div className="tp-page-title">
-              <div>
-                <h1>Disciplinas e Ementas</h1>
-                <p>Gerencie as disciplinas e seus conteúdos programáticos.</p>
-              </div>
 
-              <button className="tp-primary" onClick={() => abrir('nova')}>
-                ＋ Nova disciplina
-              </button>
-            </div>
+            {/* AÇÕES DA PÁGINA */}
 
             <div className="tp-filters">
               <label className="tp-search">
@@ -282,6 +281,11 @@ function DisciplinasEmentas() {
                 </tbody>
               </table>
             </div>
+            <div className="tp-page-actions">
+              <button className="tp-primary" onClick={() => abrir('nova')}>
+                ＋ Nova disciplina
+              </button>
+            </div>
           </div>
         )}
       </main>
@@ -290,7 +294,7 @@ function DisciplinasEmentas() {
         <div
           className="tp-modal-backdrop"
           onMouseDown={e => {
-            if (e.target === e.currentTarget) setModal(null)
+            if (e.target === e.currentTarget) setModal(null);
           }}
         >
           <section className="tp-modal" role="dialog" aria-modal="true">
@@ -436,7 +440,7 @@ function DisciplinasEmentas() {
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export default DisciplinasEmentas
+export default DisciplinasEmentas;

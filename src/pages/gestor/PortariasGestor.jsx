@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { FilePlus2, Search, Pencil, Trash2, Eye, Download } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import '../../styles/Gestor/baseGestor.css'
 import '../../styles/Gestor/portariasGestor.css'
 

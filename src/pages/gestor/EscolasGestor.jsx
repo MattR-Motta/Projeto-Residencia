@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Plus, Search, Pencil, Trash2, Eye, ArrowLeft, ArrowRight, Check, Upload } from 'lucide-react'
-import BarraLateral from '../../components/barraLateral'
+import BarraLateral from '../../components/Barra Lateral/BarraLateralGestor'
 import '../../styles/Gestor/baseGestor.css'
 import '../../styles/Gestor/escolasGestor.css'
 import '../../styles/Gestor/novaEscolaGestor.css'
