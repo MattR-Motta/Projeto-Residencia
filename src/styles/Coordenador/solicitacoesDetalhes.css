@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 /* Detalhes da solicitação */
 
@@ -9,7 +11,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #2864ed;
+  color: var(--marca-verde);
   cursor: pointer;
   font: inherit;
   font-size: 13px;
@@ -50,7 +52,7 @@
   margin-bottom: 18px;
   padding-bottom: 15px;
   border-bottom: 1px solid #e8edf5;
-  color: #2864ed;
+  color: var(--marca-verde);
 }
 
 .solicitacao-card > header h2 {

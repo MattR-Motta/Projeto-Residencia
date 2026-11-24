@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 .edugest-ia {
     position: fixed;
     right: 24px;
@@ -13,7 +15,7 @@
     border-radius: 50%;
     display: grid;
     place-items: center;
-    background: var(--edu-primary, #5146d8);
+    background: var(--marca-amarelo);
     color: #fff;
     box-shadow: 0 4px 16px #0003;
     cursor: pointer
@@ -43,7 +45,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
-    background: var(--edu-primary, #5146d8);
+    background: var(--marca-amarelo);
     color: #fff;
     font-weight: 600
 }
@@ -88,7 +90,7 @@
 
 .edugest-ia-mensagem.usuario {
     align-self: flex-end;
-    background: var(--edu-primary, #5146d8);
+    background: var(--marca-verde);
     color: #fff
 }
 
@@ -115,13 +117,13 @@
     border-radius: 8px;
     background: transparent;
     color: inherit;
-    outline-color: var(--edu-primary, #5146d8)
+    outline-color: var(--marca-verde)
 }
 
 .edugest-ia-formulario button {
     width: 40px;
     border-radius: 8px;
-    background: var(--edu-primary, #5146d8);
+    background: var(--marca-amarelo);
     color: #fff
 }
 

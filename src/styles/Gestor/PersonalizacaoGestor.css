@@ -1,11 +1,13 @@
+@import "../variaveisMarca.css";
+
 .eg-pers-shell {
   --eg-pers-fundo: #f1f5f9;
   --eg-pers-superficie: #ffffff;
   --eg-pers-borda: #e2e8f0;
   --eg-pers-texto: #0f172a;
   --eg-pers-texto-suave: #64748b;
-  --eg-pers-primaria: #1d4ed8;
-  --eg-pers-primaria-escura: #1e40af;
+  --eg-pers-primaria: var(--marca-verde-escuro);
+  --eg-pers-primaria-escura: var(--marca-verde-escuro);
 
   display: flex;
   min-height: 100vh;
@@ -140,7 +142,7 @@
 
 .eg-pers-busca:focus-within {
   border-color: var(--eg-pers-primaria);
-  box-shadow: 0 0 0 2px rgba(29, 78, 216, 0.15);
+  box-shadow: 0 0 0 2px rgba(var(--marca-verde-rgb) / 0.15);
 }
 
 /* Tabela */

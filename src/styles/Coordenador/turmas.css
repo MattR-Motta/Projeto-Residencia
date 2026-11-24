@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 /* =========================================
    PÁGINA DE TURMAS
@@ -32,7 +34,7 @@
   height: 36px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #315cff;
+  background: var(--marca-verde);
   color: #fff;
   font-size: 12px;
   font-weight: 600;

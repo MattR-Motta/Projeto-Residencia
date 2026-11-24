@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 /* Tela "Aulas e Reposições" do docente.
    Usa também as classes base de dashboarddocente.css (docente-pagina, docente-card...). */
 
@@ -37,7 +39,7 @@
   font-weight: 500;
 }
 
-.aul-resumo-valor.azul { color: #2563eb; }
+.aul-resumo-valor.azul { color: var(--marca-verde); }
 .aul-resumo-valor.verde { color: #15803d; }
 .aul-resumo-valor.marrom { color: #a16207; }
 
@@ -90,7 +92,7 @@
 .aul-horario {
   font-size: 11px;
   font-weight: 600;
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .aul-sala {
@@ -107,7 +109,7 @@
 
 .aul-tag.realizada,
 .aul-tag.confirmada { background: #dcfce7; color: #15803d; }
-.aul-tag.proxima { background: #dbeafe; color: #1d4ed8; }
+.aul-tag.proxima { background: var(--marca-verde-suave); color: var(--marca-verde-escuro); }
 .aul-tag.pendente { background: #fef3c7; color: #b45309; }
 
 /* Botões */
@@ -115,15 +117,15 @@
   padding: 8px 14px;
   border: none;
   border-radius: 8px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
 }
 
 .aul-botao:hover {
-  background: #bfdbfe;
+  background: var(--marca-verde-contorno);
 }
 
 .aul-botao-principal {
@@ -133,7 +135,7 @@
   padding: 8px 12px;
   border: none;
   border-radius: 8px;
-  background: #2563eb;
+  background: var(--marca-verde);
   color: #ffffff;
   font-size: 11px;
   font-weight: 600;
@@ -141,7 +143,7 @@
 }
 
 .aul-botao-principal:hover {
-  background: #1d4ed8;
+  background: var(--marca-verde-escuro);
 }
 
 /* Reposições */
@@ -181,8 +183,8 @@
   margin-top: 16px;
   padding: 10px 12px;
   border-radius: 8px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 11px;
 }
 
@@ -328,7 +330,7 @@
 .aul-form select:focus,
 .aul-form textarea:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--marca-verde);
 }
 
 .aul-form-linha {

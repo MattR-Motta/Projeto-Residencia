@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 /* ===== ESTRUTURA PRINCIPAL ===== */
 
@@ -54,7 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #315cff;
+  background: var(--marca-verde);
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -147,17 +149,17 @@
 }
 
 .config-menu-item:hover {
-  background: #f5f7ff;
+  background: var(--marca-verde-fundo);
 }
 
 .config-menu-item.ativo {
-  background: #edf1ff;
-  color: #315cff;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-weight: 600;
 }
 
 .config-menu-item.ativo svg {
-  color: #315cff;
+  color: var(--marca-verde);
 }
 
 .config-versao {
@@ -216,7 +218,7 @@
   height: 78px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: #315cff;
+  background: var(--marca-verde);
   color: #fff;
   font-size: 24px;
   font-weight: 600;
@@ -290,8 +292,8 @@
 
 .config-campos input:focus,
 .config-campo-unico input:focus {
-  border-color: #315cff;
-  box-shadow: 0 0 0 3px rgb(49 92 255 / 9%);
+  border-color: var(--marca-verde);
+  box-shadow: 0 0 0 3px rgb(var(--marca-verde-rgb) / 9%);
 }
 
 /* ===== DEMAIS OPÇÕES ===== */
@@ -339,7 +341,7 @@
 .config-toggle input {
   width: 17px;
   height: 17px;
-  accent-color: #315cff;
+  accent-color: var(--marca-verde);
   cursor: pointer;
 }
 
@@ -362,9 +364,9 @@
 }
 
 .config-tema.selecionado {
-  border-color: #315cff;
-  background: #edf1ff;
-  color: #315cff;
+  border-color: var(--marca-verde);
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 /* ===== DADOS INSTITUCIONAIS ===== */
@@ -403,7 +405,7 @@
   padding: 0 18px;
   border: 0;
   border-radius: 8px;
-  background: #315cff;
+  background: var(--marca-verde);
   color: #fff;
   font: inherit;
   font-size: 12px;
@@ -412,7 +414,7 @@
 }
 
 .config-salvar:hover {
-  background: #244be0;
+  background: var(--marca-verde);
 }
 
 /* ===== RESPONSIVIDADE INTERMEDIÁRIA ===== */

@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 .resp-atividades-layout {
   display: flex;
   min-height: 100vh;
@@ -65,8 +67,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #e9efff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-size: 10px;
   font-weight: 700;
 }
@@ -97,7 +99,7 @@
 }
 
 .resp-atividades-subtitulo {
-  color: #2863e9;
+  color: var(--marca-verde);
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -136,9 +138,9 @@
 }
 
 .resp-atividades-aluno.selecionado {
-  border-color: #c9d9ff;
-  background: #edf3ff;
-  color: #2863e9;
+  border-color: var(--marca-verde-contorno);
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-indicador {
@@ -149,7 +151,7 @@
 }
 
 .resp-atividades-aluno.selecionado .resp-atividades-indicador {
-  background: #2863e9;
+  background: var(--marca-verde);
 }
 
 .resp-atividades-aluno > span:last-child {
@@ -196,8 +198,8 @@
 }
 
 .resp-atividades-resumo-icone.azul {
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-resumo-icone.laranja {
@@ -291,8 +293,8 @@
 .resp-atividades-painel-titulo > span {
   padding: 5px 9px;
   border-radius: 5px;
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-size: 9px;
   white-space: nowrap;
 }
@@ -319,7 +321,7 @@
 
 .resp-atividades-item:hover,
 .resp-atividades-item.ativo {
-  background: #f5f8ff;
+  background: var(--marca-verde-fundo);
 }
 
 .resp-atividades-item-icone {
@@ -329,8 +331,8 @@
   display: grid;
   place-items: center;
   border-radius: 7px;
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-item-conteudo {
@@ -376,8 +378,8 @@
 }
 
 .resp-atividades-status.em-andamento {
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-status.concluída {
@@ -402,8 +404,8 @@
   display: inline-block;
   padding: 5px 8px;
   border-radius: 5px;
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-size: 9px;
   font-weight: 650;
 }
@@ -451,9 +453,9 @@
   align-items: flex-start;
   gap: 11px;
   padding: 15px;
-  border: 1px solid #dce7fb;
+  border: 1px solid var(--marca-verde-suave);
   border-radius: 8px;
-  background: #f5f8ff;
+  background: var(--marca-verde-fundo);
 }
 
 .resp-atividades-feedback-icone {
@@ -463,8 +465,8 @@
   display: grid;
   place-items: center;
   border-radius: 7px;
-  background: #e6eeff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-feedback strong {
@@ -519,8 +521,8 @@
   display: grid;
   place-items: center;
   border-radius: 7px;
-  background: #edf3ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
 }
 
 .resp-atividades-prova > div:nth-child(2) {

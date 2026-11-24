@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 .resp-config-layout {
   display: flex;
@@ -37,8 +39,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #eaf1ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   display: grid;
   place-items: center;
   font-size: 11px;
@@ -96,7 +98,7 @@
   padding: 11px 16px;
   border: 0;
   border-radius: 6px;
-  background: #2863e9;
+  background: var(--marca-verde);
   color: #fff;
   font-size: 11px;
   font-weight: 600;
@@ -106,7 +108,7 @@
 }
 
 .resp-config-salvar:hover {
-  background: #174fc9;
+  background: var(--marca-verde-escuro);
 }
 
 .resp-config-selecao-aluno {
@@ -132,13 +134,13 @@
 }
 
 .resp-config-aluno:hover {
-  border-color: #9db9ff;
+  border-color: var(--marca-verde-medio);
 }
 
 .resp-config-aluno.ativo {
-  border-color: #c5d7ff;
-  background: #edf3ff;
-  color: #2863e9;
+  border-color: var(--marca-verde-contorno);
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-weight: 600;
 }
 
@@ -235,7 +237,7 @@
 
 .resp-config-form-grid input:focus,
 .resp-config-modal input:focus {
-  border-color: #7da2f7;
+  border-color: var(--marca-verde-medio);
   box-shadow: 0 0 0 2px #2863e91a;
 }
 
@@ -274,12 +276,12 @@
 }
 
 .resp-config-filho:hover {
-  border-color: #b5caff;
+  border-color: var(--marca-verde-contorno);
 }
 
 .resp-config-filho.selecionado {
-  border-color: #c5d7ff;
-  background: #edf3ff;
+  border-color: var(--marca-verde-contorno);
+  background: var(--marca-verde-claro);
 }
 
 .resp-config-filho-icone {
@@ -288,8 +290,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #eaf1ff;
-  color: #2863e9;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   flex-shrink: 0;
 }
 
@@ -312,7 +314,7 @@
 
 .resp-config-filho-acao {
   margin-left: auto;
-  color: #2863e9;
+  color: var(--marca-verde);
   font-size: 9px;
   white-space: nowrap;
 }
@@ -357,7 +359,7 @@
 .resp-config-adicionar {
   border: 0;
   background: transparent;
-  color: #2863e9;
+  color: var(--marca-verde);
   font-family: inherit;
   font-size: 10px;
   cursor: pointer;
@@ -367,7 +369,7 @@
 .resp-config-contato button:hover,
 .resp-config-adicionar:hover,
 .resp-config-link:hover {
-  color: #174fc9;
+  color: var(--marca-verde-escuro);
   text-decoration: underline;
 }
 
@@ -431,7 +433,7 @@
 }
 
 .resp-config-switch.ligado {
-  background: #2863e9;
+  background: var(--marca-verde);
 }
 
 .resp-config-switch.ligado span {
@@ -454,7 +456,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #2863e9;
+  color: var(--marca-verde);
   font-family: inherit;
   font-size: 10px;
   cursor: pointer;
@@ -488,10 +490,10 @@
   gap: 6px;
   margin-top: 4px;
   padding: 8px 10px;
-  border: 1px solid #dce6fa;
+  border: 1px solid var(--marca-verde-suave);
   border-radius: 5px;
   background: #fff;
-  color: #2863e9;
+  color: var(--marca-verde);
   font-size: 10px;
   font-weight: 600;
   text-decoration: none;
@@ -499,7 +501,7 @@
 }
 
 .resp-config-botao-suporte:hover {
-  background: #edf3ff;
+  background: var(--marca-verde-claro);
 }
 
 .resp-config-rodape {
@@ -628,12 +630,12 @@
 }
 
 .resp-config-modal-acoes .primario {
-  background: #2863e9;
+  background: var(--marca-verde);
   color: #fff;
 }
 
 .resp-config-modal-acoes .primario:hover {
-  background: #174fc9;
+  background: var(--marca-verde-escuro);
 }
 
 .resp-config-dispositivo {
@@ -643,7 +645,7 @@
   padding: 13px;
   border: 1px solid #e6eaf1;
   border-radius: 7px;
-  color: #2863e9;
+  color: var(--marca-verde);
 }
 
 .resp-config-dispositivo div {

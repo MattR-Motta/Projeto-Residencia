@@ -1,10 +1,12 @@
+@import "../variaveisMarca.css";
+
 .responsavel-sidebar {
-  --resp-sidebar-fundo: #101d2e;
-  --resp-sidebar-borda: #26364a;
+  --resp-sidebar-fundo: var(--marca-verde);
+  --resp-sidebar-borda: var(--marca-verde-borda);
   --resp-sidebar-texto: #c0cad8;
   --resp-sidebar-secundario: #8291a6;
-  --resp-sidebar-ativo: #2863e9;
-  --resp-sidebar-hover: #1d2d43;
+  --resp-sidebar-ativo: var(--marca-verde-borda);
+  --resp-sidebar-hover: var(--marca-verde-escuro);
 
   width: 230px;
   min-width: 230px;
@@ -46,7 +48,7 @@
   place-items: center;
 
   border-radius: 7px;
-  background: #2863e9;
+  background: var(--marca-verde-escuro);
   color: #ffffff;
 
   font-size: 21px;

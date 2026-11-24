@@ -1,10 +1,12 @@
+@import "./variaveisMarca.css";
+
 :root {
   /* Fundos da tela de login */
-  --login-cor-fundo-institucional: #0b142b;
+  --login-cor-fundo-institucional: #087a34;
   --login-cor-fundo-formulario: #ffffff;
   --login-cor-fundo-campo: #ffffff;
   --login-cor-fundo-campo-hover: #f8fafc;
-  --login-cor-fundo-icone-institucional: #2453d4;
+  --login-cor-fundo-icone-institucional: var(--marca-amarelo);
 
   /* Textos da tela de login */
   --login-cor-texto-institucional: #ffffff;
@@ -12,21 +14,21 @@
   --login-cor-texto-principal: #182235;
   --login-cor-texto-secundario: #7b8798;
   --login-cor-texto-label: #303b4b;
-  --login-cor-texto-link: #214b96;
+  --login-cor-texto-link: var(--marca-verde);
   --login-cor-texto-placeholder: #8b95a3;
 
   /* Botões, bordas e estados */
-  --login-cor-primaria: #2450d3;
-  --login-cor-primaria-hover: #193fae;
+  --login-cor-primaria: var(--marca-verde);
+  --login-cor-primaria-hover: var(--marca-verde-escuro);
   --login-cor-borda-campo: #e2e6eb;
-  --login-cor-borda-foco: #4770e6;
+  --login-cor-borda-foco: var(--marca-verde);
   --login-cor-icone-campo: #84909e;
   --login-cor-erro: #b42318;
   --login-cor-fundo-erro: #fef3f2;
   --login-cor-borda-erro: #fecdca;
-  --login-cor-info: #24558c;
-  --login-cor-fundo-info: #eff6ff;
-  --login-cor-borda-info: #bfdbfe;
+  --login-cor-info: var(--marca-verde);
+  --login-cor-fundo-info: var(--marca-verde-claro);
+  --login-cor-borda-info: var(--marca-verde-contorno);
 }
 
 .login-page,
@@ -124,7 +126,7 @@
 
 .login-apresentacao-rodape {
   margin-top: auto;
-  color: #74819a;
+  color: #ffffff;
   font-size: 11px;
   line-height: 1.6;
 }
@@ -190,7 +192,7 @@
 
 .login-input-wrapper:focus-within {
   border-color: var(--login-cor-borda-foco);
-  box-shadow: 0 0 0 3px rgb(71 112 230 / 11%);
+  box-shadow: 0 0 0 3px rgb(var(--marca-verde-rgb) / 11%);
 }
 
 .input-icon {
@@ -331,7 +333,7 @@
 
 .login-page button:focus-visible,
 .login-page input:focus-visible {
-  outline: 3px solid rgb(71 112 230 / 35%);
+  outline: 3px solid rgb(var(--marca-verde-rgb) / 35%);
   outline-offset: 2px;
 }
 
