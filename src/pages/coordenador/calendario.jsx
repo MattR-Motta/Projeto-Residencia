@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
 import ErrorState from '../../components/ErrorState'
 import useErroPagina from '../../hooks/useErroPagina'
-import '../../styles/coordenador.css'
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/calendario.css";
 
 const eventosIniciais = [
   {
@@ -77,10 +79,14 @@ const textosErro = {
 
 function Calendario() {
   const hoje = new Date()
+  const [searchParams] = useSearchParams()
+  const dataSolicitada = searchParams.get('data')
+  const eventoSolicitado = searchParams.get('eventoId')
+  const dataInicial = dataSolicitada ? obterDataLocal(dataSolicitada) : hoje
   const { tipo: erroPagina, limparErro } = useErroPagina()
 
-  const [mesAtual, setMesAtual] = useState(hoje.getMonth())
-  const [anoAtual, setAnoAtual] = useState(hoje.getFullYear())
+  const [mesAtual, setMesAtual] = useState(dataInicial.getMonth())
+  const [anoAtual, setAnoAtual] = useState(dataInicial.getFullYear())
   const [eventos, setEventos] = useState(eventosIniciais)
   const [modalAberto, setModalAberto] = useState(false)
   const [eventoSelecionado, setEventoSelecionado] = useState(null)
@@ -261,7 +267,7 @@ function Calendario() {
 
                   <div className="calendario-eventos-dia">
                     {eventosDia.map((evento) => (
-                      <button type="button" key={evento.id} className={`calendario-evento tipo-${evento.tipo.toLowerCase()}`}
+                      <button type="button" key={evento.id} className={`calendario-evento tipo-${evento.tipo.toLowerCase()} ${String(evento.id) === eventoSolicitado ? 'evento-aberto-pela-ia' : ''}`}
                         onClick={() => abrirEdicao(evento)} title={`${evento.titulo} — clique para editar`}>
                         {evento.titulo}
                       </button>

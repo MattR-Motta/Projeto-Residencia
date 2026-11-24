@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+
+import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   Bell,
   Search,
@@ -8,34 +9,40 @@ import {
   CheckCircle2,
   XCircle,
   Eye,
-} from 'lucide-react'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import '../../styles/telasCoordenador.css'
+} from 'lucide-react';
+
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/disciplinasEmentas.css";
+import "../../styles/Coordenador/solicitacoesTriagem.css";
+
 import {
   carregarSolicitacoes,
   salvarSolicitacoes,
-} from '../../data/solicitacoes'
+} from '../../data/solicitacoes';
 
 function Solicitacoes() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes)
+  const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes);
 
   const [perfil] = useState(() => {
     try {
-      const dados = localStorage.getItem('edugest:coordenador:perfil')
+      const dados = localStorage.getItem('edugest:coordenador:perfil');
+
       return dados
         ? { nome: 'Marina Costa', ...JSON.parse(dados) }
-        : { nome: 'Marina Costa' }
+        : { nome: 'Marina Costa' };
     } catch {
-      return { nome: 'Marina Costa' }
+      return { nome: 'Marina Costa' };
     }
-  })
+  });
 
-  const [pesquisa, setPesquisa] = useState('')
-  const [tipo, setTipo] = useState('Todos')
-  const [prioridade, setPrioridade] = useState('Todas')
-  const [status, setStatus] = useState('Todos')
+  const [pesquisa, setPesquisa] = useState('');
+  const [tipo, setTipo] = useState('Todos');
+  const [prioridade, setPrioridade] = useState('Todas');
+  const [status, setStatus] = useState('Todos');
 
   const iniciais = (perfil.nome || 'Coordenadora')
     .trim()
@@ -43,14 +50,22 @@ function Solicitacoes() {
     .slice(0, 2)
     .map(parte => parte[0])
     .join('')
-    .toUpperCase()
+    .toUpperCase();
 
-  const pendentes = solicitacoes.filter(s => s.status === 'Pendente').length
-  const aprovadas = solicitacoes.filter(s => s.status === 'Aprovada').length
-  const recusadas = solicitacoes.filter(s => s.status === 'Recusada').length
+  const pendentes = solicitacoes.filter(
+    s => s.status === 'Pendente'
+  ).length;
+
+  const aprovadas = solicitacoes.filter(
+    s => s.status === 'Aprovada'
+  ).length;
+
+  const recusadas = solicitacoes.filter(
+    s => s.status === 'Recusada'
+  ).length;
 
   const filtradas = useMemo(() => {
-    const termo = pesquisa.toLowerCase().trim()
+    const termo = pesquisa.toLowerCase().trim();
 
     return solicitacoes.filter(s => {
       const texto = [
@@ -60,30 +75,30 @@ function Solicitacoes() {
         s.tipo,
         s.disciplina,
         s.turma,
-      ].join(' ').toLowerCase()
+      ].join(' ').toLowerCase();
 
       return (
         texto.includes(termo) &&
         (tipo === 'Todos' || s.tipo === tipo) &&
         (prioridade === 'Todas' || s.prioridade === prioridade) &&
         (status === 'Todos' || s.status === status)
-      )
-    })
-  }, [solicitacoes, pesquisa, tipo, prioridade, status])
+      );
+    });
+  }, [solicitacoes, pesquisa, tipo, prioridade, status]);
 
   function atualizarStatus(id, novoStatus) {
     const atualizadas = solicitacoes.map(s =>
       s.id === id ? { ...s, status: novoStatus } : s,
-    )
+    );
 
-    setSolicitacoes(atualizadas)
-    salvarSolicitacoes(atualizadas)
+    setSolicitacoes(atualizadas);
+    salvarSolicitacoes(atualizadas);
   }
 
   function classeStatus(valor) {
-    if (valor === 'Aprovada') return 'green'
-    if (valor === 'Recusada') return 'red'
-    return 'yellow'
+    if (valor === 'Aprovada') return 'green';
+    if (valor === 'Recusada') return 'red';
+    return 'yellow';
   }
 
   return (
@@ -92,29 +107,34 @@ function Solicitacoes() {
 
       <main className="dashboard-main tp-main">
         <header className="tp-topbar">
+          <div className="tp-topbar-title">
+            <h1>Solicitações</h1>
+            <p>
+              Analise, acompanhe e gerencie as solicitações acadêmicas.
+            </p>
+          </div>
+
           <div className="tp-user">
-            <Bell className="tp-bell" size={20} strokeWidth={1.8} />
+            <Bell
+              className="tp-bell"
+              size={20}
+              strokeWidth={1.8}
+            />
+
             <span className="tp-avatar configuracoes-avatar">
               {iniciais}
             </span>
+
             <div>
               <strong>{perfil.nome || 'Coordenadora'}</strong>
               <small>Coordenadora</small>
             </div>
+
             <span>⌄</span>
           </div>
         </header>
 
         <div className="tp-content">
-          <div className="tp-page-title">
-            <div>
-              <h1>Solicitações</h1>
-              <p>
-                Analise, acompanhe e gerencie as solicitações acadêmicas.
-              </p>
-            </div>
-          </div>
-
           <section className="tp-stats">
             <article>
               <span>Total de solicitações</span>
@@ -144,6 +164,7 @@ function Solicitacoes() {
           <div className="tp-filters solicitacoes-filters">
             <label className="tp-search">
               <Search size={18} />
+
               <input
                 value={pesquisa}
                 onChange={e => setPesquisa(e.target.value)}
@@ -260,7 +281,9 @@ function Solicitacoes() {
                               <button
                                 type="button"
                                 className="approve"
-                                onClick={() => atualizarStatus(s.id, 'Aprovada')}
+                                onClick={() =>
+                                  atualizarStatus(s.id, 'Aprovada')
+                                }
                               >
                                 <CheckCircle2 size={15} />
                                 Aprovar
@@ -269,7 +292,9 @@ function Solicitacoes() {
                               <button
                                 type="button"
                                 className="reject"
-                                onClick={() => atualizarStatus(s.id, 'Recusada')}
+                                onClick={() =>
+                                  atualizarStatus(s.id, 'Recusada')
+                                }
                               >
                                 <XCircle size={15} />
                                 Recusar
@@ -295,7 +320,7 @@ function Solicitacoes() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Solicitacoes
+export default Solicitacoes;

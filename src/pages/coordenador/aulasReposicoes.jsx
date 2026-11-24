@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import '../../styles/telasCoordenador.css'
-import { CalendarDays, Bell } from 'lucide-react'
+import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/disciplinasEmentas.css";
+import "../../styles/Coordenador/aulasReposicoes.css";
+import { CalendarDays, Bell } from 'lucide-react';
 
 const aulasBase = [
   { id: 1, horario: '08:00–09:40', disciplina: 'Matemática', turma: '1A', professor: 'Carlos Mendes', sala: 'Sala 101', status: 'Realizada', data: '2026-05-23' },
@@ -102,6 +104,13 @@ function AulasReposicoes() {
 
       <main className="dashboard-main tp-main">
         <header className="tp-topbar">
+          <div className="tp-topbar-title">
+            <h1>Aulas e Reposições</h1>
+            <p>
+              Acompanhe aulas programadas, realizadas e necessidades de reposição.
+            </p>
+          </div>
+
           <div className="tp-user">
             <Bell className="tp-bell" size={20} strokeWidth={1.8} />
 
@@ -153,14 +162,6 @@ function AulasReposicoes() {
           </section>
         ) : (
           <div className="tp-content tp-aulas-content">
-            <div className="tp-page-title">
-              <div>
-                <h1>Aulas e Reposições</h1>
-                <p>
-                  Acompanhe aulas programadas, realizadas e necessidades de reposição.
-                </p>
-              </div>
-            </div>
 
             <section className="tp-stats">
               <article>

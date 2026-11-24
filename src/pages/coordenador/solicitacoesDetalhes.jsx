@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   Bell,
   ArrowLeft,
@@ -8,36 +9,44 @@ import {
   CheckCircle2,
   XCircle,
   ClipboardList,
-} from 'lucide-react'
-import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador'
-import '../../styles/telasCoordenador.css'
+} from 'lucide-react';
+
+import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+
+import "../../styles/Coordenador/coordenador.css";
+import "../../styles/Coordenador/disciplinasEmentas.css";
+import "../../styles/Coordenador/solicitacoesDetalhes.css";
+
 import {
   carregarSolicitacoes,
   salvarSolicitacoes,
-} from '../../data/solicitacoes'
+} from '../../data/solicitacoes';
 
 function DetalhesSolicitacao() {
-  const { id } = useParams()
-  const navigate = useNavigate()
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-  const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes)
+  const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes);
 
   const [perfil] = useState(() => {
     try {
-      const dados = localStorage.getItem('edugest:coordenador:perfil')
+      const dados = localStorage.getItem('edugest:coordenador:perfil');
+
       return dados
         ? { nome: 'Marina Costa', ...JSON.parse(dados) }
-        : { nome: 'Marina Costa' }
+        : { nome: 'Marina Costa' };
     } catch {
-      return { nome: 'Marina Costa' }
+      return { nome: 'Marina Costa' };
     }
-  })
+  });
 
-  const solicitacao = solicitacoes.find(s => s.id === Number(id))
+  const solicitacao = solicitacoes.find(
+    s => s.id === Number(id)
+  );
 
   const [observacao, setObservacao] = useState(
     solicitacao?.observacao || '',
-  )
+  );
 
   const iniciais = (perfil.nome || 'Coordenadora')
     .trim()
@@ -45,43 +54,62 @@ function DetalhesSolicitacao() {
     .slice(0, 2)
     .map(parte => parte[0])
     .join('')
-    .toUpperCase()
+    .toUpperCase();
 
   function decidir(novoStatus) {
-    if (!solicitacao) return
+    if (!solicitacao) return;
 
     const atualizadas = solicitacoes.map(s =>
       s.id === solicitacao.id
-        ? { ...s, status: novoStatus, observacao: observacao.trim() }
+        ? {
+            ...s,
+            status: novoStatus,
+            observacao: observacao.trim(),
+          }
         : s,
-    )
+    );
 
-    setSolicitacoes(atualizadas)
-    salvarSolicitacoes(atualizadas)
-    navigate('/coordenador/solicitacoes')
+    setSolicitacoes(atualizadas);
+    salvarSolicitacoes(atualizadas);
+
+    navigate('/coordenador/solicitacoes');
   }
 
   if (!solicitacao) {
     return (
       <div className="coordenador-layout telas-prototipo">
         <BarraLateral />
+
         <main className="dashboard-main tp-main">
           <header className="tp-topbar">
+            <div className="tp-topbar-title">
+              <h1>Solicitação não encontrada</h1>
+              <p>
+                O registro pode ter sido removido ou o endereço está incorreto.
+              </p>
+            </div>
+
             <div className="tp-user">
-              <Bell className="tp-bell" size={20} />
+              <Bell
+                className="tp-bell"
+                size={20}
+                strokeWidth={1.8}
+              />
+
               <span className="tp-avatar configuracoes-avatar">
                 {iniciais}
               </span>
+
               <div>
                 <strong>{perfil.nome || 'Coordenadora'}</strong>
                 <small>Coordenadora</small>
               </div>
+
+              <span>⌄</span>
             </div>
           </header>
 
           <div className="tp-content">
-            <h1>Solicitação não encontrada</h1>
-            <p>O registro pode ter sido removido ou o endereço está incorreto.</p>
             <button
               type="button"
               className="tp-primary"
@@ -92,7 +120,7 @@ function DetalhesSolicitacao() {
           </div>
         </main>
       </div>
-    )
+    );
   }
 
   const classeStatus =
@@ -100,7 +128,7 @@ function DetalhesSolicitacao() {
       ? 'green'
       : solicitacao.status === 'Recusada'
         ? 'red'
-        : 'yellow'
+        : 'yellow';
 
   return (
     <div className="coordenador-layout telas-prototipo">
@@ -108,15 +136,29 @@ function DetalhesSolicitacao() {
 
       <main className="dashboard-main tp-main">
         <header className="tp-topbar">
+          <div className="tp-topbar-title">
+            <h1>Detalhes da Solicitação</h1>
+            <p>
+              {solicitacao.codigo} · Enviada em {solicitacao.dataEnvio}
+            </p>
+          </div>
+
           <div className="tp-user">
-            <Bell className="tp-bell" size={20} strokeWidth={1.8} />
+            <Bell
+              className="tp-bell"
+              size={20}
+              strokeWidth={1.8}
+            />
+
             <span className="tp-avatar configuracoes-avatar">
               {iniciais}
             </span>
+
             <div>
               <strong>{perfil.nome || 'Coordenadora'}</strong>
               <small>Coordenadora</small>
             </div>
+
             <span>⌄</span>
           </div>
         </header>
@@ -132,13 +174,6 @@ function DetalhesSolicitacao() {
           </button>
 
           <div className="tp-page-title solicitacao-detail-title">
-            <div>
-              <h1>Detalhes da Solicitação</h1>
-              <p>
-                {solicitacao.codigo} · Enviada em {solicitacao.dataEnvio}
-              </p>
-            </div>
-
             <span className={`tp-pill ${classeStatus}`}>
               {solicitacao.status}
             </span>
@@ -220,6 +255,7 @@ function DetalhesSolicitacao() {
                   <>
                     <label className="solicitacao-observacao">
                       Observação ou justificativa da decisão
+
                       <textarea
                         rows={4}
                         value={observacao}
@@ -257,7 +293,10 @@ function DetalhesSolicitacao() {
 
                     <div className="solicitacao-info">
                       <span>Observação registrada</span>
-                      <p>{solicitacao.observacao || 'Nenhuma observação registrada.'}</p>
+                      <p>
+                        {solicitacao.observacao ||
+                          'Nenhuma observação registrada.'}
+                      </p>
                     </div>
                   </>
                 )}
@@ -267,7 +306,7 @@ function DetalhesSolicitacao() {
         </div>
       </main>
     </div>
-  )
+  );
 }
 
-export default DetalhesSolicitacao
+export default DetalhesSolicitacao;

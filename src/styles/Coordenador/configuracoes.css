@@ -1,20 +1,53 @@
 
+/* ===== ESTRUTURA PRINCIPAL ===== */
+
 .configuracoes-main {
   min-width: 0;
   background: #f4f6fb;
 }
 
+/* ===== BARRA SUPERIOR ===== */
+
 .configuracoes-topbar {
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 22px;
   background: #fff;
   border-bottom: 1px solid #e2e7f0;
+}
+
+.config-topbar-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.config-topbar-title h1 {
+  margin: 0;
+  color: #172238;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+
+.config-topbar-title p {
+  margin: 4px 0 0;
+  color: #71809a;
+  font-size: 12px;
+}
+
+.config-topbar-acoes {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
 }
 
 .config-ajuda {
   display: flex;
   align-items: center;
   color: #71809a;
+  cursor: pointer;
 }
 
 .configuracoes-avatar {
@@ -27,10 +60,13 @@
   font-weight: 600;
 }
 
+/* ===== CONTEÚDO DA TELA ===== */
+
 .config-content {
   padding: 28px 30px 30px;
 }
 
+/* Mantido para compatibilidade, caso seja utilizado em outra parte. */
 .config-page-title {
   margin-bottom: 22px;
 }
@@ -48,6 +84,8 @@
   font-size: 14px;
 }
 
+/* ===== LAYOUT ===== */
+
 .config-layout {
   display: grid;
   grid-template-columns: 260px minmax(0, 1fr);
@@ -63,6 +101,8 @@
   border-radius: 12px;
   box-shadow: 0 5px 18px rgb(27 42 71 / 5%);
 }
+
+/* ===== MENU LATERAL ===== */
 
 .config-menu {
   display: flex;
@@ -128,6 +168,8 @@
   font-size: 11px;
 }
 
+/* ===== PAINEL PRINCIPAL ===== */
+
 .config-painel {
   display: flex;
   flex-direction: column;
@@ -150,6 +192,8 @@
   color: #71809a;
   font-size: 13px;
 }
+
+/* ===== FORMULÁRIO DE PERFIL ===== */
 
 .config-form-conteudo {
   padding: 24px 28px;
@@ -250,6 +294,8 @@
   box-shadow: 0 0 0 3px rgb(49 92 255 / 9%);
 }
 
+/* ===== DEMAIS OPÇÕES ===== */
+
 .config-opcoes {
   flex: 1;
   padding: 26px 28px;
@@ -277,6 +323,8 @@
   line-height: 1.6;
 }
 
+/* ===== PREFERÊNCIAS DE NOTIFICAÇÕES ===== */
+
 .config-toggle {
   display: flex;
   align-items: center;
@@ -294,6 +342,8 @@
   accent-color: #315cff;
   cursor: pointer;
 }
+
+/* ===== APARÊNCIA ===== */
 
 .config-temas {
   display: flex;
@@ -317,10 +367,14 @@
   color: #315cff;
 }
 
+/* ===== DADOS INSTITUCIONAIS ===== */
+
 .config-campo-unico {
   max-width: 520px;
   margin-top: 24px;
 }
+
+/* ===== RODAPÉ E SALVAMENTO ===== */
 
 .config-painel-rodape {
   display: flex;
@@ -361,6 +415,8 @@
   background: #244be0;
 }
 
+/* ===== RESPONSIVIDADE INTERMEDIÁRIA ===== */
+
 @media (max-width: 1000px) {
   .config-layout {
     grid-template-columns: 220px minmax(0, 1fr);
@@ -379,7 +435,43 @@
   }
 }
 
+/* ===== RESPONSIVIDADE MOBILE ===== */
+
 @media (max-width: 720px) {
+  .config-topbar-title h1 {
+    font-size: 16px;
+  }
+
+  .config-topbar-title p {
+    max-width: 180px;
+    font-size: 10px;
+  }
+
+  .config-topbar-acoes {
+    gap: 8px;
+  }
+
+  .config-topbar-acoes .config-ajuda {
+    display: none;
+  }
+
+  .config-topbar-acoes .tp-user {
+    gap: 6px;
+  }
+
+  .config-topbar-acoes .tp-user > div {
+    display: none;
+  }
+
+  .configuracoes-topbar {
+    gap: 10px;
+    padding: 0 16px;
+  }
+
+  .config-content {
+    padding: 20px 14px;
+  }
+
   .config-layout {
     grid-template-columns: 1fr;
   }
@@ -405,5 +497,15 @@
 
   .config-salvar {
     width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .config-menu nav {
+    grid-template-columns: 1fr;
+  }
+
+  .config-topbar-title p {
+    max-width: 145px;
   }
 }

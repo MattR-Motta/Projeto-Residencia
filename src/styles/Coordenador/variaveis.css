@@ -1,0 +1,56 @@
+
+:root {
+  /* ===== Identidade visual principal ===== */
+
+  --edu-bg: #f5f7fb;
+  --edu-surface: #ffffff;
+  --edu-text: #202b3c;
+  --edu-muted: #7b8798;
+  --edu-border: #e7ebf2;
+
+  --edu-primary: #2864ed;
+  --edu-primary-light: #e8efff;
+  --edu-primary-hover: #1e54d4;
+  --edu-primary-border: #c7d7ff;
+
+  /* ===== Estados e indicadores ===== */
+
+  --edu-success-bg: #e5f7ed;
+  --edu-success-text: #218653;
+
+  --edu-neutral-bg: #eef0f4;
+  --edu-neutral-text: #687386;
+
+  --edu-warning-bg: #fff4db;
+  --edu-warning-text: #b7791f;
+
+  --edu-danger: #c0392b;
+  --edu-danger-alt: #c43d47;
+
+  /* ===== Categorias do calendário ===== */
+
+  --edu-event-academico-bg: #e8eaff;
+  --edu-event-academico-text: #4640a5;
+  --edu-event-academico-border: #635bdb;
+
+  --edu-event-reuniao-bg: #dff5e8;
+  --edu-event-reuniao-text: #187443;
+  --edu-event-reuniao-border: #2b9a60;
+
+  --edu-event-prazo-bg: #fff0d9;
+  --edu-event-prazo-text: #955c08;
+  --edu-event-prazo-border: #e7a331;
+
+  --edu-event-feriado-bg: #ffe4e5;
+  --edu-event-feriado-text: #a52c35;
+  --edu-event-feriado-border: #d94c57;
+
+  /* ===== Elementos e sobreposições ===== */
+
+  --edu-overlay: rgb(17 24 39 / 50%);
+  --edu-overlay-dark: rgb(15 23 42 / 55%);
+
+  --edu-shadow-card: 0 3px 12px rgb(35 35 70 / 6%);
+  --edu-shadow-modal: 0 20px 60px rgb(0 0 0 / 15%);
+  --edu-shadow-modal-strong: 0 20px 60px rgb(0 0 0 / 20%);
+}

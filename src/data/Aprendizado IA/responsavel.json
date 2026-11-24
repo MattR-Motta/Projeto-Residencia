@@ -1,0 +1,238 @@
+{
+  "perfil": "responsavel",
+  "descricao": "Informações acadêmicas demonstrativas dos alunos apresentados nas telas do perfil responsável. A base não concede acesso a dados de outros usuários.",
+  "origem": [
+    "src/pages/responsavel/DashboardResponsavel.jsx",
+    "src/pages/responsavel/DesempenhoResponsavel.jsx",
+    "src/pages/responsavel/FrequenciaResponsavel.jsx",
+    "src/pages/responsavel/AtividadesResponsavel.jsx",
+    "src/pages/responsavel/CalendarioResponsavel.jsx",
+    "src/pages/responsavel/ComunicadosResponsavel.jsx"
+  ],
+  "alunosVinculados": [
+    {
+      "id": 1,
+      "nome": "Lucas Costa",
+      "turma": "8º ano A",
+      "escola": "Escola Estadual Farol",
+      "media": "8,0",
+      "frequencia": "95,0%",
+      "presencas": "228 presenças em 240 aulas",
+      "atividades": "2",
+      "proximaAvaliacao": "07/10",
+      "disciplinaAvaliacao": "Matemática",
+      "disciplinas": [
+        {
+          "nome": "Matemática",
+          "media": "7,5"
+        },
+        {
+          "nome": "Português",
+          "media": "8,0"
+        },
+        {
+          "nome": "Ciências",
+          "media": "8,5"
+        },
+        {
+          "nome": "História",
+          "media": "8,0"
+        },
+        {
+          "nome": "Geografia",
+          "media": "9,0"
+        },
+        {
+          "nome": "Inglês",
+          "media": "8,0"
+        }
+      ],
+      "eventos": [
+        {
+          "dia": "07 OUT",
+          "titulo": "Avaliação de Matemática",
+          "detalhe": "8º ano · Equações e proporcionalidade"
+        },
+        {
+          "dia": "08 OUT",
+          "titulo": "Entrega de Geografia",
+          "detalhe": "8º ano · Mapa das bacias"
+        },
+        {
+          "dia": "09 OUT",
+          "titulo": "Entrega de Português",
+          "detalhe": "8º ano · Redação de crônica"
+        },
+        {
+          "dia": "15 OUT",
+          "titulo": "Reunião de responsáveis",
+          "detalhe": "18h30 · Auditório da escola"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Sofia Costa",
+      "turma": "9º ano B",
+      "escola": "Escola Estadual Farol",
+      "media": "8,7",
+      "frequencia": "97,5%",
+      "presencas": "234 presenças em 240 aulas",
+      "atividades": "1",
+      "proximaAvaliacao": "09/10",
+      "disciplinaAvaliacao": "Ciências",
+      "disciplinas": [
+        {
+          "nome": "Matemática",
+          "media": "8,5"
+        },
+        {
+          "nome": "Português",
+          "media": "9,0"
+        },
+        {
+          "nome": "Ciências",
+          "media": "8,0"
+        },
+        {
+          "nome": "História",
+          "media": "9,0"
+        },
+        {
+          "nome": "Geografia",
+          "media": "8,5"
+        },
+        {
+          "nome": "Inglês",
+          "media": "9,0"
+        }
+      ],
+      "eventos": [
+        {
+          "dia": "09 OUT",
+          "titulo": "Avaliação de Ciências",
+          "detalhe": "9º ano · Ecologia e meio ambiente"
+        },
+        {
+          "dia": "10 OUT",
+          "titulo": "Entrega de História",
+          "detalhe": "9º ano · Pesquisa histórica"
+        },
+        {
+          "dia": "13 OUT",
+          "titulo": "Atividade de Matemática",
+          "detalhe": "9º ano · Funções"
+        },
+        {
+          "dia": "15 OUT",
+          "titulo": "Reunião de responsáveis",
+          "detalhe": "18h30 · Auditório da escola"
+        }
+      ]
+    }
+  ],
+  "desempenho": {
+    "observacao": "As telas possuem dados de desempenho separados por aluno. O conteúdo integral deve ser consultado no mock da página correspondente; não inferir notas não listadas nesta base."
+  },
+  "frequencia": {
+    "alunos": [
+      {
+        "alunoId": 1,
+        "nome": "Lucas Costa",
+        "presencas": 228,
+        "faltas": 12,
+        "percentual": 95,
+        "faltasHistorico": [
+          {
+            "data": "02/09/2026",
+            "disciplina": "Matemática",
+            "horario": "08:00 - 08:50",
+            "situacao": "Não justificada"
+          },
+          {
+            "data": "04/09/2026",
+            "disciplina": "Português",
+            "horario": "09:00 - 09:50",
+            "situacao": "Justificada"
+          },
+          {
+            "data": "08/09/2026",
+            "disciplina": "Ciências",
+            "horario": "10:00 - 10:50",
+            "situacao": "Justificada"
+          },
+          {
+            "data": "12/09/2026",
+            "disciplina": "Matemática",
+            "horario": "08:00 - 08:50",
+            "situacao": "Não justificada"
+          },
+          {
+            "data": "15/09/2026",
+            "disciplina": "História",
+            "horario": "11:00 - 11:50",
+            "situacao": "Em análise"
+          }
+        ]
+      },
+      {
+        "alunoId": 2,
+        "nome": "Sofia Costa",
+        "presencas": 234,
+        "faltas": 6,
+        "percentual": 97.5,
+        "faltasHistorico": [
+          {
+            "data": "03/09/2026",
+            "disciplina": "Geografia",
+            "horario": "08:00 - 08:50",
+            "situacao": "Justificada"
+          },
+          {
+            "data": "10/09/2026",
+            "disciplina": "Matemática",
+            "horario": "09:00 - 09:50",
+            "situacao": "Justificada"
+          },
+          {
+            "data": "14/09/2026",
+            "disciplina": "Inglês",
+            "horario": "10:00 - 10:50",
+            "situacao": "Em análise"
+          }
+        ]
+      }
+    ],
+    "observacao": "A solicitação de justificativa é demonstrativa e não pode ser enviada ou alterada pela IA."
+  },
+  "atividades": {
+    "observacao": "A tela apresenta atividades, avaliações e feedbacks separados por aluno. Consultar apenas registros vinculados ao aluno selecionado."
+  },
+  "calendario": [
+    {
+      "data": "2026-10-15",
+      "titulo": "Reunião de responsáveis",
+      "tipo": "reuniao",
+      "horario": "18:30",
+      "local": "Auditório da escola",
+      "aluno": "Todos",
+      "descricao": "Encontro entre responsáveis, professores e coordenação."
+    },
+    {
+      "data": "2026-10-28",
+      "titulo": "Conselho de classe",
+      "tipo": "reuniao",
+      "horario": "14:00",
+      "local": "Sala da coordenação",
+      "aluno": "Todos",
+      "descricao": "Reunião pedagógica de acompanhamento das turmas."
+    }
+  ],
+  "regrasAcesso": [
+    "Responder somente sobre Lucas Costa e Sofia Costa, que são os alunos demonstrativos vinculados ao perfil responsável nas telas do protótipo.",
+    "Não fornecer informações de outros responsáveis, docentes, coordenadores ou gestores.",
+    "Não revelar dados pessoais sensíveis de terceiros.",
+    "Se a pergunta for sobre aluno que não consta como vinculado, informar que não há autorização ou dados disponíveis.",
+    "Não afirmar que justificativas, mensagens ou alterações foram efetivamente enviadas pelo assistente."
+  ]
+}
