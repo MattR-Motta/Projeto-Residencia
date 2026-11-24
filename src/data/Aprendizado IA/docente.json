@@ -1,0 +1,119 @@
+{
+  "perfil": "docente",
+  "descricao": "Dados acadêmicos demonstrativos do próprio perfil docente. Não inclui dados de coordenadores, gestores ou outros docentes.",
+  "origem": [
+    "src/pages/Docente/dasboard.jsx",
+    "src/pages/Docente/MinhasDisciplinas.jsx",
+    "src/pages/Docente/minhasTurmas.jsx",
+    "src/pages/Docente/AulasReposicoesDocente.jsx",
+    "src/pages/Docente/Calendariodocente.jsx",
+    "src/pages/Docente/NotificacoesDocente.jsx"
+  ],
+  "usuario": {
+    "nome": "João Silva",
+    "perfil": "docente"
+  },
+  "resumo": [
+    {
+      "titulo": "Aulas hoje",
+      "valor": 4
+    },
+    {
+      "titulo": "Minhas turmas",
+      "valor": 6
+    },
+    {
+      "titulo": "Frequências pendentes",
+      "valor": 2
+    },
+    {
+      "titulo": "Solicitações",
+      "valor": 1
+    }
+  ],
+  "aulas": [
+    {
+      "horario": "08:00-08:40",
+      "disciplina": "Matemática",
+      "turma": "Turma 1A - Sala 101",
+      "acao": "Registrar aula"
+    },
+    {
+      "horario": "10:00-11:40",
+      "disciplina": "Matemática",
+      "turma": "Turma 2B - Sala 203",
+      "acao": "Ver aula"
+    },
+    {
+      "horario": "14:00-15:40",
+      "disciplina": "Português",
+      "turma": "Turma 2A - Sala 105",
+      "acao": "Ver aula"
+    },
+    {
+      "horario": "16:00-17:40",
+      "disciplina": "História",
+      "turma": "Turma 1B - Sala 102",
+      "acao": "Ver aula"
+    }
+  ],
+  "pendencias": [
+    "Frequência da Turma 1A - Aguardando registro",
+    "Conteúdo da aula de ontem - Registrar conteúdo",
+    "Solicitação de reposição - Em análise"
+  ],
+  "notificacoes": [
+    "Sua solicitação de reposição foi aprovada - Hoje, 10:24",
+    "Nova mensagem da coordenação - Hoje, 09:17",
+    "Lançamento da aula de amanhã (Turma 2B) - Ontem, 18:32"
+  ],
+  "disciplinas": [
+    {
+      "id": 1,
+      "nome": "Matemática",
+      "codigo": "MAT-101",
+      "turma": "1A",
+      "alunos": 32,
+      "cargaHoraria": 80,
+      "ementaAtualizada": true,
+      "ementa": {
+        "objetivo": "Desenvolver o raciocínio lógico, a capacidade de resolver problemas e aplicar conceitos matemáticos em situações do cotidiano.",
+        "conteudo": "Números e operações · Álgebra · Geometria · Grandezas e medidas · Estatística e probabilidade",
+        "competencias": "Argumentação, pensamento científico, comunicação e resolução colaborativa de problemas.",
+        "bibliografia": "DANTE, L. R. Matemática: contexto & aplicações. São Paulo: Ática. · Base Nacional Comum Curricular."
+      }
+    },
+    {
+      "id": 2,
+      "nome": "Matemática",
+      "codigo": "MAT-101",
+      "turma": "1B",
+      "alunos": 29,
+      "cargaHoraria": 80,
+      "ementaAtualizada": false
+    },
+    {
+      "id": 3,
+      "nome": "Português",
+      "codigo": "POR-102",
+      "turma": "3A",
+      "alunos": 30,
+      "cargaHoraria": 80,
+      "ementaAtualizada": false
+    },
+    {
+      "id": 4,
+      "nome": "História",
+      "codigo": "HIS-201",
+      "turma": "2C",
+      "alunos": 27,
+      "cargaHoraria": 60,
+      "ementaAtualizada": false
+    }
+  ],
+  "regrasAcesso": [
+    "Responder apenas sobre as próprias aulas, disciplinas, turmas, frequências, reposições e atividades docentes.",
+    "Não revelar dados de outros docentes, coordenadores, gestores ou responsáveis.",
+    "Não inferir informações pessoais que não estejam nesta base."
+  ]
+}
