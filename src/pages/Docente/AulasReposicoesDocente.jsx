@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Info, Plus, X } from 'lucide-react'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import '../../styles/dashboarddocente.css'
 import '../../styles/aulasReposicoesDocente.css'
@@ -247,7 +249,23 @@ function FormularioReposicao({ aulas, onSalvar, onFechar }) {
   )
 }
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as aulas e reposições',
+    descricao: 'Ocorreu um erro ao buscar as aulas e reposições. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+}
+
 function AulasReposicoesDocente() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [aulas, setAulas] = useState(aulasIniciais)
   const [reposicoes, setReposicoes] = useState(reposicoesIniciais)
   const [aulaAberta, setAulaAberta] = useState(null) // aula aberta no "Ver aula"
@@ -289,6 +307,16 @@ function AulasReposicoesDocente() {
             <strong>Joao Silva</strong>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         {/* Título */}
         <section className="aul-titulo">
@@ -429,6 +457,8 @@ function AulasReposicoesDocente() {
             </div>
           </aside>
         </section>
+        </>
+        )}
       </main>
 
       {aulaAberta && (

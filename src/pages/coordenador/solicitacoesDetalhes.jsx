@@ -11,6 +11,8 @@ import {
   ClipboardList,
 } from 'lucide-react';
 
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
 
 import "../../styles/Coordenador/coordenador.css";
@@ -22,7 +24,23 @@ import {
   salvarSolicitacoes,
 } from '../../data/solicitacoes';
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar os detalhes da solicitação',
+    descricao: 'Ocorreu um erro ao buscar os detalhes da solicitação. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+};
+
 function DetalhesSolicitacao() {
+  const { tipo: erroPagina, limparErro } = useErroPagina();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -162,6 +180,16 @@ function DetalhesSolicitacao() {
             <span>⌄</span>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         <div className="tp-content">
           <button
@@ -304,6 +332,8 @@ function DetalhesSolicitacao() {
             </div>
           </section>
         </div>
+        </>
+        )}
       </main>
     </div>
   );

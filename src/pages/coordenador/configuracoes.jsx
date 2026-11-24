@@ -12,6 +12,8 @@ import {
   Camera,
 } from 'lucide-react';
 
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
 
 import "../../styles/Coordenador/coordenador.css";
@@ -33,7 +35,23 @@ const perfilInicial = {
   unidade: 'C.E. Professor João Costa',
 };
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as configurações',
+    descricao: 'Ocorreu um erro ao buscar as configurações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+};
+
 function Configuracoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina();
   const [secaoAtiva, setSecaoAtiva] = useState('perfil');
 
   const [perfil, setPerfil] = useState(() => {
@@ -162,6 +180,16 @@ function Configuracoes() {
             </div>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         <div className="config-content">
           <div className="config-layout">
@@ -433,6 +461,8 @@ function Configuracoes() {
             </form>
           </div>
         </div>
+        </>
+        )}
       </main>
     </div>
   );

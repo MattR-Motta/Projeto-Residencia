@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './minhasTurmas.css'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 
 
 const turmas = [
@@ -61,7 +63,23 @@ const aulas = [
     },
 ]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as turmas',
+    descricao: 'Ocorreu um erro ao buscar as turmas. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+}
+
 function MinhasTurmas() {
+    const { tipo: erroPagina, limparErro } = useErroPagina()
     const [busca, setBusca] = useState('')
     const [disciplinaSelecionada, setDisciplinaSelecionada] =
         useState('Todas as disciplinas')
@@ -111,6 +129,15 @@ function MinhasTurmas() {
 
                 {/* Conteúdo principal */}
                 <main className="edu-content">
+                    {erroPagina ? (
+                        <ErrorState
+                          tipo={erroPagina}
+                          titulo={textosErro[erroPagina].titulo}
+                          descricao={textosErro[erroPagina].descricao}
+                          onTentarNovamente={limparErro}
+                        />
+                    ) : (
+                    <>
                     <div className="edu-page-heading">
                         <div>
                             <h1>Minhas turmas</h1>
@@ -221,6 +248,8 @@ function MinhasTurmas() {
                             </div>
                         </aside>
                     </div>
+                    </>
+                    )}
                 </main>
             </div>
         </div>

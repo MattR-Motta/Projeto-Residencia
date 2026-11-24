@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Eye, FileText, Info, Search } from 'lucide-react'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import '../../styles/dashboarddocente.css'
 import '../../styles/minhasDisciplinas.css'
@@ -90,7 +92,23 @@ const disciplinas = [
 
 const turmas = [...new Set(disciplinas.map((item) => item.turma))]
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as disciplinas',
+    descricao: 'Ocorreu um erro ao buscar as disciplinas. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+}
+
 function MinhasDisciplinas() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [busca, setBusca] = useState('')
   const [turmaFiltro, setTurmaFiltro] = useState('todas')
   const [idSelecionado, setIdSelecionado] = useState(disciplinas[0].id)
@@ -123,6 +141,16 @@ function MinhasDisciplinas() {
             <strong>Joao Silva</strong>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         {/* Título */}
         <section className="disc-titulo">
@@ -246,6 +274,8 @@ function MinhasDisciplinas() {
             </aside>
           )}
         </section>
+        </>
+        )}
       </main>
     </div>
   )

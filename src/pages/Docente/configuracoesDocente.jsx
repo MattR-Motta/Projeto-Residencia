@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import "./configuracoesDocente.css";
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
 
 
 const MENU = [
@@ -174,7 +176,23 @@ function PerfilForm() {
   );
 }
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as configurações',
+    descricao: 'Ocorreu um erro ao buscar as configurações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+};
+
 export default function Configuracoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina();
   const [aba, setAba] = useState("perfil");
 
   return (
@@ -187,6 +205,15 @@ export default function Configuracoes() {
         </header>
 
         <main className="conteudo">
+          {erroPagina ? (
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          ) : (
+          <>
           <h1>Configurações</h1>
           <p className="subtitulo">
             Gerencie suas preferências e informações da conta.
@@ -227,6 +254,8 @@ export default function Configuracoes() {
               </section>
             )}
           </div>
+          </>
+          )}
         </main>
       </div>
     </div>

@@ -94,11 +94,18 @@ export function carregarSolicitacoes() {
   }
 }
 
+// Retorna true se conseguiu salvar e false se o navegador recusou
+// (por exemplo, armazenamento cheio ou bloqueado), sem quebrar a tela.
 export function salvarSolicitacoes(solicitacoes) {
-  localStorage.setItem(
-    CHAVE_SOLICITACOES,
-    JSON.stringify(solicitacoes),
-  )
+  try {
+    localStorage.setItem(
+      CHAVE_SOLICITACOES,
+      JSON.stringify(solicitacoes),
+    )
+    return true
+  } catch {
+    return false
+  }
 }
 
 export const solicitacoesIniciaisSeduc = [

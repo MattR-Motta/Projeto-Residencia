@@ -8,6 +8,8 @@ import {
   Info,
   MoreVertical,
 } from 'lucide-react'
+import ErrorState from '../../components/ErrorState'
+import useErroPagina from '../../hooks/useErroPagina'
 import BarraLateral from '../../components/Barra Lateral/BarraLateralDocente'
 import '../../styles/dashboarddocente.css'
 import '../../styles/notificacoesDocente.css'
@@ -60,7 +62,23 @@ const notificacoesIniciais = [
     lida: true,
   },
 ]
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as notificações',
+    descricao: 'Ocorreu um erro ao buscar as notificações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+}
+
 function NotificacoesDocente() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
   const [notificacoes, setNotificacoes] = useState(notificacoesIniciais)
   const [aba, setAba] = useState('todas') // 'todas' ou 'naoLidas'
   const [menuAberto, setMenuAberto] = useState(null) // id da notificação com menu aberto
@@ -116,6 +134,16 @@ function NotificacoesDocente() {
             <strong>Joao Silva</strong>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         {/* Título e botão */}
         <section className="nd-cabecalho">
@@ -232,6 +260,8 @@ function NotificacoesDocente() {
             </p>
           )}
         </section>
+        </>
+        )}
       </main>
     </div>
   )

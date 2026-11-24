@@ -11,6 +11,8 @@ import {
   Eye,
 } from 'lucide-react';
 
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
 
 import "../../styles/Coordenador/coordenador.css";
@@ -22,7 +24,23 @@ import {
   salvarSolicitacoes,
 } from '../../data/solicitacoes';
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as solicitações',
+    descricao: 'Ocorreu um erro ao buscar as solicitações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+};
+
 function Solicitacoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina();
   const navigate = useNavigate();
 
   const [solicitacoes, setSolicitacoes] = useState(carregarSolicitacoes);
@@ -133,6 +151,16 @@ function Solicitacoes() {
             <span>⌄</span>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         <div className="tp-content">
           <section className="tp-stats">
@@ -318,6 +346,8 @@ function Solicitacoes() {
             </div>
           </section>
         </div>
+        </>
+        )}
       </main>
     </div>
   );

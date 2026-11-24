@@ -14,6 +14,8 @@ import {
   Clock,
 } from 'lucide-react';
 
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
 
 import "../../styles/Coordenador/coordenador.css";
@@ -78,7 +80,23 @@ const notificacoesIniciais = [
   },
 ];
 
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as notificações',
+    descricao: 'Ocorreu um erro ao buscar as notificações. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'Este serviço está indisponível agora. Tente novamente em alguns instantes.',
+  },
+};
+
 function Notificacoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina();
   const [notificacoes, setNotificacoes] = useState(notificacoesIniciais);
   const [pesquisa, setPesquisa] = useState('');
   const [categoria, setCategoria] = useState('Todas');
@@ -175,6 +193,16 @@ function Notificacoes() {
             <span>⌄</span>
           </div>
         </header>
+
+        {erroPagina ? (
+          <ErrorState
+            tipo={erroPagina}
+            titulo={textosErro[erroPagina].titulo}
+            descricao={textosErro[erroPagina].descricao}
+            onTentarNovamente={limparErro}
+          />
+        ) : (
+        <>
 
         <div className="tp-content notif-content">
           <section className="notif-stats">
@@ -335,6 +363,8 @@ function Notificacoes() {
             </footer>
           </section>
         </div>
+        </>
+        )}
       </main>
     </div>
   );
