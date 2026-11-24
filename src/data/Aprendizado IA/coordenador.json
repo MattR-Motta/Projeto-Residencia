@@ -1,0 +1,220 @@
+{
+  "perfil": "coordenador",
+  "descricao": "Base demonstrativa de informações acadêmicas acessíveis à coordenação. Não contém dados pessoais privados de docentes.",
+  "origem": [
+    "src/pages/coordenador/turmas.jsx",
+    "src/pages/coordenador/calendario.jsx",
+    "src/pages/coordenador/aulasReposicoes.jsx",
+    "src/pages/coordenador/disciplinasEmentas.jsx",
+    "src/pages/coordenador/notificacoes.jsx",
+    "src/data/solicitacoes.js"
+  ],
+  "turmas": [
+    {
+      "id": 1,
+      "codigo": "TUR001",
+      "nome": "Desenvolvimento de Sistemas",
+      "curso": "Técnico em Desenvolvimento de Sistemas",
+      "periodo": "Manhã",
+      "alunos": 32,
+      "docente": "Carlos Oliveira",
+      "status": "Ativa"
+    },
+    {
+      "id": 2,
+      "codigo": "TUR002",
+      "nome": "Informática",
+      "curso": "Técnico em Informática",
+      "periodo": "Tarde",
+      "alunos": 28,
+      "docente": "Ana Santos",
+      "status": "Ativa"
+    },
+    {
+      "id": 3,
+      "codigo": "TUR003",
+      "nome": "Administração",
+      "curso": "Técnico em Administração",
+      "periodo": "Noite",
+      "alunos": 30,
+      "docente": "Mariana Costa",
+      "status": "Ativa"
+    },
+    {
+      "id": 4,
+      "codigo": "TUR004",
+      "nome": "Desenvolvimento Web",
+      "curso": "Formação complementar",
+      "periodo": "Manhã",
+      "alunos": 25,
+      "docente": "Pedro Almeida",
+      "status": "Inativa"
+    }
+  ],
+  "disciplinas": [
+    {
+      "id": 1,
+      "nome": "Matemática",
+      "codigo": "MAT-101",
+      "professor": "Carlos Mendes",
+      "turmas": "1A e 2B",
+      "cargaHoraria": 80,
+      "curso": "Ensino Médio",
+      "periodo": "1º período",
+      "status": "Atualizada",
+      "ementa": "Conjuntos numéricos, funções, geometria plana e espacial, estatística e resolução de problemas."
+    },
+    {
+      "id": 2,
+      "nome": "Língua Portuguesa",
+      "codigo": "POR-102",
+      "professor": "Ana Souza",
+      "turmas": "2B e 3A",
+      "cargaHoraria": 80,
+      "curso": "Ensino Médio",
+      "periodo": "2º período",
+      "status": "Atualização pendente",
+      "ementa": "Leitura e interpretação de textos, gêneros textuais, gramática, produção textual e literatura brasileira."
+    },
+    {
+      "id": 3,
+      "nome": "Física",
+      "codigo": "FIS-201",
+      "professor": "Rafael Lima",
+      "turmas": "3A",
+      "cargaHoraria": 60,
+      "curso": "Ensino Médio",
+      "periodo": "1º período",
+      "status": "Atualizada",
+      "ementa": "Mecânica, termologia, ondas, óptica, eletricidade e aplicações dos conceitos físicos."
+    },
+    {
+      "id": 4,
+      "nome": "Ciências",
+      "codigo": "CIE-105",
+      "professor": "Juliana Alves",
+      "turmas": "4C",
+      "cargaHoraria": 60,
+      "curso": "Ensino Fundamental",
+      "periodo": "3º período",
+      "status": "Revisão necessária",
+      "ementa": "Seres vivos, ecossistemas, corpo humano, matéria, energia e sustentabilidade."
+    }
+  ],
+  "aulas": [
+    {
+      "id": 1,
+      "horario": "08:00–09:40",
+      "disciplina": "Matemática",
+      "turma": "1A",
+      "professor": "Carlos Mendes",
+      "sala": "Sala 101",
+      "status": "Realizada",
+      "data": "2026-05-23"
+    },
+    {
+      "id": 2,
+      "horario": "10:00–11:40",
+      "disciplina": "História",
+      "turma": "2B",
+      "professor": "Ana Ribeiro",
+      "sala": "Sala 204",
+      "status": "Em andamento",
+      "data": "2026-05-23"
+    },
+    {
+      "id": 3,
+      "horario": "14:00–15:40",
+      "disciplina": "Português",
+      "turma": "3A",
+      "professor": "Juliana Freitas",
+      "sala": "Sala 105",
+      "status": "Confirmada",
+      "data": "2026-05-23"
+    },
+    {
+      "id": 4,
+      "horario": "16:00–17:40",
+      "disciplina": "Física",
+      "turma": "3A",
+      "professor": "Rafael Lima",
+      "sala": "Laboratório 2",
+      "status": "Reposição necessária",
+      "data": "2026-05-23"
+    }
+  ],
+  "reposicoes": [
+    {
+      "id": 11,
+      "disciplina": "Matemática",
+      "professor": "Carlos Mendes",
+      "turma": "1A",
+      "aulaOriginal": "23 mai. • 08:00",
+      "motivo": "Atestado médico",
+      "novaData": "29 mai. • 13:30",
+      "status": "Pendente"
+    },
+    {
+      "id": 12,
+      "disciplina": "História",
+      "professor": "Ana Ribeiro",
+      "turma": "2B",
+      "aulaOriginal": "20 mai. • 10:00",
+      "motivo": "Formação pedagógica",
+      "novaData": "30 mai. • 10:00",
+      "status": "Aprovada"
+    },
+    {
+      "id": 13,
+      "disciplina": "Física",
+      "professor": "Rafael Lima",
+      "turma": "3A",
+      "aulaOriginal": "22 mai. • 16:00",
+      "motivo": "Manutenção do laboratório",
+      "novaData": "02 jun. • 14:00",
+      "status": "Rejeitada"
+    }
+  ],
+  "eventosCalendario": [
+    {
+      "id": 1,
+      "titulo": "Início do semestre letivo",
+      "data": "2026-10-05",
+      "tipo": "Acadêmico",
+      "descricao": "Início das atividades do semestre."
+    },
+    {
+      "id": 2,
+      "titulo": "Reunião pedagógica",
+      "data": "2026-10-12",
+      "tipo": "Reunião",
+      "descricao": "Reunião com os docentes e a coordenação."
+    },
+    {
+      "id": 3,
+      "titulo": "Prazo para lançamento de notas",
+      "data": "2026-10-20",
+      "tipo": "Prazo",
+      "descricao": "Data limite para registrar as notas dos alunos."
+    },
+    {
+      "id": 4,
+      "titulo": "Conselho de classe",
+      "data": "2026-10-23",
+      "tipo": "Reunião",
+      "descricao": "Análise do desempenho das turmas."
+    },
+    {
+      "id": 5,
+      "titulo": "Feriado escolar",
+      "data": "2026-10-28",
+      "tipo": "Feriado",
+      "descricao": "Não haverá atividades letivas."
+    }
+  ],
+  "regrasAcesso": [
+    "Consultar informações acadêmicas e operacionais necessárias à coordenação.",
+    "Não fornecer CPF, endereço, telefone, credenciais ou outros dados pessoais privados de docentes.",
+    "Não presumir que os registros demonstrativos representam dados atualizados em tempo real."
+  ]
+}
