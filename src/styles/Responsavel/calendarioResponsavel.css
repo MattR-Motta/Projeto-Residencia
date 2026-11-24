@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 .resp-calendario-layout {
   display: flex; min-height: 100vh; background: #f4f6fa;
@@ -15,7 +17,7 @@
 .resp-calendario-perfil { display: flex; align-items: center; gap: 10px; }
 .resp-calendario-avatar {
   width: 32px; height: 32px; display: grid; place-items: center;
-  border-radius: 50%; background: #e9efff; color: #2863e9;
+  border-radius: 50%; background: var(--marca-verde-claro); color: var(--marca-verde);
   font-size: 10px; font-weight: 700;
 }
 .resp-calendario-perfil div:last-child { display: flex; flex-direction: column; gap: 3px; }
@@ -24,7 +26,7 @@
 
 .resp-calendario-conteudo { max-width: 1600px; padding: 27px 30px; margin: auto; }
 .resp-calendario-titulo { margin-bottom: 22px; }
-.resp-calendario-subtitulo { color: #2863e9; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.resp-calendario-subtitulo { color: var(--marca-verde); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
 .resp-calendario-titulo h1 { margin: 7px 0 5px; font-size: 25px; }
 .resp-calendario-titulo p { margin: 0; color: #7c899b; font-size: 11px; }
 
@@ -60,7 +62,7 @@
   border: 1px solid #e4e9f1; border-radius: 6px;
   background: #fff; color: #59677c; cursor: pointer;
 }
-.resp-calendario-setas button:hover { background: #edf3ff; color: #2863e9; }
+.resp-calendario-setas button:hover { background: var(--marca-verde-claro); color: var(--marca-verde); }
 
 .resp-calendario-semana,
 .resp-calendario-dias {
@@ -81,7 +83,7 @@
 .resp-calendario-dia:nth-child(7n) { border-right: 1px solid #edf0f5; }
 .resp-calendario-dia:nth-last-child(-n+7) { border-bottom: 1px solid #edf0f5; }
 .resp-calendario-dia:hover { background: #f3f6fc; }
-.resp-calendario-dia.selecionado { background: #edf3ff; color: #2863e9; font-weight: 700; }
+.resp-calendario-dia.selecionado { background: var(--marca-verde-claro); color: var(--marca-verde); font-weight: 700; }
 .resp-calendario-dia.vazio { background: #fafbfd; cursor: default; }
 .resp-calendario-dia.vazio:hover { background: #fafbfd; }
 .resp-calendario-marcadores { display: flex; justify-content: center; gap: 3px; }
@@ -90,7 +92,7 @@
   width: 6px; height: 6px; display: inline-block; border-radius: 50%;
 }
 .resp-calendario-marcadores i.avaliacao,
-.resp-calendario-legenda i.avaliacao { background: #2863e9; }
+.resp-calendario-legenda i.avaliacao { background: var(--marca-verde); }
 .resp-calendario-marcadores i.atividade,
 .resp-calendario-legenda i.atividade { background: #26966b; }
 .resp-calendario-marcadores i.reuniao,
@@ -109,7 +111,7 @@
 }
 .resp-calendario-agenda-titulo h2 { margin: 0; font-size: 13px; }
 .resp-calendario-agenda-titulo p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
-.resp-calendario-agenda-titulo > svg { color: #2863e9; }
+.resp-calendario-agenda-titulo > svg { color: var(--marca-verde); }
 
 .resp-calendario-eventos { display: flex; flex-direction: column; }
 .resp-calendario-evento {
@@ -122,7 +124,7 @@
   flex-shrink: 0; border-radius: 7px;
 }
 .resp-calendario-evento-icone.avaliacao,
-.resp-calendario-proximo-icone.avaliacao { background: #edf3ff; color: #2863e9; }
+.resp-calendario-proximo-icone.avaliacao { background: var(--marca-verde-claro); color: var(--marca-verde); }
 .resp-calendario-evento-icone.atividade,
 .resp-calendario-proximo-icone.atividade { background: #e9f8f1; color: #26966b; }
 .resp-calendario-evento-icone.reuniao,
@@ -134,7 +136,7 @@
 .resp-calendario-tipo {
   padding: 4px 7px; border-radius: 4px; font-size: 8px;
 }
-.resp-calendario-tipo.avaliacao { background: #edf3ff; color: #2863e9; }
+.resp-calendario-tipo.avaliacao { background: var(--marca-verde-claro); color: var(--marca-verde); }
 .resp-calendario-tipo.atividade { background: #e9f8f1; color: #26966b; }
 .resp-calendario-tipo.reuniao { background: #f1edff; color: #7955ce; }
 .resp-calendario-tipo.feriado { background: #fff3e5; color: #d58b32; }
@@ -162,7 +164,7 @@
 .resp-calendario-lista-proximos article > div:nth-child(2) { flex: 1; min-width: 0; }
 .resp-calendario-lista-proximos strong { font-size: 10px; }
 .resp-calendario-lista-proximos p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
-.resp-calendario-lista-proximos article > span { color: #2863e9; font-size: 9px; font-weight: 650; white-space: nowrap; }
+.resp-calendario-lista-proximos article > span { color: var(--marca-verde); font-size: 9px; font-weight: 650; white-space: nowrap; }
 
 .resp-calendario-rodape { padding: 20px 0 5px; color: #9aa5b5; font-size: 9px; }
 

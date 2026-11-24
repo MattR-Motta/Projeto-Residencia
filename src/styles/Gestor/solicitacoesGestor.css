@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 /* Estrutura Geral */
 .layout-gestor {
   display: flex;
@@ -134,9 +136,9 @@
 }
 
 .aba-btn.ativa {
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
   font-weight: 600;
-  border-bottom-color: #1d4ed8;
+  border-bottom-color: var(--marca-verde-escuro);
 }
 
 .card-tabela {
@@ -199,8 +201,8 @@
 }
 
 .badge-status.analise {
-  background-color: #dbeafe;
-  color: #1d4ed8;
+  background-color: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
 }
 
 .badge-status.aprovado {
@@ -214,8 +216,8 @@
 }
 
 .btn-analisar {
-  background-color: #e0eaff;
-  color: #1d4ed8;
+  background-color: var(--marca-verde-claro);
+  color: var(--marca-verde-escuro);
   border: none;
   padding: 7px 16px;
   border-radius: 6px;
@@ -226,7 +228,7 @@
 }
 
 .btn-analisar:hover {
-  background-color: #c7d9ff;
+  background-color: var(--marca-verde-contorno);
 }
 
 .rodape-tabela {
@@ -256,9 +258,9 @@
 }
 
 .pagina-btn.ativa {
-  background-color: #1d4ed8;
+  background-color: var(--marca-verde-escuro);
   color: #ffffff;
-  border-color: #1d4ed8;
+  border-color: var(--marca-verde-escuro);
 }
 
 /* =========================================================
@@ -278,7 +280,7 @@
 }
 
 .breadcrumb-link:hover {
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
   text-decoration: underline;
 }
 
@@ -349,7 +351,7 @@
 }
 
 .btn-aprovar {
-  background-color: #1d4ed8;
+  background-color: var(--marca-verde-escuro);
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -452,7 +454,7 @@
 .link-visualizar {
   background: none;
   border: none;
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
   font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
@@ -484,7 +486,7 @@
   top: 16px;
   bottom: -22px;
   width: 1.5px;
-  background-color: #dbeafe;
+  background-color: var(--marca-verde-suave);
 }
 
 .marcador-timeline {
@@ -496,12 +498,12 @@
 }
 
 .item-timeline.concluido .marcador-timeline {
-  background-color: #1d4ed8;
+  background-color: var(--marca-verde-escuro);
 }
 
 .item-timeline.atual-validado .marcador-timeline {
   background-color: #ffffff;
-  border: 2.5px solid #1d4ed8;
+  border: 2.5px solid var(--marca-verde-escuro);
 }
 
 .item-timeline.pendente .marcador-timeline {
@@ -639,7 +641,7 @@
 }
 
 .textarea-parecer:focus {
-  border-color: #1d4ed8;
+  border-color: var(--marca-verde-escuro);
 }
 
 .area-upload {
@@ -657,12 +659,12 @@
 }
 
 .area-upload:hover {
-  border-color: #1d4ed8;
+  border-color: var(--marca-verde-escuro);
 }
 
 .area-upload strong {
   font-size: 13px;
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
 }
 
 .area-upload span {
@@ -689,7 +691,7 @@
 }
 
 .btn-confirmar {
-  background: #1d4ed8;
+  background: var(--marca-verde-escuro);
   border: none;
   color: #ffffff;
   padding: 10px 24px;

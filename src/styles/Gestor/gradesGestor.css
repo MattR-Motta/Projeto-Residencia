@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 .gc-page {
   display: flex;
   min-height: 100vh;
@@ -116,7 +118,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: #1d4ed8;
+  background-color: var(--marca-verde-escuro);
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -129,7 +131,7 @@
 }
 
 .gc-btn-primary:hover {
-  background-color: #1e40af;
+  background-color: var(--marca-verde-escuro);
 }
 
 .gc-filters {
@@ -174,7 +176,7 @@
 }
 
 .gc-filter-search input:focus {
-  border-color: #3b82f6;
+  border-color: var(--marca-verde);
 }
 
 .gc-select-wrapper {
@@ -199,7 +201,7 @@
 }
 
 .gc-select-wrapper select:focus {
-  border-color: #3b82f6;
+  border-color: var(--marca-verde);
 }
 
 .gc-select-icon {
@@ -336,8 +338,8 @@
 }
 
 .gc-page-btn--active {
-  background-color: #1d4ed8;
-  border-color: #1d4ed8;
+  background-color: var(--marca-verde-escuro);
+  border-color: var(--marca-verde-escuro);
   color: #ffffff;
 }
 
@@ -374,7 +376,7 @@
 
 .gc-tab--active {
   background-color: #ffffff;
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
 }
 
@@ -404,9 +406,9 @@
 }
 
 .gc-action-btn:hover {
-  background-color: #eff6ff;
-  border-color: #bfdbfe;
-  color: #1d4ed8;
+  background-color: var(--marca-verde-claro);
+  border-color: var(--marca-verde-contorno);
+  color: var(--marca-verde-escuro);
 }
 
 /* ================= TELAS DE FORMULÁRIO (NOVA / EDITAR) ================= */
@@ -430,7 +432,7 @@
 }
 
 .gc-back-btn:hover {
-  color: #1d4ed8;
+  color: var(--marca-verde-escuro);
 }
 
 .gc-form-card {
@@ -481,8 +483,8 @@
 }
 
 .gc-form-group input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  border-color: var(--marca-verde);
+  box-shadow: 0 0 0 3px rgba(var(--marca-verde-rgb) / 0.12);
 }
 
 .gc-select-wrapper--full {

@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 .cal-titulo-pagina {
   margin: 0 0 16px;
   font-size: 22px;
@@ -49,8 +51,8 @@
 }
 
 .cal-modo.ativo {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-weight: 600;
 }
 
@@ -103,7 +105,7 @@
 }
 
 .cal-numero.selecionado {
-  background: #2563eb;
+  background: var(--marca-verde);
   color: #ffffff;
   font-weight: 600;
 }
@@ -113,7 +115,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #2563eb;
+  background: var(--marca-verde);
 }
 
 /* Semana */
@@ -136,8 +138,8 @@
   width: 100%;
   padding: 3px 4px;
   border-radius: 4px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 9px;
   text-align: center;
 }
@@ -167,7 +169,7 @@
 
 .cal-horario {
   font-size: 11px;
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .cal-vazio {
@@ -205,7 +207,7 @@
 }
 
 .cal-proximo-data {
-  color: #2563eb;
+  color: var(--marca-verde);
   font-size: 11px;
   white-space: nowrap;
 }

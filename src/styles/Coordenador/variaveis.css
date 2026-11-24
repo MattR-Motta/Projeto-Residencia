@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 :root {
   /* ===== Identidade visual principal ===== */
@@ -8,10 +10,10 @@
   --edu-muted: #7b8798;
   --edu-border: #e7ebf2;
 
-  --edu-primary: #2864ed;
-  --edu-primary-light: #e8efff;
-  --edu-primary-hover: #1e54d4;
-  --edu-primary-border: #c7d7ff;
+  --edu-primary: var(--marca-verde);
+  --edu-primary-light: var(--marca-verde-claro);
+  --edu-primary-hover: var(--marca-verde-escuro);
+  --edu-primary-border: var(--marca-verde-contorno);
 
   /* ===== Estados e indicadores ===== */
 

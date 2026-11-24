@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 /* ===== INDICADORES ===== */
 
 .tp-stats {
@@ -35,8 +37,8 @@
   display: grid;
   place-items: center;
   border-radius: 11px;
-  background: #eaf1ff;
-  color: #2864ed;
+  background: var(--marca-verde-claro);
+  color: var(--marca-verde);
   font-style: normal;
   font-size: 20px;
 }

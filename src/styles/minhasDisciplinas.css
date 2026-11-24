@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 /* Tela "Minhas disciplinas" do docente.
    Usa também as classes base de dashboarddocente.css (docente-pagina, docente-card...). */
 
@@ -88,7 +90,7 @@
 }
 
 .disc-item--ativo {
-  border-color: #93c5fd;
+  border-color: var(--marca-verde-medio);
 }
 
 .disc-turma-selo {
@@ -103,7 +105,7 @@
   font-weight: 600;
 }
 
-.disc-turma-selo.azul { background: #dbeafe; color: #2563eb; }
+.disc-turma-selo.azul { background: var(--marca-verde-suave); color: var(--marca-verde); }
 .disc-turma-selo.roxo { background: #ede9fe; color: #7c3aed; }
 .disc-turma-selo.verde { background: #dcfce7; color: #16a34a; }
 .disc-turma-selo.laranja { background: #ffedd5; color: #ea580c; }
@@ -144,14 +146,14 @@
   padding: 10px 0;
   border: none;
   border-radius: 8px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 11px;
   cursor: pointer;
 }
 
 .disc-botao-ementa:hover {
-  background: #bfdbfe;
+  background: var(--marca-verde-contorno);
 }
 
 /* Painel da ementa */
@@ -168,7 +170,7 @@
 }
 
 .disc-ementa-titulo svg {
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .disc-ementa-sub {
@@ -184,8 +186,8 @@
   margin-bottom: 8px;
   padding: 10px 12px;
   border-radius: 8px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 11px;
 }
 

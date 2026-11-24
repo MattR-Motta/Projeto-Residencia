@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 .gestor-saudacao {
   display: flex;
   align-items: center;
@@ -7,7 +9,7 @@
   margin-bottom: 20px;
   border-radius: 12px;
   color: #fff;
-  background: linear-gradient(110deg, #172a4b, #315bd6);
+  background: linear-gradient(110deg, var(--marca-verde-escuro), var(--marca-verde));
 }
 
 .gestor-saudacao > div:first-child > span {
@@ -169,7 +171,7 @@
 }
 
 .gestor-barra-preenchimento--1 {
-  background: #315bd6;
+  background: var(--marca-verde);
 }
 
 .gestor-barra-preenchimento--2 {
@@ -210,7 +212,7 @@
   height: 150px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: conic-gradient(#315bd6 0 38.7%, #0eaa78 38.7% 67.7%, #e8a328 67.7% 85.4%, #f28b35 85.4% 96.7%, #8994a7 96.7% 100%);
+  background: conic-gradient(var(--marca-verde) 0 38.7%, #0eaa78 38.7% 67.7%, #e8a328 67.7% 85.4%, #f28b35 85.4% 96.7%, #8994a7 96.7% 100%);
   position: relative;
 }
 
@@ -266,7 +268,7 @@
 }
 
 .gestor-ponto--1 {
-  background: #315bd6;
+  background: var(--marca-verde);
 }
 
 .gestor-ponto--2 {
