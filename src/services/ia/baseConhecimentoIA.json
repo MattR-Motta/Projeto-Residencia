@@ -1,0 +1,721 @@
+{
+  "sistema": {
+    "nome": "EduGest",
+    "descricao": "Plataforma de gestão acadêmica e escolar desenvolvida para o ambiente de ensino SEDUC-SE, organizada em quatro perfis de acesso: Gestor, Coordenador, Docente e Responsável.",
+    "versao": "2.4.0",
+    "ambiente": "Demonstração com dados mockados",
+    "regrasAssistente": [
+      "Responder sempre em português brasileiro, de forma clara e objetiva.",
+      "Basear-se exclusivamente nas informações deste JSON e no contexto enviado pelo sistema; nunca inventar dados, telas ou funcionalidades.",
+      "Informar claramente quando um dado não existir na base atual.",
+      "O assistente é apenas consultivo: não pode cadastrar, editar, aprovar, rejeitar ou excluir informações. Quando solicitado, orientar o usuário sobre qual menu e tela usar.",
+      "Respeitar o perfil informado na sessão atual e priorizar as informações e rotas permitidas para esse perfil.",
+      "Não exibir nem solicitar senhas ou documentos pessoais sensíveis."
+    ],
+    "exemplosAtendimento": [
+      {
+        "perfil": "gestor",
+        "pergunta": "Quais portarias estão publicadas?",
+        "respostaIdeal": "Na tela Portarias (/gestor/portarias), constam 2 portarias com status Publicada: Portaria 1.248/2026 (Designação de equipe gestora, em 10/10/2026) e Portaria 1.250/2026 (Autorização de funcionamento, em 15/10/2026)."
+      },
+      {
+        "perfil": "coordenador",
+        "pergunta": "Você pode aprovar a solicitação SOL-2026-001?",
+        "respostaIdeal": "Não consigo aprovar ou alterar solicitações pelo assistente. Para aprovar a SOL-2026-001 (Reposição de aula de Matemática, enviada por Carlos Mendes), acesse o menu Solicitações (/coordenador/solicitacoes) ou abra os detalhes do pedido para registrar a decisão."
+      },
+      {
+        "perfil": "docente",
+        "pergunta": "Qual é a ementa de História da turma 2C?",
+        "respostaIdeal": "Em Minhas disciplinas (/docente/disciplinas), História (HIS-201, Turma 2C, 60h) aborda Brasil Colônia e Império, República brasileira, Revoluções modernas, Cidadania e direitos humanos. A consulta é somente leitura, pois a ementa é mantida pela coordenação pedagógica."
+      },
+      {
+        "perfil": "responsavel",
+        "pergunta": "Quantas faltas não justificadas o Lucas tem?",
+        "respostaIdeal": "No histórico de Frequência e faltas (/responsavel/frequencia), Lucas Costa (8º ano A) tem 2 faltas não justificadas em Matemática (nos dias 02/09/2026 e 12/09/2026), além de 1 falta em análise e 2 justificadas, totalizando 12 faltas e 95% de frequência acumulada."
+      }
+    ],
+    "contasDemonstracao": [
+      { "nome": "Coordenador(a)", "email": "coordenador@edugest.com", "perfil": "coordenador" },
+      { "nome": "Docente", "email": "docente@edugest.com", "perfil": "docente" },
+      { "nome": "Gestor(a)", "email": "gestor@edugest.com", "perfil": "gestor" },
+      { "nome": "Responsavel", "email": "responsavel@edugest.com", "perfil": "responsavel" }
+    ],
+    "rotasGerais": [
+      { "rota": "/login", "descricao": "Tela de acesso ao sistema" },
+      { "rota": "/erros", "descricao": "Índice de telas de erro (400, 401, 403, 404, 408, 500, 503 e sem-conexao)" }
+    ],
+    "perfis": {
+      "gestor": {
+        "titulo": "Gestor (Gestão da rede estadual)",
+        "rotaInicial": "/gestor",
+        "menus": [
+          { "label": "Dashboard", "rota": "/gestor", "funcao": "Resumo da rede estadual, indicadores, distribuição por modalidade e município, ações rápidas e exportação de relatório CSV." },
+          { "label": "Escolas", "rota": "/gestor/escolas", "funcao": "Consulta, filtros, visualização, edição, exclusão e cadastro em 3 etapas de unidades escolares." },
+          { "label": "Portarias", "rota": "/gestor/portarias", "funcao": "Gestão de portarias da rede, filtros por situação/tipo, visualização, edição, exclusão e download de resumo .txt." },
+          { "label": "Estrutura", "rota": "/gestor/estrutura", "funcao": "Cadastro, edição, ativação/desativação e exclusão de modalidades de ensino e regimes de funcionamento." },
+          { "label": "Solicitações", "rota": "/gestor/solicitacoes", "funcao": "Análise de solicitações enviadas pelas escolas (lista, detalhes com documentos/histórico e emissão de parecer técnico para aprovar ou rejeitar)." },
+          { "label": "Grades", "rota": "/gestor/grades", "funcao": "Gestão de Grades Curriculares e Matrizes Curriculares vinculadas, com criação e edição (também disponível via /gestor/grades/nova e /gestor/grades/:id/editar)." },
+          { "label": "Disciplinas", "rota": "/gestor/disciplinas", "funcao": "Cadastro, busca, filtros por carga horária e tipo (Obrigatória/Optativa), alteração de status, edição e exclusão de disciplinas." },
+          { "label": "Optativas", "rota": "/gestor/optativas", "funcao": "Gestão de disciplinas optativas/eletivas por área de conhecimento e escolas ofertantes." },
+          { "label": "Professores", "rota": "/gestor/professores", "funcao": "Distribuição e alocação de docentes em escolas, controle de carga horária, indicadores de cobertura e desvinculação." },
+          { "label": "Personalização", "rota": "/gestor/personalizacao", "funcao": "Criação, pesquisa, edição, ativação/inativação e exclusão de modelos de configuração para as escolas." }
+        ]
+      },
+      "coordenador": {
+        "titulo": "Coordenador pedagógico",
+        "rotaInicial": "/coordenador",
+        "menus": [
+          { "label": "Dashboard", "rota": "/coordenador", "funcao": "Visão geral da unidade com indicadores, próximos eventos e avisos/pendências." },
+          { "label": "Turmas", "rota": "/coordenador/turmas", "funcao": "Gerenciamento de turmas com pesquisa, filtro por período, visualização, criação, edição e ativação/desativação." },
+          { "label": "Calendário", "rota": "/coordenador/calendario", "funcao": "Calendário acadêmico mensal com criação, edição e exclusão de eventos (suporta parâmetros ?data=AAAA-MM-DD&eventoId=ID)." },
+          { "label": "Disciplinas e Ementas", "rota": "/coordenador/disciplinas-ementas", "funcao": "Consulta e manutenção de disciplinas, visualização/edição de ementas e associação de professores e turmas." },
+          { "label": "Aulas e Reposições", "rota": "/coordenador/aulas-reposicoes", "funcao": "Acompanhamento de aulas programadas e gestão de solicitações de reposição (criar, aprovar, rejeitar e reagendar)." },
+          { "label": "Solicitações", "rota": "/coordenador/solicitacoes", "funcao": "Central de triagem de solicitações docentes com filtros, decisão rápida e página de detalhes (/coordenador/solicitacoes/:id)." },
+          { "label": "Notificações", "rota": "/coordenador/notificacoes", "funcao": "Central de avisos filtráveis por categoria e leitura, com opção de marcar como lidas ou excluir." },
+          { "label": "Configurações", "rota": "/coordenador/configuracoes", "funcao": "Edição de Perfil e Dados Institucionais (salvos em localStorage); Segurança, Gestão de Usuários e aplicação do tema escuro ainda não estão integrados." }
+        ]
+      },
+      "docente": {
+        "titulo": "Docente (Professor)",
+        "rotaInicial": "/docente",
+        "menus": [
+          { "label": "Início", "rota": "/docente", "funcao": "Resumo da rotina do dia, aulas de hoje, pendências e notificações recentes." },
+          { "label": "Meu calendário", "rota": "/docente/calendario", "funcao": "Agenda de aulas nas visualizações Mês, Semana e Dia, com lista de próximos dias (suporta ?data=AAAA-MM-DD)." },
+          { "label": "Minhas turmas", "rota": "/docente/turmas", "funcao": "Lista de turmas atribuídas com pesquisa, filtro por disciplina e programação das aulas." },
+          { "label": "Minhas disciplinas", "rota": "/docente/disciplinas", "funcao": "Consulta de disciplinas e ementas em modo leitura (mantidas pela coordenação pedagógica)." },
+          { "label": "Aulas e frequência", "rota": "/docente/aulas", "funcao": "Registro de aulas de hoje, visualização de detalhes de aulas realizadas e envio de solicitações de reposição." },
+          { "label": "Notificações", "rota": "/docente/notificacoes", "funcao": "Lista de notificações nas abas Todas e Não lidas, com alternância de leitura e exclusão." },
+          { "label": "Configurações", "rota": "/docente/configuracoes", "funcao": "Edição de dados do perfil e foto; abas Segurança, Notificações, Aparência e Turmas/Disciplinas Vinculadas ainda serão implementadas." }
+        ]
+      },
+      "responsavel": {
+        "titulo": "Responsável legal (Portal da família)",
+        "rotaInicial": "/responsavel",
+        "menus": [
+          { "label": "Início", "rota": "/responsavel", "funcao": "Resumo escolar por filho selecionado, indicadores, gráfico de evolução das médias, próximos compromissos, alertas e aprendizagem em foco." },
+          { "label": "Desempenho e boletim", "rota": "/responsavel/desempenho", "funcao": "Boletim completo com notas das 3 avaliações, médias por disciplina, filtro de bimestre e impressão." },
+          { "label": "Frequência e faltas", "rota": "/responsavel/frequencia", "funcao": "Percentual de presença (mínimo de 75%), histórico de faltas e envio de justificativas com comprovante opcional." },
+          { "label": "Calendário acadêmico", "rota": "/responsavel/calendario", "funcao": "Calendário escolar de avaliações, atividades, reuniões e feriados por aluno (suporta ?data=AAAA-MM-DD)." },
+          { "label": "Atividades e avaliações", "rota": "/responsavel/atividades", "funcao": "Lista e detalhes de atividades/trabalhos, último feedback docente e próximas avaliações." },
+          { "label": "Comunicados e mensagens", "rota": "/responsavel/comunicados", "funcao": "Comunicados oficiais da escola e chat privado com professores e coordenação." },
+          { "label": "Perfil e configurações", "rota": "/responsavel/configuracoes", "funcao": "Dados do responsável, filhos vinculados, contatos de emergência, preferências de notificações, segurança/privacidade e suporte da secretaria." }
+        ]
+      }
+    }
+  },
+  "dadosPorPerfil": {
+    "gestor": {
+      "dashboard": {
+        "indicadores": [
+          { "titulo": "Escolas ativas", "valor": 124, "detalhe": "+2 novas este mês" },
+          { "titulo": "Solicitações pendentes", "valor": 18, "detalhe": "Aguardando triagem" },
+          { "titulo": "Modelos em análise", "valor": 6, "detalhe": "Grades curriculares" },
+          { "titulo": "Portarias emitidas", "valor": 32, "detalhe": "Neste ano letivo" }
+        ],
+        "tiposEnsino": [
+          { "nome": "Ensino Médio", "quantidade": 48, "percentual": 38.7 },
+          { "nome": "Ensino Fundamental", "quantidade": 36, "percentual": 29.0 },
+          { "nome": "Ensino Integrado", "quantidade": 22, "percentual": 17.7 },
+          { "nome": "Profissionalizante", "quantidade": 14, "percentual": 11.3 },
+          { "nome": "Outros / EJA", "quantidade": 4, "percentual": 3.3 }
+        ],
+        "municipios": [
+          { "nome": "Aracaju", "escolas": 48 },
+          { "nome": "Nossa Senhora do Socorro", "escolas": 18 },
+          { "nome": "Itabaiana", "escolas": 10 },
+          { "nome": "Lagarto", "escolas": 9 },
+          { "nome": "Estância", "escolas": 8 },
+          { "nome": "Nossa Senhora da Glória", "escolas": 6 }
+        ]
+      },
+      "escolas": [
+        { "id": 1, "codigo": "ESC001", "nome": "Escola Estadual Professor José Alves", "municipio": "Aracaju", "tipo": "Ensino Médio", "alunos": 842, "status": "Ativa", "regime": "Tempo integral" },
+        { "id": 2, "codigo": "ESC002", "nome": "Centro de Excelência Maria das Graças", "municipio": "Nossa Senhora do Socorro", "tipo": "Ensino Fundamental", "alunos": 615, "status": "Ativa", "regime": "Tempo parcial" },
+        { "id": 3, "codigo": "ESC003", "nome": "Colégio Estadual Tobias Barreto", "municipio": "Itabaiana", "tipo": "Ensino Médio", "alunos": 734, "status": "Ativa", "regime": "Tempo integral" },
+        { "id": 4, "codigo": "ESC004", "nome": "Escola Estadual Caminhos do Saber", "municipio": "Lagarto", "tipo": "Ensino Integrado", "alunos": 398, "status": "Inativa", "regime": "Tempo parcial" },
+        { "id": 5, "codigo": "ESC005", "nome": "Centro Educacional do Sul", "municipio": "Estância", "tipo": "Profissionalizante", "alunos": 526, "status": "Ativa", "regime": "Tempo integral" }
+      ],
+      "portarias": [
+        { "id": 1, "numero": "1.248/2026", "titulo": "Designação de equipe gestora", "tipo": "Designação", "data": "10/10/2026", "status": "Publicada" },
+        { "id": 2, "numero": "1.249/2026", "titulo": "Alteração do calendário letivo", "tipo": "Alteração", "data": "12/10/2026", "status": "Em análise" },
+        { "id": 3, "numero": "1.250/2026", "titulo": "Autorização de funcionamento", "tipo": "Autorização", "data": "15/10/2026", "status": "Publicada" },
+        { "id": 4, "numero": "1.251/2026", "titulo": "Atualização de matriz curricular", "tipo": "Atualização", "data": "18/10/2026", "status": "Rascunho" }
+      ],
+      "estrutura": [
+        { "id": 1, "nome": "Ensino Médio", "descricao": "Formação geral básica", "categoria": "Modalidade de ensino", "status": "Ativa" },
+        { "id": 2, "nome": "Ensino Fundamental", "descricao": "Anos iniciais e finais", "categoria": "Modalidade de ensino", "status": "Ativa" },
+        { "id": 3, "nome": "Ensino Integrado", "descricao": "Ensino médio integrado à formação técnica", "categoria": "Modalidade de ensino", "status": "Ativa" },
+        { "id": 4, "nome": "Tempo integral", "descricao": "Jornada ampliada", "categoria": "Regime de funcionamento", "status": "Ativa" },
+        { "id": 5, "nome": "Tempo parcial", "descricao": "Jornada regular", "categoria": "Regime de funcionamento", "status": "Inativa" }
+      ],
+      "solicitacoesEscolas": [
+        {
+          "id": 4122,
+          "escola": "Colégio Dom Pedro II",
+          "escolaNomeCompleto": "Colégio Estadual Dom Pedro II",
+          "codigoInep": "28001234",
+          "tipo": "Inclusão de optativas",
+          "tipoDetalhado": "Inclusão de disciplinas optativas (Novo Ensino Médio)",
+          "dataEnvio": "10/05/2025",
+          "horaEnvio": "14:32",
+          "status": "Pendente",
+          "descricao": "Solicitamos autorização para a inclusão de disciplinas eletivas e optativas voltadas à tecnologia e programação básica para o segundo semestre de 2025. O projeto prevê o uso do laboratório de informática existente na escola.",
+          "justificativa": "A comunidade escolar demonstrou alto interesse em tecnologia, visando preparar os alunos para o mercado profissional de Sergipe. O projeto pedagógico foi aprovado pelo conselho escolar de forma unânime.",
+          "documentos": ["projeto_pedagogico_optativas.pdf", "ata_conselho_escolar.pdf"],
+          "parecerPadrao": "Após análise do projeto pedagógico encaminhado e conferência da infraestrutura de rede, o parecer técnico é FAVORÁVEL à inclusão das disciplinas optativas no Colégio Dom Pedro II. O laboratório de informática atende aos pré-requisitos necessários para a execução prática das disciplinas sugeridas no cronograma escolar."
+        },
+        {
+          "id": 4123,
+          "escola": "EE José de Alencar",
+          "escolaNomeCompleto": "Escola Estadual José de Alencar",
+          "codigoInep": "28005678",
+          "tipo": "Alteração de grade",
+          "tipoDetalhado": "Alteração de carga horária da grade curricular",
+          "dataEnvio": "08/05/2025",
+          "horaEnvio": "10:15",
+          "status": "Em análise",
+          "descricao": "Solicitação de ajuste na distribuição de aulas do turno matutino para adequação da carga horária de Ciências da Natureza.",
+          "justificativa": "Otimização do uso dos laboratórios multidisciplinares entre as turmas de 2º e 3º ano.",
+          "documentos": ["proposta_grade_2025.pdf"],
+          "parecerPadrao": ""
+        },
+        {
+          "id": 4124,
+          "escola": "Colégio João XXIII",
+          "escolaNomeCompleto": "Colégio Estadual João XXIII",
+          "codigoInep": "28009012",
+          "tipo": "Nova matriz",
+          "tipoDetalhado": "Implementação de nova matriz curricular integral",
+          "dataEnvio": "06/05/2025",
+          "horaEnvio": "16:40",
+          "status": "Pendente",
+          "descricao": "Pedido de homologação de nova matriz curricular para o ensino médio em tempo integral.",
+          "justificativa": "Adequação às novas diretrizes estaduais e ampliação da oferta de oficinas pedagógicas.",
+          "documentos": ["matriz_curricular_joao_xxiii.pdf"],
+          "parecerPadrao": ""
+        },
+        {
+          "id": 4125,
+          "escola": "EE 8 de Julho",
+          "escolaNomeCompleto": "Escola Estadual 8 de Julho",
+          "codigoInep": "28003456",
+          "tipo": "Distribuição de prof.",
+          "tipoDetalhado": "Redistribuição de carga horária docente",
+          "dataEnvio": "02/05/2025",
+          "horaEnvio": "11:20",
+          "status": "Aprovado",
+          "descricao": "Solicitação de realocação de professores da área de Matemática para cobertura de novas turmas.",
+          "justificativa": "Aumento no número de matrículas registradas no início do semestre letivo.",
+          "documentos": ["quadro_docente_atualizado.pdf"],
+          "parecerPadrao": "Solicitação aprovada conforme disponibilidade de quadro."
+        }
+      ],
+      "gradesCurriculares": [
+        { "id": 1, "nome": "Referencial Regular Sergipe - Médio", "nomeCurto": "Ref. Regular Sergipe - Médio", "tipoEnsino": "Ensino Médio", "seriesAnos": "1º, 2º e 3º Ano", "cargaHoraria": "3.000 horas", "status": "Ativa" },
+        { "id": 2, "nome": "Matriz Unificada Fundamental I", "nomeCurto": "Matriz Unificada Fundamental I", "tipoEnsino": "Ensino Fundamental", "seriesAnos": "1º ao 5º Ano", "cargaHoraria": "4.500 horas", "status": "Ativa" },
+        { "id": 3, "nome": "Base Integrada Agropecuária", "nomeCurto": "Base Integrada Agropecuária", "tipoEnsino": "Ensino Integrado", "seriesAnos": "1º ao 4º Ano", "cargaHoraria": "4.200 horas", "status": "Ativa" },
+        { "id": 4, "nome": "Matriz Fundamental II Regular", "nomeCurto": "Matriz Fundamental II Regular", "tipoEnsino": "Ensino Fundamental", "seriesAnos": "6º ao 9º Ano", "cargaHoraria": "3.600 horas", "status": "Ativa" },
+        { "id": 5, "nome": "Formação Técnica Administração", "nomeCurto": "Formação Técnica Administração", "tipoEnsino": "Profissionalizante", "seriesAnos": "1º e 2º Módulo", "cargaHoraria": "1.200 horas", "status": "Em Análise" },
+        { "id": 6, "nome": "EJA - Médio Exponencial", "nomeCurto": "EJA - Médio Exponencial", "tipoEnsino": "Outros / EJA", "seriesAnos": "Etapa I e II", "cargaHoraria": "1.600 horas", "status": "Ativa" }
+      ],
+      "matrizesCurriculares": [
+        { "id": 1, "nome": "Proposta Curricular Geral 2026", "gradeVinculada": "Ref. Regular Sergipe - Médio", "tipoEnsino": "Ensino Médio", "disciplinas": "12 Disciplinas", "cargaHoraria": "1.000h / ano" },
+        { "id": 2, "nome": "Matriz Piloto Agroecológica", "gradeVinculada": "Base Integrada Agropecuária", "tipoEnsino": "Ensino Integrado", "disciplinas": "16 Disciplinas", "cargaHoraria": "1.400h / ano" },
+        { "id": 3, "nome": "Fundamental Integral Formativa", "gradeVinculada": "Matriz Unificada Fundamental I", "tipoEnsino": "Ensino Fundamental", "disciplinas": "10 Disciplinas", "cargaHoraria": "900h / ano" },
+        { "id": 4, "nome": "Matriz Técnico em TI Integrado", "gradeVinculada": "Ref. Regular Sergipe - Médio", "tipoEnsino": "Ensino Integrado", "disciplinas": "15 Disciplinas", "cargaHoraria": "1.200h / ano" },
+        { "id": 5, "nome": "Formação Básica para EJA", "gradeVinculada": "EJA - Médio Exponencial", "tipoEnsino": "Outros / EJA", "disciplinas": "8 Disciplinas", "cargaHoraria": "800h / ano" }
+      ],
+      "disciplinas": [
+        { "id": 1, "nome": "Matemática", "cargaHoraria": 120, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 2, "nome": "Língua Portuguesa", "cargaHoraria": 120, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 3, "nome": "História", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 4, "nome": "Geografia", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 5, "nome": "Física", "cargaHoraria": 120, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 6, "nome": "Química", "cargaHoraria": 120, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 7, "nome": "Biologia", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 8, "nome": "Filosofia", "cargaHoraria": 40, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 9, "nome": "Sociologia", "cargaHoraria": 40, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 10, "nome": "Educação Física", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 11, "nome": "Arte", "cargaHoraria": 40, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 12, "nome": "Inglês", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 13, "nome": "Espanhol", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 14, "nome": "Educação Financeira", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 15, "nome": "Programação", "cargaHoraria": 80, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 16, "nome": "Robótica", "cargaHoraria": 60, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 17, "nome": "Empreendedorismo", "cargaHoraria": 60, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 18, "nome": "Música", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 19, "nome": "Literatura Brasileira", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 20, "nome": "Estatística", "cargaHoraria": 60, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 21, "nome": "Química Ambiental", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 22, "nome": "Astronomia", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 23, "nome": "Direitos Humanos", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 24, "nome": "Cultura Sergipana", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 25, "nome": "Desenho Técnico", "cargaHoraria": 60, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 26, "nome": "Geometria", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 27, "nome": "Ciências", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 28, "nome": "Redação", "cargaHoraria": 80, "tipo": "Obrigatória", "status": "Ativa" },
+        { "id": 29, "nome": "Informática Básica", "cargaHoraria": 60, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 30, "nome": "Educação Ambiental", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 31, "nome": "Teatro", "cargaHoraria": 40, "tipo": "Optativa", "status": "Ativa" },
+        { "id": 32, "nome": "Projeto de Vida", "cargaHoraria": 40, "tipo": "Obrigatória", "status": "Ativa" }
+      ],
+      "optativas": [
+        { "id": 1, "nome": "Robótica e Automação Básica", "cargaHoraria": 60, "area": "Matemática e suas Tecnologias", "escolas": ["Escola Estadual Modelo"], "status": "Ativa" },
+        { "id": 2, "nome": "Artes Visuais e Cultura Local", "cargaHoraria": 40, "area": "Linguagens", "escolas": ["Escola Estadual Modelo", "Colégio Estadual Central"], "status": "Ativa" },
+        { "id": 3, "nome": "Música e Expressão Sonora", "cargaHoraria": 40, "area": "Linguagens", "escolas": ["Colégio Estadual Central"], "status": "Ativa" },
+        { "id": 4, "nome": "Empreendedorismo e Projetos", "cargaHoraria": 60, "area": "Ciências Humanas", "escolas": ["Escola Estadual Modelo", "Centro de Excelência"], "status": "Ativa" },
+        { "id": 5, "nome": "Educação Financeira", "cargaHoraria": 40, "area": "Matemática e suas Tecnologias", "escolas": ["Centro de Excelência"], "status": "Ativa" },
+        { "id": 6, "nome": "Cinema e Produção Audiovisual", "cargaHoraria": 40, "area": "Linguagens", "escolas": ["Escola Estadual Modelo"], "status": "Ativa" },
+        { "id": 7, "nome": "Sustentabilidade e Meio Ambiente", "cargaHoraria": 60, "area": "Ciências da Natureza", "escolas": ["Colégio Estadual Central"], "status": "Ativa" },
+        { "id": 8, "nome": "Programação e Desenvolvimento Web", "cargaHoraria": 60, "area": "Matemática e suas Tecnologias", "escolas": ["Centro de Excelência", "Escola Estadual Modelo"], "status": "Ativa" },
+        { "id": 9, "nome": "Cultura Sergipana", "cargaHoraria": 40, "area": "Ciências Humanas", "escolas": ["Colégio Estadual Central"], "status": "Ativa" },
+        { "id": 10, "nome": "Práticas Esportivas", "cargaHoraria": 40, "area": "Linguagens", "escolas": ["Centro de Excelência"], "status": "Inativa" },
+        { "id": 11, "nome": "Saúde e Qualidade de Vida", "cargaHoraria": 40, "area": "Ciências da Natureza", "escolas": ["Escola Estadual Modelo"], "status": "Ativa" },
+        { "id": 12, "nome": "Astronomia para Iniciantes", "cargaHoraria": 60, "area": "Ciências da Natureza", "escolas": ["Colégio Estadual Central", "Centro de Excelência"], "status": "Ativa" }
+      ],
+      "professores": {
+        "escolasAlocacao": [
+          { "nome": "Colégio Dom Pedro II", "municipio": "Aracaju" },
+          { "nome": "C. E. Profa. Maria das Graças", "municipio": "Itabaiana" },
+          { "nome": "E. E. Dr. João de Oliveira", "municipio": "Lagarto" },
+          { "nome": "C. E. Murilo Braga", "municipio": "Itabaiana" },
+          { "nome": "C. E. Gov. Augusto Franco", "municipio": "Nossa Senhora do Socorro" },
+          { "nome": "E. E. Pres. Costa e Silva", "municipio": "Estância" }
+        ],
+        "resumoInicial": { "total": 15, "alocados": 9, "disponiveis": 4, "afastados": 2, "escolasSemCobertura": 3, "taxaOcupacao": "60%" },
+        "lista": [
+          { "id": 1, "nome": "Carlos Henrique Silva", "disciplina": "Matemática", "escola": "Colégio Dom Pedro II", "municipio": "Aracaju", "carga": 40, "status": "Alocado", "observacao": "" },
+          { "id": 2, "nome": "Mariana Rezende Lemos", "disciplina": "Língua Portuguesa", "escola": "C. E. Profa. Maria das Graças", "municipio": "Itabaiana", "carga": 32, "status": "Alocado", "observacao": "" },
+          { "id": 3, "nome": "Ricardo Alves de Souza", "disciplina": "História", "escola": null, "municipio": "Aracaju", "carga": 20, "status": "Disponível", "observacao": "" },
+          { "id": 4, "nome": "Patrícia Sales Mendes", "disciplina": "Geografia", "escola": "E. E. Dr. João de Oliveira", "municipio": "Lagarto", "carga": 40, "status": "Alocado", "observacao": "" },
+          { "id": 5, "nome": "Antônio Carlos Bezerra", "disciplina": "Física", "escola": null, "municipio": "Aracaju", "carga": 0, "status": "Afastado", "observacao": "Afastado por licença médica" },
+          { "id": 6, "nome": "Juliana Prado Santana", "disciplina": "Biologia", "escola": "Colégio Dom Pedro II", "municipio": "Aracaju", "carga": 32, "status": "Alocado", "observacao": "" },
+          { "id": 7, "nome": "Fernando Matos Teles", "disciplina": "Química", "escola": "C. E. Profa. Maria das Graças", "municipio": "Itabaiana", "carga": 40, "status": "Alocado", "observacao": "" },
+          { "id": 8, "nome": "Luciana Barreto Nunes", "disciplina": "Artes", "escola": null, "municipio": "Itabaiana", "carga": 20, "status": "Disponível", "observacao": "" },
+          { "id": 9, "nome": "Eduardo Cardoso Pinto", "disciplina": "Educação Física", "escola": "E. E. Dr. João de Oliveira", "municipio": "Lagarto", "carga": 20, "status": "Alocado", "observacao": "" },
+          { "id": 10, "nome": "Renata Oliveira Freitas", "disciplina": "Inglês", "escola": "Colégio Dom Pedro II", "municipio": "Aracaju", "carga": 32, "status": "Alocado", "observacao": "" },
+          { "id": 11, "nome": "Marcelo Dantas Vieira", "disciplina": "Sociologia", "escola": null, "municipio": "Lagarto", "carga": 20, "status": "Disponível", "observacao": "" },
+          { "id": 12, "nome": "Camila Andrade Lima", "disciplina": "Filosofia", "escola": "C. E. Profa. Maria das Graças", "municipio": "Itabaiana", "carga": 20, "status": "Alocado", "observacao": "" },
+          { "id": 13, "nome": "Paulo Sérgio Ramos", "disciplina": "Matemática", "escola": null, "municipio": "Estância", "carga": 40, "status": "Disponível", "observacao": "" },
+          { "id": 14, "nome": "Teresa Cristina Moura", "disciplina": "Língua Portuguesa", "escola": "E. E. Dr. João de Oliveira", "municipio": "Lagarto", "carga": 40, "status": "Alocado", "observacao": "" },
+          { "id": 15, "nome": "Gustavo Neves Almeida", "disciplina": "Física", "escola": null, "municipio": "Aracaju", "carga": 0, "status": "Afastado", "observacao": "Afastado por licença" }
+        ]
+      },
+      "modelosPersonalizacao": [
+        { "id": 1, "nome": "Modelo Médio Regular", "tipo": "Médio", "criadoEm": "2025-04-10", "status": "Ativo" },
+        { "id": 2, "nome": "Modelo Integrado", "tipo": "Integrado", "criadoEm": "2025-04-05", "status": "Ativo" },
+        { "id": 3, "nome": "Modelo Profissionalizante", "tipo": "Profissionalizante", "criadoEm": "2025-03-18", "status": "Ativo" },
+        { "id": 4, "nome": "Modelo Fundamental", "tipo": "Fundamental", "criadoEm": "2025-03-20", "status": "Inativo" },
+        { "id": 5, "nome": "Modelo Médio Noturno", "tipo": "Médio", "criadoEm": "2025-01-01", "status": "Ativo" },
+        { "id": 6, "nome": "Modelo Médio Tempo Integral", "tipo": "Médio", "criadoEm": "2025-02-04", "status": "Ativo" },
+        { "id": 7, "nome": "Modelo Médio EJA", "tipo": "Médio", "criadoEm": "2025-03-07", "status": "Ativo" },
+        { "id": 8, "nome": "Modelo Médio Rural", "tipo": "Médio", "criadoEm": "2025-04-10", "status": "Inativo" },
+        { "id": 9, "nome": "Modelo Médio Inclusivo", "tipo": "Médio", "criadoEm": "2025-05-13", "status": "Ativo" },
+        { "id": 10, "nome": "Modelo Integrado Noturno", "tipo": "Integrado", "criadoEm": "2025-06-08", "status": "Ativo" },
+        { "id": 11, "nome": "Modelo Integrado Tempo Integral", "tipo": "Integrado", "criadoEm": "2025-07-11", "status": "Ativo" },
+        { "id": 12, "nome": "Modelo Integrado EJA", "tipo": "Integrado", "criadoEm": "2025-08-14", "status": "Inativo" },
+        { "id": 13, "nome": "Modelo Integrado Rural", "tipo": "Integrado", "criadoEm": "2025-09-17", "status": "Ativo" },
+        { "id": 14, "nome": "Modelo Integrado Inclusivo", "tipo": "Integrado", "criadoEm": "2025-10-20", "status": "Ativo" },
+        { "id": 15, "nome": "Modelo Profissionalizante Noturno", "tipo": "Profissionalizante", "criadoEm": "2025-11-15", "status": "Ativo" },
+        { "id": 16, "nome": "Modelo Profissionalizante Tempo Integral", "tipo": "Profissionalizante", "criadoEm": "2025-12-18", "status": "Inativo" },
+        { "id": 17, "nome": "Modelo Profissionalizante EJA", "tipo": "Profissionalizante", "criadoEm": "2025-01-21", "status": "Ativo" },
+        { "id": 18, "nome": "Modelo Profissionalizante Rural", "tipo": "Profissionalizante", "criadoEm": "2025-02-24", "status": "Ativo" },
+        { "id": 19, "nome": "Modelo Profissionalizante Inclusivo", "tipo": "Profissionalizante", "criadoEm": "2025-03-27", "status": "Ativo" },
+        { "id": 20, "nome": "Modelo Fundamental Noturno", "tipo": "Fundamental", "criadoEm": "2025-04-22", "status": "Inativo" },
+        { "id": 21, "nome": "Modelo Fundamental Tempo Integral", "tipo": "Fundamental", "criadoEm": "2025-05-25", "status": "Ativo" },
+        { "id": 22, "nome": "Modelo Fundamental EJA", "tipo": "Fundamental", "criadoEm": "2025-06-28", "status": "Ativo" },
+        { "id": 23, "nome": "Modelo Fundamental Rural", "tipo": "Fundamental", "criadoEm": "2025-07-03", "status": "Ativo" },
+        { "id": 24, "nome": "Modelo Fundamental Inclusivo", "tipo": "Fundamental", "criadoEm": "2025-08-06", "status": "Inativo" }
+      ]
+    },
+    "coordenador": {
+      "perfilPadrao": {
+        "nome": "Marina Costa",
+        "email": "marina.costa@seduc.se.gov.br",
+        "cargo": "Coordenadora pedagógica",
+        "unidade": "C.E. Professor João Costa"
+      },
+      "dashboard": {
+        "indicadores": [
+          { "titulo": "Turmas cadastradas", "valor": "12", "detalhe": "Turmas ativas" },
+          { "titulo": "Docentes", "valor": "08", "detalhe": "Profissionais cadastrados" },
+          { "titulo": "Aulas programadas", "valor": "24", "detalhe": "Nesta semana" },
+          { "titulo": "Pendências", "valor": "03", "detalhe": "Precisam de atenção" }
+        ],
+        "proximosEventos": [
+          { "id": 1, "data": "19 OUT", "titulo": "Reunião pedagógica", "horario": "09:00", "tipo": "Reunião" },
+          { "id": 2, "data": "20 OUT", "titulo": "Aula de Desenvolvimento Web", "horario": "10:00", "tipo": "Aula" },
+          { "id": 3, "data": "22 OUT", "titulo": "Reposição de aula", "horario": "14:00", "tipo": "Reposição" }
+        ],
+        "avisos": [
+          { "titulo": "Frequências pendentes", "descricao": "Existem registros de frequência que precisam ser conferidos.", "tipo": "Atenção" },
+          { "titulo": "Calendário acadêmico", "descricao": "Confira os próximos compromissos da instituição.", "tipo": "Informação" },
+          { "titulo": "Organização das turmas", "descricao": "Revise a distribuição de docentes por turma para este semestre.", "tipo": "Ação" }
+        ]
+      },
+      "turmas": [
+        { "id": 1, "codigo": "TUR001", "nome": "Desenvolvimento de Sistemas", "curso": "Técnico em Desenvolvimento de Sistemas", "periodo": "Manhã", "alunos": 32, "docente": "Carlos Oliveira", "status": "Ativa" },
+        { "id": 2, "codigo": "TUR002", "nome": "Informática", "curso": "Técnico em Informática", "periodo": "Tarde", "alunos": 28, "docente": "Ana Santos", "status": "Ativa" },
+        { "id": 3, "codigo": "TUR003", "nome": "Administração", "curso": "Técnico em Administração", "periodo": "Noite", "alunos": 30, "docente": "Mariana Costa", "status": "Ativa" },
+        { "id": 4, "codigo": "TUR004", "nome": "Desenvolvimento Web", "curso": "Formação complementar", "periodo": "Manhã", "alunos": 25, "docente": "Pedro Almeida", "status": "Inativa" }
+      ],
+      "calendario": [
+        { "id": 1, "titulo": "Início do semestre letivo", "data": "2026-10-05", "tipo": "Acadêmico", "descricao": "Início das atividades do semestre." },
+        { "id": 2, "titulo": "Reunião pedagógica", "data": "2026-10-12", "tipo": "Reunião", "descricao": "Reunião com os docentes e a coordenação." },
+        { "id": 3, "titulo": "Prazo para lançamento de notas", "data": "2026-10-20", "tipo": "Prazo", "descricao": "Data limite para registrar as notas dos alunos." },
+        { "id": 4, "titulo": "Conselho de classe", "data": "2026-10-23", "tipo": "Reunião", "descricao": "Análise do desempenho das turmas." },
+        { "id": 5, "titulo": "Feriado escolar", "data": "2026-10-28", "tipo": "Feriado", "descricao": "Não haverá atividades letivas." }
+      ],
+      "disciplinasEmentas": [
+        { "id": 1, "nome": "Matemática", "codigo": "MAT-101", "professor": "Carlos Mendes", "turmas": "1A e 2B", "carga": 80, "curso": "Ensino Médio", "periodo": "1º período", "status": "Atualizada", "ementa": "Conjuntos numéricos, funções, geometria plana e espacial, estatística e resolução de problemas." },
+        { "id": 2, "nome": "Língua Portuguesa", "codigo": "POR-102", "professor": "Ana Souza", "turmas": "2B e 3A", "carga": 80, "curso": "Ensino Médio", "periodo": "2º período", "status": "Atualização pendente", "ementa": "Leitura e interpretação de textos, gêneros textuais, gramática, produção textual e literatura brasileira." },
+        { "id": 3, "nome": "Física", "codigo": "FIS-201", "professor": "Rafael Lima", "turmas": "3A", "carga": 60, "curso": "Ensino Médio", "periodo": "1º período", "status": "Atualizada", "ementa": "Mecânica, termologia, ondas, óptica, eletricidade e aplicações dos conceitos físicos." },
+        { "id": 4, "nome": "Ciências", "codigo": "CIE-105", "professor": "Juliana Alves", "turmas": "4C", "carga": 60, "curso": "Ensino Fundamental", "periodo": "3º período", "status": "Revisão necessária", "ementa": "Seres vivos, ecossistemas, corpo humano, matéria, energia e sustentabilidade." }
+      ],
+      "aulasReposicoes": {
+        "aulasProgramadas": [
+          { "id": 1, "horario": "08:00–09:40", "disciplina": "Matemática", "turma": "1A", "professor": "Carlos Mendes", "sala": "Sala 101", "status": "Realizada", "data": "2026-05-23" },
+          { "id": 2, "horario": "10:00–11:40", "disciplina": "História", "turma": "2B", "professor": "Ana Ribeiro", "sala": "Sala 204", "status": "Em andamento", "data": "2026-05-23" },
+          { "id": 3, "horario": "14:00–15:40", "disciplina": "Português", "turma": "3A", "professor": "Juliana Freitas", "sala": "Sala 105", "status": "Confirmada", "data": "2026-05-23" },
+          { "id": 4, "horario": "16:00–17:40", "disciplina": "Física", "turma": "3A", "professor": "Rafael Lima", "sala": "Laboratório 2", "status": "Reposição necessária", "data": "2026-05-23" }
+        ],
+        "reposicoes": [
+          { "id": 11, "disciplina": "Matemática", "professor": "Carlos Mendes", "turma": "1A", "original": "23 mai. • 08:00", "motivo": "Atestado médico", "nova": "29 mai. • 13:30", "status": "Pendente" },
+          { "id": 12, "disciplina": "História", "professor": "Ana Ribeiro", "turma": "2B", "original": "20 mai. • 10:00", "motivo": "Formação pedagógica", "nova": "30 mai. • 10:00", "status": "Aprovada" },
+          { "id": 13, "disciplina": "Física", "professor": "Rafael Lima", "turma": "3A", "original": "22 mai. • 16:00", "motivo": "Manutenção do laboratório", "nova": "02 jun. • 14:00", "status": "Rejeitada" }
+        ]
+      },
+      "solicitacoes": [
+        { "id": 1, "codigo": "SOL-2026-001", "solicitante": "Carlos Mendes", "email": "carlos.mendes@edugest.com", "tipo": "Reposição de aula", "titulo": "Reposição de aula de Matemática", "descricao": "Solicito a reposição da aula de Matemática da turma 1A devido a um afastamento médico.", "justificativa": "Apresento a solicitação para evitar prejuízo ao conteúdo programático da turma. A reposição poderá ocorrer em horário disponível na próxima semana.", "turma": "1A", "disciplina": "Matemática", "dataEnvio": "23/10/2026", "prioridade": "Alta", "status": "Pendente", "observacao": "" },
+        { "id": 2, "codigo": "SOL-2026-002", "solicitante": "Ana Ribeiro", "email": "ana.ribeiro@edugest.com", "tipo": "Alteração de horário", "titulo": "Alteração de horário de História", "descricao": "Solicito a alteração do horário da aula de História da turma 2B.", "justificativa": "O horário atual coincide com uma atividade pedagógica previamente agendada.", "turma": "2B", "disciplina": "História", "dataEnvio": "22/10/2026", "prioridade": "Média", "status": "Pendente", "observacao": "" },
+        { "id": 3, "codigo": "SOL-2026-003", "solicitante": "Juliana Freitas", "email": "juliana.freitas@edugest.com", "tipo": "Atualização acadêmica", "titulo": "Revisão da ementa de Português", "descricao": "Solicito a revisão da ementa da disciplina de Língua Portuguesa.", "justificativa": "A revisão busca alinhar os conteúdos previstos às necessidades pedagógicas do próximo período.", "turma": "3A", "disciplina": "Português", "dataEnvio": "21/10/2026", "prioridade": "Baixa", "status": "Aprovada", "observacao": "Solicitação aprovada pela coordenação." },
+        { "id": 4, "codigo": "SOL-2026-004", "solicitante": "Rafael Lima", "email": "rafael.lima@edugest.com", "tipo": "Reposição de aula", "titulo": "Reposição de aula de Física", "descricao": "Solicito a reposição de uma aula de Física da turma 3A.", "justificativa": "A aula precisou ser cancelada devido à indisponibilidade do laboratório.", "turma": "3A", "disciplina": "Física", "dataEnvio": "20/10/2026", "prioridade": "Alta", "status": "Recusada", "observacao": "A data sugerida coincide com outra atividade da turma." }
+      ],
+      "notificacoes": [
+        { "id": 1, "titulo": "Solicitação de reposição pendente", "mensagem": "Carlos Mendes solicitou a reposição de uma aula de Matemática da turma 1A.", "categoria": "Solicitações", "data": "Hoje, 09:15", "prioridade": "Alta", "lida": false },
+        { "id": 2, "titulo": "Atualização de ementa necessária", "mensagem": "A ementa de Língua Portuguesa precisa ser revisada antes do próximo período.", "categoria": "Acadêmico", "data": "Hoje, 08:40", "prioridade": "Alta", "lida": false },
+        { "id": 3, "titulo": "Nova solicitação de matrícula", "mensagem": "Existe uma solicitação de matrícula aguardando análise da coordenação.", "categoria": "Solicitações", "data": "Ontem, 16:30", "prioridade": "Média", "lida": false },
+        { "id": 4, "titulo": "Alteração no calendário acadêmico", "mensagem": "Uma alteração de horário foi registrada no calendário acadêmico.", "categoria": "Acadêmico", "data": "Ontem, 14:10", "prioridade": "Média", "lida": true },
+        { "id": 5, "titulo": "Revisão de cadastro", "mensagem": "Há informações cadastrais que precisam ser conferidas pela coordenação.", "categoria": "Sistema", "data": "20 out., 11:20", "prioridade": "Baixa", "lida": true }
+      ]
+    },
+    "docente": {
+      "perfilPadrao": {
+        "nome": "João Silva",
+        "email": "joao.silva@seduc.se.gov.br",
+        "cargo": "Professor",
+        "escola": "C.E. Professor João Costa"
+      },
+      "dashboard": {
+        "dataReferencia": "Seg, 26 de mai. de 2025",
+        "resumo": [
+          { "titulo": "Aulas hoje", "valor": 4 },
+          { "titulo": "Minhas turmas", "valor": 6 },
+          { "titulo": "Frequências pendentes", "valor": 2 },
+          { "titulo": "Solicitações", "valor": 1 }
+        ],
+        "aulasHoje": [
+          { "horario": "08:00-08:40", "disciplina": "Matemática", "turmaSala": "Turma 1A - Sala 101", "acao": "Registrar aula" },
+          { "horario": "10:00-11:40", "disciplina": "Matemática", "turmaSala": "Turma 2B - Sala 203", "acao": "Ver aula" },
+          { "horario": "14:00-15:40", "disciplina": "Português", "turmaSala": "Turma 2A - Sala 105", "acao": "Ver aula" },
+          { "horario": "16:00-17:40", "disciplina": "História", "turmaSala": "Turma 1B - Sala 102", "acao": "Ver aula" }
+        ],
+        "pendencias": [
+          "Frequência da Turma 1A - Aguardando registro",
+          "Conteúdo da aula de ontem - Registrar conteúdo",
+          "Solicitação de reposição - Em análise"
+        ],
+        "notificacoesRecentes": [
+          "Sua solicitação de reposição foi aprovada - Hoje, 10:24",
+          "Nova mensagem da coordenação - Hoje, 09:17",
+          "Lançamento da aula de amanhã (Turma 2B) - Ontem, 18:32"
+        ]
+      },
+      "calendario": [
+        { "data": "2025-05-26", "horario": "08:00-08:40", "disciplina": "Matemática", "turma": "Turma 1A", "status": "Confirmada" },
+        { "data": "2025-05-26", "horario": "10:00-11:40", "disciplina": "Matemática", "turma": "Turma 2B", "status": "Confirmada" },
+        { "data": "2025-05-26", "horario": "14:00-15:40", "disciplina": "Português", "turma": "Turma 2A", "status": "Confirmada" },
+        { "data": "2025-05-26", "horario": "16:00-17:40", "disciplina": "História", "turma": "Turma 1B", "status": "Confirmada" },
+        { "data": "2025-05-27", "horario": "08:00-08:40", "disciplina": "Matemática", "turma": "Turma 1A", "status": "Confirmada" },
+        { "data": "2025-05-28", "horario": "10:00-11:00", "disciplina": "Português", "turma": "Turma 3A", "status": "Confirmada" },
+        { "data": "2025-05-29", "horario": "14:00-15:40", "disciplina": "História", "turma": "Turma 2C", "status": "Confirmada" },
+        { "data": "2025-05-30", "horario": "08:00-09:40", "disciplina": "Matemática", "turma": "Turma 2B", "status": "Confirmada" },
+        { "data": "2025-06-02", "horario": "10:00-11:40", "disciplina": "Português", "turma": "Turma 2A", "status": "Confirmada" }
+      ],
+      "minhasTurmas": {
+        "turmas": [
+          { "codigo": "1A", "disciplina": "Matemática", "alunos": 32, "sala": "Sala 101" },
+          { "codigo": "1B", "disciplina": "Matemática", "alunos": 29, "sala": "Sala 203" },
+          { "codigo": "3A", "disciplina": "Português", "alunos": 30, "sala": "Sala 105" },
+          { "codigo": "2C", "disciplina": "História", "alunos": 27, "sala": "Sala 102" }
+        ],
+        "programacaoData": "26 de outubro de 2026",
+        "programacaoAulas": [
+          { "horario": "08:00", "disciplina": "Matemática", "turma": "1A", "status": "Confirmado" },
+          { "horario": "10:00", "disciplina": "Matemática", "turma": "1B", "status": "Em andamento" },
+          { "horario": "14:00", "disciplina": "Português", "turma": "3A", "status": "Confirmado" },
+          { "horario": "16:00", "disciplina": "História", "turma": "2C", "status": "Confirmado" }
+        ]
+      },
+      "minhasDisciplinas": [
+        {
+          "id": 1,
+          "nome": "Matemática",
+          "codigo": "MAT-101",
+          "turma": "1A",
+          "alunos": 32,
+          "cargaHoraria": 80,
+          "ementaAtualizada": true,
+          "ementa": {
+            "objetivo": "Desenvolver o raciocínio lógico, a capacidade de resolver problemas e aplicar conceitos matemáticos em situações do cotidiano.",
+            "conteudo": "Números e operações · Álgebra · Geometria · Grandezas e medidas · Estatística e probabilidade",
+            "competencias": "Argumentação, pensamento científico, comunicação e resolução colaborativa de problemas.",
+            "bibliografia": "DANTE, L. R. Matemática: contexto & aplicações. São Paulo: Ática. · Base Nacional Comum Curricular."
+          }
+        },
+        {
+          "id": 2,
+          "nome": "Matemática",
+          "codigo": "MAT-101",
+          "turma": "1B",
+          "alunos": 29,
+          "cargaHoraria": 80,
+          "ementaAtualizada": false,
+          "ementa": {
+            "objetivo": "Desenvolver o raciocínio lógico, a capacidade de resolver problemas e aplicar conceitos matemáticos em situações do cotidiano.",
+            "conteudo": "Números e operações · Álgebra · Geometria · Grandezas e medidas · Estatística e probabilidade",
+            "competencias": "Argumentação, pensamento científico, comunicação e resolução colaborativa de problemas.",
+            "bibliografia": "DANTE, L. R. Matemática: contexto & aplicações. São Paulo: Ática. · Base Nacional Comum Curricular."
+          }
+        },
+        {
+          "id": 3,
+          "nome": "Português",
+          "codigo": "POR-102",
+          "turma": "3A",
+          "alunos": 30,
+          "cargaHoraria": 80,
+          "ementaAtualizada": false,
+          "ementa": {
+            "objetivo": "Ampliar a leitura, a interpretação e a produção de textos, fortalecendo a comunicação oral e escrita.",
+            "conteudo": "Gêneros textuais · Interpretação de texto · Gramática contextualizada · Produção textual · Literatura brasileira",
+            "competencias": "Leitura crítica, expressão escrita, argumentação e uso consciente da língua em diferentes contextos.",
+            "bibliografia": "CEREJA, W.; MAGALHÃES, T. Português: linguagens. São Paulo: Saraiva. · Base Nacional Comum Curricular."
+          }
+        },
+        {
+          "id": 4,
+          "nome": "História",
+          "codigo": "HIS-201",
+          "turma": "2C",
+          "alunos": 27,
+          "cargaHoraria": 60,
+          "ementaAtualizada": false,
+          "ementa": {
+            "objetivo": "Compreender os processos históricos e sociais, desenvolvendo o senso crítico sobre o presente.",
+            "conteudo": "Brasil Colônia e Império · República brasileira · Revoluções modernas · Cidadania e direitos humanos",
+            "competencias": "Análise de fontes, pensamento crítico, contextualização histórica e respeito à diversidade.",
+            "bibliografia": "BOULOS JÚNIOR, A. História: sociedade & cidadania. São Paulo: FTD. · Base Nacional Comum Curricular."
+          }
+        }
+      ],
+      "aulasReposicoes": {
+        "aulasHoje": [
+          { "id": 1, "horario": "08:00–09:40", "disciplina": "Matemática", "turma": "1A", "sala": "101", "status": "Realizada", "conteudo": "Equações do 1º grau: resolução e problemas do cotidiano.", "presenca": "30 de 32 alunos presentes" },
+          { "id": 2, "horario": "10:00–11:40", "disciplina": "Matemática", "turma": "1B", "sala": "203", "status": "Realizada", "conteudo": "Equações do 1º grau: lista de exercícios.", "presenca": "27 de 29 alunos presentes" },
+          { "id": 3, "horario": "14:00–15:40", "disciplina": "Português", "turma": "3A", "sala": "105", "status": "Próxima aula" },
+          { "id": 4, "horario": "16:00–17:40", "disciplina": "História", "turma": "2C", "sala": "102", "status": "Confirmada" }
+        ],
+        "reposicoes": [
+          { "id": 1, "disciplina": "Matemática", "turma": "1A", "aulaOriginal": "2026-09-04", "motivo": "ausência justificada", "novaData": "2026-09-18", "novaHora": "10:00", "status": "Aguardando aprovação" }
+        ]
+      },
+      "notificacoes": [
+        { "id": 1, "titulo": "Reposição aprovada", "mensagem": "Sua solicitação de reposição de Matemática — Turma 1A foi aprovada para 18/09, às 10:00.", "tempo": "Há 12 min", "lida": false },
+        { "id": 2, "titulo": "Frequência pendente de registro", "mensagem": "A aula de Português — Turma 3A de hoje ainda não teve a frequência registrada.", "tempo": "Há 38 min", "lida": false },
+        { "id": 3, "titulo": "Ementa atualizada pela coordenação", "mensagem": "A ementa de Matemática — Turma 1A foi atualizada. Confira as alterações.", "tempo": "Hoje, 09:14", "lida": false },
+        { "id": 4, "titulo": "Atualização do sistema concluída", "mensagem": "O EduGest foi atualizado com melhorias no calendário acadêmico.", "tempo": "Ontem, 17:40", "lida": true },
+        { "id": 5, "titulo": "Prazo de lançamento se aproxima", "mensagem": "Registre a frequência do bimestre das suas turmas até 18 de setembro.", "tempo": "Ontem, 14:22", "lida": true }
+      ]
+    },
+    "responsavel": {
+      "perfilPadrao": {
+        "nome": "Ana Costa",
+        "email": "ana.costa@email.com",
+        "celular": "(79) 99912-2040",
+        "notificacoesAtivas": ["faltas", "notas", "eventos", "mensagens"],
+        "contatosEmergencia": [
+          { "nome": "Ana Costa", "parentesco": "Mãe · Contato principal", "telefone": "(79) 99912-2040" },
+          { "nome": "Paulo Costa", "parentesco": "Pai · Contato alternativo", "telefone": "(79) 99832-1170" }
+        ],
+        "suporteEscola": {
+          "unidade": "Secretaria · Escola Estadual Farol",
+          "telefone": "(79) 3200-2026",
+          "email": "secretaria@farol.edu.br",
+          "horario": "Segunda a sexta, das 7h às 17h"
+        }
+      },
+      "regrasAcademicas": {
+        "mediaMinimaEscolar": 6.0,
+        "frequenciaMinimaPercentual": 75
+      },
+      "alunos": [
+        {
+          "id": 1,
+          "nome": "Lucas Costa",
+          "turma": "8º ano A",
+          "matricula": "20260842",
+          "escola": "Escola Estadual Farol",
+          "escolaTelaComunicados": "Escola Estadual Modelo",
+          "resumoDashboard": {
+            "dataReferencia": "Seg, 05 de out. de 2026",
+            "mediaExibida": "8,0",
+            "mediaAnterior": "7,5",
+            "frequencia": "95,0%",
+            "presencas": "228 presenças em 240 aulas",
+            "atividadesPendentes": 2,
+            "proximaAvaliacao": "07/10 (Matemática)",
+            "avisoAtencao": "Lucas tem 2 faltas em Matemática ainda não justificadas.",
+            "aprendizagem": "Matemática: progresso consistente — passou de 6,0 para 7,5; revisão recomendada em problemas com proporcionalidade antes da avaliação de 07/10.",
+            "alertas": [
+              { "tipo": "Atenção necessária", "titulo": "Reunião de responsáveis · 15/10", "descricao": "Confira a pauta e confirme a leitura do comunicado enviado pela coordenação." }
+            ]
+          },
+          "boletim": {
+            "mediaGeralCalculada": 8.2,
+            "disciplinas": [
+              { "nome": "Matemática", "notas": [7.0, 8.0, 7.5], "media": 7.5, "situacao": "Acima da média" },
+              { "nome": "Português", "notas": [8.0, 8.5, 7.5], "media": 8.0, "situacao": "Acima da média" },
+              { "nome": "Ciências", "notas": [8.0, 9.0, 8.0], "media": 8.5, "situacao": "Acima da média" },
+              { "nome": "História", "notas": [7.5, 8.0, 8.5], "media": 8.0, "situacao": "Acima da média" },
+              { "nome": "Geografia", "notas": [9.0, 8.5, 9.5], "media": 9.0, "situacao": "Acima da média" },
+              { "nome": "Inglês", "notas": [8.0, 8.0, 8.0], "media": 8.0, "situacao": "Acima da média" }
+            ]
+          },
+          "frequencia": {
+            "presencas": 228,
+            "faltas": 12,
+            "percentual": 95,
+            "historicoFaltas": [
+              { "data": "02/09/2026", "disciplina": "Matemática", "horario": "08:00 - 08:50", "situacao": "Não justificada" },
+              { "data": "04/09/2026", "disciplina": "Português", "horario": "09:00 - 09:50", "situacao": "Justificada" },
+              { "data": "08/09/2026", "disciplina": "Ciências", "horario": "10:00 - 10:50", "situacao": "Justificada" },
+              { "data": "12/09/2026", "disciplina": "Matemática", "horario": "08:00 - 08:50", "situacao": "Não justificada" },
+              { "data": "15/09/2026", "disciplina": "História", "horario": "11:00 - 11:50", "situacao": "Em análise" }
+            ]
+          },
+          "atividades": [
+            { "id": 1, "titulo": "Lista de exercícios — Equações", "disciplina": "Matemática", "professor": "Prof.ª Ana Paula", "tipo": "Atividade", "entrega": "12/11/2026", "status": "Pendente", "pontuacao": "10 pontos", "descricao": "Resolver os exercícios da página 85 até a página 88 do livro didático. Apresentar os cálculos utilizados em cada questão.", "instrucoes": "Entregar no caderno durante a próxima aula." },
+            { "id": 2, "titulo": "Pesquisa sobre o meio ambiente", "disciplina": "Ciências", "professor": "Prof. Carlos Mendes", "tipo": "Trabalho", "entrega": "14/11/2026", "status": "Em andamento", "pontuacao": "10 pontos", "descricao": "Realizar uma pesquisa sobre sustentabilidade e preservação ambiental. O trabalho deve conter introdução, desenvolvimento e conclusão.", "instrucoes": "A atividade poderá ser realizada individualmente." },
+            { "id": 3, "titulo": "Interpretação de texto", "disciplina": "Português", "professor": "Prof.ª Juliana Lima", "tipo": "Atividade", "entrega": "05/11/2026", "status": "Concluída", "pontuacao": "8 pontos", "descricao": "Leitura e interpretação do texto trabalhado em sala, com respostas às questões propostas.", "instrucoes": "Atividade corrigida pelo professor." },
+            { "id": 4, "titulo": "Seminário de História", "disciplina": "História", "professor": "Prof. Roberto Alves", "tipo": "Trabalho", "entrega": "18/11/2026", "status": "Pendente", "pontuacao": "10 pontos", "descricao": "Preparar uma apresentação sobre os principais acontecimentos históricos estudados neste bimestre.", "instrucoes": "Apresentação em grupo, conforme divisão feita em sala." }
+          ],
+          "ultimoFeedback": {
+            "mensagem": "Bom desenvolvimento na atividade de interpretação de texto. Continue praticando a leitura e a organização das respostas.",
+            "professor": "Prof.ª Juliana Lima",
+            "data": "06/11/2026"
+          },
+          "proximasAvaliacoes": [
+            { "disciplina": "Matemática", "titulo": "Avaliação bimestral", "data": "16/11/2026", "horario": "08:00" },
+            { "disciplina": "Português", "titulo": "Prova de interpretação", "data": "19/11/2026", "horario": "10:00" },
+            { "disciplina": "Ciências", "titulo": "Avaliação de Ciências", "data": "23/11/2026", "horario": "08:00" }
+          ],
+          "comunicados": [
+            { "id": 1, "categoria": "Evento", "titulo": "Feira de Ciências 2026", "descricao": "Convidamos as famílias para prestigiar a Feira de Ciências. Os alunos apresentarão os projetos desenvolvidos durante o semestre.", "data": "06/11/2026", "horario": "09:00", "autor": "Coordenação Pedagógica", "destaque": true },
+            { "id": 2, "categoria": "Acadêmico", "titulo": "Entrega dos resultados do bimestre", "descricao": "Os resultados do 4º bimestre estarão disponíveis no portal a partir do dia 18 de novembro.", "data": "05/11/2026", "horario": "14:30", "autor": "Secretaria Escolar", "destaque": false },
+            { "id": 3, "categoria": "Aviso", "titulo": "Atualização do horário de saída", "descricao": "Informamos que na próxima sexta-feira as aulas serão encerradas às 11h30 devido à reunião pedagógica.", "data": "03/11/2026", "horario": "10:00", "autor": "Direção Escolar", "destaque": false }
+          ],
+          "conversasResumo": [
+            { "contato": "Mariana Oliveira", "cargo": "Professora de Matemática", "naoLidas": 1, "ultimaData": "07/11/2026", "resumo": "Comentou que Lucas evoluiu em Matemática, mas ainda pode melhorar na resolução de problemas." },
+            { "contato": "Carlos Mendes", "cargo": "Coordenador Pedagógico", "naoLidas": 0, "ultimaData": "04/11/2026", "resumo": "Informou que a reunião de acompanhamento de Lucas está prevista para a próxima semana." },
+            { "contato": "Ana Beatriz Lima", "cargo": "Professora de Português", "naoLidas": 0, "ultimaData": "30/10/2026", "resumo": "Enviou orientações para a próxima atividade de produção textual." }
+          ]
+        },
+        {
+          "id": 2,
+          "nome": "Sofia Costa",
+          "turma": "9º ano B",
+          "matricula": "20260517",
+          "escola": "Escola Estadual Farol",
+          "escolaTelaComunicados": "Escola Estadual Modelo",
+          "resumoDashboard": {
+            "dataReferencia": "Seg, 05 de out. de 2026",
+            "mediaExibida": "8,7",
+            "mediaAnterior": "8,2",
+            "frequencia": "97,5%",
+            "presencas": "234 presenças em 240 aulas",
+            "atividadesPendentes": 1,
+            "proximaAvaliacao": "09/10 (Ciências)",
+            "aprendizagem": "Português: excelente desempenho — resultados consistentes em interpretação e produção textual.",
+            "alertas": [
+              { "tipo": "Informativo", "titulo": "Boletim atualizado", "descricao": "As notas do último período de Sofia já estão disponíveis para consulta." }
+            ]
+          },
+          "boletim": {
+            "mediaGeralCalculada": 8.7,
+            "disciplinas": [
+              { "nome": "Matemática", "notas": [8.0, 8.5, 9.0], "media": 8.5, "situacao": "Acima da média" },
+              { "nome": "Português", "notas": [9.0, 9.5, 8.5], "media": 9.0, "situacao": "Acima da média" },
+              { "nome": "Ciências", "notas": [8.0, 8.0, 8.0], "media": 8.0, "situacao": "Acima da média" },
+              { "nome": "História", "notas": [9.0, 8.5, 9.5], "media": 9.0, "situacao": "Acima da média" },
+              { "nome": "Geografia", "notas": [8.0, 9.0, 8.5], "media": 8.5, "situacao": "Acima da média" },
+              { "nome": "Inglês", "notas": [9.0, 9.0, 9.0], "media": 9.0, "situacao": "Acima da média" }
+            ]
+          },
+          "frequencia": {
+            "presencas": 234,
+            "faltas": 6,
+            "percentual": 97.5,
+            "historicoFaltas": [
+              { "data": "03/09/2026", "disciplina": "Geografia", "horario": "08:00 - 08:50", "situacao": "Justificada" },
+              { "data": "10/09/2026", "disciplina": "Matemática", "horario": "09:00 - 09:50", "situacao": "Justificada" },
+              { "data": "14/09/2026", "disciplina": "Inglês", "horario": "10:00 - 10:50", "situacao": "Em análise" }
+            ]
+          },
+          "atividades": [
+            { "id": 1, "titulo": "Análise de fontes históricas", "disciplina": "História", "professor": "Prof. Roberto Alves", "tipo": "Trabalho", "entrega": "13/11/2026", "status": "Pendente", "pontuacao": "10 pontos", "descricao": "Analisar documentos e imagens históricas trabalhados em sala, identificando o contexto e a importância de cada fonte.", "instrucoes": "Entregar a análise em folha separada." },
+            { "id": 2, "titulo": "Produção de texto dissertativo", "disciplina": "Português", "professor": "Prof.ª Juliana Lima", "tipo": "Atividade", "entrega": "07/11/2026", "status": "Concluída", "pontuacao": "10 pontos", "descricao": "Produzir um texto dissertativo sobre a importância da educação e da tecnologia na sociedade atual.", "instrucoes": "Texto corrigido pela professora." },
+            { "id": 3, "titulo": "Exercícios de funções", "disciplina": "Matemática", "professor": "Prof.ª Ana Paula", "tipo": "Atividade", "entrega": "17/11/2026", "status": "Em andamento", "pontuacao": "10 pontos", "descricao": "Resolver os exercícios sobre funções de primeiro e segundo grau, demonstrando os cálculos.", "instrucoes": "Entregar no caderno durante a aula." }
+          ],
+          "ultimoFeedback": {
+            "mensagem": "Excelente participação nas atividades de produção textual. Sofia demonstrou boa argumentação e organização das ideias.",
+            "professor": "Prof.ª Juliana Lima",
+            "data": "07/11/2026"
+          },
+          "proximasAvaliacoes": [
+            { "disciplina": "História", "titulo": "Avaliação sobre Brasil República", "data": "15/11/2026", "horario": "09:00" },
+            { "disciplina": "Matemática", "titulo": "Prova de funções", "data": "20/11/2026", "horario": "08:00" },
+            { "disciplina": "Biologia", "titulo": "Avaliação de genética", "data": "24/11/2026", "horario": "10:00" }
+          ],
+          "comunicados": [
+            { "id": 1, "categoria": "Acadêmico", "titulo": "Simulado preparatório", "descricao": "A turma participará de um simulado preparatório na próxima semana. É importante que os alunos compareçam no horário habitual.", "data": "07/11/2026", "horario": "08:00", "autor": "Coordenação Pedagógica", "destaque": true },
+            { "id": 2, "categoria": "Evento", "titulo": "Cerimônia de encerramento", "descricao": "As famílias estão convidadas para a cerimônia de encerramento das atividades do ano letivo.", "data": "04/11/2026", "horario": "13:00", "autor": "Direção Escolar", "destaque": false },
+            { "id": 3, "categoria": "Aviso", "titulo": "Documentação escolar", "descricao": "Solicitamos que os responsáveis verifiquem a documentação escolar e atualizem os dados cadastrais, caso necessário.", "data": "02/11/2026", "horario": "09:30", "autor": "Secretaria Escolar", "destaque": false }
+          ],
+          "conversasResumo": [
+            { "contato": "Fernanda Souza", "cargo": "Professora de Ciências", "naoLidas": 2, "ultimaData": "07/11/2026", "resumo": "Elogiou o ótimo resultado de Sofia no último trabalho de Ciências e recomendou continuidade nas atividades práticas." },
+            { "contato": "Roberto Almeida", "cargo": "Coordenador Pedagógico", "naoLidas": 0, "ultimaData": "03/11/2026", "resumo": "Informou que a coordenação está organizando o acompanhamento pedagógico da turma." }
+          ]
+        }
+      ],
+      "calendario": [
+        { "data": "2026-10-07", "titulo": "Avaliação de Matemática", "tipo": "avaliacao", "horario": "08:00", "local": "Sala de aula", "aluno": "Lucas Costa", "descricao": "Avaliação sobre equações e proporcionalidade." },
+        { "data": "2026-10-08", "titulo": "Entrega de atividade de Geografia", "tipo": "atividade", "horario": "10:00", "local": "Sala de aula", "aluno": "Lucas Costa", "descricao": "Entrega do mapa das bacias hidrográficas." },
+        { "data": "2026-10-09", "titulo": "Avaliação de Ciências", "tipo": "avaliacao", "horario": "09:00", "local": "Sala de aula", "aluno": "Sofia Costa", "descricao": "Avaliação sobre ecologia e meio ambiente." },
+        { "data": "2026-10-09", "titulo": "Entrega de redação", "tipo": "atividade", "horario": "11:00", "local": "Sala de aula", "aluno": "Lucas Costa", "descricao": "Entrega da produção textual de crônica." },
+        { "data": "2026-10-12", "titulo": "Feriado nacional", "tipo": "feriado", "horario": "Dia inteiro", "local": "Escola", "aluno": "Todos", "descricao": "Não haverá atividades escolares." },
+        { "data": "2026-10-15", "titulo": "Reunião de responsáveis", "tipo": "reuniao", "horario": "18:30", "local": "Auditório da escola", "aluno": "Todos", "descricao": "Encontro entre responsáveis, professores e coordenação." },
+        { "data": "2026-10-20", "titulo": "Avaliação de História", "tipo": "avaliacao", "horario": "08:00", "local": "Sala de aula", "aluno": "Sofia Costa", "descricao": "Avaliação sobre os conteúdos do bimestre." },
+        { "data": "2026-10-23", "titulo": "Projeto interdisciplinar", "tipo": "atividade", "horario": "13:00", "local": "Pátio escolar", "aluno": "Lucas Costa", "descricao": "Apresentação dos trabalhos interdisciplinares." },
+        { "data": "2026-10-28", "titulo": "Conselho de classe", "tipo": "reuniao", "horario": "14:00", "local": "Sala da coordenação", "aluno": "Todos", "descricao": "Reunião pedagógica de acompanhamento das turmas." }
+      ],
+      "contatosDisponiveis": [
+        { "nome": "Mariana Oliveira", "cargo": "Professora de Matemática" },
+        { "nome": "Carlos Mendes", "cargo": "Coordenador Pedagógico" },
+        { "nome": "Ana Beatriz Lima", "cargo": "Professora de Português" },
+        { "nome": "Fernanda Souza", "cargo": "Professora de Ciências" },
+        { "nome": "Roberto Almeida", "cargo": "Coordenador Pedagógico" }
+      ]
+    }
+  }
+}
