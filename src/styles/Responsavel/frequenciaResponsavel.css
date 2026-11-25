@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 .resp-frequencia-layout {
   display: flex; min-height: 100vh; background: #f4f6fa;
@@ -15,7 +17,7 @@
 .resp-frequencia-perfil { display: flex; align-items: center; gap: 10px; }
 .resp-frequencia-avatar {
   width: 32px; height: 32px; display: grid; place-items: center;
-  border-radius: 50%; background: #e9efff; color: #2863e9;
+  border-radius: 50%; background: var(--marca-verde-claro); color: var(--marca-verde);
   font-size: 10px; font-weight: 700;
 }
 .resp-frequencia-perfil div:last-child { display: flex; flex-direction: column; gap: 3px; }
@@ -27,15 +29,15 @@
   display: flex; align-items: center; justify-content: space-between;
   gap: 15px; margin-bottom: 22px;
 }
-.resp-frequencia-subtitulo { color: #2863e9; font-size: 9px; font-weight: 700; letter-spacing: 1px; }
+.resp-frequencia-subtitulo { color: var(--marca-verde); font-size: 9px; font-weight: 700; letter-spacing: 1px; }
 .resp-frequencia-titulo h1 { margin: 7px 0 5px; font-size: 25px; }
 .resp-frequencia-titulo p { margin: 0; color: #7c899b; font-size: 11px; }
 .resp-frequencia-titulo > button {
   display: flex; align-items: center; gap: 8px; padding: 10px 14px;
-  border: 0; border-radius: 6px; background: #2863e9;
+  border: 0; border-radius: 6px; background: var(--marca-verde);
   color: white; font-size: 10px; font-weight: 650; cursor: pointer;
 }
-.resp-frequencia-titulo > button:hover { background: #1f52c5; }
+.resp-frequencia-titulo > button:hover { background: var(--marca-verde-escuro); }
 
 .resp-frequencia-seletor {
   display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
@@ -61,7 +63,7 @@
   width: 34px; height: 34px; display: grid; place-items: center;
   margin-bottom: 10px; border-radius: 8px;
 }
-.resp-frequencia-icone.azul { background: #edf3ff; color: #2863e9; }
+.resp-frequencia-icone.azul { background: var(--marca-verde-claro); color: var(--marca-verde); }
 .resp-frequencia-icone.verde { background: #e9f8f1; color: #26966b; }
 .resp-frequencia-icone.laranja { background: #fff3e5; color: #d58b32; }
 .resp-frequencia-icone.roxo { background: #f1edff; color: #7955ce; }
@@ -79,7 +81,7 @@
 }
 .resp-frequencia-painel-titulo h2 { margin: 0; font-size: 13px; }
 .resp-frequencia-painel-titulo p { margin: 5px 0 0; color: #8995a6; font-size: 9px; }
-.resp-frequencia-painel-titulo > strong { color: #2863e9; font-size: 22px; }
+.resp-frequencia-painel-titulo > strong { color: var(--marca-verde); font-size: 22px; }
 
 .resp-frequencia-barra-fundo { height: 11px; overflow: hidden; border-radius: 20px; background: #edf0f5; }
 .resp-frequencia-barra-fundo > div {
@@ -110,10 +112,10 @@
   position: relative; padding: 0 2px 11px; border: 0;
   background: transparent; color: #8490a1; font-size: 10px; cursor: pointer;
 }
-.resp-frequencia-abas button.ativa { color: #2863e9; font-weight: 700; }
+.resp-frequencia-abas button.ativa { color: var(--marca-verde); font-weight: 700; }
 .resp-frequencia-abas button.ativa::after {
   position: absolute; right: 0; bottom: -1px; left: 0;
-  height: 2px; background: #2863e9; content: "";
+  height: 2px; background: var(--marca-verde); content: "";
 }
 
 .resp-frequencia-tabela-scroll { overflow-x: auto; }
@@ -131,7 +133,7 @@
   font-size: 9px; white-space: nowrap;
 }
 .resp-frequencia-status.justificada { background: #e9f8f1; color: #25865f; }
-.resp-frequencia-status.analise { background: #edf3ff; color: #2863e9; }
+.resp-frequencia-status.analise { background: var(--marca-verde-claro); color: var(--marca-verde); }
 .resp-frequencia-status.pendente { background: #fff3e5; color: #b47b25; }
 
 .resp-frequencia-justificativas { display: flex; flex-direction: column; gap: 0; }
@@ -141,7 +143,7 @@
 }
 .resp-frequencia-justificativa-icone {
   width: 34px; height: 34px; display: grid; place-items: center;
-  flex-shrink: 0; border-radius: 7px; background: #edf3ff; color: #2863e9;
+  flex-shrink: 0; border-radius: 7px; background: var(--marca-verde-claro); color: var(--marca-verde);
 }
 .resp-frequencia-justificativas article > div:nth-child(2) { flex: 1; min-width: 0; }
 .resp-frequencia-justificativas article strong { font-size: 10px; }
@@ -150,8 +152,8 @@
 .resp-frequencia-vazio { color: #8995a6; font-size: 10px; padding: 15px 0; }
 .resp-frequencia-nova-justificativa {
   display: flex; align-items: center; gap: 7px; align-self: flex-start;
-  margin-top: 13px; padding: 8px 12px; border: 1px solid #dbe5fb;
-  border-radius: 6px; background: #fff; color: #2863e9;
+  margin-top: 13px; padding: 8px 12px; border: 1px solid var(--marca-verde-suave);
+  border-radius: 6px; background: #fff; color: var(--marca-verde);
   font-size: 10px; cursor: pointer;
 }
 .resp-frequencia-rodape { padding: 20px 0 5px; color: #9aa5b5; font-size: 9px; }
@@ -184,7 +186,7 @@
 .resp-frequencia-modal select,
 .resp-frequencia-modal textarea {
   width: 100%; padding: 10px; border: 1px solid #dfe5ee;
-  border-radius: 6px; outline-color: #2863e9; background: #fff;
+  border-radius: 6px; outline-color: var(--marca-verde); background: #fff;
   color: #344156; font: inherit; font-size: 11px;
 }
 .resp-frequencia-modal input:disabled { background: #f4f6fa; color: #8995a6; }
@@ -192,7 +194,7 @@
 .resp-frequencia-upload {
   min-height: 48px; padding: 12px; display: flex; align-items: center;
   gap: 9px; border: 1px dashed #b8c9e8; border-radius: 6px;
-  color: #2863e9; font-size: 10px; cursor: pointer;
+  color: var(--marca-verde); font-size: 10px; cursor: pointer;
 }
 .resp-frequencia-upload input { width: 1px; height: 1px; opacity: 0; position: absolute; }
 .resp-frequencia-mensagem { margin: 0; color: #26835e; font-size: 10px; }
@@ -202,7 +204,7 @@
   border-radius: 6px; font-size: 10px; font-weight: 650; cursor: pointer;
 }
 .resp-frequencia-modal-acoes .cancelar { border: 1px solid #dfe5ee; background: #fff; color: #657286; }
-.resp-frequencia-modal-acoes .enviar { border: 0; background: #2863e9; color: #fff; }
+.resp-frequencia-modal-acoes .enviar { border: 0; background: var(--marca-verde); color: #fff; }
 .resp-frequencia-modal form > small { color: #9aa5b5; font-size: 9px; }
 
 @media (max-width: 1050px) {

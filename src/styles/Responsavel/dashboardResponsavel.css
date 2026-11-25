@@ -1,11 +1,13 @@
+@import "../variaveisMarca.css";
+
 :root {
   --resp-bg: #f4f6fa;
   --resp-surface: #ffffff;
   --resp-text: #202b3c;
   --resp-muted: #7c899b;
   --resp-border: #e6eaf1;
-  --resp-primary: #2863e9;
-  --resp-primary-light: #edf3ff;
+  --resp-primary: var(--marca-verde);
+  --resp-primary-light: var(--marca-verde-claro);
   --resp-sidebar-width: 230px;
 }
 
@@ -108,7 +110,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #e9efff;
+  background: var(--marca-verde-claro);
   color: var(--resp-primary);
   font-size: 10px;
   font-weight: 700;
@@ -172,7 +174,7 @@
   gap: 7px;
   padding: 9px 13px;
 
-  border: 1px solid #dbe5fb;
+  border: 1px solid var(--marca-verde-suave);
   border-radius: 6px;
   background: #ffffff;
   color: var(--resp-primary);
@@ -216,7 +218,7 @@
 }
 
 .responsavel-aluno-opcao.selecionado {
-  border-color: #c9d9ff;
+  border-color: var(--marca-verde-contorno);
   background: var(--resp-primary-light);
   color: var(--resp-primary);
   font-weight: 700;
@@ -430,20 +432,20 @@
 
 .responsavel-grafico-linha {
   fill: none;
-  stroke: #2863e9;
+  stroke: var(--marca-verde);
   stroke-width: 2.5;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .responsavel-grafico-ponto {
-  fill: #2863e9;
+  fill: var(--marca-verde);
   stroke: #ffffff;
   stroke-width: 2;
 }
 
 .responsavel-grafico-valor {
-  fill: #2863e9;
+  fill: var(--marca-verde);
   font-size: 11px;
   font-weight: 700;
 }
@@ -475,7 +477,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #2863e9;
+  background: var(--marca-verde);
 }
 
 .responsavel-grafico-legenda .responsavel-grafico-meta {

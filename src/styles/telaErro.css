@@ -1,8 +1,10 @@
+@import "./variaveisMarca.css";
+
 /* Cores de cada tipo de erro: mudam a variável --tom usada na tela inteira. */
 .tom-azul {
-  --tom: #2864ed;
-  --tom-claro: #e8efff;
-  --tom-escuro: #1c4fc4;
+  --tom: var(--marca-verde);
+  --tom-claro: var(--marca-verde-claro);
+  --tom-escuro: var(--marca-verde-escuro);
 }
 
 .tom-vermelho {
@@ -61,11 +63,11 @@
 .erro-marca svg {
   width: 36px;
   height: 36px;
-  color: #2463b9;
+  color: var(--marca-verde);
 }
 
 .erro-marca span span {
-  color: #2463b9;
+  color: var(--marca-verde);
 }
 
 .erro-topo-link {
@@ -80,8 +82,8 @@
 }
 
 .erro-topo-link:hover {
-  border-color: #3b72bd;
-  color: #2463b9;
+  border-color: var(--marca-verde);
+  color: var(--marca-verde);
 }
 
 /* Conteúdo dividido em texto (esquerda) e ilustração (direita) */
@@ -351,7 +353,7 @@
   min-height: 100vh;
   padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 72px);
   background:
-    radial-gradient(ellipse at 10% 0%, #e8efff, transparent 45%),
+    radial-gradient(ellipse at 10% 0%, var(--marca-verde-claro), transparent 45%),
     #f4f7fb;
   color: #172b49;
 }

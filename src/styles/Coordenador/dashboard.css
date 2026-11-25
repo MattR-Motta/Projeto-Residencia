@@ -1,3 +1,5 @@
+@import "../variaveisMarca.css";
+
 
 /* =========================================
    DASHBOARD DO COORDENADOR
@@ -13,7 +15,7 @@
   padding: 26px 30px;
   margin-bottom: 24px;
   border-radius: 15px;
-  background: linear-gradient(115deg, var(--edu-primary, #2864ed), #5685f5);
+  background: linear-gradient(115deg, var(--edu-primary, var(--marca-verde)), var(--marca-verde-medio));
   color: #ffffff;
 }
 
@@ -74,8 +76,8 @@
   place-items: center;
   flex-shrink: 0;
   border-radius: 10px;
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 20px;
 }
 
@@ -133,7 +135,7 @@
   padding: 5px 0;
   border: 0;
   background: transparent;
-  color: var(--edu-primary, #2864ed);
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
@@ -168,8 +170,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 9px;
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
 }
 
 .evento-data strong {
@@ -209,8 +211,8 @@
 .aviso-contador {
   padding: 5px 10px;
   border-radius: 20px;
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 12px;
   font-weight: 700;
 }
@@ -285,7 +287,7 @@
 }
 
 .atalho-card:hover {
-  border-color: var(--edu-primary, #2864ed);
+  border-color: var(--edu-primary, var(--marca-verde));
   box-shadow: 0 3px 12px rgb(35 35 70 / 6%);
 }
 
@@ -296,8 +298,8 @@
   display: grid;
   place-items: center;
   border-radius: 10px;
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 21px;
 }
 
@@ -322,7 +324,7 @@
 }
 
 .atalho-seta {
-  color: var(--edu-primary, #2864ed);
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 20px;
 }
 
@@ -440,7 +442,7 @@
   border: 1px solid rgb(255 255 255 / 35%);
   border-radius: 9px;
   background: #ffffff;
-  color: var(--edu-primary, #2864ed);
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
@@ -448,7 +450,7 @@
 }
 
 .boas-vindas-botao:hover {
-  background: var(--edu-primary-light, #e8efff);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
   transform: translateY(-1px);
 }
 
@@ -521,7 +523,7 @@
   padding: 5px 0;
   border: 0;
   background: transparent;
-  color: var(--edu-primary, #2864ed);
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
@@ -560,8 +562,8 @@
   width: 48px;
   height: 52px;
   border-radius: 9px;
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
 }
 
 .evento-data strong {
@@ -593,7 +595,7 @@
 }
 
 .evento-tipo {
-  color: var(--edu-primary, #2864ed);
+  color: var(--edu-primary, var(--marca-verde));
   font-size: 10px;
 }
 
@@ -645,8 +647,8 @@
 }
 
 .aviso-tag--acao {
-  background: var(--edu-primary-light, #e8efff);
-  color: var(--edu-primary, #2864ed);
+  background: var(--edu-primary-light, var(--marca-verde-claro));
+  color: var(--edu-primary, var(--marca-verde));
 }
 
 .aviso-tag--info {
@@ -745,7 +747,7 @@
   border: none;
 
   border-radius: 50%;
-  background: var(--edu-primary, #2864ed);
+  background: var(--edu-primary, var(--marca-verde));
   color: #ffffff;
 
   font-family: inherit;

@@ -1,0 +1,185 @@
+{
+  "perfil": "gestor",
+  "descricao": "Indicadores e dados institucionais demonstrativos. Conteúdo agregado; não disponibiliza dados pessoais individuais de usuários.",
+  "origem": [
+    "src/pages/gestor/DashboardGestor.jsx",
+    "src/pages/gestor/EscolasGestor.jsx",
+    "src/pages/gestor/ProfessoresGestor.jsx",
+    "src/pages/gestor/DisciplinasGestor.jsx",
+    "src/pages/gestor/EstruturaGestor.jsx",
+    "src/pages/gestor/GradesGestor.jsx",
+    "src/pages/gestor/OptativasGestor.jsx",
+    "src/pages/gestor/PortariasGestor.jsx",
+    "src/pages/gestor/solicitacoesGestor.jsx"
+  ],
+  "indicadoresDemonstrativos": {
+    "escolasAtivas": 124,
+    "solicitacoesPendentes": 18,
+    "modelosEmAnalise": 6,
+    "portariasEmitidasNesteAno": 32,
+    "tiposEnsino": [
+      {
+        "nome": "Ensino Médio",
+        "quantidade": 48,
+        "percentual": 38.7
+      },
+      {
+        "nome": "Ensino Fundamental",
+        "quantidade": 36,
+        "percentual": 29.0
+      },
+      {
+        "nome": "Ensino Integrado",
+        "quantidade": 22,
+        "percentual": 17.7
+      },
+      {
+        "nome": "Profissionalizante",
+        "quantidade": 14,
+        "percentual": 11.3
+      },
+      {
+        "nome": "Outros / EJA",
+        "quantidade": 4,
+        "percentual": 3.3
+      }
+    ],
+    "municipios": [
+      {
+        "nome": "Aracaju",
+        "escolas": 48
+      },
+      {
+        "nome": "Nossa Senhora do Socorro",
+        "escolas": 18
+      },
+      {
+        "nome": "Itabaiana",
+        "escolas": 10
+      },
+      {
+        "nome": "Lagarto",
+        "escolas": 9
+      },
+      {
+        "nome": "Estância",
+        "escolas": 8
+      },
+      {
+        "nome": "Nossa Senhora da Glória",
+        "escolas": 6
+      }
+    ],
+    "observacao": "Indicadores mockados do DashboardGestor.jsx; não representam dados oficiais nem necessariamente atuais."
+  },
+  "portarias": [
+    {
+      "id": 1,
+      "numero": "1.248/2026",
+      "titulo": "Designação de equipe gestora",
+      "tipo": "Designação",
+      "data": "10/10/2026",
+      "status": "Publicada"
+    },
+    {
+      "id": 2,
+      "numero": "1.249/2026",
+      "titulo": "Alteração do calendário letivo",
+      "tipo": "Alteração",
+      "data": "12/10/2026",
+      "status": "Em análise"
+    },
+    {
+      "id": 3,
+      "numero": "1.250/2026",
+      "titulo": "Autorização de funcionamento",
+      "tipo": "Autorização",
+      "data": "15/10/2026",
+      "status": "Publicada"
+    },
+    {
+      "id": 4,
+      "numero": "1.251/2026",
+      "titulo": "Atualização de matriz curricular",
+      "tipo": "Atualização",
+      "data": "18/10/2026",
+      "status": "Rascunho"
+    }
+  ],
+  "optativas": [
+    {
+      "id": 12,
+      "nome": "Astronomia para Iniciantes",
+      "cargaHoraria": 60,
+      "area": "Ciências da Natureza",
+      "escolas": [
+        "Colégio Estadual Central",
+        "Centro de Excelência"
+      ],
+      "status": "Ativa"
+    }
+  ],
+  "regrasAcesso": [
+    "Fornecer somente indicadores gerais e estatísticas agregadas.",
+    "Não revelar dados pessoais, credenciais, contatos privados ou informações individualizadas de docentes, coordenadores, alunos e responsáveis.",
+    "Não inventar indicadores ausentes. Informar quando a base não contém o número solicitado."
+  ],
+  "escolasResumo": {
+    "registrosExibidosNaTabelaInicial": 5,
+    "alunosNasEscolasDaAmostra": 3115,
+    "observacao": "Amostra de cinco escolas do mock; o dashboard utiliza indicadores próprios e separados."
+  },
+  "professoresResumo": {
+    "registrosMockados": 15,
+    "alocados": 9,
+    "disponiveis": 4,
+    "afastados": 2,
+    "observacao": "Contagens calculadas a partir dos 15 registros iniciais da tela ProfessoresGestor; não representam o total oficial da rede. Não são fornecidos nomes ou dados pessoais individuais."
+  },
+  "escolasAmostra": [
+    {
+      "codigo": "ESC001",
+      "nome": "Escola Estadual Professor José Alves",
+      "municipio": "Aracaju",
+      "tipo": "Ensino Médio",
+      "alunos": 842,
+      "status": "Ativa"
+    },
+    {
+      "codigo": "ESC002",
+      "nome": "Centro de Excelência Maria das Graças",
+      "municipio": "Nossa Senhora do Socorro",
+      "tipo": "Ensino Fundamental",
+      "alunos": 615,
+      "status": "Ativa"
+    },
+    {
+      "codigo": "ESC003",
+      "nome": "Colégio Estadual Tobias Barreto",
+      "municipio": "Itabaiana",
+      "tipo": "Ensino Médio",
+      "alunos": 734,
+      "status": "Ativa"
+    },
+    {
+      "codigo": "ESC004",
+      "nome": "Escola Estadual Caminhos do Saber",
+      "municipio": "Lagarto",
+      "tipo": "Ensino Integrado",
+      "alunos": 398,
+      "status": "Inativa"
+    },
+    {
+      "codigo": "ESC005",
+      "nome": "Centro Educacional do Sul",
+      "municipio": "Estância",
+      "tipo": "Profissionalizante",
+      "alunos": 526,
+      "status": "Ativa"
+    }
+  ],
+  "disciplinasCatalogoResumo": {
+    "totalRegistrosIniciais": 32,
+    "observacao": "A tela DisciplinasGestor.jsx possui 32 disciplinas mockadas. A contagem não deve ser interpretada como quantidade oficial de disciplinas da rede."
+  }
+}

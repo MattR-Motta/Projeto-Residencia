@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 .docente-pagina {
   display: flex;
   min-height: 100vh;
@@ -105,7 +107,7 @@
   font-weight: 500;
 }
 
-.docente-numero.azul { color: #2563eb; }
+.docente-numero.azul { color: var(--marca-verde); }
 .docente-numero.laranja { color: #f59e0b; }
 .docente-numero.verde { color: #16a34a; }
 
@@ -126,7 +128,7 @@
 .docente-link {
   border: none;
   background: none;
-  color: #2563eb;
+  color: var(--marca-verde);
   font-size: 12px;
   cursor: pointer;
 }
@@ -143,7 +145,7 @@
 .docente-horario {
   width: 90px;
   font-size: 12px;
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .docente-aula-info {
@@ -168,8 +170,8 @@
 }
 
 .docente-botao.azul-claro {
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
 }
 
 .docente-botao.verde-claro {
@@ -193,7 +195,7 @@
   gap: 12px;
   padding: 14px 18px;
   border-radius: 10px;
-  background: #eff6ff;
+  background: var(--marca-verde-claro);
   font-size: 12px;
   color: #4b5563;
 }
@@ -203,7 +205,7 @@
   height: 30px;
   border: none;
   border-radius: 50%;
-  background: #2563eb;
+  background: var(--marca-verde);
   color: #ffffff;
   font-size: 14px;
   cursor: pointer;
@@ -236,7 +238,7 @@
 }
 
 .resumo-card--azul .resumo-card-valor {
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .resumo-card--laranja .resumo-card-valor {
@@ -314,15 +316,15 @@
   padding: 6px 14px;
   border: none;
   border-radius: 20px;
-  background: #dbeafe;
-  color: #1d4ed8;
+  background: var(--marca-verde-suave);
+  color: var(--marca-verde-escuro);
   font-size: 11px;
   white-space: nowrap;
   cursor: pointer;
 }
 
 .docente-botao-tabela:hover {
-  background: #bfdbfe;
+  background: var(--marca-verde-contorno);
 }
 
 .docente-lista {
@@ -362,7 +364,7 @@
 }
 
 .docente-notificacao-ponto {
-  background: #2563eb;
+  background: var(--marca-verde);
 }
 
 /* Celular / tela pequena */

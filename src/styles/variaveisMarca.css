@@ -1,0 +1,21 @@
+/* ===== Paleta da marca (extraída da logo) =====
+   Fonte única das cores de identidade visual do projeto.
+   Verde e amarelo vêm diretamente da logo; os demais tons
+   (escuro, claro, borda etc.) são variações do mesmo matiz. */
+
+:root {
+  /* Verde da logo (barras laterais e demais elementos da marca) */
+  --marca-verde: #2a903e;
+  --marca-verde-escuro: #227332;
+  --marca-verde-borda: #1d652b;
+  --marca-verde-medio: #7fbc8b;
+  --marca-verde-contorno: #c3e0c9;
+  --marca-verde-suave: #dfeee2;
+  --marca-verde-claro: #eaf4ec;
+  --marca-verde-fundo: #f7fbf7;
+  --marca-verde-rgb: 42 144 62;
+
+  /* Amarelo da logo (botões de IA) */
+  --marca-amarelo: #eab009;
+  --marca-amarelo-escuro: #c79608;
+}

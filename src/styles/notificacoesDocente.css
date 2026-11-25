@@ -1,3 +1,5 @@
+@import "./variaveisMarca.css";
+
 /* Tela "Notificações" do docente.
    Usa também as classes base de dashboarddocente.css (docente-pagina, docente-topo...). */
 
@@ -28,7 +30,7 @@
 
 .nd-destaque {
   font-weight: 600;
-  color: #2563eb;
+  color: var(--marca-verde);
 }
 
 .nd-botao-lidas {
@@ -36,17 +38,17 @@
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border: 1px solid #2563eb;
+  border: 1px solid var(--marca-verde);
   border-radius: 8px;
   background: #ffffff;
-  color: #2563eb;
+  color: var(--marca-verde);
   font: inherit;
   font-size: 12px;
   cursor: pointer;
 }
 
 .nd-botao-lidas:hover:not(:disabled) {
-  background: #eff6ff;
+  background: var(--marca-verde-claro);
 }
 
 .nd-botao-lidas:disabled {
@@ -84,7 +86,7 @@
 }
 
 .nd-abas button.ativa {
-  border-bottom-color: #2563eb;
+  border-bottom-color: var(--marca-verde);
   color: #1f2937;
   font-weight: 600;
 }
@@ -112,7 +114,7 @@
 }
 
 .nd-item.nao-lida {
-  border-color: #2563eb;
+  border-color: var(--marca-verde);
 }
 
 .nd-icone {
@@ -128,7 +130,7 @@
 .nd-icone.amarelo { background: #fef3c7; color: #d97706; }
 .nd-icone.vermelho { background: #fee2e2; color: #dc2626; }
 .nd-icone.verde { background: #dcfce7; color: #16a34a; }
-.nd-icone.azul { background: #dbeafe; color: #2563eb; }
+.nd-icone.azul { background: var(--marca-verde-suave); color: var(--marca-verde); }
 
 .nd-texto {
   flex: 1;
@@ -149,7 +151,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #2563eb;
+  background: var(--marca-verde);
 }
 
 .nd-texto p {

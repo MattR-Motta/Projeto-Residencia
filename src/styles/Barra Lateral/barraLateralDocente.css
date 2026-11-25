@@ -1,16 +1,18 @@
+@import "../variaveisMarca.css";
+
 
 /* ===== EduGest: variáveis de cores ===== */
 
 :root {
-  --sidebar-fundo: #111c2e;
-  --sidebar-borda: #263449;
+  --sidebar-fundo: var(--marca-verde);
+  --sidebar-borda: var(--marca-verde-borda);
   --sidebar-texto: #c1cada;
   --sidebar-texto-destaque: #f1f5f9;
   --sidebar-texto-secundario: #94a3b8;
-  --sidebar-hover: #1e2b40;
-  --sidebar-ativo: #2563eb;
+  --sidebar-hover: var(--marca-verde-escuro);
+  --sidebar-ativo: var(--marca-verde-borda);
   --sidebar-ativo-texto: #ffffff;
-  --sidebar-logo-fundo: #2563eb;
+  --sidebar-logo-fundo: var(--marca-verde-escuro);
   --sidebar-logo-texto: #ffffff;
   --sidebar-desativado-opacidade: 0.45;
 }
@@ -23,9 +25,9 @@
   --sidebar-texto-destaque: #111827;
   --sidebar-texto-secundario: #6b7280;
   --sidebar-hover: #f1f5f9;
-  --sidebar-ativo: #dbeafe;
-  --sidebar-ativo-texto: #1d4ed8;
-  --sidebar-logo-fundo: #2563eb;
+  --sidebar-ativo: var(--marca-verde-suave);
+  --sidebar-ativo-texto: var(--marca-verde-escuro);
+  --sidebar-logo-fundo: var(--marca-verde);
   --sidebar-logo-texto: #ffffff;
 }
 
