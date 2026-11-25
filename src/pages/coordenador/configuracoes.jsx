@@ -13,6 +13,9 @@ import {
 } from 'lucide-react';
 
 import BarraLateral from '../../components/Barra Lateral/BarraLateralCoordenador';
+import ErrorState from '../../components/ErrorState';
+import useErroPagina from '../../hooks/useErroPagina';
+import useTema from '../../hooks/useTema';
 
 import "../../styles/Coordenador/coordenador.css";
 import "../../styles/Coordenador/configuracoes.css";
@@ -33,9 +36,24 @@ const perfilInicial = {
   unidade: 'C.E. Professor João Costa',
 };
 
-function Configuracoes() {
-  const [secaoAtiva, setSecaoAtiva] = useState('perfil');
+const textosErro = {
+  carregar: {
+    titulo: 'Não foi possível carregar as configurações',
+    descricao: 'Ocorreu um erro ao buscar suas preferências. Verifique sua conexão com a internet e tente novamente.',
+  },
+  timeout: {
+    titulo: 'A operação demorou muito para responder',
+    descricao: 'Não foi possível concluir a solicitação dentro do tempo esperado. Verifique sua conexão com a internet e tente novamente.',
+  },
+  indisponibilidade: {
+    titulo: 'Serviço indisponível no momento',
+    descricao: 'O serviço de configurações está indisponível. Tente novamente em alguns instantes.',
+  },
+}
 
+function Configuracoes() {
+  const { tipo: erroPagina, limparErro } = useErroPagina()
+  const [secaoAtiva, setSecaoAtiva] = useState('perfil');
   const [perfil, setPerfil] = useState(() => {
     try {
       const dadosSalvos = localStorage.getItem('edugest:coordenador:perfil');
@@ -49,8 +67,7 @@ function Configuracoes() {
   });
 
   const [mensagem, setMensagem] = useState('');
-  const [tema, setTema] = useState('claro');
-
+  const { tema, definirTema } = useTema()
   const [notificacoes, setNotificacoes] = useState({
     email: true,
     sistema: true,
@@ -124,7 +141,7 @@ function Configuracoes() {
   );
 
   return (
-    <div className="coordenador-layout telas-prototipo">
+    <div className="coordenador-layout telas-prototipo tema-suportado">
       <BarraLateral />
 
       <main className="dashboard-main tp-main configuracoes-main">
@@ -163,7 +180,26 @@ function Configuracoes() {
           </div>
         </header>
 
-        <div className="config-content">
+        {erroPagina ? (
+          <div className="tp-content">
+            <ErrorState
+              tipo={erroPagina}
+              titulo={textosErro[erroPagina].titulo}
+              descricao={textosErro[erroPagina].descricao}
+              onTentarNovamente={limparErro}
+            />
+          </div>
+        ) : (
+          <div className="config-content">
+          <div className="tp-page-title config-page-title">
+            <div>
+              <h1>Configurações</h1>
+              <p>
+                Gerencie suas preferências e informações da conta.
+              </p>
+            </div>
+          </div>
+
           <div className="config-layout">
             <aside className="config-menu">
               <span className="config-menu-titulo">
@@ -352,12 +388,12 @@ function Configuracoes() {
                           tema === opcao ? 'selecionado' : ''
                         }`}
                         onClick={() => {
-                          setTema(opcao);
+                          definirTema(opcao)
                           setMensagem(
                             opcao === 'claro'
-                              ? 'Tema claro selecionado.'
-                              : 'Tema escuro selecionado. A aplicação do tema ainda precisa ser integrada.',
-                          );
+                              ? 'Tema claro aplicado.'
+                              : 'Tema escuro aplicado.'
+                          )
                         }}
                       >
                         {opcao === 'claro' ? 'Tema claro' : 'Tema escuro'}
@@ -432,7 +468,8 @@ function Configuracoes() {
               </footer>
             </form>
           </div>
-        </div>
+          </div>
+        )}
       </main>
     </div>
   );

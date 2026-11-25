@@ -1,16 +1,22 @@
 import { BrowserRouter } from 'react-router-dom'
 import AppRoutes from './routes/appRoutes'
+import BotaoTema from './components/BotaoTema'
+import ProvedorTema from './contextos/TemaContexto'
 import EduGestIA from './components/EduGestIA'
 import './App.css'
+import './styles/modoEscuro.css'
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <AppRoutes />
-        <EduGestIA />
-      </div>
-    </BrowserRouter>
+    <ProvedorTema>
+      <BrowserRouter>
+        <div className="app">
+          <AppRoutes />
+          <EduGestIA />
+          <BotaoTema />
+        </div>
+      </BrowserRouter>
+    </ProvedorTema>
   )
 }
 

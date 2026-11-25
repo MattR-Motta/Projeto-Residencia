@@ -129,7 +129,7 @@ function CalendarioDocente() {
     .slice(0, 3)
 
   return (
-    <div className="docente-pagina">
+    <div className="docente-pagina tema-suportado">
       <BarraLateral />
 
       <main className="docente-conteudo">

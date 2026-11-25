@@ -221,7 +221,7 @@ function Turmas() {
   }
 
   return (
-    <div className="coordenador-layout">
+    <div className="coordenador-layout tema-suportado">
       <BarraLateral />
 
       <main className="dashboard-main">
